@@ -1,0 +1,211 @@
+:root {
+  --p-neutral-950: oklch(0.16 0.012 255);
+  --p-neutral-925: oklch(0.165 0.012 255);
+  --p-neutral-900: oklch(0.19 0.012 255);
+  --p-neutral-850: oklch(0.21 0.012 255);
+  --p-neutral-800: oklch(0.215 0.012 255);
+  --p-neutral-750: oklch(0.26 0.012 255);
+  --p-neutral-700: oklch(0.28 0.012 255);
+  --p-neutral-650: oklch(0.32 0.012 255);
+  --p-neutral-500: oklch(0.55 0.012 255);
+  --p-neutral-450: oklch(0.62 0.012 255);
+  --p-neutral-300: oklch(0.8 0.008 255);
+  --p-neutral-100: oklch(0.95 0.005 255);
+
+  --p-neutral-l-000: oklch(1 0 0);
+  --p-neutral-l-025: oklch(0.985 0.003 255);
+  --p-neutral-l-050: oklch(0.97 0.004 255);
+  --p-neutral-l-100: oklch(0.945 0.005 255);
+  --p-neutral-l-150: oklch(0.925 0.006 255);
+  --p-neutral-l-200: oklch(0.9 0.006 255);
+  --p-neutral-l-300: oklch(0.84 0.008 255);
+  --p-neutral-l-500: oklch(0.56 0.012 255);
+  --p-neutral-l-600: oklch(0.52 0.014 255);
+  --p-neutral-l-700: oklch(0.38 0.012 255);
+  --p-neutral-l-800: oklch(0.25 0.012 255);
+
+  --p-teal-d-strong: oklch(0.78 0.11 185);
+  --p-teal-d-base: oklch(0.68 0.12 185);
+  --p-teal-d-soft: oklch(0.28 0.04 185);
+  --p-teal-l-strong: oklch(0.48 0.11 185);
+  --p-teal-l-base: oklch(0.55 0.11 185);
+  --p-teal-l-soft: oklch(0.94 0.03 185);
+
+  --p-green-d: oklch(0.78 0.12 155);
+  --p-green-d-soft: oklch(0.28 0.05 155);
+  --p-green-l: oklch(0.52 0.13 155);
+  --p-green-l-soft: oklch(0.94 0.04 155);
+
+  --p-amber-d: oklch(0.8 0.12 85);
+  --p-amber-d-soft: oklch(0.3 0.05 85);
+  --p-amber-l: oklch(0.55 0.12 85);
+  --p-amber-l-soft: oklch(0.95 0.05 85);
+
+  --p-red-d: oklch(0.72 0.15 35);
+  --p-red-d-soft: oklch(0.28 0.05 35);
+  --p-red-l: oklch(0.53 0.18 35);
+  --p-red-l-soft: oklch(0.94 0.04 35);
+
+  --p-blue-d: oklch(0.7 0.1 250);
+  --p-blue-d-soft: oklch(0.28 0.05 250);
+  --p-blue-l: oklch(0.52 0.13 250);
+  --p-blue-l-soft: oklch(0.94 0.03 250);
+}
+
+@theme {
+  --font-sans: "Space Grotesk", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  /* Tipografia em passo de 2px — sem valor quebrado. Multiplo de 4 nao serve aqui:
+     oito degraus entre 10 e 52 colidiriam. Ver ADR 0001, R5. */
+  --text-2xs: 10px;
+  --text-2xs--line-height: 1.45;
+  --text-xs: 12px;
+  --text-xs--line-height: 1.45;
+  --text-sm: 14px;
+  --text-sm--line-height: 1.5;
+  --text-base: 16px;
+  --text-base--line-height: 1.5;
+  --text-lg: 18px;
+  --text-lg--line-height: 1.4;
+  --text-xl: 22px;
+  --text-xl--line-height: 1.25;
+  --text-2xl: 26px;
+  --text-2xl--line-height: 1.2;
+  --text-display: 52px;
+  --text-display--line-height: 1;
+
+  /* Escala de espacamento: p-*, m-*, gap-*, w-*, h-* saem daqui.
+     Declarada explicitamente (e o default do Tailwind) para ser um token do DS,
+     nao um implicito do framework. So 2px (0.5) e multiplos de 4 — nada de meio-passo. */
+  --spacing: 0.25rem;
+
+  --tracking-caps: 0.06em;
+  --tracking-code: 0.4em;
+
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 10px;
+  --radius-xl: 16px;
+
+  --color-app: var(--p-neutral-900);
+  --color-rail: var(--p-neutral-950);
+  --color-panel: var(--p-neutral-925);
+  --color-surface: var(--p-neutral-800);
+  --color-field: var(--p-neutral-850);
+  --color-raised: var(--p-neutral-700);
+
+  --color-line: var(--p-neutral-750);
+  --color-line-strong: var(--p-neutral-650);
+
+  --color-ink: var(--p-neutral-100);
+  --color-ink-soft: var(--p-neutral-300);
+  --color-ink-muted: var(--p-neutral-450);
+  --color-ink-dim: var(--p-neutral-500);
+
+  --color-accent: var(--p-teal-d-base);
+  --color-accent-ink: var(--p-teal-d-strong);
+  --color-accent-soft: var(--p-teal-d-soft);
+  --color-on-accent: var(--p-neutral-900);
+
+  --color-ok: var(--p-green-d);
+  --color-ok-soft: var(--p-green-d-soft);
+  --color-warn: var(--p-amber-d);
+  --color-warn-soft: var(--p-amber-d-soft);
+  --color-danger: var(--p-red-d);
+  --color-danger-soft: var(--p-red-d-soft);
+  --color-info: var(--p-blue-d);
+  --color-info-soft: var(--p-blue-d-soft);
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    color-scheme: light;
+    --color-app: var(--p-neutral-l-050);
+    --color-rail: var(--p-neutral-l-100);
+    --color-panel: var(--p-neutral-l-100);
+    --color-surface: var(--p-neutral-l-000);
+    --color-field: var(--p-neutral-l-025);
+    --color-raised: var(--p-neutral-l-150);
+    --color-line: var(--p-neutral-l-200);
+    --color-line-strong: var(--p-neutral-l-300);
+    --color-ink: var(--p-neutral-l-800);
+    --color-ink-soft: var(--p-neutral-l-700);
+    --color-ink-muted: var(--p-neutral-l-600);
+    --color-ink-dim: var(--p-neutral-l-500);
+    --color-accent: var(--p-teal-l-base);
+    --color-accent-ink: var(--p-teal-l-strong);
+    --color-accent-soft: var(--p-teal-l-soft);
+    --color-on-accent: var(--p-neutral-l-000);
+    --color-ok: var(--p-green-l);
+    --color-ok-soft: var(--p-green-l-soft);
+    --color-warn: var(--p-amber-l);
+    --color-warn-soft: var(--p-amber-l-soft);
+    --color-danger: var(--p-red-l);
+    --color-danger-soft: var(--p-red-l-soft);
+    --color-info: var(--p-blue-l);
+    --color-info-soft: var(--p-blue-l-soft);
+  }
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+  --color-app: var(--p-neutral-l-050);
+  --color-rail: var(--p-neutral-l-100);
+  --color-panel: var(--p-neutral-l-100);
+  --color-surface: var(--p-neutral-l-000);
+  --color-field: var(--p-neutral-l-025);
+  --color-raised: var(--p-neutral-l-150);
+  --color-line: var(--p-neutral-l-200);
+  --color-line-strong: var(--p-neutral-l-300);
+  --color-ink: var(--p-neutral-l-800);
+  --color-ink-soft: var(--p-neutral-l-700);
+  --color-ink-muted: var(--p-neutral-l-600);
+  --color-ink-dim: var(--p-neutral-l-500);
+  --color-accent: var(--p-teal-l-base);
+  --color-accent-ink: var(--p-teal-l-strong);
+  --color-accent-soft: var(--p-teal-l-soft);
+  --color-on-accent: var(--p-neutral-l-000);
+  --color-ok: var(--p-green-l);
+  --color-ok-soft: var(--p-green-l-soft);
+  --color-warn: var(--p-amber-l);
+  --color-warn-soft: var(--p-amber-l-soft);
+  --color-danger: var(--p-red-l);
+  --color-danger-soft: var(--p-red-l-soft);
+  --color-info: var(--p-blue-l);
+  --color-info-soft: var(--p-blue-l-soft);
+}
+
+:root,
+:root[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+@keyframes attention {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 transparent;
+  }
+  50% {
+    box-shadow: 0 0 0 4px var(--attention-ring, var(--color-danger-soft));
+  }
+}
+
+.attention {
+  animation: attention 2.4s ease-in-out infinite;
+}
+
+.attention-warn {
+  --attention-ring: var(--color-warn-soft);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .attention {
+    animation: none;
+    box-shadow: 0 0 0 2px var(--attention-ring, var(--color-danger-soft));
+  }
+}
