@@ -1,4 +1,4 @@
 export const PASSWORD_INPUT = {
-  show: "Mostrar senha",
-  hide: "Ocultar senha",
+  show: "Show password",
+  hide: "Hide password",
 };

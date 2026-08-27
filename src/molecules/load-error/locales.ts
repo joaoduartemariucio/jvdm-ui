@@ -1,3 +1,3 @@
 export const LOAD_ERROR = {
-  retry: "Tentar de novo",
+  retry: "Try again",
 };
