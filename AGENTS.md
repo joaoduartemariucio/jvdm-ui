@@ -39,6 +39,9 @@ Changing a rule means changing an ADR. Do not edit `eslint.config.mjs` to make a
 | `npm run typecheck`               | types only                            |
 | `npm run lint` / `lint:fix`       | ESLint                                |
 | `npm run format` / `format:check` | Prettier                              |
+| `npm run site:dev`                | the docs site at localhost:4321       |
+| `npm run site:build`              | the docs site into `site-dist/`       |
+| `npm run typecheck:site`          | types for the docs site               |
 
 ## Structure
 
@@ -52,7 +55,12 @@ src/
   index.ts    root barrel
 bin/          the jvdm-ui CLI
 scripts/      build steps that run after tsup
+site/         the docs site, deployed to Pages by .github/workflows/pages.yml
 ```
+
+The site imports `jvdm-ui/*` through Vite aliases pointing at `src/`, not `dist/`, so it has real
+HMR and needs no build ordering. It is a consumer like any other: if a component cannot be shown
+there without reaching past the public API, that is a finding about the API.
 
 Dependency only flows down: `tokens <- atoms <- molecules <- organisms`. `theme/` stands apart and
 imports nothing but itself. `eslint-plugin-boundaries` fails the build on any crossing.

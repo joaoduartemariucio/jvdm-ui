@@ -1,0 +1,15 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "types": ["vite/client", "node"],
+    "paths": {
+      "jvdm-ui/atoms": ["../src/atoms"],
+      "jvdm-ui/molecules": ["../src/molecules"],
+      "jvdm-ui/organisms": ["../src/organisms"],
+      "jvdm-ui/tokens": ["../src/tokens"],
+      "jvdm-ui/theme": ["../src/theme"]
+    },
+    "baseUrl": "."
+  },
+  "include": ["src", "vite.config.ts"]
+}

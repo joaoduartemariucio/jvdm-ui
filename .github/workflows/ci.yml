@@ -22,3 +22,5 @@ jobs:
       - run: npm run lint
       - run: npm run format:check
       - run: npm run build
+      - run: npx tsc --noEmit -p site/tsconfig.json
+      - run: npm run site:build
