@@ -2,7 +2,7 @@ import { useState } from "react";
 
 export type Theme = "dark" | "light";
 
-const KEY = "arremato.theme";
+const KEY = "jvdm-ui.theme";
 
 function stored(): Theme | null {
   const value = localStorage.getItem(KEY);

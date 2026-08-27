@@ -6,8 +6,14 @@ import { PASSWORD_INPUT as T } from "../locales";
 
 export function PasswordInput({
   className = "",
+  showLabel = T.show,
+  hideLabel = T.hide,
   ...props
-}: { size?: ControlSize } & Omit<ComponentProps<"input">, "size" | "type">) {
+}: {
+  size?: ControlSize;
+  showLabel?: string;
+  hideLabel?: string;
+} & Omit<ComponentProps<"input">, "size" | "type">) {
   const [visible, setVisible] = useState(false);
 
   return (
@@ -16,7 +22,7 @@ export function PasswordInput({
       <button
         type="button"
         onClick={() => setVisible((current) => !current)}
-        aria-label={visible ? T.hide : T.show}
+        aria-label={visible ? hideLabel : showLabel}
         aria-pressed={visible}
         className="absolute inset-y-0 right-0 flex w-11 items-center justify-center rounded-r-lg text-ink-dim transition-colors hover:text-ink"
       >
