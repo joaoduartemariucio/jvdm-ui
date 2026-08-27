@@ -1,55 +1,55 @@
 :root {
-  --p-neutral-950: oklch(0.16 0.012 255);
-  --p-neutral-925: oklch(0.165 0.012 255);
-  --p-neutral-900: oklch(0.19 0.012 255);
-  --p-neutral-850: oklch(0.21 0.012 255);
-  --p-neutral-800: oklch(0.215 0.012 255);
-  --p-neutral-750: oklch(0.26 0.012 255);
-  --p-neutral-700: oklch(0.28 0.012 255);
-  --p-neutral-650: oklch(0.32 0.012 255);
-  --p-neutral-500: oklch(0.55 0.012 255);
-  --p-neutral-450: oklch(0.62 0.012 255);
-  --p-neutral-300: oklch(0.8 0.008 255);
-  --p-neutral-100: oklch(0.95 0.005 255);
+  --p-neutral-950: oklch(0.15 0.03 255);
+  --p-neutral-925: oklch(0.17 0.03 255);
+  --p-neutral-900: oklch(0.19 0.032 255);
+  --p-neutral-850: oklch(0.215 0.032 255);
+  --p-neutral-800: oklch(0.235 0.033 255);
+  --p-neutral-750: oklch(0.275 0.032 255);
+  --p-neutral-700: oklch(0.3 0.032 255);
+  --p-neutral-650: oklch(0.35 0.031 255);
+  --p-neutral-500: oklch(0.57 0.025 255);
+  --p-neutral-450: oklch(0.65 0.022 255);
+  --p-neutral-300: oklch(0.82 0.015 255);
+  --p-neutral-100: oklch(0.96 0.008 255);
 
   --p-neutral-l-000: oklch(1 0 0);
-  --p-neutral-l-025: oklch(0.985 0.003 255);
-  --p-neutral-l-050: oklch(0.97 0.004 255);
-  --p-neutral-l-100: oklch(0.945 0.005 255);
-  --p-neutral-l-150: oklch(0.925 0.006 255);
-  --p-neutral-l-200: oklch(0.9 0.006 255);
-  --p-neutral-l-300: oklch(0.84 0.008 255);
-  --p-neutral-l-500: oklch(0.56 0.012 255);
-  --p-neutral-l-600: oklch(0.52 0.014 255);
-  --p-neutral-l-700: oklch(0.38 0.012 255);
-  --p-neutral-l-800: oklch(0.25 0.012 255);
+  --p-neutral-l-025: oklch(0.985 0.004 255);
+  --p-neutral-l-050: oklch(0.972 0.006 255);
+  --p-neutral-l-100: oklch(0.948 0.009 255);
+  --p-neutral-l-150: oklch(0.928 0.011 255);
+  --p-neutral-l-200: oklch(0.902 0.013 255);
+  --p-neutral-l-300: oklch(0.845 0.018 255);
+  --p-neutral-l-500: oklch(0.57 0.028 255);
+  --p-neutral-l-600: oklch(0.52 0.032 255);
+  --p-neutral-l-700: oklch(0.37 0.035 255);
+  --p-neutral-l-800: oklch(0.24 0.04 255);
 
-  --p-teal-d-strong: oklch(0.78 0.11 185);
-  --p-teal-d-base: oklch(0.68 0.12 185);
-  --p-teal-d-soft: oklch(0.28 0.04 185);
-  --p-teal-l-strong: oklch(0.48 0.11 185);
-  --p-teal-l-base: oklch(0.55 0.11 185);
-  --p-teal-l-soft: oklch(0.94 0.03 185);
+  --p-gold-d-strong: oklch(0.86 0.13 82);
+  --p-gold-d-base: oklch(0.79 0.14 80);
+  --p-gold-d-soft: oklch(0.31 0.06 80);
+  --p-gold-l-strong: oklch(0.47 0.1 72);
+  --p-gold-l-base: oklch(0.56 0.12 74);
+  --p-gold-l-soft: oklch(0.94 0.045 82);
 
   --p-green-d: oklch(0.78 0.12 155);
-  --p-green-d-soft: oklch(0.28 0.05 155);
-  --p-green-l: oklch(0.52 0.13 155);
+  --p-green-d-soft: oklch(0.29 0.05 155);
+  --p-green-l: oklch(0.5 0.13 155);
   --p-green-l-soft: oklch(0.94 0.04 155);
 
-  --p-amber-d: oklch(0.8 0.12 85);
-  --p-amber-d-soft: oklch(0.3 0.05 85);
-  --p-amber-l: oklch(0.55 0.12 85);
-  --p-amber-l-soft: oklch(0.95 0.05 85);
+  --p-orange-d: oklch(0.78 0.14 62);
+  --p-orange-d-soft: oklch(0.31 0.06 62);
+  --p-orange-l: oklch(0.58 0.14 62);
+  --p-orange-l-soft: oklch(0.94 0.05 62);
 
-  --p-red-d: oklch(0.72 0.15 35);
-  --p-red-d-soft: oklch(0.28 0.05 35);
-  --p-red-l: oklch(0.53 0.18 35);
-  --p-red-l-soft: oklch(0.94 0.04 35);
+  --p-red-d: oklch(0.7 0.18 22);
+  --p-red-d-soft: oklch(0.29 0.07 22);
+  --p-red-l: oklch(0.51 0.21 22);
+  --p-red-l-soft: oklch(0.94 0.05 22);
 
-  --p-blue-d: oklch(0.7 0.1 250);
-  --p-blue-d-soft: oklch(0.28 0.05 250);
-  --p-blue-l: oklch(0.52 0.13 250);
-  --p-blue-l-soft: oklch(0.94 0.03 250);
+  --p-blue-d: oklch(0.72 0.11 245);
+  --p-blue-d-soft: oklch(0.29 0.055 245);
+  --p-blue-l: oklch(0.5 0.14 250);
+  --p-blue-l-soft: oklch(0.94 0.035 250);
 }
 
 @theme {
@@ -107,15 +107,15 @@
   --color-ink-muted: var(--p-neutral-450);
   --color-ink-dim: var(--p-neutral-500);
 
-  --color-accent: var(--p-teal-d-base);
-  --color-accent-ink: var(--p-teal-d-strong);
-  --color-accent-soft: var(--p-teal-d-soft);
-  --color-on-accent: var(--p-neutral-900);
+  --color-accent: var(--p-gold-d-base);
+  --color-accent-ink: var(--p-gold-d-strong);
+  --color-accent-soft: var(--p-gold-d-soft);
+  --color-on-accent: var(--p-neutral-950);
 
   --color-ok: var(--p-green-d);
   --color-ok-soft: var(--p-green-d-soft);
-  --color-warn: var(--p-amber-d);
-  --color-warn-soft: var(--p-amber-d-soft);
+  --color-warn: var(--p-orange-d);
+  --color-warn-soft: var(--p-orange-d-soft);
   --color-danger: var(--p-red-d);
   --color-danger-soft: var(--p-red-d-soft);
   --color-info: var(--p-blue-d);
@@ -137,14 +137,14 @@
     --color-ink-soft: var(--p-neutral-l-700);
     --color-ink-muted: var(--p-neutral-l-600);
     --color-ink-dim: var(--p-neutral-l-500);
-    --color-accent: var(--p-teal-l-base);
-    --color-accent-ink: var(--p-teal-l-strong);
-    --color-accent-soft: var(--p-teal-l-soft);
+    --color-accent: var(--p-gold-l-base);
+    --color-accent-ink: var(--p-gold-l-strong);
+    --color-accent-soft: var(--p-gold-l-soft);
     --color-on-accent: var(--p-neutral-l-000);
     --color-ok: var(--p-green-l);
     --color-ok-soft: var(--p-green-l-soft);
-    --color-warn: var(--p-amber-l);
-    --color-warn-soft: var(--p-amber-l-soft);
+    --color-warn: var(--p-orange-l);
+    --color-warn-soft: var(--p-orange-l-soft);
     --color-danger: var(--p-red-l);
     --color-danger-soft: var(--p-red-l-soft);
     --color-info: var(--p-blue-l);
@@ -166,14 +166,14 @@
   --color-ink-soft: var(--p-neutral-l-700);
   --color-ink-muted: var(--p-neutral-l-600);
   --color-ink-dim: var(--p-neutral-l-500);
-  --color-accent: var(--p-teal-l-base);
-  --color-accent-ink: var(--p-teal-l-strong);
-  --color-accent-soft: var(--p-teal-l-soft);
+  --color-accent: var(--p-gold-l-base);
+  --color-accent-ink: var(--p-gold-l-strong);
+  --color-accent-soft: var(--p-gold-l-soft);
   --color-on-accent: var(--p-neutral-l-000);
   --color-ok: var(--p-green-l);
   --color-ok-soft: var(--p-green-l-soft);
-  --color-warn: var(--p-amber-l);
-  --color-warn-soft: var(--p-amber-l-soft);
+  --color-warn: var(--p-orange-l);
+  --color-warn-soft: var(--p-orange-l-soft);
   --color-danger: var(--p-red-l);
   --color-danger-soft: var(--p-red-l-soft);
   --color-info: var(--p-blue-l);

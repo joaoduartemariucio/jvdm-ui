@@ -1,4 +1,5 @@
 export * from "./avatar";
+export * from "./badge";
 export * from "./button";
 export * from "./card";
 export * from "./form-alert";
@@ -7,4 +8,5 @@ export * from "./input";
 export * from "./label";
 export * from "./progress-bar";
 export * from "./skeleton";
+export * from "./thumb";
 export * from "./theme-toggle";
