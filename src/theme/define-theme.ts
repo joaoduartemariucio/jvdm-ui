@@ -10,7 +10,9 @@ function entries<T extends object>(source: T | undefined): [string, unknown][] {
   return Object.entries(source).filter(([, value]) => value !== undefined);
 }
 
-export function defineTheme(config: ThemeConfig): string {
+export type DefineThemeOptions = { selector?: string };
+
+export function defineTheme(config: ThemeConfig, options: DefineThemeOptions = {}): string {
   const lines: string[] = [];
 
   for (const [name, value] of entries(config.colors)) {
@@ -47,5 +49,7 @@ export function defineTheme(config: ThemeConfig): string {
 
   if (lines.length === 0) return "";
 
-  return `@theme {\n${lines.join("\n")}\n}\n`;
+  const wrapper = options.selector ?? "@theme";
+
+  return `${wrapper} {\n${lines.join("\n")}\n}\n`;
 }

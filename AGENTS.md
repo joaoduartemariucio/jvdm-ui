@@ -1,65 +1,88 @@
 # AGENTS.md
 
-Instrucoes para qualquer agente de IA que trabalhe neste repositorio.
+Instructions for any AI agent working in this repository (Claude Code, Codex, Cursor, Gemini CLI,
+Copilot). `CLAUDE.md` only points here — this file is the single copy.
 
-Codigo e textos padrao sao em portugues. Mantenha assim.
+Code, documentation and default UI strings are in **English**. Keep it that way.
 
-## A ADR e o manual
+## The ADRs are the manual
 
-`docs/adr/0001-design-system.md` nao e historico: e a norma vigente. Quando ela e este arquivo
-divergirem, **a ADR vence**.
+`docs/adr/` is not history: it is the standing norm. Every rule below summarises a clause. When the
+two disagree, **the ADR wins**.
 
-| Clausula | O que decide                                                          |
-| -------- | --------------------------------------------------------------------- |
-| R1       | quem consome compoe, nunca redefine                                   |
-| R2       | inventario do design system antes de comecar                          |
-| R3       | o que falta nasce na camada certa; componente com dominio nao entra   |
-| R5       | as escalas (tipografia, peso, raio, espacamento, icone, cor)          |
-| R6       | as regras nao se afrouxam para fechar task                            |
-| R7       | texto que o componente diz sozinho mora no `locales.ts` da pasta dele |
+| Where                                            | What it decides                                         |
+| ------------------------------------------------ | ------------------------------------------------------- |
+| [ADR 0001](docs/adr/0001-design-system.md) R1    | consumers compose, never redefine                       |
+| ADR 0001 R2                                      | inventory before building                               |
+| ADR 0001 R3                                      | what is missing is born here, in the right layer        |
+| ADR 0001 R5                                      | the scales (type, weight, radius, spacing, icon, color) |
+| ADR 0001 R6                                      | rules do not loosen to close a task                     |
+| ADR 0001 R7                                      | text a component says on its own                        |
+| [ADR 0002](docs/adr/0002-code-conventions.md) C1 | one component per folder, in its `index.tsx`            |
+| ADR 0002 C2                                      | import the folder, never the file inside it             |
+| ADR 0002 C3                                      | no code comments, at all                                |
+| [ADR 0003](docs/adr/0003-theming.md) T1          | one declaration per token, via `light-dark()`           |
+| ADR 0003 T2                                      | the default preset carries no brand                     |
+| ADR 0003 T3                                      | a theme is JSON, and it emits `@theme`                  |
 
-**Sem comentario de codigo** — nem `//`, nem bloco, nem `eslint-disable`. O porque mora na ADR.
-A regra local `no-comments` do `eslint.config.mjs` quebra o CI.
+Changing a rule means changing an ADR. Do not edit `eslint.config.mjs` to make a PR pass (R6).
 
-Nao edite `eslint.config.mjs` para um PR passar (R6). Mudanca de regra e mudanca de ADR.
+**No code comments** ([ADR 0002, C3](docs/adr/0002-code-conventions.md)) — no `//`, no block, no
+`eslint-disable`. The local `no-comments` rule fails CI.
 
-## Estrutura
+## Commands
+
+| Command                           | What it does                          |
+| --------------------------------- | ------------------------------------- |
+| `npm run dev`                     | `tsup` in watch mode                  |
+| `npm run build`                   | `dist/`, preset CSS, and `tokens.css` |
+| `npm run typecheck`               | types only                            |
+| `npm run lint` / `lint:fix`       | ESLint                                |
+| `npm run format` / `format:check` | Prettier                              |
+
+## Structure
 
 ```
 src/
-  tokens/     tokens.css (primitivos, @theme, temas) + theme.ts (o data-theme)
-  atoms/      elemento indivisivel
-  molecules/  poucos atoms como uma unidade
-  organisms/  secao completa
-  index.ts    barrel da raiz
+  tokens/     tokens.css (@theme, color-scheme) + theme.ts (the data-theme switch)
+  theme/      defineTheme, the theme types, and presets/. Build-time, zero React
+  atoms/      indivisible element
+  molecules/  a few atoms as one unit
+  organisms/  a complete section
+  index.ts    root barrel
+bin/          the jvdm-ui CLI
+scripts/      build steps that run after tsup
 ```
 
-A dependencia so desce: `tokens <- atoms <- molecules <- organisms`. O
-`eslint-plugin-boundaries` derruba quem atravessar.
+Dependency only flows down: `tokens <- atoms <- molecules <- organisms`. `theme/` stands apart and
+imports nothing but itself. `eslint-plugin-boundaries` fails the build on any crossing.
 
-**Um componente por pasta, no `index.tsx` dela.** Pasta que junta varios componentes nao tem
-`index.tsx`: tem `index.ts` de barrel, uma subpasta por componente e o que eles dividem —
-`input/` = `input/`, `select/`, `password-input/` mais `control.ts`; `chart/` = `bar-chart/`,
-`sparkline/` mais `bar.ts`.
+**This package knows no app.** No `@shared/`, `@features/`, `@app/` or router in here — the local
+`no-app-import` rule enforces it. A component that knows a domain belongs in the consuming app, not
+here ([ADR 0001, R3](docs/adr/0001-design-system.md)).
 
-O import aponta para a pasta, nunca para o arquivo de dentro. Entre irmaos do mesmo grupo o
-caminho e direto (`../svg`, `../control`), para o barrel nao criar ciclo.
+## Text
 
-**Este pacote nao conhece app nenhum.** Nada de `@shared/`, `@features/`, `@app/` ou roteador
-aqui dentro — a regra local `no-app-import` cobra isso. Componente que conhece dominio (um `Pill`
-que sabe o status de um lote) mora na feature do app, nunca aqui.
+Text the consumer decides arrives as a prop. Text a component says on its own goes to that folder's
+`locales.ts` **and** gets an optional prop defaulting to it — the package is public, and not every
+consumer speaks English. See `atoms/theme-toggle/`, `atoms/input/` and `molecules/load-error/`.
 
-## Texto
+## Tokens and theming
 
-Texto que o app decide entra por prop. Texto que o componente diz sozinho vai para o `locales.ts`
-da pasta dele **e** ganha prop opcional com esse valor como padrao — o pacote e publico, e nem
-todo consumidor fala portugues. Ver `atoms/theme-toggle/`, `atoms/input/` e `molecules/load-error/`.
+`src/tokens/tokens.css` is the schema. Each color is declared **once**, as
+`light-dark(<light>, <dark>)`; mode switching lives in `color-scheme` alone. Never re-declare a
+token in a `[data-theme]` block — that is exactly the specificity bug
+[ADR 0003](docs/adr/0003-theming.md) removed, and it silently breaks every consumer override in
+light mode.
 
-## Antes de dar a task por pronta
+Adding a semantic token changes the public contract: it needs a minor version and a README entry.
+
+## Before calling a task done
 
 ```bash
 npm run typecheck && npm run lint && npm run format:check && npm run build
 ```
 
-Se voce mexer em `eslint.config.mjs`, verifique injetando o import proibido e conferindo que o
-lint quebra: descritor que nao casa vira silencio, nao erro, e a regra morre sem avisar.
+If you touch `eslint.config.mjs`, verify it by injecting the forbidden import and confirming the
+lint breaks: a descriptor that matches nothing becomes silence, not an error, and the rule dies
+without telling anyone.

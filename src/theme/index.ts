@@ -1,4 +1,4 @@
-export { defineTheme } from "./define-theme";
+export { defineTheme, type DefineThemeOptions } from "./define-theme";
 export { gavel } from "./presets/gavel";
 export type {
   ColorToken,

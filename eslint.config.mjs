@@ -13,43 +13,43 @@ const SPACING = "(gap|gap-x|gap-y|p|px|py|pt|pb|pl|pr|m|mx|my|mt|mb|ml|mr|space-
 const dsPatterns = [
   {
     re: `\\b${SPACING}-\\[`,
-    msg: "Espacamento arbitrario. Use a escala do design system (2px e multiplos de 4). ADR 0001, R5.",
+    msg: "Arbitrary spacing. Use the scale (2px and multiples of 4). ADR 0001, R5.",
   },
   {
     re: `\\b${SPACING}-[1-9][0-9]*\\.[0-9]`,
-    msg: "Meio-passo fora da escala. So 0.5 (2px) e passos inteiros (4, 8, 12, 16…). ADR 0001, R5.",
+    msg: "Half-step outside the scale. Only 0.5 (2px) and whole steps (4, 8, 12, 16…). ADR 0001, R5.",
   },
   {
     re: "\\b(text|tracking|leading)-\\[",
-    msg: "Tipografia arbitraria. Use os degraus e o tracking dos tokens. ADR 0001, R5.",
+    msg: "Arbitrary typography. Use the token steps and tracking. ADR 0001, R5.",
   },
   {
     re: "\\bfont-(thin|extralight|light|semibold|extrabold|black)\\b",
-    msg: "Peso inexistente na fonte (so 400/500/700) — o browser sintetiza. ADR 0001, R5.",
+    msg: "Weight outside the scale (only 400/500/700) — the browser synthesises it. ADR 0001, R5.",
   },
   {
     re: "\\b[a-z-]+-\\[(#|rgb|hsl|oklch|var\\(--p-)",
-    msg: "Cor crua ou primitivo --p-*. Use os tokens semanticos (accent, ink, danger…). ADR 0001, R5.",
+    msg: "Raw color. Use the semantic tokens (accent, ink, danger…). ADR 0001, R5.",
   },
   {
     re: `\\b${SPACING}-px\\b`,
-    msg: "Espacamento de 1px. A escala comeca em 2px (0.5). Linha e borda, nao gap. ADR 0001, R5.",
+    msg: "1px spacing. The scale starts at 2px (0.5). That is a border, not a gap. ADR 0001, R5.",
   },
   {
     re: "\\btracking-(?!caps|code)[a-z]",
-    msg: "Tracking fora da escala. So tracking-caps e tracking-code. ADR 0001, R5.",
+    msg: "Tracking outside the scale. Only tracking-caps and tracking-code. ADR 0001, R5.",
   },
   {
     re: "\\brounded-\\[",
-    msg: "Raio arbitrario. Use radius-xs|sm|md|lg|xl. ADR 0001, R5.",
+    msg: "Arbitrary radius. Use radius-xs|sm|md|lg|xl. ADR 0001, R5.",
   },
   {
     re: "-\\[[0-9]*[13579]px",
-    msg: "Valor impar. Dimensao pontual e permitida, mas so em px par. ADR 0001, R5.",
+    msg: "Odd value. A one-off dimension is allowed, but only in even px. ADR 0001, R5.",
   },
 ];
 
-const LOOSE_TEXT = "Texto solto. Mova para o `locales.ts` desta pasta. ADR 0001, R7.";
+const LOOSE_TEXT = "Loose text. Move it to this folder's `locales.ts`. ADR 0001, R7.";
 
 const textRules = [
   {
@@ -85,7 +85,7 @@ const local = {
 
             context.report({
               node: node.source,
-              message: `Import fundo: ${spec}. Importe a pasta, nao o arquivo de dentro dela. ADR 0003, C2.`,
+              message: `Deep import: ${spec}. Import the folder, not the file inside it. ADR 0002, C2.`,
             });
           },
         };
@@ -125,7 +125,7 @@ const local = {
             for (const [name, node] of [...found].slice(1)) {
               context.report({
                 node,
-                message: `Segundo componente no mesmo arquivo: ${name}. Cada componente tem pasta propria, no index.tsx dela. ADR 0003, C1.`,
+                message: `Second component in the same file: ${name}. One component per folder, in its index.tsx. ADR 0002, C1.`,
               });
             }
           },
@@ -140,7 +140,7 @@ const local = {
             for (const comment of context.sourceCode.getAllComments()) {
               context.report({
                 loc: comment.loc,
-                message: "Comentario de codigo. O porque de uma decisao mora na ADR. ADR 0002, A9.",
+                message: "Code comment. The reason for a decision lives in an ADR. ADR 0002, C3.",
               });
             }
           },
@@ -158,7 +158,7 @@ const local = {
 
             context.report({
               node: node.source,
-              message: `O design system nao conhece o app: ${spec}. ADR 0001.`,
+              message: `The design system knows no app: ${spec}. ADR 0001.`,
             });
           },
         };

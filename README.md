@@ -1,28 +1,44 @@
+<div align="center">
+
 # jvdm-ui
 
-Design system em React 19 + Tailwind v4. Paleta em `oklch`, tema claro/escuro por reaponto de
-token semantico, e componentes em quatro camadas.
+**A React design system where the theme is a JSON file — and the rules are enforced by lint, not by hope.**
 
-```
-tokens/     cor, tipografia, peso, raio, escala de espacamento, tema
-atoms/      elemento indivisivel: Card, Label, Input, Button, Icon, Avatar, Skeleton
-molecules/  poucos atoms como uma unidade: Field, StatCard, PageHeader, Empty, LoadError
-organisms/  secao completa: DataTable, BarChart, Sparkline
-```
+[![npm](https://img.shields.io/npm/v/jvdm-ui?color=0b7285)](https://www.npmjs.com/package/jvdm-ui)
+[![license](https://img.shields.io/npm/l/jvdm-ui?color=0b7285)](./LICENSE)
+[![React 19](https://img.shields.io/badge/react-19-0b7285)](https://react.dev)
+[![Tailwind v4](https://img.shields.io/badge/tailwind-v4-0b7285)](https://tailwindcss.com)
 
-A dependencia so desce, e o `eslint-plugin-boundaries` derruba o build de quem atravessar.
+[Documentation](https://joaoduartemariucio.github.io/jvdm-ui) · [Theming](#theming) · [Components](#components)
 
-## Instalacao
+</div>
+
+---
+
+## Why another one
+
+Most component libraries let you theme the colors and stop there. Change the spacing rhythm or the
+type scale and you are patching CSS from the outside, hoping specificity holds.
+
+Here **every scale is a token, and every token is yours.** Colors, spacing base, radii, type steps,
+tracking, weights, font. You hand over a JSON object; it becomes a Tailwind `@theme` block at build
+time — which means you can even _add_ tokens, not just repaint the ones we picked.
+
+The other half is that the constraints are real. No odd values, one component per folder, no raw
+colors, no loose text in JSX. Not documented — **enforced**, by lint rules that fail CI. The library
+holds itself to the rules it asks of you.
+
+## Install
 
 ```bash
 npm install jvdm-ui
 ```
 
-`react@^19` e peer dependency. O pacote e ESM puro.
+`react@^19` is a peer dependency. Tailwind CSS v4 is required. The package is pure ESM.
 
-## Uso
+## Quick start
 
-Importe o CSS de tokens depois do Tailwind, e diga ao Tailwind para varrer o pacote:
+**1. Wire up the CSS.** Three lines, and one of them is easy to miss:
 
 ```css
 @import "tailwindcss";
@@ -30,11 +46,11 @@ Importe o CSS de tokens depois do Tailwind, e diga ao Tailwind para varrer o pac
 @source "../../node_modules/jvdm-ui/dist";
 ```
 
-> A linha `@source` nao e opcional. A deteccao automatica de conteudo do Tailwind v4 ignora
-> `node_modules`, entao sem ela as classes usadas pelos componentes nunca sao geradas e a UI vem
-> sem estilo. O caminho e relativo ao arquivo CSS.
+> **`@source` is not optional.** Tailwind v4's automatic content detection skips `node_modules`,
+> so without it none of the component classes are ever generated and the UI renders unstyled —
+> with no error anywhere. The path is relative to your CSS file.
 
-Aplique o tema antes do primeiro render, para a tela nao piscar no tema errado:
+**2. Apply the stored theme before first paint**, so the screen never flashes the wrong one:
 
 ```tsx
 import { applyStoredTheme } from "jvdm-ui/tokens";
@@ -42,7 +58,7 @@ import { applyStoredTheme } from "jvdm-ui/tokens";
 applyStoredTheme();
 ```
 
-Depois componha:
+**3. Compose:**
 
 ```tsx
 import { Button, Card, Label } from "jvdm-ui/atoms";
@@ -50,61 +66,133 @@ import { Field, PageHeader } from "jvdm-ui/molecules";
 import { DataTable } from "jvdm-ui/organisms";
 ```
 
-Cada camada e um entry point proprio. Import fundo (`jvdm-ui/atoms/button`) nao e suportado: o
-`exports` do pacote so publica as quatro camadas e a raiz.
+Each layer is its own entry point. Deep imports (`jvdm-ui/atoms/button`) are not supported — the
+`exports` map publishes the four layers and the root, nothing else.
 
-## Idioma
+## Theming
 
-Os textos padrao dos componentes estao em portugues. Os tres componentes que falam sozinhos
-aceitam prop opcional para sobrescrever:
-
-| Componente      | Prop         | Padrao                     |
-| --------------- | ------------ | -------------------------- |
-| `PasswordInput` | `showLabel`  | `"Mostrar senha"`          |
-| `PasswordInput` | `hideLabel`  | `"Ocultar senha"`          |
-| `ThemeToggle`   | `label`      | `(theme) => "Mudar para…"` |
-| `LoadError`     | `retryLabel` | `"Tentar de novo"`         |
-
-Todo o resto do texto entra por prop e e decisao do app.
-
-## As escalas
-
-Nenhum valor impar, em lugar nenhum. O lint quebra o CI em todas estas:
-
-| dimensao    | escala                                                                |
-| ----------- | --------------------------------------------------------------------- |
-| tipografia  | 10, 12, 14, 16, 18, 22, 26, 52px (`text-2xs` … `text-display`)        |
-| tracking    | `tracking-caps` (rotulo em caixa alta), `tracking-code`               |
-| peso        | 400/500/700. A fonte nao tem 600: `font-semibold` o browser sintetiza |
-| raio        | 4, 6, 8, 10, 16px (`radius-xs\|sm\|md\|lg\|xl`)                       |
-| espacamento | 2px e multiplos de 4. `gap-px`, `gap-2.5` e `gap-[7px]` sao desvio    |
-| icone       | 12, 16, 20, 24, 32px pelo `size` de `Icon`, nunca `h-* w-*` solto     |
-| cor         | so token semantico. Primitivo `--p-*` e cor crua sao proibidos        |
-
-Largura e altura ficam fora da escala — `w-[316px]` e permitido, em px par e com cautela.
-
-## Desenvolvimento
-
-```bash
-npm run dev          # tsup em watch
-npm run build        # dist/ + tokens.css
-npm run typecheck
-npm run lint
-npm run format:check
-```
-
-Para desenvolver junto de um app na mesma maquina, aponte a dependencia para a pasta e deixe o
-`tsup --watch` rodando:
+Write a JSON file. Every field is optional; whatever you leave out keeps the default.
 
 ```json
-{ "dependencies": { "jvdm-ui": "file:../jvdm-ui" } }
+{
+  "colors": {
+    "accent": { "light": "oklch(0.55 0.2 265)", "dark": "oklch(0.75 0.16 265)" },
+    "on-accent": "oklch(1 0 0)",
+    "brand": { "light": "oklch(0.5 0.18 320)", "dark": "oklch(0.8 0.15 320)" }
+  },
+  "font": { "sans": "Inter, sans-serif" },
+  "spacing": "0.25rem",
+  "radius": { "lg": "14px" },
+  "text": { "sm": ["15px", 1.6] }
+}
 ```
 
-## Norma
+Turn it into CSS and import it after the tokens:
 
-`docs/adr/` nao e historico: e a norma vigente. Leia [ADR 0001](docs/adr/0001-design-system.md)
-antes de escrever componente. As regras nao se afrouxam para fechar task (R6).
+```bash
+npx jvdm-ui theme theme.json --out src/theme.css
+```
 
-## Licenca
+```css
+@import "jvdm-ui/tokens.css";
+@import "./theme.css";
+```
+
+That `brand` key was not one of ours — and `bg-brand`, `text-brand` and `border-brand` now exist as
+real utilities, in both light and dark. That is the point of emitting `@theme` instead of `:root`.
+
+A single color value (rather than a `light`/`dark` pair) means the same color in both modes.
+
+### In TypeScript instead
+
+```ts
+import { defineTheme, gavel } from "jvdm-ui/theme";
+
+const css = defineTheme({ ...gavel, colors: { ...gavel.colors, accent: "oklch(0.7 0.2 150)" } });
+```
+
+### Presets
+
+Presets ship as ready CSS, generated from the same source object at build time, so the two cannot
+drift:
+
+```css
+@import "jvdm-ui/presets/gavel.css";
+```
+
+| Preset    | Looks like                                                  |
+| --------- | ----------------------------------------------------------- |
+| _default_ | achromatic neutrals, high-contrast neutral accent, no brand |
+| `gavel`   | navy and gold — institutional, built for a marketplace      |
+
+### How it works
+
+Every color is declared exactly once, using `light-dark()`:
+
+```css
+--color-accent: light-dark(oklch(0.24 0.01 255), oklch(0.96 0.003 255));
+```
+
+Mode switching lives entirely in `color-scheme`. No token is ever re-declared in a `[data-theme]`
+block, so there is **no specificity contest** — your override wins in both modes. Most systems get
+this wrong in exactly one place, and the bug shows up as "my brand color works until the user flips
+to light mode".
+
+The cost is a browser floor: `light-dark()` needs Chrome 123, Safari 17.5 or Firefox 120 (all 2024).
+Older browsers get the dark palette regardless of preference.
+
+## Components
+
+**Atoms** — `Avatar` · `Badge` · `Button` / `buttonClass` · `Card` · `FormAlert` · `Icon` (17 of them) · `Input` · `Label` · `PasswordInput` · `ProgressBar` · `Select` · `Skeleton` · `ThemeToggle` · `Thumb`
+
+**Molecules** — `CardTitle` · `Empty` · `Field` · `LoadError` · `PageHeader` · `StatCard`
+
+**Organisms** — `BarChart` · `DataTable` · `Sparkline`
+
+`buttonClass()` exists separately from `<Button>` because many actions navigate — they are a router
+`<Link>`, not a `<button>`. Use the class there instead of making `Button` polymorphic.
+
+Loading is always `Skeleton`, never a spinner.
+
+## The scales
+
+No odd values, anywhere. The lint fails CI on every one of these — in this repository, and it is the
+same config you can copy into yours:
+
+| dimension  | scale                                                             |
+| ---------- | ----------------------------------------------------------------- |
+| typography | 10, 12, 14, 16, 18, 22, 26, 52px (`text-2xs` … `text-display`)    |
+| tracking   | `tracking-caps` (uppercase labels), `tracking-code`               |
+| weight     | 400/500/700. No 600: the browser would synthesise it              |
+| radius     | 4, 6, 8, 10, 16px (`radius-xs\|sm\|md\|lg\|xl`)                   |
+| spacing    | 2px and multiples of 4                                            |
+| icon       | 12, 16, 20, 24, 32px via `Icon`'s `size`, never a loose `h-* w-*` |
+| color      | semantic tokens only                                              |
+
+You can change every value. You cannot make the scale stop existing.
+
+## Localisation
+
+Default strings are English. The three components that speak on their own take an optional prop:
+
+| Component       | Prop         | Default           |
+| --------------- | ------------ | ----------------- |
+| `PasswordInput` | `showLabel`  | `"Show password"` |
+| `PasswordInput` | `hideLabel`  | `"Hide password"` |
+| `ThemeToggle`   | `label`      | `(theme) => …`    |
+| `LoadError`     | `retryLabel` | `"Try again"`     |
+
+Everything else is a prop, and yours.
+
+## Contributing
+
+`docs/adr/` is the standing norm, not history. Read
+[ADR 0001](docs/adr/0001-design-system.md) before writing a component.
+
+```bash
+npm run typecheck && npm run lint && npm run format:check && npm run build
+```
+
+## License
 
 MIT

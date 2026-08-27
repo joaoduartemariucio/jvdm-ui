@@ -1,121 +1,86 @@
-# ADR 0001 — Design system
+# ADR 0001 — The design system
 
-- **Status:** aceita
-- **Data:** 2026-08-20
-- **Escopo:** `design-system/`. Um componente por arquivo e a forma dos imports sao a ADR 0003.
+- **Status:** accepted
+- **Date:** 2026-08-20 (rewritten 2026-08-27, when the package left its first app)
+- **Scope:** everything under `src/`. Code shape is [ADR 0002](0002-code-conventions.md); the token
+  contract is [ADR 0003](0003-theming.md).
 
-## Contexto
+## Context
 
-A UI precisa sair deste repositorio um dia, como pacote. Isso so e possivel se a fronteira for
-verificavel: enquanto for convencao escrita, ela vaza no primeiro prazo apertado.
+A design system only stays a system while the boundary around it is **checkable**. As long as it is
+a written convention, it leaks the first time a deadline gets tight — a screen redefines a button
+with loose classes, a raw hex slips into a card, and within a quarter there are three buttons that
+are almost the same.
 
-## Decisao
+This package was extracted from a product codebase precisely because the boundary held there: every
+rule below is enforced by lint, not by good intentions.
 
-Toda a UI de qualquer feature e composta a partir de `design-system/`. Ele e a fonte unica de
-componente, token e escala visual, e nao conhece o app: nada de `src/` la dentro.
+## Decision
 
-Quatro camadas, dependencia so desce:
+Consumers **compose** this package. It is the single source of component, token and visual scale,
+and it knows nothing about any app.
+
+Four layers, dependency only flows down:
 
 ```
-tokens/     cor, tipografia, peso, raio, escala de espacamento, tema
-atoms/      elemento indivisivel: Card, Label, Input, Button, Icon, Avatar, Skeleton
-molecules/  poucos atoms como uma unidade: Field, StatCard, PageHeader, Empty, LoadError
-organisms/  secao completa: DataTable, BarChart, Sparkline
+tokens/     color, typography, weight, radius, spacing scale, theme
+atoms/      indivisible element: Card, Label, Input, Button, Icon, Avatar, Skeleton
+molecules/  a few atoms acting as one unit: Field, StatCard, PageHeader, Empty, LoadError
+organisms/  a complete section: DataTable, BarChart, Sparkline
 ```
 
-### R1 — Compor, nunca redefinir
+### R1 — Compose, never redefine
 
-Tela compoe o design system. Nao redefine botao, campo, card, tabela, rotulo ou estado vazio com
-classes soltas. Escrever `text-2xs tracking-caps text-ink-muted` num `<span>` e reimplementar o
-`Label`.
+A screen composes the design system. It does not redefine a button, field, card, table, label or
+empty state with loose utility classes. Writing `text-2xs tracking-caps text-ink-muted` on a
+`<span>` is reimplementing `Label`.
 
-### R2 — Inventario antes de desenvolver
+### R2 — Inventory before building
 
-Antes de comecar uma tela: quais componentes ja atendem, o que falta, o que precisa mudar. Vai
-escrito no PR — e o que permite discutir o componente antes de ele existir em tres versoes quase
-iguais.
+Before a screen: which components already fit, what is missing, what needs to change. This is what
+lets the team discuss a component _before_ it exists in three near-identical versions.
 
-### R3 — O que falta nasce no design system
+### R3 — What is missing is born here, in the right layer
 
-Faltou componente, ou faltou capacidade num que ja existe: cria-se no design system, na camada
-certa. Estender o que existe vem antes de criar um irmao quase igual.
+Extending what exists comes before creating an almost-identical sibling. A component that knows a
+domain — a `Pill` that understands auction lot status, a panel that calls a feature hook — does
+**not** belong in this package. It lives in the consuming app.
 
-Excecao: componente que conhece dominio fica na feature (`Pill` e `StatusDot` sabem o status do
-aluno; `PresencePanel` chama `useAccess()`). O lint impede que entrem aqui.
+### R4 — Code the task touched, migrates
 
-### R4 — Encostou, migra
+If a task brushes against code that predates these rules, it moves to the rules in the same PR.
 
-Codigo fora do design system que a task ja toca e migrado no mesmo PR. Escopo: o que a task ja
-abriu. Migracao maior vira task propria.
+### R5 — Where a scale exists, a raw value is a defect
 
-### R5 — Onde ha escala, valor cru e desvio
+No odd values, anywhere. The lint fails CI on every one of these:
 
-| dimensao    | escala                                                                                                                                                  |
-| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| cor         | tokens semanticos (`accent`, `ink`, `danger`…). Primitivo `--p-*` e cor crua sao proibidos. Quais sao os valores: [ADR 0004](0004-identidade-visual.md) |
-| tipografia  | 8 degraus: 10, 12, 14, 16, 18, 22, 26, 52px. Tracking: `tracking-caps`, `tracking-code`                                                                 |
-| peso        | 400/500/700. `font-semibold` nao existe na fonte — o browser sintetiza                                                                                  |
-| raio        | 4, 6, 8, 10, 16px (`radius-xs\|sm\|md\|lg\|xl`)                                                                                                         |
-| espacamento | 2px e multiplos de 4. Meio-passo (`gap-2.5`) e arbitrario (`gap-[7px]`) sao desvio                                                                      |
-| icone       | 12, 16, 20, 24, 32px, pelo `size` de `Icon`                                                                                                             |
+| dimension  | scale                                                                           |
+| ---------- | ------------------------------------------------------------------------------- |
+| typography | 10, 12, 14, 16, 18, 22, 26, 52px (`text-2xs` … `text-display`)                  |
+| tracking   | `tracking-caps` (uppercase labels), `tracking-code`                             |
+| weight     | 400/500/700. The scale has no 600: `font-semibold` gets synthesised by browsers |
+| radius     | 4, 6, 8, 10, 16px (`radius-xs\|sm\|md\|lg\|xl`)                                 |
+| spacing    | 2px and multiples of 4. `gap-px`, `gap-2.5` and `gap-[7px]` are defects         |
+| icon       | 12, 16, 20, 24, 32px via `Icon`'s `size`, never a loose `h-* w-*`               |
+| color      | semantic tokens only. Raw colors are forbidden                                  |
 
-Nenhum valor impar, em lugar nenhum.
+Width and height sit outside the scale — `w-[316px]` is allowed, in even px and with care.
 
-Largura e altura ficam fora da escala: a largura de um painel e uma medida, nao um passo de ritmo.
-`w-[316px]` e permitido — em px par, com cautela, e virando token quando a medida se repetir.
+Consumers may change **the values** of every scale ([ADR 0003](0003-theming.md)). They cannot make
+the scale stop existing.
 
-### R6 — As regras nao se afrouxam para fechar task
+### R6 — Rules do not loosen to close a task
 
-Mudar as fronteiras do lint, a escala, os tokens ou qualquer regra desta ADR e decisao separada da
-task que esbarrou nela. Exige consenso explicito e revisao desta ADR.
+Moving a lint boundary, a scale or a token is a separate decision that needs its own ADR revision.
+Do not edit `eslint.config.mjs` to make a PR pass.
 
-_"A task nao fecha sem isso"_ nao e justificativa, e a descricao do sintoma. Ou a task se adapta,
-ou para e a regra se discute em separado.
+### R7 — Text a component says on its own
 
-### R7 — Texto do design system mora num `locales.ts`
+Text the consumer decides always arrives as a prop. For the handful of strings a component says by
+itself, the default lives in that folder's `locales.ts` **and** the component takes an optional prop
+carrying that default. The package is public: not every consumer speaks the default language.
 
-Componente do design system nao carrega texto no corpo. O que ele precisa dizer por conta propria —
-o rotulo do botao de repetir em `LoadError`, o `aria-label` do `ThemeToggle` — vive num `locales.ts`
-na pasta do componente, do mesmo jeito que uma tela faz (ADR 0002, A5).
+## Consequences
 
-O design system nao conhece o app, mas conhece o idioma: enquanto for um pacote de um produto so,
-pt-BR fica. O que R7 garante e que a troca seja um arquivo por componente, e nao uma cacada por
-string no meio de JSX.
-
-Texto que o app decide continua entrando por prop (`title` de `Empty`, `message` de `LoadError`).
-R7 vale so para o que o componente diz sozinho.
-
-## Como cada regra e sustentada
-
-| regra      | quem cobra                                                                                                                                                               |
-| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| R1, R3     | `eslint-plugin-boundaries`: o design system nao importa `src/`; `types`/`services`/`hooks` nao importam componente                                                       |
-| R5         | `no-restricted-syntax` em `eslint.config.mjs`: cor crua, tipografia arbitraria, peso inexistente, raio arbitrario, espacamento fora da escala e valor impar quebram o CI |
-| R7         | as mesmas regras de texto de ADR 0002, A5, aplicadas a `design-system/**/*.tsx`: literal no JSX ou em prop de texto quebra o CI                                          |
-| R2, R4, R6 | pessoas. O checklist de PR nao verifica — torna a omissao visivel                                                                                                        |
-
-As regras do lint sao verificadas injetando a violacao e conferindo que o CI quebra — 30 sondas na
-ultima revisao, entre fronteira, locales, texto e token. Descritor que nao casa vira **silencio**,
-nao erro. Mexeu na configuracao, refaz as sondas.
-
-`design-system/` esta **fora de `src/`**, entao precisa estar listado no `files:` e no
-`boundaries/include` do bloco de fronteiras em `eslint.config.mjs`. Faltando, as regras desta ADR
-nao rodam — e passam, sem erro nenhum. Ja aconteceu: ao mover a pasta para a raiz, o bloco continuou
-so com `src/**` e as regras ficaram mudas ate a sonda acusar.
-
-## Consequencias
-
-- `design-system/` pode ser publicado como pacote, e o lint garante que continue assim.
-- Componente novo nasce por necessidade real, nao por antecipacao.
-- Task as vezes fica mais lenta: inventario e migracao sao trabalho antes do trabalho.
-- R6 gera atrito por desenho — e o que separa "a regra nao serve" de "a regra e inconveniente agora".
-- R2, R4 e R6 nao tem verificacao automatica. Assumido: um CI que finge medir disciplina seria pior.
-
-## Alternativas descartadas
-
-**Atomic design so como nomenclatura.** Sem impor a direcao de dependencia, daria vocabulario e
-nenhuma garantia. A divisao vale porque atom nao consegue importar molecule.
-
-**Escala de espacamento em potencias (2/4/8/16/24/32).** 63% dos usos caiam fora (12px em 64
-lugares, 10px em 39, 20px em 37): seria redesenhar o ritmo de toda a UI, nao limpeza. A escala de 4
-em 4 elimina so os meio-passos, a 85 ajustes de 2px.
+- Adding a component is more expensive than writing markup in a screen, and that is the point.
+- The lint is the contract. If a rule is not enforced, it is not a rule — it is a wish.

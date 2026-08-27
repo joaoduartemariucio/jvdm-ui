@@ -1,0 +1,21 @@
+@import "tailwindcss";
+@import "../../src/tokens/tokens.css";
+@source "../../src";
+@source "../src";
+
+body {
+  margin: 0;
+  background-color: var(--color-app);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--color-accent-soft);
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-line-strong) transparent;
+}
