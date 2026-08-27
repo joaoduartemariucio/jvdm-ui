@@ -24,6 +24,8 @@ two disagree, **the ADR wins**.
 | [ADR 0003](docs/adr/0003-theming.md) T1          | one declaration per token, via `light-dark()`           |
 | ADR 0003 T2                                      | the default preset carries no brand                     |
 | ADR 0003 T3                                      | a theme is JSON, and it emits `@theme`                  |
+| [ADR 0004](docs/adr/0004-releases.md) V1         | a merged pull request is the unit of release            |
+| ADR 0004 V2                                      | the bump level is declared, then inferred, then assumed |
 
 Changing a rule means changing an ADR. Do not edit `eslint.config.mjs` to make a PR pass (R6).
 
@@ -84,6 +86,24 @@ token in a `[data-theme]` block — that is exactly the specificity bug
 light mode.
 
 Adding a semantic token changes the public contract: it needs a minor version and a README entry.
+
+## Releasing
+
+A **merged pull request** is the unit of release ([ADR 0004](docs/adr/0004-releases.md)). A direct
+push to `main` publishes nothing.
+
+The bump level comes from a `major` / `minor` / `patch` label on the PR; failing that, from a
+Conventional Commits title (`feat!:` and `BREAKING CHANGE` are major, `feat:` is minor); failing
+that, `patch`. A `no-release` label publishes nothing. Two conflicting labels fail the run.
+
+`scripts/next-version.mjs` is the single source of that rule — the PR preview and the release both
+call it, so they cannot drift. Change the rule there, and in the ADR.
+
+While the PR is open, a bot comment says which version merging will publish. Nothing is committed to
+the PR branch; the version lands on `main` at merge time, as `chore: release vX.Y.Z [skip ci]`, with
+a matching tag and a GitHub release.
+
+Adding a semantic token is a `minor`, never a `patch`: it changes the public contract.
 
 ## Before calling a task done
 
