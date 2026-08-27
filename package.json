@@ -9,7 +9,8 @@
     "*.css"
   ],
   "files": [
-    "dist"
+    "dist",
+    "bin"
   ],
   "exports": {
     ".": {
@@ -32,10 +33,15 @@
       "types": "./dist/organisms/index.d.ts",
       "import": "./dist/organisms/index.js"
     },
-    "./tokens.css": "./dist/tokens.css"
+    "./tokens.css": "./dist/tokens.css",
+    "./theme": {
+      "types": "./dist/theme/index.d.ts",
+      "import": "./dist/theme/index.js"
+    },
+    "./presets/gavel.css": "./dist/presets/gavel.css"
   },
   "scripts": {
-    "build": "tsup && cp src/tokens/tokens.css dist/tokens.css",
+    "build": "tsup && node scripts/build-presets.mjs && cp src/tokens/tokens.css dist/tokens.css",
     "dev": "tsup --watch",
     "typecheck": "tsc --noEmit",
     "lint": "eslint",
@@ -64,5 +70,26 @@
     "tsup": "^8.5.0",
     "typescript": "^5",
     "typescript-eslint": "^8.67.0"
+  },
+  "bin": {
+    "jvdm-ui": "./bin/jvdm-ui.mjs"
+  },
+  "keywords": [
+    "design-system",
+    "react",
+    "tailwindcss",
+    "ui",
+    "components",
+    "theming",
+    "design-tokens",
+    "oklch"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joaoduartemariucio/jvdm-ui.git"
+  },
+  "homepage": "https://joaoduartemariucio.github.io/jvdm-ui",
+  "bugs": {
+    "url": "https://github.com/joaoduartemariucio/jvdm-ui/issues"
   }
 }

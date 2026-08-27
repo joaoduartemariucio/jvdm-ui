@@ -198,6 +198,7 @@ const eslintConfig = defineConfig([
     settings: {
       "boundaries/include": ["src/**/*.{ts,tsx}"],
       "boundaries/elements": [
+        { type: "theme", pattern: "src/theme/**", partialMatch: false },
         { type: "tokens", pattern: "src/tokens/**", partialMatch: false },
         { type: "atoms", pattern: "src/atoms/**", partialMatch: false },
         { type: "molecules", pattern: "src/molecules/**", partialMatch: false },
@@ -213,6 +214,7 @@ const eslintConfig = defineConfig([
         {
           default: "disallow",
           policies: [
+            { from: [{ element: { type: "theme" } }], allow: [to("theme")] },
             { from: [{ element: { type: "tokens" } }], allow: [to("tokens")] },
             { from: [{ element: { type: "atoms" } }], allow: [to("tokens"), to("atoms")] },
             {

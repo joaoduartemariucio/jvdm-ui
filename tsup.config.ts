@@ -7,6 +7,7 @@ export default defineConfig({
     "atoms/index": "src/atoms/index.ts",
     "molecules/index": "src/molecules/index.ts",
     "organisms/index": "src/organisms/index.ts",
+    "theme/index": "src/theme/index.ts",
   },
   format: ["esm"],
   target: "es2022",

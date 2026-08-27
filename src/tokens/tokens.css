@@ -1,62 +1,6 @@
-:root {
-  --p-neutral-950: oklch(0.15 0.03 255);
-  --p-neutral-925: oklch(0.17 0.03 255);
-  --p-neutral-900: oklch(0.19 0.032 255);
-  --p-neutral-850: oklch(0.215 0.032 255);
-  --p-neutral-800: oklch(0.235 0.033 255);
-  --p-neutral-750: oklch(0.275 0.032 255);
-  --p-neutral-700: oklch(0.3 0.032 255);
-  --p-neutral-650: oklch(0.35 0.031 255);
-  --p-neutral-500: oklch(0.57 0.025 255);
-  --p-neutral-450: oklch(0.65 0.022 255);
-  --p-neutral-300: oklch(0.82 0.015 255);
-  --p-neutral-100: oklch(0.96 0.008 255);
-
-  --p-neutral-l-000: oklch(1 0 0);
-  --p-neutral-l-025: oklch(0.985 0.004 255);
-  --p-neutral-l-050: oklch(0.972 0.006 255);
-  --p-neutral-l-100: oklch(0.948 0.009 255);
-  --p-neutral-l-150: oklch(0.928 0.011 255);
-  --p-neutral-l-200: oklch(0.902 0.013 255);
-  --p-neutral-l-300: oklch(0.845 0.018 255);
-  --p-neutral-l-500: oklch(0.57 0.028 255);
-  --p-neutral-l-600: oklch(0.52 0.032 255);
-  --p-neutral-l-700: oklch(0.37 0.035 255);
-  --p-neutral-l-800: oklch(0.24 0.04 255);
-
-  --p-gold-d-strong: oklch(0.86 0.13 82);
-  --p-gold-d-base: oklch(0.79 0.14 80);
-  --p-gold-d-soft: oklch(0.31 0.06 80);
-  --p-gold-l-strong: oklch(0.47 0.1 72);
-  --p-gold-l-base: oklch(0.56 0.12 74);
-  --p-gold-l-soft: oklch(0.94 0.045 82);
-
-  --p-green-d: oklch(0.78 0.12 155);
-  --p-green-d-soft: oklch(0.29 0.05 155);
-  --p-green-l: oklch(0.5 0.13 155);
-  --p-green-l-soft: oklch(0.94 0.04 155);
-
-  --p-orange-d: oklch(0.78 0.14 62);
-  --p-orange-d-soft: oklch(0.31 0.06 62);
-  --p-orange-l: oklch(0.58 0.14 62);
-  --p-orange-l-soft: oklch(0.94 0.05 62);
-
-  --p-red-d: oklch(0.7 0.18 22);
-  --p-red-d-soft: oklch(0.29 0.07 22);
-  --p-red-l: oklch(0.51 0.21 22);
-  --p-red-l-soft: oklch(0.94 0.05 22);
-
-  --p-blue-d: oklch(0.72 0.11 245);
-  --p-blue-d-soft: oklch(0.29 0.055 245);
-  --p-blue-l: oklch(0.5 0.14 250);
-  --p-blue-l-soft: oklch(0.94 0.035 250);
-}
-
 @theme {
-  --font-sans: "Space Grotesk", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
 
-  /* Tipografia em passo de 2px — sem valor quebrado. Multiplo de 4 nao serve aqui:
-     oito degraus entre 10 e 52 colidiriam. Ver ADR 0001, R5. */
   --text-2xs: 10px;
   --text-2xs--line-height: 1.45;
   --text-xs: 12px;
@@ -74,9 +18,6 @@
   --text-display: 52px;
   --text-display--line-height: 1;
 
-  /* Escala de espacamento: p-*, m-*, gap-*, w-*, h-* saem daqui.
-     Declarada explicitamente (e o default do Tailwind) para ser um token do DS,
-     nao um implicito do framework. So 2px (0.5) e multiplos de 4 — nada de meio-passo. */
   --spacing: 0.25rem;
 
   --tracking-caps: 0.06em;
@@ -92,95 +33,50 @@
   --radius-lg: 10px;
   --radius-xl: 16px;
 
-  --color-app: var(--p-neutral-900);
-  --color-rail: var(--p-neutral-950);
-  --color-panel: var(--p-neutral-925);
-  --color-surface: var(--p-neutral-800);
-  --color-field: var(--p-neutral-850);
-  --color-raised: var(--p-neutral-700);
+  --color-app: light-dark(oklch(0.972 0.002 255), oklch(0.19 0.004 255));
+  --color-rail: light-dark(oklch(0.948 0.003 255), oklch(0.15 0.004 255));
+  --color-panel: light-dark(oklch(0.948 0.003 255), oklch(0.17 0.004 255));
+  --color-surface: light-dark(oklch(1 0 0), oklch(0.235 0.005 255));
+  --color-field: light-dark(oklch(0.985 0.002 255), oklch(0.215 0.005 255));
+  --color-raised: light-dark(oklch(0.928 0.004 255), oklch(0.3 0.005 255));
 
-  --color-line: var(--p-neutral-750);
-  --color-line-strong: var(--p-neutral-650);
+  --color-line: light-dark(oklch(0.902 0.005 255), oklch(0.275 0.005 255));
+  --color-line-strong: light-dark(oklch(0.845 0.006 255), oklch(0.35 0.005 255));
 
-  --color-ink: var(--p-neutral-100);
-  --color-ink-soft: var(--p-neutral-300);
-  --color-ink-muted: var(--p-neutral-450);
-  --color-ink-dim: var(--p-neutral-500);
+  --color-ink: light-dark(oklch(0.24 0.01 255), oklch(0.96 0.003 255));
+  --color-ink-soft: light-dark(oklch(0.37 0.01 255), oklch(0.82 0.004 255));
+  --color-ink-muted: light-dark(oklch(0.52 0.008 255), oklch(0.65 0.005 255));
+  --color-ink-dim: light-dark(oklch(0.57 0.007 255), oklch(0.57 0.005 255));
 
-  --color-accent: var(--p-gold-d-base);
-  --color-accent-ink: var(--p-gold-d-strong);
-  --color-accent-soft: var(--p-gold-d-soft);
-  --color-on-accent: var(--p-neutral-950);
+  --color-accent: light-dark(oklch(0.24 0.01 255), oklch(0.96 0.003 255));
+  --color-accent-ink: light-dark(oklch(0.32 0.012 255), oklch(0.88 0.004 255));
+  --color-accent-soft: light-dark(oklch(0.928 0.004 255), oklch(0.28 0.006 255));
+  --color-on-accent: light-dark(oklch(1 0 0), oklch(0.15 0.004 255));
 
-  --color-ok: var(--p-green-d);
-  --color-ok-soft: var(--p-green-d-soft);
-  --color-warn: var(--p-orange-d);
-  --color-warn-soft: var(--p-orange-d-soft);
-  --color-danger: var(--p-red-d);
-  --color-danger-soft: var(--p-red-d-soft);
-  --color-info: var(--p-blue-d);
-  --color-info-soft: var(--p-blue-d-soft);
+  --color-ok: light-dark(oklch(0.5 0.13 155), oklch(0.78 0.12 155));
+  --color-ok-soft: light-dark(oklch(0.94 0.04 155), oklch(0.29 0.05 155));
+  --color-warn: light-dark(oklch(0.58 0.14 62), oklch(0.78 0.14 62));
+  --color-warn-soft: light-dark(oklch(0.94 0.05 62), oklch(0.31 0.06 62));
+  --color-danger: light-dark(oklch(0.51 0.21 22), oklch(0.7 0.18 22));
+  --color-danger-soft: light-dark(oklch(0.94 0.05 22), oklch(0.29 0.07 22));
+  --color-info: light-dark(oklch(0.5 0.14 250), oklch(0.72 0.11 245));
+  --color-info-soft: light-dark(oklch(0.94 0.035 250), oklch(0.29 0.055 245));
+}
+
+:root {
+  color-scheme: dark;
 }
 
 @media (prefers-color-scheme: light) {
-  :root:not([data-theme="dark"]) {
+  :root {
     color-scheme: light;
-    --color-app: var(--p-neutral-l-050);
-    --color-rail: var(--p-neutral-l-100);
-    --color-panel: var(--p-neutral-l-100);
-    --color-surface: var(--p-neutral-l-000);
-    --color-field: var(--p-neutral-l-025);
-    --color-raised: var(--p-neutral-l-150);
-    --color-line: var(--p-neutral-l-200);
-    --color-line-strong: var(--p-neutral-l-300);
-    --color-ink: var(--p-neutral-l-800);
-    --color-ink-soft: var(--p-neutral-l-700);
-    --color-ink-muted: var(--p-neutral-l-600);
-    --color-ink-dim: var(--p-neutral-l-500);
-    --color-accent: var(--p-gold-l-base);
-    --color-accent-ink: var(--p-gold-l-strong);
-    --color-accent-soft: var(--p-gold-l-soft);
-    --color-on-accent: var(--p-neutral-l-000);
-    --color-ok: var(--p-green-l);
-    --color-ok-soft: var(--p-green-l-soft);
-    --color-warn: var(--p-orange-l);
-    --color-warn-soft: var(--p-orange-l-soft);
-    --color-danger: var(--p-red-l);
-    --color-danger-soft: var(--p-red-l-soft);
-    --color-info: var(--p-blue-l);
-    --color-info-soft: var(--p-blue-l-soft);
   }
 }
 
 :root[data-theme="light"] {
   color-scheme: light;
-  --color-app: var(--p-neutral-l-050);
-  --color-rail: var(--p-neutral-l-100);
-  --color-panel: var(--p-neutral-l-100);
-  --color-surface: var(--p-neutral-l-000);
-  --color-field: var(--p-neutral-l-025);
-  --color-raised: var(--p-neutral-l-150);
-  --color-line: var(--p-neutral-l-200);
-  --color-line-strong: var(--p-neutral-l-300);
-  --color-ink: var(--p-neutral-l-800);
-  --color-ink-soft: var(--p-neutral-l-700);
-  --color-ink-muted: var(--p-neutral-l-600);
-  --color-ink-dim: var(--p-neutral-l-500);
-  --color-accent: var(--p-gold-l-base);
-  --color-accent-ink: var(--p-gold-l-strong);
-  --color-accent-soft: var(--p-gold-l-soft);
-  --color-on-accent: var(--p-neutral-l-000);
-  --color-ok: var(--p-green-l);
-  --color-ok-soft: var(--p-green-l-soft);
-  --color-warn: var(--p-orange-l);
-  --color-warn-soft: var(--p-orange-l-soft);
-  --color-danger: var(--p-red-l);
-  --color-danger-soft: var(--p-red-l-soft);
-  --color-info: var(--p-blue-l);
-  --color-info-soft: var(--p-blue-l-soft);
 }
 
-:root,
 :root[data-theme="dark"] {
   color-scheme: dark;
 }
