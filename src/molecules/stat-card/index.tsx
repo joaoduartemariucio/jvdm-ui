@@ -21,7 +21,10 @@ export function StatCard({
   const size = length <= 7 ? "text-2xl" : length <= 12 ? "text-lg" : "text-sm";
 
   return (
-    <Card className={`flex flex-col gap-1 !p-4 ${attention ? "attention" : ""} ${className}`}>
+    <Card
+      padding="sm"
+      className={`flex flex-col gap-1 ${attention ? "attention" : ""} ${className}`}
+    >
       <Label>{label}</Label>
       <span className={`truncate ${size} leading-tight font-bold ${color}`}>{value}</span>
       {hint ? <span className="truncate text-xs text-ink-muted">{hint}</span> : null}

@@ -9,10 +9,20 @@ import {
   ProgressBar,
   Select,
   Skeleton,
+  Textarea,
   type BadgeTone,
   type ButtonVariant,
 } from "jvdm-ui/atoms";
-import { CardTitle, Empty, Field, LoadError, PageHeader, StatCard } from "jvdm-ui/molecules";
+import {
+  CardTitle,
+  Empty,
+  Field,
+  LoadError,
+  Menu,
+  menuItemClass,
+  PageHeader,
+  StatCard,
+} from "jvdm-ui/molecules";
 import { DataTable, Sparkline, type Column } from "jvdm-ui/organisms";
 
 const VARIANTS: ButtonVariant[] = ["primary", "secondary", "ghost", "danger"];
@@ -102,9 +112,35 @@ export function Gallery() {
               </Select>
             </Field>
           </div>
+          <Field htmlFor="bio" label="Bio">
+            <Textarea id="bio" placeholder="A few words about you" />
+          </Field>
           <Field error="Enter a valid email address" htmlFor="invalid" label="With an error">
             <Input aria-invalid id="invalid" defaultValue="not-an-email" />
           </Field>
+        </div>
+      </Card>
+
+      <Card>
+        <div className="flex flex-col gap-6">
+          <CardTitle>Menu</CardTitle>
+          <div className="flex flex-wrap items-center gap-6">
+            <Menu
+              align="start"
+              label="Open the account menu"
+              trigger={<Avatar name="Ada Lovelace" />}
+            >
+              <button className={menuItemClass()} type="button">
+                Profile
+              </button>
+              <button className={menuItemClass()} type="button">
+                Settings
+              </button>
+              <button className={menuItemClass({ tone: "danger" })} type="button">
+                Sign out
+              </button>
+            </Menu>
+          </div>
         </div>
       </Card>
 
