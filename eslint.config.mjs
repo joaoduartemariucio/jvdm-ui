@@ -47,6 +47,10 @@ const dsPatterns = [
     re: "-\\[[0-9]*[13579]px",
     msg: "Odd value. A one-off dimension is allowed, but only in even px. ADR 0001, R5.",
   },
+  {
+    re: "(^|\\s)![a-z][a-z0-9]*(-[a-z0-9]+)+",
+    msg: "`!` override on a utility. A component that has to be forced needs a prop, not an override. ADR 0001, R1/R3.",
+  },
 ];
 
 const LOOSE_TEXT = "Loose text. Move it to this folder's `locales.ts`. ADR 0001, R7.";
