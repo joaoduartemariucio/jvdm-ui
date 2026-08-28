@@ -1,6 +1,6 @@
 {
   "name": "jvdm-ui",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Design system em React 19 + Tailwind v4: tokens em oklch, tema claro/escuro e componentes em quatro camadas.",
   "license": "MIT",
   "author": "João Vitor Duarte Mariucio",
