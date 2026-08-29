@@ -4,6 +4,7 @@ export * from "./button";
 export * from "./card";
 export * from "./form-alert";
 export * from "./icon";
+export * from "./icon-button";
 export * from "./input";
 export * from "./label";
 export * from "./progress-bar";
