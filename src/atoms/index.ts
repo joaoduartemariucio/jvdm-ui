@@ -9,4 +9,4 @@ export * from "./label";
 export * from "./progress-bar";
 export * from "./skeleton";
 export * from "./thumb";
-export * from "./theme-toggle";
+export { ThemeToggle } from "./theme-toggle";

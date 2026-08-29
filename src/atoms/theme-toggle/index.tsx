@@ -1,3 +1,5 @@
+"use client";
+
 import { MoonIcon, SunIcon } from "../icon";
 import { useTheme, type Theme } from "../../tokens";
 import { THEME_TOGGLE as T } from "./locales";
