@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, type ComponentProps } from "react";
 import { EyeIcon, EyeOffIcon } from "../../icon";
 import type { ControlSize } from "../control";

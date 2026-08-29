@@ -1,5 +1,5 @@
 export type ButtonVariant = "primary" | "secondary" | "ghost" | "danger";
-export type ButtonSize = "sm" | "md" | "lg";
+export type ButtonSize = "sm" | "md" | "lg" | "icon" | "icon-sm";
 
 const VARIANTS: Record<ButtonVariant, string> = {
   primary: "bg-accent font-medium text-on-accent hover:bg-accent-ink",
@@ -12,6 +12,8 @@ const SIZES: Record<ButtonSize, string> = {
   sm: "gap-2 px-3 py-2 text-xs",
   md: "gap-2 px-4 py-3 text-sm",
   lg: "gap-2 px-4 py-4 text-base",
+  icon: "h-10 w-10 shrink-0",
+  "icon-sm": "h-8 w-8 shrink-0",
 };
 
 const BASE =

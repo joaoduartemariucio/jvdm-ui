@@ -3,7 +3,7 @@
   "version": "0.2.0",
   "description": "Design system em React 19 + Tailwind v4: tokens em oklch, tema claro/escuro e componentes em quatro camadas.",
   "license": "MIT",
-  "author": "João Vitor Duarte Mariucio",
+  "author": "Jo\u00e3o Vitor Duarte Mariucio",
   "type": "module",
   "sideEffects": [
     "*.css"
@@ -16,6 +16,10 @@
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js"
+    },
+    "./client/*": {
+      "types": "./dist/client/*.d.ts",
+      "import": "./dist/client/*.js"
     },
     "./tokens": {
       "types": "./dist/tokens/index.d.ts",
