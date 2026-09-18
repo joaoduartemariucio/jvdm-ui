@@ -7,6 +7,7 @@ export * from "./icon";
 export * from "./icon-button";
 export * from "./input";
 export * from "./label";
+export * from "./more-icon";
 export * from "./progress-bar";
 export * from "./skeleton";
 export * from "./thumb";
