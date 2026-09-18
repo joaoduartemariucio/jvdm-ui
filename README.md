@@ -143,9 +143,9 @@ Older browsers get the dark palette regardless of preference.
 
 ## Components
 
-**Atoms** — `Avatar` · `Badge` · `Button` / `buttonClass` · `Card` · `FormAlert` · `Icon` (17 of them) · `Input` · `Label` · `PasswordInput` · `ProgressBar` · `Select` · `Skeleton` · `ThemeToggle` · `Thumb`
+**Atoms** — `Avatar` · `Badge` · `Button` / `buttonClass` · `Card` · `FormAlert` · `Icon` (17 of them) · `Input` · `Label` · `MoreIcon` · `PasswordInput` · `ProgressBar` · `Select` · `Skeleton` · `ThemeToggle` · `Thumb`
 
-**Molecules** — `CardTitle` · `Empty` · `Field` · `LoadError` · `PageHeader` · `StatCard`
+**Molecules** — `CardTitle` · `ConfirmDialog` · `Empty` · `Field` · `LoadError` · `Modal` · `PageHeader` · `StatCard`
 
 **Organisms** — `BarChart` · `DataTable` · `Sparkline`
 

@@ -16,8 +16,10 @@ import { defineConfig, type Options } from "tsup";
  * componentes, entao o subpath e uma fronteira interna, nao uma API nova.
  */
 const CLIENT_MODULES: Record<string, string> = {
+  "confirm-dialog": "src/molecules/confirm-dialog/index.tsx",
   gallery: "src/molecules/gallery/index.tsx",
   menu: "src/molecules/menu/menu/index.tsx",
+  modal: "src/molecules/modal/index.tsx",
   "password-input": "src/atoms/input/password-input/index.tsx",
   theme: "src/tokens/theme.ts",
   "theme-toggle": "src/atoms/theme-toggle/index.tsx",
