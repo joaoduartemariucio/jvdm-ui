@@ -10,6 +10,7 @@ export function ConfirmDialog({
   description,
   confirmLabel,
   cancelLabel,
+  pending = false,
   children,
   onConfirm,
   onCancel,
@@ -19,6 +20,7 @@ export function ConfirmDialog({
   description?: string;
   confirmLabel: string;
   cancelLabel: string;
+  pending?: boolean;
   children?: ReactNode;
   onConfirm: () => void;
   onCancel: () => void;
@@ -31,7 +33,7 @@ export function ConfirmDialog({
         <Button type="button" variant="secondary" onClick={onCancel}>
           {cancelLabel}
         </Button>
-        <Button type="button" variant="danger" onClick={onConfirm}>
+        <Button type="button" variant="danger" disabled={pending} onClick={onConfirm}>
           {confirmLabel}
         </Button>
       </div>
