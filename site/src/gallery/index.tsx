@@ -8,6 +8,7 @@ import {
   Checkbox,
   Combobox,
   DatePicker,
+  DateTimePicker,
   Divider,
   FileUpload,
   Input,
@@ -17,7 +18,9 @@ import {
   Link,
   PasswordInput,
   ProgressBar,
+  NumberInput,
   Radio,
+  RangeDatePicker,
   Select,
   Skeleton,
   Slider,
@@ -36,6 +39,7 @@ import {
   CommandMenu,
   ConfirmDialog,
   Drawer,
+  DropdownMenu,
   Empty,
   Accordion,
   Breadcrumb,
@@ -49,9 +53,11 @@ import {
   PageHeader,
   Pagination,
   StatCard,
+  SnackbarStack,
   Tabs,
   Toast,
   Tooltip,
+  CodeBlock,
 } from "jvdm-ui/molecules";
 import {
   DataTable,
@@ -110,6 +116,14 @@ export function Gallery() {
   const [modalOpen, setModalOpen] = useState(false);
   const [confirmOpen, setConfirmOpen] = useState(false);
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const [snackbars, setSnackbars] = useState([
+    {
+      id: "saved",
+      title: "Preset saved",
+      message: "Ready to use in your next build.",
+      tone: "ok" as const,
+    },
+  ]);
 
   return (
     <section className="flex scroll-mt-20 flex-col gap-8" id="components">
@@ -287,6 +301,54 @@ export function Gallery() {
               </Drawer>
             </div>
           </div>
+        </div>
+      </Card>
+
+      <Card>
+        <div className="flex flex-col gap-5">
+          <CardTitle>Date ranges, values and menus</CardTitle>
+          <RangeDatePicker end="2026-09-30" start="2026-09-23" />
+          <DateTimePicker date="2026-09-23" time="09:30" />
+          <div className="grid gap-4 md:grid-cols-3">
+            <NumberInput aria-label="Seats" defaultValue="12" min="1" />
+            <DropdownMenu trigger={<Button variant="secondary">More options</Button>}>
+              <button
+                className="block w-full rounded-sm px-3 py-2 text-left text-xs text-ink-soft hover:bg-raised"
+                type="button"
+              >
+                Duplicate preset
+              </button>
+              <button
+                className="block w-full rounded-sm px-3 py-2 text-left text-xs text-ink-soft hover:bg-raised"
+                type="button"
+              >
+                Move to archive
+              </button>
+            </DropdownMenu>
+            <Button
+              onClick={() =>
+                setSnackbars([
+                  {
+                    id: String(Date.now()),
+                    title: "Preset saved",
+                    message: "Ready to use in your next build.",
+                    tone: "ok",
+                  },
+                ])
+              }
+              variant="secondary"
+            >
+              Show snackbar
+            </Button>
+          </div>
+          <CodeBlock
+            code={'defineTheme({ tokens: { radius: { md: "8px" } } })'}
+            language="typescript"
+          />
+          <SnackbarStack
+            items={snackbars}
+            onDismiss={(id) => setSnackbars((items) => items.filter((item) => item.id !== id))}
+          />
         </div>
       </Card>
 
