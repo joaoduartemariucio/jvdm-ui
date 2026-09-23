@@ -51,7 +51,7 @@ export function Tabs({
           <button
             aria-selected={item.value === active?.value}
             id={`tab-${item.value}`}
-            className={`min-h-10 shrink-0 border-b-2 px-3 text-sm transition-colors duration-150 ${
+            className={`min-h-10 shrink-0 border-b-2 px-3 text-sm transition-colors duration-(--duration-fast) ease-out ${
               item.value === active?.value
                 ? "border-accent font-medium text-ink"
                 : "border-transparent text-ink-muted hover:border-line-strong hover:text-ink"

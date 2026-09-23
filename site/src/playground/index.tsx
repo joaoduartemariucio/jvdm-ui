@@ -60,7 +60,7 @@ function parseTheme(source: string): Parsed {
 }
 
 export function Playground() {
-  const [source, setSource] = useState(() => JSON.stringify(SAMPLES[1].config, null, 2));
+  const [source, setSource] = useState(() => JSON.stringify(SAMPLES[0].config, null, 2));
   const parsed = parseTheme(source);
   const runtime = parsed.runtime;
 

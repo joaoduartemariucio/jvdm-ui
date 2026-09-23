@@ -21,6 +21,8 @@ const CLIENT_MODULES: Record<string, string> = {
   menu: "src/molecules/menu/menu/index.tsx",
   modal: "src/molecules/modal/index.tsx",
   "password-input": "src/atoms/input/password-input/index.tsx",
+  "date-picker": "src/atoms/date-picker/index.tsx",
+  "time-picker": "src/atoms/time-picker/index.tsx",
   theme: "src/tokens/theme.ts",
   "theme-toggle": "src/atoms/theme-toggle/index.tsx",
 };

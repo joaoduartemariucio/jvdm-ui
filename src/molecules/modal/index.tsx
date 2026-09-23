@@ -46,7 +46,7 @@ export function Modal({
   return (
     <dialog
       ref={dialogRef}
-      className={`fixed inset-x-0 top-auto bottom-0 z-50 m-0 mt-auto w-full max-w-none rounded-t-xl border border-b-0 border-line bg-surface p-0 text-ink shadow-xl backdrop:bg-app/70 backdrop:backdrop-blur-sm sm:inset-0 sm:m-auto sm:rounded-xl sm:border-b ${SIZE_CLASSES[size]}`}
+      className={`fixed inset-x-0 top-auto bottom-0 z-50 m-0 mt-auto w-full max-w-none rounded-t-xl border border-b-0 border-line bg-surface p-0 text-ink shadow-modal backdrop:bg-app/70 backdrop:backdrop-blur-sm sm:inset-0 sm:m-auto sm:rounded-xl sm:border-b ${SIZE_CLASSES[size]}`}
       aria-modal="true"
       aria-label={title ? undefined : MODAL.label["en-US"]}
       aria-labelledby={title ? titleId : undefined}

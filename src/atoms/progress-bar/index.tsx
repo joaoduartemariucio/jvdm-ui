@@ -36,7 +36,7 @@ export function ProgressBar({
       role="progressbar"
     >
       <div
-        className={`h-full origin-left rounded-full transition-transform duration-200 ease-out ${FILL[tone]} ${dim ? "opacity-45" : ""}`}
+        className={`h-full origin-left rounded-full transition-transform duration-(--duration-base) ease-out ${FILL[tone]} ${dim ? "opacity-45" : ""}`}
         style={{ transform: `scaleX(${pct / 100})` }}
       />
     </div>

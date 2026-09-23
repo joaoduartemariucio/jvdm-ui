@@ -167,17 +167,32 @@ Loading is always `Skeleton`, never a spinner.
 No odd values, anywhere. The lint fails CI on every one of these — in this repository, and it is the
 same config you can copy into yours:
 
-| dimension  | scale                                                             |
-| ---------- | ----------------------------------------------------------------- |
-| typography | 10, 12, 14, 16, 18, 22, 26, 52px (`text-2xs` … `text-display`)    |
-| tracking   | `tracking-caps` (uppercase labels), `tracking-code`               |
-| weight     | 400/500/700. No 600: the browser would synthesise it              |
-| radius     | 4, 6, 8, 10, 16px (`radius-xs\|sm\|md\|lg\|xl`)                   |
-| spacing    | 2px and multiples of 4                                            |
-| icon       | 12, 16, 20, 24, 32px via `Icon`'s `size`, never a loose `h-* w-*` |
-| color      | semantic tokens only                                              |
+| dimension  | scale                                                                  |
+| ---------- | ---------------------------------------------------------------------- |
+| typography | 11, 12, 13, 15, 18, 23, 29, 58px (`text-2xs` … `text-display`)         |
+| tracking   | `tracking-caps`, `tracking-code`, `tracking-tight`, `tracking-display` |
+| weight     | 400/500/700. No 600: the browser would synthesise it                   |
+| radius     | 3, 5, 8, 12, 20px (`radius-xs\|sm\|md\|lg\|xl`)                        |
+| spacing    | 2px and multiples of 4                                                 |
+| depth      | `shadow-raised\|popover\|modal`, coloured from the palette             |
+| motion     | `ease-out\|in-out\|over`, `--duration-instant\|fast\|base\|slow`       |
+| icon       | 12, 16, 20, 24, 32px via `Icon`'s `size`, never a loose `h-* w-*`      |
+| color      | semantic tokens only                                                   |
 
 You can change every value. You cannot make the scale stop existing.
+
+Depth and motion are scales like any other, so a component never picks its own duration or casts a
+raw `box-shadow`:
+
+```json
+{
+  "tokens": {
+    "shadow": { "modal": "0 28px 64px -16px oklch(0 0 0 / 0.5)" },
+    "ease": { "out": "cubic-bezier(0.16, 1, 0.3, 1)" },
+    "duration": { "base": "240ms" }
+  }
+}
+```
 
 ## Localisation
 

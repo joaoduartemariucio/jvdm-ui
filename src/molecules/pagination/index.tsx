@@ -24,7 +24,7 @@ export function Pagination({
   return (
     <nav aria-label={label} className={`flex flex-wrap items-center gap-2 ${className}`}>
       <button
-        className="min-h-10 rounded-md border border-line-strong px-3 text-sm text-ink-soft transition-colors hover:bg-raised disabled:pointer-events-none disabled:opacity-40"
+        className="min-h-10 rounded-md border border-line-strong px-3 text-sm text-ink-soft transition-colors duration-(--duration-fast) ease-out hover:bg-raised disabled:pointer-events-none disabled:opacity-40"
         disabled={current === 1}
         onClick={() => onPageChange(current - 1)}
         type="button"
@@ -35,7 +35,7 @@ export function Pagination({
         {pageLabel(current)}
       </span>
       <button
-        className="min-h-10 rounded-md border border-line-strong px-3 text-sm text-ink-soft transition-colors hover:bg-raised disabled:pointer-events-none disabled:opacity-40"
+        className="min-h-10 rounded-md border border-line-strong px-3 text-sm text-ink-soft transition-colors duration-(--duration-fast) ease-out hover:bg-raised disabled:pointer-events-none disabled:opacity-40"
         disabled={current === pages}
         onClick={() => onPageChange(current + 1)}
         type="button"

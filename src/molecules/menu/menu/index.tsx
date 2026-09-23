@@ -118,7 +118,7 @@ export function Menu({
         aria-haspopup="menu"
         aria-expanded={open}
         onClick={() => setOpen((current) => !current)}
-        className="flex items-center rounded-md transition-colors focus-visible:ring-2 focus-visible:ring-accent/30 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+        className="flex items-center rounded-md transition-colors duration-(--duration-fast) ease-out focus-visible:ring-2 focus-visible:ring-accent/30 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
       >
         {trigger}
       </button>

@@ -10,22 +10,23 @@ Code, documentation and default UI strings are in **English**. Keep it that way.
 `docs/adr/` is not history: it is the standing norm. Every rule below summarises a clause. When the
 two disagree, **the ADR wins**.
 
-| Where                                            | What it decides                                         |
-| ------------------------------------------------ | ------------------------------------------------------- |
-| [ADR 0001](docs/adr/0001-design-system.md) R1    | consumers compose, never redefine                       |
-| ADR 0001 R2                                      | inventory before building                               |
-| ADR 0001 R3                                      | what is missing is born here, in the right layer        |
-| ADR 0001 R5                                      | the scales (type, weight, radius, spacing, icon, color) |
-| ADR 0001 R6                                      | rules do not loosen to close a task                     |
-| ADR 0001 R7                                      | text a component says on its own                        |
-| [ADR 0002](docs/adr/0002-code-conventions.md) C1 | one component per folder, in its `index.tsx`            |
-| ADR 0002 C2                                      | import the folder, never the file inside it             |
-| ADR 0002 C3                                      | no code comments, at all                                |
-| [ADR 0003](docs/adr/0003-theming.md) T1          | one declaration per token, via `light-dark()`           |
-| ADR 0003 T2                                      | the default preset carries no brand                     |
-| ADR 0003 T3                                      | a theme is JSON, and it emits `@theme`                  |
-| [ADR 0004](docs/adr/0004-releases.md) V1         | a merged pull request is the unit of release            |
-| ADR 0004 V2                                      | the bump level is declared, then inferred, then assumed |
+| Where                                            | What it decides                                                        |
+| ------------------------------------------------ | ---------------------------------------------------------------------- |
+| [ADR 0001](docs/adr/0001-design-system.md) R1    | consumers compose, never redefine                                      |
+| ADR 0001 R2                                      | inventory before building                                              |
+| ADR 0001 R3                                      | what is missing is born here, in the right layer                       |
+| ADR 0001 R5                                      | the scales (type, weight, radius, spacing, depth, motion, icon, color) |
+| ADR 0001 R6                                      | rules do not loosen to close a task                                    |
+| ADR 0001 R7                                      | text a component says on its own                                       |
+| [ADR 0002](docs/adr/0002-code-conventions.md) C1 | one component per folder, in its `index.tsx`                           |
+| ADR 0002 C2                                      | import the folder, never the file inside it                            |
+| ADR 0002 C3                                      | no code comments, at all                                               |
+| [ADR 0003](docs/adr/0003-theming.md) T1          | one declaration per token, via `light-dark()`                          |
+| ADR 0003 T2                                      | the default preset carries no brand                                    |
+| ADR 0003 T3                                      | a theme is JSON, and it emits `@theme`                                 |
+| [ADR 0004](docs/adr/0004-releases.md) V1         | a merged pull request is the unit of release                           |
+| ADR 0004 V2                                      | the bump level is declared, then inferred, then assumed                |
+| [ADR 0007](docs/adr/0007-default-identity.md)    | identity lives in the non-color scales                                 |
 
 Changing a rule means changing an ADR. Do not edit `eslint.config.mjs` to make a PR pass (R6).
 

@@ -49,6 +49,18 @@ export function defineTheme(config: ThemeConfig, options: DefineThemeOptions = {
     lines.push(`  --radius-${step}: ${value as string};`);
   }
 
+  for (const [step, value] of entries(tokens.shadow)) {
+    lines.push(`  --shadow-${step}: ${value as string};`);
+  }
+
+  for (const [step, value] of entries(tokens.ease)) {
+    lines.push(`  --ease-${step}: ${value as string};`);
+  }
+
+  for (const [step, value] of entries(tokens.duration)) {
+    lines.push(`  --duration-${step}: ${value as string};`);
+  }
+
   if (lines.length === 0) return "";
 
   const wrapper = options.selector ?? "@theme";
