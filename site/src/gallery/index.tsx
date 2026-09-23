@@ -16,6 +16,8 @@ import {
   Kbd,
   Label,
   Link,
+  MultiSelect,
+  PinInput,
   PasswordInput,
   ProgressBar,
   NumberInput,
@@ -37,6 +39,7 @@ import {
 import {
   CardTitle,
   Callout,
+  Banner,
   CommandMenu,
   ConfirmDialog,
   Drawer,
@@ -47,6 +50,7 @@ import {
   Field,
   FilterBar,
   LoadError,
+  MetricCard,
   Menu,
   Gallery as ComponentGallery,
   menuItemClass,
@@ -55,6 +59,7 @@ import {
   Pagination,
   StatCard,
   SnackbarStack,
+  Stepper,
   Tabs,
   Toast,
   Tooltip,
@@ -62,6 +67,7 @@ import {
 } from "jvdm-ui/molecules";
 import {
   DataTable,
+  AreaChart,
   DonutChart,
   LineChart,
   Sparkline,
@@ -120,6 +126,8 @@ export function Gallery() {
   const [snackbars, setSnackbars] = useState<
     { id: string; title: string; message: string; tone: "ok" }[]
   >([]);
+  const [pin, setPin] = useState("");
+  const [selectedLayers, setSelectedLayers] = useState<string[]>([]);
 
   return (
     <section className="flex scroll-mt-20 flex-col gap-8" id="components">
@@ -561,6 +569,69 @@ export function Gallery() {
 
       <Card>
         <div className="flex flex-col gap-6">
+          <CardTitle>Advanced controls and status</CardTitle>
+          <Banner
+            action={
+              <Button size="sm" variant="secondary">
+                Review
+              </Button>
+            }
+            title="A new preset is available"
+            tone="info"
+          >
+            The generated theme includes the latest motion scale.
+          </Banner>
+          <div className="grid gap-5 md:grid-cols-2">
+            <div className="flex flex-col gap-3">
+              <Label>Verification code</Label>
+              <PinInput onValueChange={setPin} value={pin} />
+              <span className="text-xs text-ink-muted">
+                {pin ? `Code: ${pin}` : "Enter the six digit code"}
+              </span>
+            </div>
+            <div className="flex flex-col gap-3">
+              <Label>Layers</Label>
+              <MultiSelect
+                onSelectedChange={setSelectedLayers}
+                options={[
+                  { label: "Atoms", value: "atoms" },
+                  { label: "Molecules", value: "molecules" },
+                  { label: "Organisms", value: "organisms" },
+                ]}
+                selected={selectedLayers}
+              />
+            </div>
+          </div>
+          <Stepper
+            current={1}
+            steps={[
+              { id: "one", label: "Configure", description: "Choose tokens" },
+              { id: "two", label: "Review", description: "Check output" },
+              { id: "three", label: "Publish", description: "Ship preset" },
+            ]}
+          />
+          <div className="grid gap-4 md:grid-cols-3">
+            <MetricCard
+              change="+12.4%"
+              hint="compared with last month"
+              label="Adoption"
+              trend="up"
+              value="1,284"
+            />
+            <MetricCard
+              change="−3.1%"
+              hint="within the active scale"
+              label="Invalid values"
+              trend="down"
+              value="7"
+            />
+            <MetricCard hint="across four layers" label="Coverage" value="96%" />
+          </div>
+        </div>
+      </Card>
+
+      <Card>
+        <div className="flex flex-col gap-6">
           <CardTitle>Stats and charts</CardTitle>
           <div className="grid gap-4 md:grid-cols-3">
             <StatCard hint="last 30 days" label="Revenue" value="$48,120" />
@@ -568,6 +639,7 @@ export function Gallery() {
             <StatCard attention hint="needs attention" label="Failed jobs" value="7" />
           </div>
           <Sparkline data={TREND} describe={(bar) => `${bar.label}: ${bar.value}`} />
+          <AreaChart data={LINE_TREND} label="Theme activity" top={50} />
           <DonutChart
             data={[
               { id: "atoms", label: "Atoms", value: 18, color: "var(--color-accent)" },

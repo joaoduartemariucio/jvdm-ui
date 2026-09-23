@@ -13,6 +13,7 @@ export * from "./field";
 export * from "./filter-bar";
 export { Gallery } from "./gallery";
 export * from "./load-error";
+export * from "./metric-card";
 export * from "./modal";
 export * from "./menu";
 export * from "./page-header";

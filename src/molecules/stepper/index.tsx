@@ -1,5 +1,37 @@
 export type Step = { id: string; label: string; description?: string };
 
-export function Stepper({ steps, current, className = "" }: { steps: readonly Step[]; current: number; className?: string }) {
-  return <ol className={`flex flex-col gap-4 sm:flex-row sm:items-start sm:gap-0 ${className}`}>{steps.map((step, index) => <li className="relative flex flex-1 items-start gap-3 sm:flex-col sm:items-center sm:text-center" key={step.id}>{index < steps.length - 1 ? <span className="absolute top-5 left-5 h-full w-px bg-line sm:top-5 sm:left-1/2 sm:h-px sm:w-full" /> : null}<span className={`relative z-1 flex size-10 shrink-0 items-center justify-center rounded-full border text-sm font-medium ${index < current ? "border-accent bg-accent text-on-accent" : index === current ? "border-accent text-accent-ink ring-4 ring-accent-soft" : "border-line-strong text-ink-dim"}`}>{index + 1}</span><span className="relative z-1 flex flex-col pt-2 sm:pt-3"><strong className="text-sm text-ink">{step.label}</strong>{step.description ? <span className="mt-1 text-xs text-ink-muted">{step.description}</span> : null}</span></li>)}</ol>;
+export function Stepper({
+  steps,
+  current,
+  className = "",
+}: {
+  steps: readonly Step[];
+  current: number;
+  className?: string;
+}) {
+  return (
+    <ol className={`flex flex-col gap-4 sm:flex-row sm:items-start sm:gap-0 ${className}`}>
+      {steps.map((step, index) => (
+        <li
+          className="relative flex flex-1 items-start gap-3 sm:flex-col sm:items-center sm:text-center"
+          key={step.id}
+        >
+          {index < steps.length - 1 ? (
+            <span className="absolute top-5 left-5 h-full w-px bg-line sm:top-5 sm:left-1/2 sm:h-px sm:w-full" />
+          ) : null}
+          <span
+            className={`relative z-1 flex size-10 shrink-0 items-center justify-center rounded-full border text-sm font-medium ${index < current ? "border-accent bg-accent text-on-accent" : index === current ? "border-accent text-accent-ink ring-4 ring-accent-soft" : "border-line-strong text-ink-dim"}`}
+          >
+            {index + 1}
+          </span>
+          <span className="relative z-1 flex flex-col pt-2 sm:pt-3">
+            <strong className="text-sm text-ink">{step.label}</strong>
+            {step.description ? (
+              <span className="mt-1 text-xs text-ink-muted">{step.description}</span>
+            ) : null}
+          </span>
+        </li>
+      ))}
+    </ol>
+  );
 }

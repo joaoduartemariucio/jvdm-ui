@@ -4,7 +4,17 @@ import { useRef, type ClipboardEvent, type KeyboardEvent } from "react";
 
 import { locales } from "./locales";
 
-export function PinInput({ length = 6, value = "", onValueChange, className = "" }: { length?: number; value?: string; onValueChange?: (value: string) => void; className?: string }) {
+export function PinInput({
+  length = 6,
+  value = "",
+  onValueChange,
+  className = "",
+}: {
+  length?: number;
+  value?: string;
+  onValueChange?: (value: string) => void;
+  className?: string;
+}) {
   const refs = useRef<Array<HTMLInputElement | null>>([]);
   const digits = Array.from({ length }, (_, index) => value[index] ?? "");
   function update(index: number, digit: string) {
@@ -21,5 +31,24 @@ export function PinInput({ length = 6, value = "", onValueChange, className = ""
     event.preventDefault();
     onValueChange?.(event.clipboardData.getData("text").replace(/\D/g, "").slice(0, length));
   }
-  return <div className={`flex gap-2 ${className}`}>{digits.map((digit, index) => <input aria-label={`${locales.digit} ${index + 1}`} className="size-12 rounded-md border border-line-strong bg-field text-center text-lg text-ink outline-none transition-[border-color,box-shadow] duration-(--duration-fast) ease-out focus:border-accent focus:ring-2 focus:ring-accent/30" inputMode="numeric" key={index} maxLength={1} onChange={(event) => update(index, event.target.value.replace(/\D/g, "").slice(-1))} onKeyDown={(event) => handleKey(event, index)} onPaste={handlePaste} ref={(element) => { refs.current[index] = element; }} value={digit} />)}</div>;
+  return (
+    <div className={`flex gap-2 ${className}`}>
+      {digits.map((digit, index) => (
+        <input
+          aria-label={`${locales.digit} ${index + 1}`}
+          className="size-12 rounded-md border border-line-strong bg-field text-center text-lg text-ink transition-[border-color,box-shadow] duration-(--duration-fast) ease-out outline-none focus:border-accent focus:ring-2 focus:ring-accent/30"
+          inputMode="numeric"
+          key={index}
+          maxLength={1}
+          onChange={(event) => update(index, event.target.value.replace(/\D/g, "").slice(-1))}
+          onKeyDown={(event) => handleKey(event, index)}
+          onPaste={handlePaste}
+          ref={(element) => {
+            refs.current[index] = element;
+          }}
+          value={digit}
+        />
+      ))}
+    </div>
+  );
 }
