@@ -9,7 +9,8 @@ export function NumberInput({ className = "", ...props }: ComponentProps<"input"
   const change = (direction: "up" | "down") => {
     const input = ref.current;
     if (!input) return;
-    direction === "up" ? input.stepUp() : input.stepDown();
+    if (direction === "up") input.stepUp();
+    else input.stepDown();
     input.dispatchEvent(new Event("input", { bubbles: true }));
     input.dispatchEvent(new Event("change", { bubbles: true }));
   };

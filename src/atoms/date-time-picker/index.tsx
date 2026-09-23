@@ -1,5 +1,6 @@
 import { DatePicker } from "../date-picker";
 import { TimePicker } from "../time-picker";
+import { locales } from "./locales";
 
 export function DateTimePicker({
   date,
@@ -16,8 +17,8 @@ export function DateTimePicker({
 }) {
   return (
     <div className={`grid gap-3 sm:grid-cols-[1.4fr_1fr] ${className}`}>
-      <DatePicker aria-label="Date" onValueChange={onDateChange} value={date} />
-      <TimePicker aria-label="Time" onValueChange={onTimeChange} value={time} />
+      <DatePicker aria-label={locales.date} onValueChange={onDateChange} value={date} />
+      <TimePicker aria-label={locales.time} onValueChange={onTimeChange} value={time} />
     </div>
   );
 }

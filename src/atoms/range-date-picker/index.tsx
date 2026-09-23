@@ -1,4 +1,5 @@
 import { DatePicker } from "../date-picker";
+import { locales } from "./locales";
 
 export function RangeDatePicker({
   start,
@@ -15,8 +16,8 @@ export function RangeDatePicker({
 }) {
   return (
     <div className={`grid gap-3 sm:grid-cols-2 ${className}`}>
-      <DatePicker aria-label="Start date" onValueChange={onStartChange} value={start} />
-      <DatePicker aria-label="End date" onValueChange={onEndChange} value={end} />
+      <DatePicker aria-label={locales.start} onValueChange={onStartChange} value={start} />
+      <DatePicker aria-label={locales.end} onValueChange={onEndChange} value={end} />
     </div>
   );
 }
