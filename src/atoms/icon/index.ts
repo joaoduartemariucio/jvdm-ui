@@ -26,5 +26,6 @@ export { ShieldCheckIcon } from "./shield-check-icon";
 export { StaffIcon } from "./staff-icon";
 export { StudentsIcon } from "./students-icon";
 export { SunIcon } from "./sun-icon";
+export { TrashIcon } from "./trash-icon";
 export { WhatsappIcon } from "./whatsapp-icon";
 export { type IconSize, type Props, Svg } from "./svg";
