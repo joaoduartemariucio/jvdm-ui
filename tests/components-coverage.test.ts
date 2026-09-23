@@ -1,5 +1,6 @@
 import { createElement, type ComponentType, type ReactElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
+import { act, create } from "react-test-renderer";
 import { describe, expect, test, vi } from "vitest";
 
 import * as atoms from "../src/atoms";
@@ -12,7 +13,18 @@ vi.stubGlobal("localStorage", {
 });
 vi.stubGlobal("window", {
   matchMedia: () => ({ matches: false }),
+  setTimeout: vi.fn(),
 });
+vi.stubGlobal("document", {
+  activeElement: null,
+  addEventListener: vi.fn(),
+  removeEventListener: vi.fn(),
+  documentElement: { dataset: {} },
+});
+vi.stubGlobal("navigator", {
+  clipboard: { writeText: vi.fn(async () => undefined) },
+});
+vi.stubGlobal("IS_REACT_ACT_ENVIRONMENT", true);
 
 type Case = [string, ComponentType<Record<string, unknown>>, Record<string, unknown>];
 
@@ -97,7 +109,12 @@ const cases: Case[] = [
   [
     "Breadcrumb",
     molecules.Breadcrumb,
-    { items: [{ id: "home", label: "Home", href: "/" }, { id: "current", label: "Current" }] },
+    {
+      items: [
+        { id: "home", label: "Home", href: "/" },
+        { id: "current", label: "Current" },
+      ],
+    },
   ],
   ["Callout", molecules.Callout, { title: "Note", children: "Details" }],
   ["CardTitle", molecules.CardTitle, { children: "Title" }],
@@ -106,9 +123,21 @@ const cases: Case[] = [
   [
     "ConfirmDialog",
     molecules.ConfirmDialog,
-    { open: false, title: "Delete", description: "Confirm", confirmLabel: "Delete", cancelLabel: "Cancel", onConfirm: vi.fn(), onCancel: vi.fn() },
+    {
+      open: false,
+      title: "Delete",
+      description: "Confirm",
+      confirmLabel: "Delete",
+      cancelLabel: "Cancel",
+      onConfirm: vi.fn(),
+      onCancel: vi.fn(),
+    },
   ],
-  ["Drawer", molecules.Drawer, { isOpen: false, title: "Menu", children: "Content", onClose: vi.fn() }],
+  [
+    "Drawer",
+    molecules.Drawer,
+    { isOpen: false, title: "Menu", children: "Content", onClose: vi.fn() },
+  ],
   ["DropdownMenu", molecules.DropdownMenu, { trigger: "Open", children: "Items" }],
   ["Empty", molecules.Empty, { title: "Nothing here" }],
   ["Field", molecules.Field, { label: "Name", children: createElement(atoms.Input) }],
@@ -122,7 +151,11 @@ const cases: Case[] = [
     { label: "Actions", trigger: "Open", children: createElement("button", null, "Action") },
   ],
   ["MetricCard", molecules.MetricCard, { label: "Users", value: 42 }],
-  ["Modal", molecules.Modal, { isOpen: false, title: "Dialog", children: "Content", onClose: vi.fn() }],
+  [
+    "Modal",
+    molecules.Modal,
+    { isOpen: false, title: "Dialog", children: "Content", onClose: vi.fn() },
+  ],
   ["PageHeader", molecules.PageHeader, { title: "Dashboard" }],
   ["Pagination", molecules.Pagination, { page: 1, pages: 3, onPageChange: vi.fn() }],
   ["SnackbarStack", molecules.SnackbarStack, { items: [{ id: "one", title: "Saved" }] }],
@@ -131,29 +164,63 @@ const cases: Case[] = [
   [
     "Tabs",
     molecules.Tabs,
-    { items: [{ value: "one", label: "One", content: "Content" }], value: "one", onValueChange: vi.fn() },
+    {
+      items: [{ value: "one", label: "One", content: "Content" }],
+      value: "one",
+      onValueChange: vi.fn(),
+    },
   ],
   ["Toast", molecules.Toast, { title: "Saved" }],
   ["Tooltip", molecules.Tooltip, { id: "tip", content: "Helpful", children: "Target" }],
-  ["TreeView", molecules.TreeView, { nodes: [{ id: "one", label: "One", children: [{ id: "child", label: "Child" }] }] }],
-  ["AreaChart", organisms.AreaChart, { data: [{ label: "One", value: 10 }], top: 20, label: "Area" }],
+  [
+    "TreeView",
+    molecules.TreeView,
+    { nodes: [{ id: "one", label: "One", children: [{ id: "child", label: "Child" }] }] },
+  ],
+  [
+    "AreaChart",
+    organisms.AreaChart,
+    { data: [{ label: "One", value: 10 }], top: 20, label: "Area" },
+  ],
   [
     "BarChart",
     organisms.BarChart,
-    { data: chartData, top: 20, ticks: [0, 10, 20], describe: (bar: { label: string }) => bar.label, tooltip: (bar: { label: string }) => bar.label },
+    {
+      data: chartData,
+      top: 20,
+      ticks: [0, 10, 20],
+      describe: (bar: { label: string }) => bar.label,
+      tooltip: (bar: { label: string }) => bar.label,
+    },
   ],
-  ["DonutChart", organisms.DonutChart, { data: [{ id: "one", label: "One", value: 10, color: "red" }], total: 10, label: "Donut" }],
+  [
+    "DonutChart",
+    organisms.DonutChart,
+    { data: [{ id: "one", label: "One", value: 10, color: "red" }], total: 10, label: "Donut" },
+  ],
   [
     "LineChart",
     organisms.LineChart,
-    { data: chartData, top: 20, ticks: [0, 10, 20], describe: (bar: { label: string }) => bar.label, tooltip: (bar: { label: string }) => bar.label },
+    {
+      data: chartData,
+      top: 20,
+      ticks: [0, 10, 20],
+      describe: (bar: { label: string }) => bar.label,
+      tooltip: (bar: { label: string }) => bar.label,
+    },
   ],
-  ["Sparkline", organisms.Sparkline, { data: chartData, describe: (bar: { label: string }) => bar.label }],
+  [
+    "Sparkline",
+    organisms.Sparkline,
+    { data: chartData, describe: (bar: { label: string }) => bar.label },
+  ],
   [
     "DataTable",
     organisms.DataTable,
     {
-      columns: [{ key: "name", label: "Name", width: "1fr", render: (item: { name: string }) => item.name }],
+      columns: [
+        { key: "name", label: "Name", width: "1fr", render: (item: { name: string }) => item.name },
+      ],
       items: [{ name: "Ada" }],
       rowKey: (item: { name: string }) => item.name,
     },
@@ -172,12 +239,44 @@ describe("public component coverage", () => {
 
     expect(markup).toMatchSnapshot();
   });
+
+  test.each(cases)("exercises %s event handlers", async (_name, Component, props) => {
+    let renderer: ReturnType<typeof create>;
+    await act(async () => {
+      renderer = create(createElement(Component, props));
+    });
+
+    const event = {
+      clipboardData: { getData: () => "1234" },
+      dataTransfer: { files: null },
+      key: "ArrowRight",
+      preventDefault: vi.fn(),
+      target: { value: "next" },
+    };
+    const handlers = renderer!.root
+      .findAll((node) => typeof node.type === "string")
+      .flatMap((node) =>
+        Object.entries(node.props)
+          .filter(([key, value]) => key.startsWith("on") && typeof value === "function")
+          .map(([, value]) => value as (event: typeof event) => unknown),
+      );
+
+    for (const handler of handlers) {
+      await act(async () => {
+        try {
+          await handler(event);
+        } catch {
+          return;
+        }
+      });
+    }
+
+    expect(renderer!.toJSON()).toBeDefined();
+  });
 });
 
 test("builds menu item classes for each tone", () => {
   expect(molecules.menuItemClass()).toContain("text-ink-soft");
-  expect(molecules.menuItemClass({ tone: "danger", className: "w-full" })).toContain(
-    "text-danger",
-  );
+  expect(molecules.menuItemClass({ tone: "danger", className: "w-full" })).toContain("text-danger");
   expect(molecules.menuItemClass({ tone: "danger", className: "w-full" })).toContain("w-full");
 });

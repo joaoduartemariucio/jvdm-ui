@@ -71,14 +71,27 @@ jobs:
       - run: npm run build
       - run: npm run site:build
 
-      - name: Bump, commit and tag
+      - name: Prepare package version
+        env:
+          NEXT: ${{ needs.plan.outputs.next }}
+        run: npm version "$NEXT" --no-git-tag-version
+
+      - name: Commit and tag release version
         env:
           NEXT: ${{ needs.plan.outputs.next }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          npm version "$NEXT" --message "chore: release v%s [skip ci]"
-          git push --follow-tags origin main
+          git add package.json package-lock.json
+          git commit -m "chore: release v$NEXT [skip ci]"
+          git tag "v$NEXT"
+          git push origin main --follow-tags
+
+      - name: Create the GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          NEXT: ${{ needs.plan.outputs.next }}
+        run: gh release create "v$NEXT" --generate-notes --title "v$NEXT"
 
       - name: Use an npm that supports trusted publishing
         run: npm install -g npm@^11
@@ -94,10 +107,5 @@ jobs:
             echo "No NPM_TOKEN set — relying on npm trusted publishing (OIDC)."
           fi
 
-      - run: npm publish --access public
-
-      - name: Create the GitHub release
-        env:
-          GH_TOKEN: ${{ github.token }}
-          NEXT: ${{ needs.plan.outputs.next }}
-        run: gh release create "v$NEXT" --generate-notes --title "v$NEXT"
+      - name: Publish latest package
+        run: npm publish --access public --tag latest
