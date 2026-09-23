@@ -1,8 +1,10 @@
 import type { ThemeConfig } from "../types";
 
 export const gavel: ThemeConfig = {
-  font: {
-    sans: '"Space Grotesk", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif',
+  typography: {
+    font: {
+      sans: '"Space Grotesk", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif',
+    },
   },
   colors: {
     app: { light: "oklch(0.972 0.006 255)", dark: "oklch(0.19 0.032 255)" },

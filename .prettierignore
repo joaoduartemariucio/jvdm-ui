@@ -1,2 +1,7 @@
 dist
 node_modules
+.agents
+.claude
+.github/agents
+.github/skills
+.impeccable

@@ -5,12 +5,28 @@ function initials(name: string): string {
   return (first + last).toUpperCase();
 }
 
-export function Avatar({ name, size = 30 }: { name: string; size?: number }) {
+const SIZES = {
+  sm: "size-8 text-xs",
+  md: "size-10 text-sm",
+  lg: "size-12 text-base",
+} as const;
+
+export type AvatarSize = keyof typeof SIZES;
+
+export function Avatar({
+  name,
+  size = "md",
+  label = name,
+}: {
+  name: string;
+  size?: AvatarSize;
+  label?: string;
+}) {
   return (
     <span
-      className="flex shrink-0 items-center justify-center rounded-full bg-raised font-medium text-ink-muted"
-      style={{ width: size, height: size, fontSize: size * 0.36 }}
-      aria-hidden="true"
+      aria-label={label}
+      className={`flex shrink-0 items-center justify-center rounded-md bg-raised font-medium text-ink-muted ${SIZES[size]}`}
+      role="img"
     >
       {initials(name)}
     </span>

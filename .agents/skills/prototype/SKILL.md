@@ -1,7 +1,6 @@
 ---
 name: prototype
-description: Build multiple genuinely different versions of a UI piece you describe, rendered behind a visual picker so you can flip through them live and promote the one that feels right. Only runs when explicitly invoked; it does not trigger on its own.
-disable-model-invocation: true
+description: Build multiple genuinely different versions of a UI piece you describe, rendered behind a visual picker so you can flip through them live and promote the one that feels right. Use when asked to explore variants, try a few directions, or compare options for a UI piece rather than commit to one.
 ---
 
 # Prototyping Variants

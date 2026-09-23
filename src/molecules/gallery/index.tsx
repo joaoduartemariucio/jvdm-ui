@@ -39,7 +39,7 @@ export function Gallery({
               type="button"
               aria-label={previousLabel}
               onClick={() => step(-1)}
-              className="absolute top-1/2 left-2 flex size-8 -translate-y-1/2 items-center justify-center rounded-full bg-app/80 text-ink backdrop-blur transition-colors hover:bg-app"
+              className="absolute top-1/2 left-2 flex size-8 -translate-y-1/2 items-center justify-center rounded-full bg-app/80 text-ink backdrop-blur transition-colors duration-(--duration-fast) ease-out hover:bg-app"
             >
               <BackIcon size="sm" />
             </button>
@@ -48,7 +48,7 @@ export function Gallery({
               type="button"
               aria-label={nextLabel}
               onClick={() => step(1)}
-              className="absolute top-1/2 right-2 flex size-8 -translate-y-1/2 items-center justify-center rounded-full bg-app/80 text-ink backdrop-blur transition-colors hover:bg-app"
+              className="absolute top-1/2 right-2 flex size-8 -translate-y-1/2 items-center justify-center rounded-full bg-app/80 text-ink backdrop-blur transition-colors duration-(--duration-fast) ease-out hover:bg-app"
             >
               <BackIcon size="sm" className="rotate-180" />
             </button>
@@ -61,7 +61,7 @@ export function Gallery({
       </div>
 
       {total > 1 ? (
-        <div className="flex gap-2 overflow-x-auto">
+        <div className="flex touch-pan-y gap-2 overflow-x-auto overscroll-contain">
           {photos.map((photo, i) => (
             <button
               key={photo}
@@ -69,7 +69,7 @@ export function Gallery({
               aria-label={photoLabel(i + 1, total)}
               aria-current={i === current}
               onClick={() => setIndex(i)}
-              className={`w-20 shrink-0 overflow-hidden rounded-sm transition-opacity ${
+              className={`w-20 shrink-0 overflow-hidden rounded-sm transition-opacity duration-(--duration-fast) ease-out ${
                 i === current ? "ring-2 ring-accent" : "opacity-60 hover:opacity-100"
               }`}
             >

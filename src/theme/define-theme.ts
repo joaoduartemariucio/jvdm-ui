@@ -14,16 +14,18 @@ export type DefineThemeOptions = { selector?: string };
 
 export function defineTheme(config: ThemeConfig, options: DefineThemeOptions = {}): string {
   const lines: string[] = [];
+  const typography = config.typography ?? {};
+  const tokens = config.tokens ?? {};
 
   for (const [name, value] of entries(config.colors)) {
     lines.push(`  --color-${name}: ${color(value as ColorValue)};`);
   }
 
-  for (const [name, value] of entries(config.font)) {
+  for (const [name, value] of entries(typography.font)) {
     lines.push(`  --font-${name}: ${value as string};`);
   }
 
-  for (const [step, value] of entries(config.text)) {
+  for (const [step, value] of entries(typography.text)) {
     const [size, lineHeight] = Array.isArray(value) ? value : [value as string, undefined];
     lines.push(`  --text-${step}: ${size};`);
     if (lineHeight !== undefined) {
@@ -31,20 +33,32 @@ export function defineTheme(config: ThemeConfig, options: DefineThemeOptions = {
     }
   }
 
-  if (config.spacing !== undefined) {
-    lines.push(`  --spacing: ${config.spacing};`);
+  if (tokens.spacing !== undefined) {
+    lines.push(`  --spacing: ${tokens.spacing};`);
   }
 
-  for (const [name, value] of entries(config.tracking)) {
+  for (const [name, value] of entries(typography.tracking)) {
     lines.push(`  --tracking-${name}: ${value as string};`);
   }
 
-  for (const [step, value] of entries(config.weight)) {
+  for (const [step, value] of entries(typography.weight)) {
     lines.push(`  --font-weight-${step}: ${value as number};`);
   }
 
-  for (const [step, value] of entries(config.radius)) {
+  for (const [step, value] of entries(tokens.radius)) {
     lines.push(`  --radius-${step}: ${value as string};`);
+  }
+
+  for (const [step, value] of entries(tokens.shadow)) {
+    lines.push(`  --shadow-${step}: ${value as string};`);
+  }
+
+  for (const [step, value] of entries(tokens.ease)) {
+    lines.push(`  --ease-${step}: ${value as string};`);
+  }
+
+  for (const [step, value] of entries(tokens.duration)) {
+    lines.push(`  --duration-${step}: ${value as string};`);
   }
 
   if (lines.length === 0) return "";

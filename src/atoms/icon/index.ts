@@ -5,6 +5,7 @@ export { BoxIcon } from "./box-icon";
 export { BuildingIcon } from "./building-icon";
 export { CalendarIcon } from "./calendar-icon";
 export { CarIcon } from "./car-icon";
+export { ChevronIcon } from "./chevron-icon";
 export { CloseIcon } from "./close-icon";
 export { DashboardIcon } from "./dashboard-icon";
 export { EyeIcon } from "./eye-icon";

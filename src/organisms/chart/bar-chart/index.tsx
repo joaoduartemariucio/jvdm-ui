@@ -45,7 +45,7 @@ export function BarChart({
                 className="group relative flex h-full flex-1 items-end rounded-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
               >
                 <div
-                  className={`mx-auto w-full max-w-6 rounded-t-xs transition-colors ${
+                  className={`mx-auto w-full max-w-6 rounded-t-xs transition-colors duration-(--duration-fast) ease-out ${
                     empty
                       ? zeroStub
                         ? "bg-line-strong"

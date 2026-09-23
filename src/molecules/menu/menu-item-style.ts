@@ -6,7 +6,7 @@ const TONES: Record<MenuItemTone, string> = {
 };
 
 const BASE =
-  "flex w-full items-center gap-2 rounded-md px-3 py-2 text-left text-xs transition-colors" +
+  "flex w-full items-center gap-2 rounded-md px-3 py-2 text-left text-xs transition-colors duration-(--duration-fast) ease-out" +
   " focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent";
 
 export type MenuItemOptions = {

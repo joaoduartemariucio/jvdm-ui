@@ -56,18 +56,21 @@ No odd values, anywhere. The lint fails CI on every one of these:
 
 | dimension  | scale                                                                           |
 | ---------- | ------------------------------------------------------------------------------- |
-| typography | 10, 12, 14, 16, 18, 22, 26, 52px (`text-2xs` … `text-display`)                  |
-| tracking   | `tracking-caps` (uppercase labels), `tracking-code`                             |
+| typography | 11, 12, 13, 15, 18, 23, 29, 58px (`text-2xs` … `text-display`)                  |
+| tracking   | `tracking-caps`, `tracking-code`, `tracking-tight`, `tracking-display`          |
 | weight     | 400/500/700. The scale has no 600: `font-semibold` gets synthesised by browsers |
-| radius     | 4, 6, 8, 10, 16px (`radius-xs\|sm\|md\|lg\|xl`)                                 |
+| radius     | 3, 5, 8, 12, 20px (`radius-xs\|sm\|md\|lg\|xl`)                                 |
 | spacing    | 2px and multiples of 4. `gap-px`, `gap-2.5` and `gap-[7px]` are defects         |
+| depth      | `shadow-raised\|popover\|modal`. A raw `box-shadow` is a defect                 |
+| motion     | `ease-out\|in-out\|over` and `--duration-instant\|fast\|base\|slow`             |
 | icon       | 12, 16, 20, 24, 32px via `Icon`'s `size`, never a loose `h-* w-*`               |
 | color      | semantic tokens only. Raw colors are forbidden                                  |
 
 Width and height sit outside the scale — `w-[316px]` is allowed, in even px and with care.
 
 Consumers may change **the values** of every scale ([ADR 0003](0003-theming.md)). They cannot make
-the scale stop existing.
+the scale stop existing. The values above were retuned, and depth and motion added, by
+[ADR 0007](0007-default-identity.md).
 
 ### R6 — Rules do not loosen to close a task
 

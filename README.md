@@ -71,7 +71,9 @@ Each layer is its own entry point. Deep imports (`jvdm-ui/atoms/button`) are not
 
 ## Theming
 
-Write a JSON file. Every field is optional; whatever you leave out keeps the default.
+Write a JSON file. Every field is optional; whatever you leave out keeps the default. The canonical
+shape separates visual roles from the scales that define them: `colors`, `typography` and `tokens`.
+See [docs/theme.example.json](docs/theme.example.json) for a complete portable theme.
 
 ```json
 {
@@ -80,10 +82,16 @@ Write a JSON file. Every field is optional; whatever you leave out keeps the def
     "on-accent": "oklch(1 0 0)",
     "brand": { "light": "oklch(0.5 0.18 320)", "dark": "oklch(0.8 0.15 320)" }
   },
-  "font": { "sans": "Inter, sans-serif" },
-  "spacing": "0.25rem",
-  "radius": { "lg": "14px" },
-  "text": { "sm": ["15px", 1.6] }
+  "typography": {
+    "font": { "sans": "Avenir Next, sans-serif", "mono": "SF Mono, monospace" },
+    "text": { "sm": ["15px", 1.6] },
+    "tracking": { "caps": "0.08em" },
+    "weight": { "medium": 500 }
+  },
+  "tokens": {
+    "spacing": "0.25rem",
+    "radius": { "lg": "14px" }
+  }
 }
 ```
 
@@ -143,9 +151,9 @@ Older browsers get the dark palette regardless of preference.
 
 ## Components
 
-**Atoms** — `Avatar` · `Badge` · `Button` / `buttonClass` · `Card` · `FormAlert` · `Icon` (17 of them) · `Input` · `Label` · `MoreIcon` · `PasswordInput` · `ProgressBar` · `Select` · `Skeleton` · `ThemeToggle` · `Thumb`
+**Atoms** — `Avatar` · `Badge` · `Button` / `buttonClass` · `Card` · `Checkbox` · `FormAlert` · `Icon` (31 of them) · `Input` · `Label` · `MoreIcon` · `PasswordInput` · `ProgressBar` · `Select` · `Skeleton` · `Switch` · `ThemeToggle` · `Thumb`
 
-**Molecules** — `CardTitle` · `ConfirmDialog` · `Empty` · `Field` · `LoadError` · `Modal` · `PageHeader` · `StatCard`
+**Molecules** — `CardTitle` · `ConfirmDialog` · `Empty` · `Field` · `Gallery` · `LoadError` · `Menu` · `Modal` · `PageHeader` · `Pagination` · `StatCard` · `Tabs`
 
 **Organisms** — `BarChart` · `DataTable` · `Sparkline`
 
@@ -159,17 +167,32 @@ Loading is always `Skeleton`, never a spinner.
 No odd values, anywhere. The lint fails CI on every one of these — in this repository, and it is the
 same config you can copy into yours:
 
-| dimension  | scale                                                             |
-| ---------- | ----------------------------------------------------------------- |
-| typography | 10, 12, 14, 16, 18, 22, 26, 52px (`text-2xs` … `text-display`)    |
-| tracking   | `tracking-caps` (uppercase labels), `tracking-code`               |
-| weight     | 400/500/700. No 600: the browser would synthesise it              |
-| radius     | 4, 6, 8, 10, 16px (`radius-xs\|sm\|md\|lg\|xl`)                   |
-| spacing    | 2px and multiples of 4                                            |
-| icon       | 12, 16, 20, 24, 32px via `Icon`'s `size`, never a loose `h-* w-*` |
-| color      | semantic tokens only                                              |
+| dimension  | scale                                                                  |
+| ---------- | ---------------------------------------------------------------------- |
+| typography | 11, 12, 13, 15, 18, 23, 29, 58px (`text-2xs` … `text-display`)         |
+| tracking   | `tracking-caps`, `tracking-code`, `tracking-tight`, `tracking-display` |
+| weight     | 400/500/700. No 600: the browser would synthesise it                   |
+| radius     | 3, 5, 8, 12, 20px (`radius-xs\|sm\|md\|lg\|xl`)                        |
+| spacing    | 2px and multiples of 4                                                 |
+| depth      | `shadow-raised\|popover\|modal`, coloured from the palette             |
+| motion     | `ease-out\|in-out\|over`, `--duration-instant\|fast\|base\|slow`       |
+| icon       | 12, 16, 20, 24, 32px via `Icon`'s `size`, never a loose `h-* w-*`      |
+| color      | semantic tokens only                                                   |
 
 You can change every value. You cannot make the scale stop existing.
+
+Depth and motion are scales like any other, so a component never picks its own duration or casts a
+raw `box-shadow`:
+
+```json
+{
+  "tokens": {
+    "shadow": { "modal": "0 28px 64px -16px oklch(0 0 0 / 0.5)" },
+    "ease": { "out": "cubic-bezier(0.16, 1, 0.3, 1)" },
+    "duration": { "base": "240ms" }
+  }
+}
+```
 
 ## Localisation
 
