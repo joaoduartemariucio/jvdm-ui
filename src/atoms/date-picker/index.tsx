@@ -85,7 +85,10 @@ export function DatePicker({
   }
 
   return (
-    <div className="relative w-full" ref={ref}>
+    <div
+      className={`date-picker-root relative w-full ${open ? "date-picker-root-open" : ""}`}
+      ref={ref}
+    >
       <input
         {...props}
         className={`${CONTROL} cursor-pointer ${className}`}

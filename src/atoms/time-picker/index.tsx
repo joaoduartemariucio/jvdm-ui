@@ -48,7 +48,10 @@ export function TimePicker({
   }
 
   return (
-    <div className="relative w-full" ref={ref}>
+    <div
+      className={`time-picker-root relative w-full ${open ? "time-picker-root-open" : ""}`}
+      ref={ref}
+    >
       <input
         {...props}
         aria-label={props["aria-label"] ?? locales.choose}
