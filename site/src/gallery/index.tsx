@@ -29,6 +29,7 @@ import {
   Switch,
   Textarea,
   TimePicker,
+  buttonClass,
   MoreIcon,
   type BadgeTone,
   type ButtonVariant,
@@ -116,14 +117,9 @@ export function Gallery() {
   const [modalOpen, setModalOpen] = useState(false);
   const [confirmOpen, setConfirmOpen] = useState(false);
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const [snackbars, setSnackbars] = useState([
-    {
-      id: "saved",
-      title: "Preset saved",
-      message: "Ready to use in your next build.",
-      tone: "ok" as const,
-    },
-  ]);
+  const [snackbars, setSnackbars] = useState<
+    { id: string; title: string; message: string; tone: "ok" }[]
+  >([]);
 
   return (
     <section className="flex scroll-mt-20 flex-col gap-8" id="components">
@@ -311,7 +307,9 @@ export function Gallery() {
           <DateTimePicker date="2026-09-23" time="09:30" />
           <div className="grid gap-4 md:grid-cols-3">
             <NumberInput aria-label="Seats" defaultValue="12" min="1" />
-            <DropdownMenu trigger={<Button variant="secondary">More options</Button>}>
+            <DropdownMenu
+              trigger={<span className={buttonClass({ variant: "secondary" })}>More options</span>}
+            >
               <button
                 className="block w-full rounded-sm px-3 py-2 text-left text-xs text-ink-soft hover:bg-raised"
                 type="button"
