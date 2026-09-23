@@ -87,11 +87,42 @@ jobs:
           git tag "v$NEXT"
           git push origin main --follow-tags
 
+      - name: Write detailed release notes
+        env:
+          NEXT: ${{ needs.plan.outputs.next }}
+          PR_TITLE: ${{ github.event.pull_request.title }}
+          PR_BODY: ${{ github.event.pull_request.body }}
+        run: |
+          PREVIOUS_TAG=$(git describe --tags --abbrev=0 "v$NEXT^" 2>/dev/null || true)
+          {
+            echo "## What changed"
+            echo
+            if [ -n "$PREVIOUS_TAG" ]; then
+              git log --no-merges --format='- %s (%h)' "$PREVIOUS_TAG..v$NEXT"
+              echo
+              echo "### Files changed"
+              echo
+              git diff --stat "$PREVIOUS_TAG" "v$NEXT"
+            else
+              echo "This is the first tagged release."
+            fi
+            echo
+            echo "## Pull request"
+            echo
+            echo "### $PR_TITLE"
+            echo
+            if [ -n "$PR_BODY" ]; then
+              echo "$PR_BODY"
+            else
+              echo "No additional pull request description was provided."
+            fi
+          } > release-notes.md
+
       - name: Create the GitHub release
         env:
           GH_TOKEN: ${{ github.token }}
           NEXT: ${{ needs.plan.outputs.next }}
-        run: gh release create "v$NEXT" --generate-notes --title "v$NEXT"
+        run: gh release create "v$NEXT" --notes-file release-notes.md --title "v$NEXT"
 
       - name: Use an npm that supports trusted publishing
         run: npm install -g npm@^11
