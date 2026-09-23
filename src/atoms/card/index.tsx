@@ -19,7 +19,7 @@ export function Card({
   className?: string;
 }) {
   return (
-    <div className={`rounded-lg border border-line bg-surface ${PADDINGS[padding]} ${className}`}>
+    <div className={`rounded-md border border-line bg-surface ${PADDINGS[padding]} ${className}`}>
       {children}
     </div>
   );

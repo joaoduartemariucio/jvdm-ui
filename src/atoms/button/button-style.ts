@@ -17,8 +17,8 @@ const SIZES: Record<ButtonSize, string> = {
 };
 
 const BASE =
-  "inline-flex items-center justify-center rounded-lg transition-colors" +
-  " focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent" +
+  "inline-flex items-center justify-center rounded-md transition-[background-color,border-color,color,box-shadow,transform] duration-150 ease-out active:scale-95" +
+  " focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent focus-visible:ring-2 focus-visible:ring-accent/30" +
   " disabled:pointer-events-none disabled:opacity-50";
 
 export type ButtonOptions = {

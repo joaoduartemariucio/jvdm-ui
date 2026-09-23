@@ -4,7 +4,9 @@ export type {
   ColorToken,
   ColorValue,
   RadiusStep,
+  TokenConfig,
   TextStep,
   ThemeConfig,
+  TypographyConfig,
   WeightStep,
 } from "./types";

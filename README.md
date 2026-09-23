@@ -71,7 +71,9 @@ Each layer is its own entry point. Deep imports (`jvdm-ui/atoms/button`) are not
 
 ## Theming
 
-Write a JSON file. Every field is optional; whatever you leave out keeps the default.
+Write a JSON file. Every field is optional; whatever you leave out keeps the default. The canonical
+shape separates visual roles from the scales that define them: `colors`, `typography` and `tokens`.
+See [docs/theme.example.json](docs/theme.example.json) for a complete portable theme.
 
 ```json
 {
@@ -80,10 +82,16 @@ Write a JSON file. Every field is optional; whatever you leave out keeps the def
     "on-accent": "oklch(1 0 0)",
     "brand": { "light": "oklch(0.5 0.18 320)", "dark": "oklch(0.8 0.15 320)" }
   },
-  "font": { "sans": "Inter, sans-serif" },
-  "spacing": "0.25rem",
-  "radius": { "lg": "14px" },
-  "text": { "sm": ["15px", 1.6] }
+  "typography": {
+    "font": { "sans": "Avenir Next, sans-serif", "mono": "SF Mono, monospace" },
+    "text": { "sm": ["15px", 1.6] },
+    "tracking": { "caps": "0.08em" },
+    "weight": { "medium": 500 }
+  },
+  "tokens": {
+    "spacing": "0.25rem",
+    "radius": { "lg": "14px" }
+  }
 }
 ```
 

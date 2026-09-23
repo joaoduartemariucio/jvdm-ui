@@ -1,0 +1,43 @@
+{
+  "colors": {
+    "accent": {
+      "light": "oklch(0.28 0.03 78)",
+      "dark": "oklch(0.92 0.02 78)"
+    },
+    "accent-soft": {
+      "light": "oklch(0.92 0.025 78)",
+      "dark": "oklch(0.29 0.02 78)"
+    },
+    "on-accent": {
+      "light": "oklch(0.99 0.008 78)",
+      "dark": "oklch(0.16 0.018 78)"
+    }
+  },
+  "typography": {
+    "font": {
+      "sans": "Avenir Next, sans-serif",
+      "mono": "SF Mono, monospace"
+    },
+    "text": {
+      "sm": ["15px", 1.6],
+      "display": ["56px", 0.98]
+    },
+    "tracking": {
+      "caps": "0.08em"
+    },
+    "weight": {
+      "medium": 500,
+      "bold": 700
+    }
+  },
+  "tokens": {
+    "spacing": "0.25rem",
+    "radius": {
+      "xs": "4px",
+      "sm": "6px",
+      "md": "8px",
+      "lg": "12px",
+      "xl": "16px"
+    }
+  }
+}

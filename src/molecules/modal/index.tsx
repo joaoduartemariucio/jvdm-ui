@@ -48,6 +48,7 @@ export function Modal({
       ref={dialogRef}
       className={`fixed inset-x-0 top-auto bottom-0 z-50 m-0 mt-auto w-full max-w-none rounded-t-2xl border border-b-0 border-line bg-surface p-0 text-ink shadow-[0_-18px_50px_rgba(2,6,23,0.45)] backdrop:bg-app/70 backdrop:backdrop-blur-sm sm:inset-0 sm:m-auto sm:rounded-2xl sm:border-b sm:shadow-[0_18px_50px_rgba(2,6,23,0.45)] ${SIZE_CLASSES[size]}`}
       aria-modal="true"
+      aria-label={title ? undefined : MODAL.label["en-US"]}
       aria-labelledby={title ? titleId : undefined}
     >
       <div className="flex max-h-[92dvh] flex-col sm:max-h-[88dvh]">

@@ -33,25 +33,25 @@
   --radius-lg: 10px;
   --radius-xl: 16px;
 
-  --color-app: light-dark(oklch(0.972 0.002 255), oklch(0.19 0.004 255));
-  --color-rail: light-dark(oklch(0.948 0.003 255), oklch(0.15 0.004 255));
-  --color-panel: light-dark(oklch(0.948 0.003 255), oklch(0.17 0.004 255));
-  --color-surface: light-dark(oklch(1 0 0), oklch(0.235 0.005 255));
-  --color-field: light-dark(oklch(0.985 0.002 255), oklch(0.215 0.005 255));
-  --color-raised: light-dark(oklch(0.928 0.004 255), oklch(0.3 0.005 255));
+  --color-app: light-dark(oklch(0.965 0.012 78), oklch(0.18 0.015 78));
+  --color-rail: light-dark(oklch(0.945 0.014 78), oklch(0.15 0.018 78));
+  --color-panel: light-dark(oklch(0.95 0.01 78), oklch(0.17 0.016 78));
+  --color-surface: light-dark(oklch(0.99 0.008 78), oklch(0.23 0.015 78));
+  --color-field: light-dark(oklch(0.98 0.008 78), oklch(0.215 0.015 78));
+  --color-raised: light-dark(oklch(0.93 0.012 78), oklch(0.3 0.02 78));
 
-  --color-line: light-dark(oklch(0.902 0.005 255), oklch(0.275 0.005 255));
-  --color-line-strong: light-dark(oklch(0.845 0.006 255), oklch(0.35 0.005 255));
+  --color-line: light-dark(oklch(0.89 0.015 78), oklch(0.275 0.018 78));
+  --color-line-strong: light-dark(oklch(0.82 0.018 78), oklch(0.35 0.02 78));
 
-  --color-ink: light-dark(oklch(0.24 0.01 255), oklch(0.96 0.003 255));
-  --color-ink-soft: light-dark(oklch(0.37 0.01 255), oklch(0.82 0.004 255));
-  --color-ink-muted: light-dark(oklch(0.52 0.008 255), oklch(0.65 0.005 255));
-  --color-ink-dim: light-dark(oklch(0.57 0.007 255), oklch(0.57 0.005 255));
+  --color-ink: light-dark(oklch(0.23 0.02 78), oklch(0.95 0.01 78));
+  --color-ink-soft: light-dark(oklch(0.36 0.018 78), oklch(0.82 0.016 78));
+  --color-ink-muted: light-dark(oklch(0.51 0.014 78), oklch(0.65 0.012 78));
+  --color-ink-dim: light-dark(oklch(0.56 0.012 78), oklch(0.57 0.012 78));
 
-  --color-accent: light-dark(oklch(0.24 0.01 255), oklch(0.96 0.003 255));
-  --color-accent-ink: light-dark(oklch(0.32 0.012 255), oklch(0.88 0.004 255));
-  --color-accent-soft: light-dark(oklch(0.928 0.004 255), oklch(0.28 0.006 255));
-  --color-on-accent: light-dark(oklch(1 0 0), oklch(0.15 0.004 255));
+  --color-accent: light-dark(oklch(0.25 0.025 78), oklch(0.94 0.015 78));
+  --color-accent-ink: light-dark(oklch(0.33 0.022 78), oklch(0.87 0.018 78));
+  --color-accent-soft: light-dark(oklch(0.92 0.025 78), oklch(0.29 0.02 78));
+  --color-on-accent: light-dark(oklch(0.99 0.008 78), oklch(0.16 0.018 78));
 
   --color-ok: light-dark(oklch(0.5 0.13 155), oklch(0.78 0.12 155));
   --color-ok-soft: light-dark(oklch(0.94 0.04 155), oklch(0.29 0.05 155));

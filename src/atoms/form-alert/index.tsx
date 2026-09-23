@@ -10,7 +10,7 @@ export function FormAlert({
   return (
     <p
       role="alert"
-      className={`rounded-lg bg-danger-soft px-3 py-2 text-sm text-danger ${className}`}
+      className={`rounded-md bg-danger-soft px-3 py-2 text-sm text-danger ${className}`}
     >
       {children}
     </p>

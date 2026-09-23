@@ -32,12 +32,20 @@ export type WeightStep = "normal" | "medium" | "bold";
 
 export type ColorValue = string | { light: string; dark: string };
 
-export type ThemeConfig = {
-  colors?: { [K in ColorToken]?: ColorValue } & { [key: string]: ColorValue | undefined };
+export type TypographyConfig = {
   font?: { sans?: string; mono?: string };
   text?: { [K in TextStep]?: string | [string, string | number] };
-  spacing?: string;
   tracking?: { caps?: string; code?: string };
   weight?: { [K in WeightStep]?: number };
+};
+
+export type TokenConfig = {
+  spacing?: string;
   radius?: { [K in RadiusStep]?: string };
+};
+
+export type ThemeConfig = {
+  colors?: { [K in ColorToken]?: ColorValue } & { [key: string]: ColorValue | undefined };
+  typography?: TypographyConfig;
+  tokens?: TokenConfig;
 };

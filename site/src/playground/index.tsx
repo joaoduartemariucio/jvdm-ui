@@ -11,19 +11,22 @@ const SAMPLES: { name: string; config: ThemeConfig }[] = [
   {
     name: "indigo",
     config: {
+      typography: {
+        font: { sans: 'ui-monospace, "SF Mono", Menlo, monospace' },
+      },
       colors: {
         accent: { light: "oklch(0.5 0.2 275)", dark: "oklch(0.72 0.16 275)" },
         "accent-ink": { light: "oklch(0.43 0.19 275)", dark: "oklch(0.82 0.13 275)" },
         "accent-soft": { light: "oklch(0.94 0.04 275)", dark: "oklch(0.3 0.07 275)" },
         "on-accent": "oklch(1 0 0)",
       },
-      radius: { lg: "16px", md: "12px", sm: "8px" },
+      tokens: { radius: { lg: "16px", md: "12px", sm: "8px" } },
     },
   },
   {
     name: "terminal",
     config: {
-      font: { sans: 'ui-monospace, "SF Mono", Menlo, monospace' },
+      typography: { font: { sans: 'ui-monospace, "SF Mono", Menlo, monospace' } },
       colors: {
         app: { light: "oklch(0.98 0.01 140)", dark: "oklch(0.16 0.02 150)" },
         surface: { light: "oklch(1 0 0)", dark: "oklch(0.2 0.024 150)" },
@@ -31,7 +34,7 @@ const SAMPLES: { name: string; config: ThemeConfig }[] = [
         "on-accent": { light: "oklch(1 0 0)", dark: "oklch(0.16 0.02 150)" },
         "accent-soft": { light: "oklch(0.93 0.06 150)", dark: "oklch(0.28 0.07 150)" },
       },
-      radius: { xs: "0px", sm: "0px", md: "0px", lg: "0px", xl: "0px" },
+      tokens: { radius: { xs: "0px", sm: "0px", md: "0px", lg: "0px", xl: "0px" } },
     },
   },
 ];
