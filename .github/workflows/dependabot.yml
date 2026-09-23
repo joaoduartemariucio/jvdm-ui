@@ -1,0 +1,79 @@
+name: Dependabot
+
+on:
+  pull_request_target:
+    types: [opened, reopened, synchronize, ready_for_review]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: dependabot-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  maintain:
+    if: github.event.pull_request.user.login == 'dependabot[bot]' && github.event.pull_request.draft == false
+    runs-on: ubuntu-latest
+    steps:
+      - name: Rebase Dependabot branch
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const pullRequest = context.payload.pull_request;
+
+            try {
+              await github.rest.pulls.updateBranch({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                pull_number: pullRequest.number,
+                update_method: 'rebase',
+                expected_head_sha: pullRequest.head.sha,
+              });
+              core.info(`Rebase requested for #${pullRequest.number}.`);
+            } catch (error) {
+              if (error.status === 409 || error.status === 422) {
+                core.info(`No rebase was needed for #${pullRequest.number}.`);
+              } else {
+                throw error;
+              }
+            }
+
+      - name: Enable squash auto-merge
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const pullRequest = context.payload.pull_request;
+            const query = `
+              query($id: ID!) {
+                node(id: $id) {
+                  ... on PullRequest {
+                    autoMergeRequest { enabledAt }
+                  }
+                }
+              }
+            `;
+            const current = await github.graphql(query, { id: pullRequest.node_id });
+
+            if (current.node.autoMergeRequest) {
+              core.info(`Auto-merge is already enabled for #${pullRequest.number}.`);
+              return;
+            }
+
+            const mutation = `
+              mutation($id: ID!, $method: PullRequestMergeMethod!) {
+                enablePullRequestAutoMerge(input: {
+                  pullRequestId: $id,
+                  mergeMethod: $method
+                }) {
+                  pullRequest { number }
+                }
+              }
+            `;
+
+            await github.graphql(mutation, {
+              id: pullRequest.node_id,
+              method: 'SQUASH',
+            });
+            core.info(`Squash auto-merge enabled for #${pullRequest.number}.`);
