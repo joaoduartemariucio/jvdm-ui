@@ -1,1 +1,1 @@
-export const locales = { empty: "No matching commands" };
+export const locales = { empty: "No matching commands", open: "Open command menu" };

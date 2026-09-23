@@ -77,7 +77,6 @@ export function Playground() {
   return (
     <section className="flex scroll-mt-20 flex-col gap-6" id="theming">
       <div className="flex flex-col gap-2">
-        <Label>Theming</Label>
         <h2 className="text-2xl font-bold">Edit the JSON. The page changes.</h2>
         <p className="max-w-2xl text-sm text-ink-muted">
           This is the same object the CLI turns into CSS at build time — here it is applied live so

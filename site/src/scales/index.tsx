@@ -1,4 +1,4 @@
-import { Card, Label } from "jvdm-ui/atoms";
+import { Card } from "jvdm-ui/atoms";
 import { CardTitle } from "jvdm-ui/molecules";
 
 const TYPE = [
@@ -27,7 +27,6 @@ export function Scales() {
   return (
     <section className="flex scroll-mt-20 flex-col gap-8" id="scales">
       <div className="flex flex-col gap-2">
-        <Label>Scales</Label>
         <h2 className="text-2xl font-bold">No odd values, anywhere.</h2>
         <p className="max-w-2xl text-sm text-ink-muted">
           Every one of these is enforced by lint, in this repository and in yours if you copy the

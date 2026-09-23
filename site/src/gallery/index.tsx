@@ -49,6 +49,7 @@ import {
   Breadcrumb,
   Field,
   FilterBar,
+  ImagePreview,
   LoadError,
   MetricCard,
   Menu,
@@ -61,6 +62,7 @@ import {
   SnackbarStack,
   Stepper,
   Tabs,
+  TreeView,
   Toast,
   Tooltip,
   CodeBlock,
@@ -69,6 +71,7 @@ import {
   DataTable,
   AreaChart,
   DonutChart,
+  KanbanBoard,
   LineChart,
   Sparkline,
   Timeline,
@@ -79,14 +82,30 @@ const VARIANTS: ButtonVariant[] = ["primary", "secondary", "ghost", "danger"];
 const TONES: BadgeTone[] = ["neutral", "accent", "ok", "warn", "danger", "info"];
 
 const COLUMNS: Column<(typeof ROWS)[number]>[] = [
-  { key: "name", label: "Name", width: "2fr", render: (row) => row.name },
-  { key: "role", label: "Role", width: "1fr", render: (row) => row.role },
+  {
+    key: "name",
+    label: "Name",
+    width: "2fr",
+    render: (row) => row.name,
+    sortable: true,
+    sortValue: (row) => row.name,
+  },
+  {
+    key: "role",
+    label: "Role",
+    width: "1fr",
+    render: (row) => row.role,
+    sortable: true,
+    sortValue: (row) => row.role,
+  },
   {
     key: "usage",
     label: "Usage",
     width: "1fr",
     align: "right",
     render: (row) => row.usage,
+    sortable: true,
+    sortValue: (row) => Number.parseInt(row.usage, 10),
   },
 ];
 
@@ -128,11 +147,15 @@ export function Gallery() {
   >([]);
   const [pin, setPin] = useState("");
   const [selectedLayers, setSelectedLayers] = useState<string[]>([]);
+  const [tableFilter, setTableFilter] = useState("");
+  const [tableSort, setTableSort] = useState<{ key: string; direction: "asc" | "desc" }>({
+    key: "name",
+    direction: "asc",
+  });
 
   return (
     <section className="flex scroll-mt-20 flex-col gap-8" id="components">
       <div className="flex flex-col gap-2">
-        <Label>Components</Label>
         <h2 className="text-2xl font-bold">Four layers, one vocabulary.</h2>
       </div>
 
@@ -280,6 +303,7 @@ export function Gallery() {
           </FilterBar>
           <div className="grid gap-6 md:grid-cols-2">
             <CommandMenu
+              global
               items={[
                 { id: "theme", label: "Open theme editor", description: "Edit tokens and presets" },
                 { id: "catalog", label: "Browse components", description: "Jump to the catalog" },
@@ -658,7 +682,83 @@ export function Gallery() {
       <Card>
         <div className="flex flex-col gap-6">
           <CardTitle>Data table</CardTitle>
-          <DataTable columns={COLUMNS} items={ROWS} rowKey={(row) => row.id} />
+          <DataTable
+            columns={COLUMNS}
+            filter={tableFilter}
+            items={ROWS}
+            onFilterChange={setTableFilter}
+            onSortChange={(key) =>
+              setTableSort((current) => ({
+                key,
+                direction: current.key === key && current.direction === "asc" ? "desc" : "asc",
+              }))
+            }
+            rowKey={(row) => row.id}
+            sort={tableSort}
+          />
+        </div>
+      </Card>
+
+      <Card>
+        <div className="flex flex-col gap-6">
+          <CardTitle>Boards, trees and media</CardTitle>
+          <div className="overflow-x-auto">
+            <KanbanBoard
+              columns={[
+                {
+                  id: "todo",
+                  title: "To do",
+                  cards: [{ id: "tokens", title: "Refine token docs", meta: "João · today" }],
+                },
+                {
+                  id: "doing",
+                  title: "In progress",
+                  cards: [
+                    {
+                      id: "catalog",
+                      title: "Expand component catalog",
+                      description: "Add interaction states",
+                      meta: "Ada · tomorrow",
+                    },
+                  ],
+                },
+                {
+                  id: "done",
+                  title: "Done",
+                  cards: [{ id: "theme", title: "Ship neutral preset", meta: "Grace · yesterday" }],
+                },
+              ]}
+            />
+          </div>
+          <div className="grid gap-6 md:grid-cols-2">
+            <TreeView
+              nodes={[
+                {
+                  id: "src",
+                  label: "src",
+                  children: [
+                    {
+                      id: "atoms",
+                      label: "atoms",
+                      children: [
+                        { id: "button", label: "button" },
+                        { id: "input", label: "input" },
+                      ],
+                    },
+                    { id: "molecules", label: "molecules" },
+                  ],
+                },
+              ]}
+            />
+            <ImagePreview
+              alt="Theme preview"
+              fallback={
+                <div className="flex aspect-[4/3] items-center justify-center rounded-md bg-raised font-mono text-xs text-ink-dim">
+                  Open image preview
+                </div>
+              }
+            />
+          </div>
         </div>
       </Card>
 

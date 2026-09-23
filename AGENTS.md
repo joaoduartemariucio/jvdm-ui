@@ -1,7 +1,8 @@
 # AGENTS.md
 
 Instructions for any AI agent working in this repository (Claude Code, Codex, Cursor, Gemini CLI,
-Copilot). `CLAUDE.md` only points here — this file is the single copy.
+Copilot, OpenCode). `CLAUDE.md`, `.github/copilot-instructions.md` and `opencode.json` only point
+here — this file is the single copy.
 
 Code, documentation and default UI strings are in **English**. Keep it that way.
 
