@@ -74,9 +74,12 @@ export function Menu({
   }, [open]);
 
   function onMenuKeyDown(event: React.KeyboardEvent<HTMLDivElement>) {
-    const menuItems = [...(menuRef.current?.querySelectorAll<HTMLElement>('[role="menuitem"]') ?? [])];
+    const menuItems = [
+      ...(menuRef.current?.querySelectorAll<HTMLElement>('[role="menuitem"]') ?? []),
+    ];
     const current = menuItems.indexOf(document.activeElement as HTMLElement);
-    const next = (index: number) => menuItems[(index + menuItems.length) % menuItems.length]?.focus();
+    const next = (index: number) =>
+      menuItems[(index + menuItems.length) % menuItems.length]?.focus();
 
     if (event.key === "Escape") {
       event.preventDefault();
@@ -115,7 +118,7 @@ export function Menu({
         aria-haspopup="menu"
         aria-expanded={open}
         onClick={() => setOpen((current) => !current)}
-        className="flex items-center rounded-md transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent focus-visible:ring-2 focus-visible:ring-accent/30"
+        className="flex items-center rounded-md transition-colors focus-visible:ring-2 focus-visible:ring-accent/30 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
       >
         {trigger}
       </button>

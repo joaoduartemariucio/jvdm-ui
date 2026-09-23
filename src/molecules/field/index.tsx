@@ -17,12 +17,16 @@ export function Field({
 }) {
   const errorId = useId();
   const control = isValidElement(children)
-    ? cloneElement(children as ReactElement<Record<string, unknown>>, {
-        "aria-describedby": error
-          ? [children.props["aria-describedby"], errorId].filter(Boolean).join(" ")
-          : children.props["aria-describedby"],
-        "aria-invalid": error ? true : children.props["aria-invalid"],
-      })
+    ? (() => {
+        const child = children as ReactElement<Record<string, unknown>>;
+        const props = child.props;
+        return cloneElement(child, {
+          "aria-describedby": error
+            ? [props["aria-describedby"], errorId].filter(Boolean).join(" ")
+            : props["aria-describedby"],
+          "aria-invalid": error ? true : props["aria-invalid"],
+        });
+      })()
     : children;
 
   return (

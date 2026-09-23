@@ -1,14 +1,18 @@
+import { useState } from "react";
+
 import {
   Avatar,
   Badge,
   Button,
   Card,
+  Checkbox,
   Input,
   Label,
   PasswordInput,
   ProgressBar,
   Select,
   Skeleton,
+  Switch,
   Textarea,
   type BadgeTone,
   type ButtonVariant,
@@ -21,17 +25,25 @@ import {
   Menu,
   menuItemClass,
   PageHeader,
+  Pagination,
   StatCard,
+  Tabs,
 } from "jvdm-ui/molecules";
 import { DataTable, Sparkline, type Column } from "jvdm-ui/organisms";
 
 const VARIANTS: ButtonVariant[] = ["primary", "secondary", "ghost", "danger"];
 const TONES: BadgeTone[] = ["neutral", "accent", "ok", "warn", "danger", "info"];
 
-const COLUMNS: Column[] = [
-  { key: "name", label: "Name", width: "2fr" },
-  { key: "role", label: "Role", width: "1fr" },
-  { key: "usage", label: "Usage", width: "1fr", align: "right" },
+const COLUMNS: Column<(typeof ROWS)[number]>[] = [
+  { key: "name", label: "Name", width: "2fr", render: (row) => row.name },
+  { key: "role", label: "Role", width: "1fr", render: (row) => row.role },
+  {
+    key: "usage",
+    label: "Usage",
+    width: "1fr",
+    align: "right",
+    render: (row) => row.usage,
+  },
 ];
 
 const ROWS = [
@@ -50,6 +62,10 @@ const TREND = [
 ];
 
 export function Gallery() {
+  const [notifications, setNotifications] = useState(true);
+  const [page, setPage] = useState(1);
+  const [tab, setTab] = useState("overview");
+
   return (
     <section className="flex scroll-mt-20 flex-col gap-8" id="components">
       <div className="flex flex-col gap-2">
@@ -146,6 +162,35 @@ export function Gallery() {
 
       <Card>
         <div className="flex flex-col gap-6">
+          <CardTitle>Controls and navigation</CardTitle>
+          <div className="flex flex-wrap items-center gap-4">
+            <Checkbox label="Remember this device" defaultChecked />
+            <Switch
+              checked={notifications}
+              label="Notifications"
+              onCheckedChange={setNotifications}
+            />
+          </div>
+          <Tabs
+            items={[
+              { value: "overview", label: "Overview", content: "A compact overview panel." },
+              { value: "activity", label: "Activity", content: "Recent activity appears here." },
+              {
+                value: "disabled",
+                label: "Disabled",
+                content: "Unavailable content.",
+                disabled: true,
+              },
+            ]}
+            onValueChange={setTab}
+            value={tab}
+          />
+          <Pagination page={page} pages={4} onPageChange={setPage} />
+        </div>
+      </Card>
+
+      <Card>
+        <div className="flex flex-col gap-6">
           <CardTitle>Stats and charts</CardTitle>
           <div className="grid gap-4 md:grid-cols-3">
             <StatCard hint="last 30 days" label="Revenue" value="$48,120" />
@@ -159,18 +204,7 @@ export function Gallery() {
       <Card>
         <div className="flex flex-col gap-6">
           <CardTitle>Data table</CardTitle>
-          <DataTable
-            columns={COLUMNS}
-            items={ROWS}
-            renderRow={(row, gridClass) => (
-              <div className={`${gridClass} h-12 px-4 text-sm`}>
-                <span>{row.name}</span>
-                <span className="text-ink-muted">{row.role}</span>
-                <span className="text-right">{row.usage}</span>
-              </div>
-            )}
-            rowKey={(row) => row.id}
-          />
+          <DataTable columns={COLUMNS} items={ROWS} rowKey={(row) => row.id} />
         </div>
       </Card>
 

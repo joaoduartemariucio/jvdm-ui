@@ -61,7 +61,7 @@ export function Gallery({
       </div>
 
       {total > 1 ? (
-        <div className="flex gap-2 overflow-x-auto">
+        <div className="flex touch-pan-y gap-2 overflow-x-auto overscroll-contain">
           {photos.map((photo, i) => (
             <button
               key={photo}

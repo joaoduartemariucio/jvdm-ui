@@ -7,4 +7,6 @@ export * from "./load-error";
 export * from "./modal";
 export * from "./menu";
 export * from "./page-header";
+export * from "./pagination";
 export * from "./stat-card";
+export * from "./tabs";

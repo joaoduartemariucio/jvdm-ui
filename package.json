@@ -48,6 +48,7 @@
     "build": "tsup && node scripts/build-presets.mjs && cp src/tokens/tokens.css dist/tokens.css",
     "dev": "tsup --watch",
     "typecheck": "tsc --noEmit",
+    "test": "npm run build && node --test tests/theme.test.mjs",
     "lint": "eslint",
     "lint:fix": "eslint --fix",
     "format": "prettier --write .",
