@@ -62,10 +62,10 @@ jobs:
             }
 
             const mutation = `
-              mutation($id: ID!, $method: PullRequestMergeMethod!) {
+              mutation($id: ID!, $mergeMethod: PullRequestMergeMethod!) {
                 enablePullRequestAutoMerge(input: {
                   pullRequestId: $id,
-                  mergeMethod: $method
+                  mergeMethod: $mergeMethod
                 }) {
                   pullRequest { number }
                 }
@@ -74,6 +74,6 @@ jobs:
 
             await github.graphql(mutation, {
               id: pullRequest.node_id,
-              method: 'SQUASH',
+              mergeMethod: 'SQUASH',
             });
             core.info(`Squash auto-merge enabled for #${pullRequest.number}.`);

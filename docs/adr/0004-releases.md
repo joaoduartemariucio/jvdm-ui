@@ -57,6 +57,10 @@ secret when one is set. A long-lived npm token in a public repository's secrets 
 can be exfiltrated by any workflow change; OIDC is short-lived and scoped to this repository and
 workflow.
 
+Publishing to npm is opt-in: the npm steps run only when the repository variable `NPM_PUBLISH`
+is `true`. Without it, a release still commits the version, pushes the tag and creates the GitHub
+release, which is all a consumer installing from git needs.
+
 The `publish` job runs in a GitHub `release` environment, so a required reviewer can be added later
 without touching the workflow.
 
