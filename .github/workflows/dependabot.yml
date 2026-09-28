@@ -1,79 +1,71 @@
 name: Dependabot
 
 on:
-  pull_request_target:
-    types: [opened, reopened, synchronize, ready_for_review]
+  workflow_run:
+    workflows: [CI]
+    types: [completed]
 
 permissions:
+  actions: write
   contents: write
   pull-requests: write
 
 concurrency:
-  group: dependabot-${{ github.event.pull_request.number }}
-  cancel-in-progress: true
+  group: dependabot-merge
+  cancel-in-progress: false
 
 jobs:
-  maintain:
-    if: github.event.pull_request.user.login == 'dependabot[bot]' && github.event.pull_request.draft == false
+  merge:
+    if: >-
+      github.event.workflow_run.event == 'pull_request' &&
+      github.event.workflow_run.conclusion == 'success' &&
+      github.event.workflow_run.actor.login == 'dependabot[bot]' &&
+      github.event.workflow_run.head_repository.full_name == github.repository
     runs-on: ubuntu-latest
     steps:
-      - name: Rebase Dependabot branch
+      - name: Squash-merge the tested commit and release it
         uses: actions/github-script@v9
         with:
           script: |
-            const pullRequest = context.payload.pull_request;
+            const run = context.payload.workflow_run;
+            const { data: pulls } = await github.rest.pulls.list({
+              ...context.repo,
+              state: 'open',
+              head: `${context.repo.owner}:${run.head_branch}`,
+            });
+            const pullRequest = pulls.find((pull) => pull.head.sha === run.head_sha);
 
-            try {
-              await github.rest.pulls.updateBranch({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                pull_number: pullRequest.number,
-                update_method: 'rebase',
-                expected_head_sha: pullRequest.head.sha,
-              });
-              core.info(`Rebase requested for #${pullRequest.number}.`);
-            } catch (error) {
-              if (error.status === 409 || error.status === 422) {
-                core.info(`No rebase was needed for #${pullRequest.number}.`);
-              } else {
-                throw error;
-              }
-            }
-
-      - name: Enable squash auto-merge
-        uses: actions/github-script@v9
-        with:
-          script: |
-            const pullRequest = context.payload.pull_request;
-            const query = `
-              query($id: ID!) {
-                node(id: $id) {
-                  ... on PullRequest {
-                    autoMergeRequest { enabledAt }
-                  }
-                }
-              }
-            `;
-            const current = await github.graphql(query, { id: pullRequest.node_id });
-
-            if (current.node.autoMergeRequest) {
-              core.info(`Auto-merge is already enabled for #${pullRequest.number}.`);
+            if (!pullRequest) {
+              core.info(`No open pull request has ${run.head_sha} as its head. Nothing to merge.`);
               return;
             }
 
-            const mutation = `
-              mutation($id: ID!, $mergeMethod: PullRequestMergeMethod!) {
-                enablePullRequestAutoMerge(input: {
-                  pullRequestId: $id,
-                  mergeMethod: $mergeMethod
-                }) {
-                  pullRequest { number }
-                }
-              }
-            `;
+            if (pullRequest.user.login !== 'dependabot[bot]' || pullRequest.draft || pullRequest.base.ref !== 'main') {
+              core.info(`#${pullRequest.number} is not a ready Dependabot pull request into main.`);
+              return;
+            }
 
-            await github.graphql(mutation, {
-              id: pullRequest.node_id,
-              mergeMethod: 'SQUASH',
+            try {
+              await github.rest.pulls.merge({
+                ...context.repo,
+                pull_number: pullRequest.number,
+                merge_method: 'squash',
+                sha: run.head_sha,
+              });
+            } catch (error) {
+              if (error.status === 405 || error.status === 409) {
+                core.warning(`#${pullRequest.number} was not merged: ${error.message}. Dependabot will rebase it and CI will run again.`);
+                return;
+              }
+              throw error;
+            }
+
+            core.info(`Merged #${pullRequest.number}.`);
+
+            await github.rest.actions.createWorkflowDispatch({
+              ...context.repo,
+              workflow_id: 'release.yml',
+              ref: 'main',
+              inputs: { pr: String(pullRequest.number) },
             });
-            core.info(`Squash auto-merge enabled for #${pullRequest.number}.`);
+            core.info(`Release dispatched for #${pullRequest.number}.`);
