@@ -2,7 +2,8 @@
 
 - **Status:** accepted
 - **Date:** 2026-08-27
-- **Scope:** `.github/workflows/pr.yml`, `.github/workflows/release.yml`, `scripts/next-version.mjs`.
+- **Scope:** `.github/workflows/pr.yml`, `.github/workflows/release.yml`,
+  `.github/workflows/dependabot.yml`, `scripts/next-version.mjs`.
 
 ## Context
 
@@ -27,6 +28,10 @@ only one thing writes the version and it writes it once.
 
 `release.yml` triggers on `pull_request: [closed]` filtered by `merged == true`. A direct push to
 `main` publishes nothing — deliberately. If it is worth releasing, it is worth a PR.
+
+A merge made with the workflow token fires no `pull_request` event, so `release.yml` also accepts
+`workflow_dispatch` with the PR number. It still refuses anything that is not a PR merged into
+`main`: the unit stays the pull request, only the trigger differs.
 
 ### V2 — The bump level is declared, then inferred, then assumed
 
@@ -69,10 +74,36 @@ without touching the workflow.
 `ci.yml` already ran on the PR head. `release.yml` runs the full suite again against `main` after the
 merge, because that is a different tree: a PR that was green can merge into a `main` that is not.
 
+### V6 — Every merge gets its own release, however fast they land
+
+The version is computed from `package.json` on the **latest** `main` at the moment of pushing, not
+from the tree the run started with. The release commit and its tag go up in one `git push --atomic`:
+either both land or neither does. If `main` moved in the meantime, the run resets onto the new `main`,
+recomputes the version and tries again.
+
+There is no `concurrency` group. GitHub keeps at most one pending run per group and cancels the rest,
+which silently drops releases when several PRs merge in a row. Runs race instead, and the atomic push
+decides the order.
+
+A non-atomic push is what broke this before: `main` was rejected, the tag was accepted, and every
+later run failed on a tag that already existed.
+
+### V7 — Dependabot merges itself once CI is green
+
+`dependabot.yml` runs on `workflow_run` of CI. When CI passed on a Dependabot PR into `main`, it
+squash-merges pinned to the SHA CI tested — if the branch moved, the merge is refused — and then
+dispatches `release.yml` for that PR (V1). A merge that does not go through, such as a conflict, is
+left alone: Dependabot rebases, CI runs again, and the workflow tries again.
+
+It does not use GitHub's native auto-merge. That needs required status checks on `main`, which would
+also block the release push (see Consequences), and a merge it performs fires no release either.
+
 ## Consequences
 
 - `main` must accept a push from `github-actions[bot]`. If branch protection is enabled, that actor
   needs a bypass, or the push fails after the checks have already passed.
 - The release commit carries `[skip ci]`, so it does not re-trigger CI or the docs deploy. The merge
   commit immediately before it already deployed the docs.
-- Version numbers are not in the PR diff. The PR comment is where you look.
+- Version numbers are not in the PR diff. The PR comment is where you look. When several PRs merge
+  at once, the number in the comment is the one the first of them gets; the others take the next ones.
+- A Dependabot PR is released like any other: a `patch`, unless it is labelled otherwise.

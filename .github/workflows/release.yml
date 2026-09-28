@@ -4,23 +4,27 @@ on:
   pull_request:
     types: [closed]
     branches: [main]
+  workflow_dispatch:
+    inputs:
+      pr:
+        description: Number of the merged pull request to release
+        required: true
+        type: number
 
 permissions:
   contents: write
+  pull-requests: read
   id-token: write
-
-concurrency:
-  group: release
-  cancel-in-progress: false
 
 jobs:
   plan:
-    if: github.event.pull_request.merged == true
+    if: github.event_name == 'workflow_dispatch' || github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     outputs:
+      pr: ${{ steps.pr.outputs.number }}
+      title: ${{ steps.pr.outputs.title }}
+      labels: ${{ steps.pr.outputs.labels }}
       level: ${{ steps.next.outputs.level }}
-      next: ${{ steps.next.outputs.next }}
-      current: ${{ steps.next.outputs.current }}
     steps:
       - uses: actions/checkout@v7
         with:
@@ -30,20 +34,38 @@ jobs:
         with:
           node-version-file: .nvmrc
 
+      - id: pr
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR: ${{ github.event.pull_request.number || inputs.pr }}
+        run: |
+          gh pr view "$PR" --repo "$GITHUB_REPOSITORY" --json number,title,labels,mergedAt,baseRefName > pr.json
+          if [ "$(jq -r '.mergedAt // empty' pr.json)" = "" ] || [ "$(jq -r .baseRefName pr.json)" != "main" ]; then
+            echo "::error::#$PR is not a pull request merged into main."
+            exit 1
+          fi
+          {
+            echo "number=$(jq -r .number pr.json)"
+            echo "labels=$(jq -c .labels pr.json)"
+            echo "title<<EOF_TITLE"
+            jq -r .title pr.json
+            echo "EOF_TITLE"
+          } >> "$GITHUB_OUTPUT"
+
       - id: next
         env:
-          PR_LABELS: ${{ toJson(github.event.pull_request.labels) }}
-          PR_TITLE: ${{ github.event.pull_request.title }}
+          PR_LABELS: ${{ steps.pr.outputs.labels }}
+          PR_TITLE: ${{ steps.pr.outputs.title }}
         run: node scripts/next-version.mjs >> "$GITHUB_OUTPUT"
 
       - env:
           LEVEL: ${{ steps.next.outputs.level }}
-          NEXT: ${{ steps.next.outputs.next }}
+          PR: ${{ steps.pr.outputs.number }}
         run: |
           if [ "$LEVEL" = "none" ]; then
-            echo "Labelled \`no-release\`. Nothing is published." >> "$GITHUB_STEP_SUMMARY"
+            echo "#$PR is labelled \`no-release\`. Nothing is published." >> "$GITHUB_STEP_SUMMARY"
           else
-            echo "Releasing \`v$NEXT\` (\`$LEVEL\` bump)." >> "$GITHUB_STEP_SUMMARY"
+            echo "#$PR releases a \`$LEVEL\` bump." >> "$GITHUB_STEP_SUMMARY"
           fi
 
   publish:
@@ -71,28 +93,49 @@ jobs:
       - run: npm run build
       - run: npm run site:build
 
-      - name: Prepare package version
-        env:
-          NEXT: ${{ needs.plan.outputs.next }}
-        run: npm version "$NEXT" --no-git-tag-version
-
       - name: Commit and tag release version
+        id: version
         env:
-          NEXT: ${{ needs.plan.outputs.next }}
+          PR_LABELS: ${{ needs.plan.outputs.labels }}
+          PR_TITLE: ${{ needs.plan.outputs.title }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add package.json package-lock.json
-          git commit -m "chore: release v$NEXT [skip ci]"
-          git tag -a "v$NEXT" -m "v$NEXT"
-          git push origin main "v$NEXT"
+          for attempt in 1 2 3 4 5 6; do
+            git fetch --quiet --force --tags origin main
+            git reset --quiet --hard origin/main
+            NEXT=$(node scripts/next-version.mjs | sed -n 's/^next=//p')
+            if git rev-parse --quiet --verify "refs/tags/v$NEXT" > /dev/null; then
+              echo "::error::Tag v$NEXT already exists but main is still at $(node -p 'require("./package.json").version'). Delete the orphan tag or bump package.json on main."
+              exit 1
+            fi
+            npm version "$NEXT" --no-git-tag-version > /dev/null
+            git add package.json package-lock.json
+            git commit --quiet -m "chore: release v$NEXT [skip ci]"
+            git tag -a "v$NEXT" -m "v$NEXT"
+            if git push --atomic origin main "v$NEXT"; then
+              echo "next=$NEXT" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+            git tag -d "v$NEXT"
+            echo "main moved while releasing v$NEXT (attempt $attempt). Retrying on the new main."
+            sleep $((attempt * 5))
+          done
+          echo "::error::Could not push the release commit after 6 attempts."
+          exit 1
+
+      - run: npm ci
+
+      - run: npm run build
 
       - name: Write detailed release notes
         env:
-          NEXT: ${{ needs.plan.outputs.next }}
-          PR_TITLE: ${{ github.event.pull_request.title }}
-          PR_BODY: ${{ github.event.pull_request.body }}
+          GH_TOKEN: ${{ github.token }}
+          NEXT: ${{ steps.version.outputs.next }}
+          PR: ${{ needs.plan.outputs.pr }}
+          PR_TITLE: ${{ needs.plan.outputs.title }}
         run: |
+          PR_BODY=$(gh pr view "$PR" --repo "$GITHUB_REPOSITORY" --json body -q .body)
           PREVIOUS_TAG=$(git describe --tags --abbrev=0 "v$NEXT^" 2>/dev/null || true)
           {
             echo "## What changed"
@@ -109,7 +152,7 @@ jobs:
             echo
             echo "## Pull request"
             echo
-            echo "### $PR_TITLE"
+            echo "### $PR_TITLE (#$PR)"
             echo
             if [ -n "$PR_BODY" ]; then
               echo "$PR_BODY"
@@ -121,7 +164,7 @@ jobs:
       - name: Create the GitHub release
         env:
           GH_TOKEN: ${{ github.token }}
-          NEXT: ${{ needs.plan.outputs.next }}
+          NEXT: ${{ steps.version.outputs.next }}
         run: gh release create "v$NEXT" --notes-file release-notes.md --title "v$NEXT"
 
       - name: Use an npm that supports trusted publishing
