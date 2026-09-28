@@ -45,7 +45,7 @@
     "./presets/gavel.css": "./dist/presets/gavel.css"
   },
   "scripts": {
-    "build": "tsup && node scripts/build-presets.mjs && cp src/tokens/tokens.css dist/tokens.css",
+    "build": "rm -rf dist && tsup && node scripts/build-presets.mjs && cp src/tokens/tokens.css dist/tokens.css",
     "dev": "tsup --watch",
     "typecheck": "tsc --noEmit",
     "test": "npm run build && vitest run && node --test tests/theme.test.mjs",
