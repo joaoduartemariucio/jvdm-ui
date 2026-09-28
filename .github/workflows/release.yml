@@ -84,8 +84,8 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add package.json package-lock.json
           git commit -m "chore: release v$NEXT [skip ci]"
-          git tag "v$NEXT"
-          git push origin main --follow-tags
+          git tag -a "v$NEXT" -m "v$NEXT"
+          git push origin main "v$NEXT"
 
       - name: Write detailed release notes
         env:
@@ -125,9 +125,11 @@ jobs:
         run: gh release create "v$NEXT" --notes-file release-notes.md --title "v$NEXT"
 
       - name: Use an npm that supports trusted publishing
+        if: vars.NPM_PUBLISH == 'true'
         run: npm install -g npm@^11
 
       - name: Authenticate to npm when a token is configured
+        if: vars.NPM_PUBLISH == 'true'
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
@@ -139,4 +141,5 @@ jobs:
           fi
 
       - name: Publish latest package
+        if: vars.NPM_PUBLISH == 'true'
         run: npm publish --access public --tag latest

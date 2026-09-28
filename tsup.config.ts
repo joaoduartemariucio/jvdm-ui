@@ -85,7 +85,7 @@ export default defineConfig([
     // banner do esbuild junto. Sem ele a diretiva sobrevive.
     treeshake: false,
     splitting: false,
-    clean: true,
+    clean: false,
   },
   {
     ...shared,
