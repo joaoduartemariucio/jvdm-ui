@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 
-const TONES = {
+export const BADGE_TONES = {
   neutral: "bg-raised text-ink-soft",
   accent: "bg-accent-soft text-accent-ink",
   ok: "bg-ok-soft text-ok",
@@ -9,7 +9,7 @@ const TONES = {
   info: "bg-info-soft text-info",
 } as const;
 
-export type BadgeTone = keyof typeof TONES;
+export type BadgeTone = keyof typeof BADGE_TONES;
 
 export function Badge({
   tone = "neutral",
@@ -22,7 +22,7 @@ export function Badge({
 }) {
   return (
     <span
-      className={`inline-flex items-center gap-1 rounded-xs px-2 py-0.5 text-2xs font-medium ${TONES[tone]} ${className}`}
+      className={`inline-flex items-center gap-1 rounded-xs px-2 py-0.5 text-2xs font-medium ${BADGE_TONES[tone]} ${className}`}
     >
       {children}
     </span>
