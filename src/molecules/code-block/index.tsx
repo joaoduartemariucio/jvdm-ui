@@ -1,33 +1,23 @@
-"use client";
-
-import { useState } from "react";
-
-import { Button } from "../../atoms";
+import { CopyButton } from "../../atoms";
 
 export function CodeBlock({
   code,
   language = "text",
+  copyLabel,
+  copiedLabel,
   className = "",
 }: {
   code: string;
   language?: string;
+  copyLabel?: string;
+  copiedLabel?: string;
   className?: string;
 }) {
-  const [copied, setCopied] = useState(false);
-
-  async function copy() {
-    await navigator.clipboard.writeText(code);
-    setCopied(true);
-    window.setTimeout(() => setCopied(false), 1400);
-  }
-
   return (
     <div className={`overflow-hidden rounded-md border border-line bg-field ${className}`}>
       <div className="flex items-center justify-between border-b border-line px-4 py-2">
         <span className="font-mono text-2xs tracking-caps text-ink-dim uppercase">{language}</span>
-        <Button onClick={copy} size="sm" variant="ghost">
-          {copied ? "Copied" : "Copy"}
-        </Button>
+        <CopyButton value={code} label={copyLabel} copiedLabel={copiedLabel} />
       </div>
       <pre className="overflow-x-auto p-4 font-mono text-xs leading-6 text-ink-soft">
         <code>{code}</code>

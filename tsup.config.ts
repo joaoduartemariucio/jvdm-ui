@@ -27,6 +27,7 @@ const CLIENT_MODULES: Record<string, string> = {
   "file-upload": "src/atoms/file-upload/index.tsx",
   "multi-select": "src/atoms/multi-select/index.tsx",
   "code-block": "src/molecules/code-block/index.tsx",
+  "copy-button": "src/atoms/copy-button/index.tsx",
   "time-picker": "src/atoms/time-picker/index.tsx",
   theme: "src/tokens/theme.ts",
   "theme-toggle": "src/atoms/theme-toggle/index.tsx",
