@@ -27,6 +27,7 @@ export * from "./skeleton";
 export * from "./slider";
 export * from "./spinner";
 export * from "./switch";
+export * from "./tag";
 export * from "./time-picker";
 export * from "./thumb";
 export { ThemeToggle } from "./theme-toggle";

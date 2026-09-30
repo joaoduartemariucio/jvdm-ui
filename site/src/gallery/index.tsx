@@ -29,6 +29,7 @@ import {
   Spinner,
   Segmented,
   Switch,
+  Tag,
   Textarea,
   TimePicker,
   buttonClass,
@@ -135,6 +136,7 @@ const LINE_TREND = [
 
 export function Gallery() {
   const [notifications, setNotifications] = useState(true);
+  const [tags, setTags] = useState(["React", "Tailwind", "Design tokens"]);
   const [page, setPage] = useState(1);
   const [tab, setTab] = useState("overview");
   const [density, setDensity] = useState("comfortable");
@@ -220,13 +222,24 @@ export function Gallery() {
 
       <Card>
         <div className="flex flex-col gap-6">
-          <CardTitle>Badges and labels</CardTitle>
+          <CardTitle>Badges, tags and labels</CardTitle>
           <div className="flex flex-wrap items-center gap-2">
             {TONES.map((tone) => (
               <Badge key={tone} tone={tone}>
                 {tone}
               </Badge>
             ))}
+          </div>
+          <div className="flex flex-wrap items-center gap-2">
+            {tags.map((tag) => (
+              <Tag key={tag} onRemove={() => setTags(tags.filter((t) => t !== tag))} tone="accent">
+                {tag}
+              </Tag>
+            ))}
+            <Tag tone="ok">Read-only</Tag>
+            <Tag disabled onRemove={() => {}}>
+              Disabled
+            </Tag>
           </div>
           <div className="flex flex-wrap items-center gap-6">
             <Label>uppercase label</Label>
