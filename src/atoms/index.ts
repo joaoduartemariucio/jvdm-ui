@@ -4,6 +4,7 @@ export * from "./button";
 export * from "./card";
 export * from "./checkbox";
 export * from "./combobox";
+export * from "./copy-button";
 export * from "./date-picker";
 export * from "./date-time-picker";
 export * from "./divider";

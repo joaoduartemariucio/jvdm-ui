@@ -7,6 +7,7 @@ import {
   Card,
   Checkbox,
   Combobox,
+  CopyButton,
   DatePicker,
   DateTimePicker,
   Divider,
@@ -383,6 +384,11 @@ export function Gallery() {
             >
               Show snackbar
             </Button>
+          </div>
+          <div className="flex flex-wrap items-center gap-2">
+            <CopyButton value="npm install jvdm-ui" />
+            <CopyButton value="npx jvdm-ui init" variant="secondary" label="Copy command" />
+            <CopyButton value="" disabled />
           </div>
           <CodeBlock
             code={'defineTheme({ tokens: { radius: { md: "8px" } } })'}
