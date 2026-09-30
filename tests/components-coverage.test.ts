@@ -40,6 +40,7 @@ const cases: Case[] = [
   ["Card", atoms.Card, { children: "Content" }],
   ["Checkbox", atoms.Checkbox, { label: "Accept" }],
   ["Combobox", atoms.Combobox, { options: [{ value: "one", label: "One" }] }],
+  ["CopyButton", atoms.CopyButton, { value: "npm install jvdm-ui" }],
   ["DatePicker", atoms.DatePicker, { defaultValue: "2026-01-15" }],
   ["DateTimePicker", atoms.DateTimePicker, { date: "2026-01-15", time: "09:30" }],
   ["Divider", atoms.Divider, { children: "Or" }],
@@ -78,8 +79,10 @@ const cases: Case[] = [
   ["BuildingIcon", atoms.BuildingIcon, iconProps],
   ["CalendarIcon", atoms.CalendarIcon, iconProps],
   ["CarIcon", atoms.CarIcon, iconProps],
+  ["CheckIcon", atoms.CheckIcon, iconProps],
   ["ChevronIcon", atoms.ChevronIcon, iconProps],
   ["CloseIcon", atoms.CloseIcon, iconProps],
+  ["CopyIcon", atoms.CopyIcon, iconProps],
   ["DashboardIcon", atoms.DashboardIcon, iconProps],
   ["EyeIcon", atoms.EyeIcon, iconProps],
   ["EyeOffIcon", atoms.EyeOffIcon, iconProps],
@@ -279,4 +282,41 @@ test("builds menu item classes for each tone", () => {
   expect(molecules.menuItemClass()).toContain("text-ink-soft");
   expect(molecules.menuItemClass({ tone: "danger", className: "w-full" })).toContain("text-danger");
   expect(molecules.menuItemClass({ tone: "danger", className: "w-full" })).toContain("w-full");
+});
+
+test("CopyButton copies, confirms, then resets", async () => {
+  vi.useFakeTimers();
+  const writeText = vi.fn().mockResolvedValue(undefined);
+  vi.stubGlobal("navigator", { clipboard: { writeText } });
+  const onCopy = vi.fn();
+  let renderer: ReturnType<typeof create>;
+  await act(async () => {
+    renderer = create(
+      createElement(atoms.CopyButton, {
+        value: "abc",
+        copiedLabel: "Done",
+        onCopy,
+        resetAfter: 500,
+      }),
+    );
+  });
+  const text = () => renderer!.root.findByProps({ "aria-live": "polite" }).props.children;
+
+  await act(async () => {
+    await renderer!.root.findByType("button").props.onClick();
+  });
+  expect(writeText).toHaveBeenCalledWith("abc");
+  expect(onCopy).toHaveBeenCalledWith("abc");
+  expect(text()).toBe("Done");
+
+  await act(async () => {
+    vi.advanceTimersByTime(500);
+  });
+  expect(text()).toBe("Copy");
+
+  await act(async () => {
+    renderer!.unmount();
+  });
+  vi.unstubAllGlobals();
+  vi.useRealTimers();
 });

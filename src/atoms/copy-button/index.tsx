@@ -28,9 +28,9 @@ export function CopyButton({
   className?: string;
 }) {
   const [copied, setCopied] = useState(false);
-  const timer = useRef<number | undefined>(undefined);
+  const timer = useRef<ReturnType<typeof setTimeout>>(undefined);
 
-  useEffect(() => () => window.clearTimeout(timer.current), []);
+  useEffect(() => () => clearTimeout(timer.current), []);
 
   async function copy() {
     try {
@@ -40,8 +40,8 @@ export function CopyButton({
     }
     setCopied(true);
     onCopy?.(value);
-    window.clearTimeout(timer.current);
-    timer.current = window.setTimeout(() => setCopied(false), resetAfter);
+    clearTimeout(timer.current);
+    timer.current = setTimeout(() => setCopied(false), resetAfter);
   }
 
   return (
