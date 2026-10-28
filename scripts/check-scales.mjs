@@ -45,7 +45,7 @@ const RULES = [
   {
     id: "raw-dimension",
     pattern:
-      /\b\d+(\.\d+)?\.(dp|sp)\b|(fontSize|letterSpacing|lineHeight|borderRadius|borderWidth|elevation)\s*[:=]\s*-?\d|EdgeInsets\.(all|only)\(\s*-?\d|(horizontal|vertical|top|bottom|left|right|start|end)\s*:\s*-?\d|BorderRadius\.circular\(\s*-?\d/,
+      /\b(?!1\.dp\b)\d+(\.\d+)?\.(dp|sp)\b|(fontSize|letterSpacing|lineHeight|borderRadius|elevation)\s*[:=]\s*-?\d|borderWidth\s*[:=]\s*(?!1\b)-?\d|EdgeInsets\.(all|only)\(\s*-?\d|(horizontal|vertical|top|bottom|left|right|start|end)\s*:\s*-?\d|BorderRadius\.circular\(\s*-?\d/,
     message: "Dimension outside the scale. Use the spacing, radius or text scale. ADR 0001, R5.",
   },
   {

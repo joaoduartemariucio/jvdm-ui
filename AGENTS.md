@@ -167,13 +167,17 @@ by hand, and a test compares every one byte for byte.
 
 ## Porting a component
 
-One component is ported so far — `Badge` ([ADR 0011](docs/adr/0011-platform-scaffolds.md)). Use it
+Porting goes in waves, in dependency order, one wave across all four platforms at once
+([ADR 0011, D6](docs/adr/0011-platform-scaffolds.md)). 42 of 106 are done: `Badge`, the 33 icons and
+the wave-one atoms (`Skeleton`, `FormAlert`, `Kbd`, `Card`, `Divider`, `Label`, `Avatar`). Use them
 as the shape for the next one:
 
 1. Read its `contracts/<layer>/<name>.json`. The props there, minus the affordances, are what the
    port must offer.
 2. Put the tone/variant table and the style resolution in a **pure** function or enum — no view
-   code. That is what the tests and `check-scales` reach.
+   code. That is what the tests and `check-scales` reach. Any logic that must agree across platforms
+   (a derived string, a clamped value) goes there too, with the same cases asserted in all four
+   suites.
 3. Prefix the type only if the platform's framework already owns the name (D3), and record the
    `spelling` in `packages/<platform>/contract.json`.
 4. Delete its line from `contracts/waivers.json`. `npm run parity` fails until the declaration and
