@@ -1,0 +1,39 @@
+{
+  "name": "Switch",
+  "contract": "switch",
+  "layer": "atoms",
+  "source": "atoms/switch/index.tsx",
+  "props": [
+    {
+      "name": "checked",
+      "optional": false,
+      "type": "boolean"
+    },
+    {
+      "name": "onCheckedChange",
+      "optional": false,
+      "type": "(checked: boolean) => void"
+    },
+    {
+      "name": "label",
+      "optional": true,
+      "type": "ReactNode",
+      "slot": true
+    },
+    {
+      "name": "disabled",
+      "optional": true,
+      "type": "boolean",
+      "default": "false",
+      "defaultKind": "literal"
+    },
+    {
+      "name": "className",
+      "optional": true,
+      "type": "string",
+      "default": "",
+      "defaultKind": "literal"
+    }
+  ],
+  "locales": []
+}

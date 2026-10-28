@@ -1,0 +1,21 @@
+{
+  "name": "Timeline",
+  "contract": "timeline",
+  "layer": "organisms",
+  "source": "organisms/timeline/index.tsx",
+  "props": [
+    {
+      "name": "items",
+      "optional": false,
+      "type": "readonly TimelineItem[]"
+    },
+    {
+      "name": "className",
+      "optional": true,
+      "type": "string",
+      "default": "",
+      "defaultKind": "literal"
+    }
+  ],
+  "locales": []
+}

@@ -1,0 +1,20 @@
+{
+  "name": "Empty",
+  "contract": "empty",
+  "layer": "molecules",
+  "source": "molecules/empty/index.tsx",
+  "props": [
+    {
+      "name": "title",
+      "optional": false,
+      "type": "string"
+    },
+    {
+      "name": "description",
+      "optional": true,
+      "type": "ReactNode",
+      "slot": true
+    }
+  ],
+  "locales": []
+}

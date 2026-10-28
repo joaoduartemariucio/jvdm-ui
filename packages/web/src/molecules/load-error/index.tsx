@@ -1,10 +1,10 @@
 import { buttonClass } from "../../atoms";
-import { LOAD_ERROR as T } from "./locales";
+import { locales } from "./locales";
 
 export function LoadError({
   message,
   onRetry,
-  retryLabel = T.retry,
+  retryLabel = locales.retry,
 }: {
   message: string;
   onRetry?: () => void;

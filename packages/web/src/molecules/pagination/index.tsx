@@ -1,13 +1,13 @@
-import { PAGINATION as T } from "./locales";
+import { locales } from "./locales";
 
 export function Pagination({
   page,
   pages,
   onPageChange,
-  previousLabel = T.previous["en-US"],
-  nextLabel = T.next["en-US"],
-  pageLabel = T.page["en-US"],
-  label = T.label["en-US"],
+  previousLabel = locales.previous,
+  nextLabel = locales.next,
+  pageLabel = locales.page,
+  label = locales.label,
   className = "",
 }: {
   page: number;

@@ -1,0 +1,26 @@
+{
+  "name": "Stepper",
+  "contract": "stepper",
+  "layer": "molecules",
+  "source": "molecules/stepper/index.tsx",
+  "props": [
+    {
+      "name": "steps",
+      "optional": false,
+      "type": "readonly Step[]"
+    },
+    {
+      "name": "current",
+      "optional": false,
+      "type": "number"
+    },
+    {
+      "name": "className",
+      "optional": true,
+      "type": "string",
+      "default": "",
+      "defaultKind": "literal"
+    }
+  ],
+  "locales": []
+}

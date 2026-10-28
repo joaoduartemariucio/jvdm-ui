@@ -1,0 +1,36 @@
+{
+  "name": "FilterBar",
+  "contract": "filter-bar",
+  "layer": "molecules",
+  "source": "molecules/filter-bar/index.tsx",
+  "props": [
+    {
+      "name": "children",
+      "optional": false,
+      "type": "ReactNode",
+      "slot": true
+    },
+    {
+      "name": "resultLabel",
+      "optional": true,
+      "type": "string"
+    },
+    {
+      "name": "onClear",
+      "optional": true,
+      "type": "() => void"
+    },
+    {
+      "name": "className",
+      "optional": true,
+      "type": "string",
+      "default": "",
+      "defaultKind": "literal"
+    }
+  ],
+  "locales": [
+    {
+      "key": "clear"
+    }
+  ]
+}

@@ -1,3 +1,3 @@
-export const TAG = {
+export const locales = {
   remove: "Remove",
 };

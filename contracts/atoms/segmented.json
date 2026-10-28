@@ -1,0 +1,46 @@
+{
+  "name": "Segmented",
+  "contract": "segmented",
+  "layer": "atoms",
+  "source": "atoms/segmented/index.tsx",
+  "props": [
+    {
+      "name": "name",
+      "optional": false,
+      "type": "string"
+    },
+    {
+      "name": "options",
+      "optional": false,
+      "type": "readonly SegmentedOption<T>[]"
+    },
+    {
+      "name": "value",
+      "optional": true,
+      "type": "T"
+    },
+    {
+      "name": "defaultValue",
+      "optional": true,
+      "type": "T"
+    },
+    {
+      "name": "onValueChange",
+      "optional": true,
+      "type": "(value: T) => void"
+    },
+    {
+      "name": "label",
+      "optional": true,
+      "type": "string"
+    },
+    {
+      "name": "className",
+      "optional": true,
+      "type": "string",
+      "default": "",
+      "defaultKind": "literal"
+    }
+  ],
+  "locales": []
+}

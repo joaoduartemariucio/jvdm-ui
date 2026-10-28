@@ -1,0 +1,33 @@
+{
+  "name": "Avatar",
+  "contract": "avatar",
+  "layer": "atoms",
+  "source": "atoms/avatar/index.tsx",
+  "props": [
+    {
+      "name": "name",
+      "optional": false,
+      "type": "string"
+    },
+    {
+      "name": "size",
+      "optional": true,
+      "type": "AvatarSize",
+      "values": [
+        "sm",
+        "md",
+        "lg"
+      ],
+      "default": "md",
+      "defaultKind": "literal"
+    },
+    {
+      "name": "label",
+      "optional": true,
+      "type": "string",
+      "default": "name",
+      "defaultKind": "expression"
+    }
+  ],
+  "locales": []
+}

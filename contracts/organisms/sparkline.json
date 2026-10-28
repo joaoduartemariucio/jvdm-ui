@@ -1,0 +1,19 @@
+{
+  "name": "Sparkline",
+  "contract": "sparkline",
+  "layer": "organisms",
+  "source": "organisms/chart/sparkline/index.tsx",
+  "props": [
+    {
+      "name": "data",
+      "optional": false,
+      "type": "Bar[]"
+    },
+    {
+      "name": "describe",
+      "optional": false,
+      "type": "(bar: Bar) => string"
+    }
+  ],
+  "locales": []
+}

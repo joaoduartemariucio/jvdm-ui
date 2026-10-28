@@ -1,0 +1,42 @@
+{
+  "name": "LineChart",
+  "contract": "line-chart",
+  "layer": "organisms",
+  "source": "organisms/chart/line-chart/index.tsx",
+  "props": [
+    {
+      "name": "data",
+      "optional": false,
+      "type": "Bar[]"
+    },
+    {
+      "name": "top",
+      "optional": false,
+      "type": "number"
+    },
+    {
+      "name": "ticks",
+      "optional": false,
+      "type": "number[]"
+    },
+    {
+      "name": "describe",
+      "optional": false,
+      "type": "(point: Bar) => string"
+    },
+    {
+      "name": "tooltip",
+      "optional": false,
+      "type": "(point: Bar) => ReactNode",
+      "slot": true
+    },
+    {
+      "name": "area",
+      "optional": true,
+      "type": "boolean",
+      "default": "true",
+      "defaultKind": "literal"
+    }
+  ],
+  "locales": []
+}

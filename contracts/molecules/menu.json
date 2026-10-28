@@ -1,0 +1,56 @@
+{
+  "name": "Menu",
+  "contract": "menu",
+  "layer": "molecules",
+  "source": "molecules/menu/menu/index.tsx",
+  "props": [
+    {
+      "name": "label",
+      "optional": false,
+      "type": "string"
+    },
+    {
+      "name": "trigger",
+      "optional": false,
+      "type": "ReactNode",
+      "slot": true
+    },
+    {
+      "name": "align",
+      "optional": true,
+      "type": "MenuAlign",
+      "values": [
+        "start",
+        "end"
+      ],
+      "default": "end",
+      "defaultKind": "literal"
+    },
+    {
+      "name": "width",
+      "optional": true,
+      "type": "MenuWidth",
+      "values": [
+        "sm",
+        "md",
+        "lg"
+      ],
+      "default": "md",
+      "defaultKind": "literal"
+    },
+    {
+      "name": "className",
+      "optional": true,
+      "type": "string",
+      "default": "",
+      "defaultKind": "literal"
+    },
+    {
+      "name": "children",
+      "optional": false,
+      "type": "ReactNode",
+      "slot": true
+    }
+  ],
+  "locales": []
+}

@@ -28,16 +28,18 @@ repositories.
 
 ## Commands
 
-| Command                           | What it does                                     |
-| --------------------------------- | ------------------------------------------------ |
-| `npm run build`                   | builds the published packages                    |
-| `npm run tokens`                  | regenerates the stylesheet from the token source |
-| `npm run typecheck`               | types only                                       |
-| `npm run lint` / `lint:fix`       | ESLint, including the design-system rules        |
-| `npm run format` / `format:check` | Prettier                                         |
-| `npm run test` / `test:coverage`  | the test suites                                  |
-| `npm run site:dev`                | the docs site at localhost:5173                  |
-| `npm run site:build`              | the docs site into `site-dist/`                  |
+| Command                           | What it does                              |
+| --------------------------------- | ----------------------------------------- |
+| `npm run build`                   | builds the published packages             |
+| `npm run tokens`                  | regenerates every platform's token file   |
+| `npm run contracts`               | re-extracts the component contracts       |
+| `npm run parity`                  | fails when a platform falls behind        |
+| `npm run typecheck`               | types only                                |
+| `npm run lint` / `lint:fix`       | ESLint, including the design-system rules |
+| `npm run format` / `format:check` | Prettier                                  |
+| `npm run test` / `test:coverage`  | the test suites                           |
+| `npm run site:dev`                | the docs site at localhost:5173           |
+| `npm run site:build`              | the docs site into `site-dist/`           |
 
 A command scoped to one package takes the workspace flag: `npm run build -w jvdm-ui`.
 

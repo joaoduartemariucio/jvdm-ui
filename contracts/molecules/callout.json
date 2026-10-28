@@ -1,0 +1,40 @@
+{
+  "name": "Callout",
+  "contract": "callout",
+  "layer": "molecules",
+  "source": "molecules/callout/index.tsx",
+  "props": [
+    {
+      "name": "tone",
+      "optional": true,
+      "type": "CalloutTone",
+      "values": [
+        "ok",
+        "warn",
+        "danger",
+        "info"
+      ],
+      "default": "info",
+      "defaultKind": "literal"
+    },
+    {
+      "name": "title",
+      "optional": false,
+      "type": "string"
+    },
+    {
+      "name": "children",
+      "optional": false,
+      "type": "ReactNode",
+      "slot": true
+    },
+    {
+      "name": "className",
+      "optional": true,
+      "type": "string",
+      "default": "",
+      "defaultKind": "literal"
+    }
+  ],
+  "locales": []
+}

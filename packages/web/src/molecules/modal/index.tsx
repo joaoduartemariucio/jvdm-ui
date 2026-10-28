@@ -2,7 +2,7 @@
 
 import { useEffect, useId, useRef, type ReactNode } from "react";
 import { CloseIcon, IconButton } from "../../atoms";
-import { MODAL } from "./locales";
+import { locales } from "./locales";
 
 const SIZE_CLASSES = {
   sm: "sm:max-w-md",
@@ -17,7 +17,7 @@ export function Modal({
   title,
   children,
   size = "md",
-  closeLabel = MODAL.close["en-US"],
+  closeLabel = locales.close,
 }: {
   isOpen: boolean;
   onClose: () => void;
@@ -48,7 +48,7 @@ export function Modal({
       ref={dialogRef}
       className={`fixed inset-x-0 top-auto bottom-0 z-50 m-0 mt-auto w-full max-w-none rounded-t-xl border border-b-0 border-line bg-surface p-0 text-ink shadow-modal backdrop:bg-app/70 backdrop:backdrop-blur-sm sm:inset-0 sm:m-auto sm:rounded-xl sm:border-b ${SIZE_CLASSES[size]}`}
       aria-modal="true"
-      aria-label={title ? undefined : MODAL.label["en-US"]}
+      aria-label={title ? undefined : locales.label}
       aria-labelledby={title ? titleId : undefined}
     >
       <div className="flex max-h-[92dvh] flex-col sm:max-h-[88dvh]">

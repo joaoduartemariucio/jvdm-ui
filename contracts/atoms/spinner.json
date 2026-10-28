@@ -1,0 +1,41 @@
+{
+  "name": "Spinner",
+  "contract": "spinner",
+  "layer": "atoms",
+  "source": "atoms/spinner/index.tsx",
+  "props": [
+    {
+      "name": "size",
+      "optional": true,
+      "type": "SpinnerSize",
+      "values": [
+        "sm",
+        "md",
+        "lg",
+        "xl",
+        "2xl"
+      ],
+      "default": "md",
+      "defaultKind": "literal"
+    },
+    {
+      "name": "label",
+      "optional": true,
+      "type": "string",
+      "default": "locales.label",
+      "defaultKind": "expression"
+    },
+    {
+      "name": "className",
+      "optional": true,
+      "type": "string",
+      "default": "",
+      "defaultKind": "literal"
+    }
+  ],
+  "locales": [
+    {
+      "key": "label"
+    }
+  ]
+}

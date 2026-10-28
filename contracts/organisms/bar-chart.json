@@ -1,0 +1,47 @@
+{
+  "name": "BarChart",
+  "contract": "bar-chart",
+  "layer": "organisms",
+  "source": "organisms/chart/bar-chart/index.tsx",
+  "props": [
+    {
+      "name": "data",
+      "optional": false,
+      "type": "Bar[]"
+    },
+    {
+      "name": "top",
+      "optional": false,
+      "type": "number"
+    },
+    {
+      "name": "ticks",
+      "optional": false,
+      "type": "number[]"
+    },
+    {
+      "name": "describe",
+      "optional": false,
+      "type": "(bar: Bar) => string"
+    },
+    {
+      "name": "tooltip",
+      "optional": false,
+      "type": "(bar: Bar) => ReactNode",
+      "slot": true
+    },
+    {
+      "name": "peakKey",
+      "optional": true,
+      "type": "string"
+    },
+    {
+      "name": "zeroStub",
+      "optional": true,
+      "type": "boolean",
+      "default": "false",
+      "defaultKind": "literal"
+    }
+  ],
+  "locales": []
+}

@@ -1,0 +1,55 @@
+{
+  "name": "MetricCard",
+  "contract": "metric-card",
+  "layer": "molecules",
+  "source": "molecules/metric-card/index.tsx",
+  "props": [
+    {
+      "name": "label",
+      "optional": false,
+      "type": "string"
+    },
+    {
+      "name": "value",
+      "optional": false,
+      "type": "ReactNode",
+      "slot": true
+    },
+    {
+      "name": "change",
+      "optional": true,
+      "type": "string"
+    },
+    {
+      "name": "trend",
+      "optional": true,
+      "type": "\"neutral\" | \"up\" | \"down\"",
+      "values": [
+        "neutral",
+        "up",
+        "down"
+      ],
+      "default": "neutral",
+      "defaultKind": "literal"
+    },
+    {
+      "name": "hint",
+      "optional": true,
+      "type": "string"
+    },
+    {
+      "name": "children",
+      "optional": true,
+      "type": "ReactNode",
+      "slot": true
+    },
+    {
+      "name": "className",
+      "optional": true,
+      "type": "string",
+      "default": "",
+      "defaultKind": "literal"
+    }
+  ],
+  "locales": []
+}

@@ -1,0 +1,42 @@
+{
+  "name": "Textarea",
+  "contract": "textarea",
+  "layer": "atoms",
+  "source": "atoms/input/textarea/index.tsx",
+  "host": {
+    "element": "textarea",
+    "omits": [
+      "size"
+    ]
+  },
+  "props": [
+    {
+      "name": "size",
+      "optional": true,
+      "type": "ControlSize",
+      "values": [
+        "sm",
+        "md"
+      ],
+      "default": "md",
+      "defaultKind": "literal"
+    },
+    {
+      "name": "rows",
+      "optional": true,
+      "type": "unknown",
+      "inherited": true,
+      "default": "4",
+      "defaultKind": "literal"
+    },
+    {
+      "name": "className",
+      "optional": true,
+      "type": "unknown",
+      "inherited": true,
+      "default": "",
+      "defaultKind": "literal"
+    }
+  ],
+  "locales": []
+}

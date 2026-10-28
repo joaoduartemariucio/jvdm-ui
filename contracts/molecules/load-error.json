@@ -1,0 +1,30 @@
+{
+  "name": "LoadError",
+  "contract": "load-error",
+  "layer": "molecules",
+  "source": "molecules/load-error/index.tsx",
+  "props": [
+    {
+      "name": "message",
+      "optional": false,
+      "type": "string"
+    },
+    {
+      "name": "onRetry",
+      "optional": true,
+      "type": "() => void"
+    },
+    {
+      "name": "retryLabel",
+      "optional": true,
+      "type": "string",
+      "default": "locales.retry",
+      "defaultKind": "expression"
+    }
+  ],
+  "locales": [
+    {
+      "key": "retry"
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "name": "Label",
+  "contract": "label",
+  "layer": "atoms",
+  "source": "atoms/label/index.tsx",
+  "props": [
+    {
+      "name": "children",
+      "optional": false,
+      "type": "ReactNode",
+      "slot": true
+    },
+    {
+      "name": "tone",
+      "optional": true,
+      "type": "keyof typeof TONES",
+      "values": [
+        "accent",
+        "muted",
+        "dim"
+      ],
+      "default": "muted",
+      "defaultKind": "literal"
+    },
+    {
+      "name": "className",
+      "optional": true,
+      "type": "string",
+      "default": "",
+      "defaultKind": "literal"
+    }
+  ],
+  "locales": []
+}

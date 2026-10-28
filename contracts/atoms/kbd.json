@@ -1,0 +1,22 @@
+{
+  "name": "Kbd",
+  "contract": "kbd",
+  "layer": "atoms",
+  "source": "atoms/kbd/index.tsx",
+  "props": [
+    {
+      "name": "children",
+      "optional": false,
+      "type": "ReactNode",
+      "slot": true
+    },
+    {
+      "name": "className",
+      "optional": true,
+      "type": "string",
+      "default": "",
+      "defaultKind": "literal"
+    }
+  ],
+  "locales": []
+}

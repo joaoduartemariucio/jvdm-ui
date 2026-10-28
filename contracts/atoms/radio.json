@@ -1,0 +1,26 @@
+{
+  "name": "Radio",
+  "contract": "radio",
+  "layer": "atoms",
+  "source": "atoms/radio/index.tsx",
+  "host": {
+    "element": "input",
+    "omits": []
+  },
+  "props": [
+    {
+      "name": "label",
+      "optional": true,
+      "type": "ReactNode",
+      "slot": true
+    },
+    {
+      "name": "className",
+      "optional": true,
+      "type": "string",
+      "default": "",
+      "defaultKind": "literal"
+    }
+  ],
+  "locales": []
+}

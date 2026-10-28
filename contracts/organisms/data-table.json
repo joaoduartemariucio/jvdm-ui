@@ -1,0 +1,86 @@
+{
+  "name": "DataTable",
+  "contract": "data-table",
+  "layer": "organisms",
+  "source": "organisms/data-table/index.tsx",
+  "props": [
+    {
+      "name": "columns",
+      "optional": false,
+      "type": "Column<T>[]"
+    },
+    {
+      "name": "items",
+      "optional": true,
+      "type": "T[]"
+    },
+    {
+      "name": "rowKey",
+      "optional": false,
+      "type": "(item: T) => string"
+    },
+    {
+      "name": "headerClassName",
+      "optional": true,
+      "type": "string",
+      "default": "px-4 border-b border-line",
+      "defaultKind": "literal"
+    },
+    {
+      "name": "bodyClassName",
+      "optional": true,
+      "type": "string",
+      "default": "",
+      "defaultKind": "literal"
+    },
+    {
+      "name": "loading",
+      "optional": true,
+      "type": "ReactNode",
+      "slot": true
+    },
+    {
+      "name": "empty",
+      "optional": true,
+      "type": "ReactNode",
+      "slot": true
+    },
+    {
+      "name": "className",
+      "optional": true,
+      "type": "string",
+      "default": "",
+      "defaultKind": "literal"
+    },
+    {
+      "name": "filter",
+      "optional": true,
+      "type": "string",
+      "default": "",
+      "defaultKind": "literal"
+    },
+    {
+      "name": "onFilterChange",
+      "optional": true,
+      "type": "(value: string) => void"
+    },
+    {
+      "name": "sort",
+      "optional": true,
+      "type": "{ key: string; direction: \"asc\" | \"desc\" }"
+    },
+    {
+      "name": "onSortChange",
+      "optional": true,
+      "type": "(key: string) => void"
+    }
+  ],
+  "locales": [
+    {
+      "key": "filterLabel"
+    },
+    {
+      "key": "filterPlaceholder"
+    }
+  ]
+}

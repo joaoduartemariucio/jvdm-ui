@@ -1,3 +1,3 @@
-export const LOAD_ERROR = {
+export const locales = {
   retry: "Try again",
 };

@@ -1,0 +1,64 @@
+{
+  "name": "Gallery",
+  "contract": "gallery",
+  "layer": "molecules",
+  "source": "molecules/gallery/index.tsx",
+  "props": [
+    {
+      "name": "photos",
+      "optional": false,
+      "type": "string[]"
+    },
+    {
+      "name": "alt",
+      "optional": false,
+      "type": "string"
+    },
+    {
+      "name": "fallback",
+      "optional": true,
+      "type": "ReactNode",
+      "slot": true
+    },
+    {
+      "name": "photoLabel",
+      "optional": true,
+      "type": "(index: number, total: number) => string",
+      "default": "locales.photoLabel",
+      "defaultKind": "expression"
+    },
+    {
+      "name": "previousLabel",
+      "optional": true,
+      "type": "string",
+      "default": "locales.previous",
+      "defaultKind": "expression"
+    },
+    {
+      "name": "nextLabel",
+      "optional": true,
+      "type": "string",
+      "default": "locales.next",
+      "defaultKind": "expression"
+    },
+    {
+      "name": "className",
+      "optional": true,
+      "type": "string",
+      "default": "",
+      "defaultKind": "literal"
+    }
+  ],
+  "locales": [
+    {
+      "key": "photoLabel",
+      "parameterised": true
+    },
+    {
+      "key": "previous"
+    },
+    {
+      "key": "next"
+    }
+  ]
+}

@@ -9,6 +9,18 @@ const OKLAB_TO_LMS = [
   [1, -0.0894841775298119, -1.2914855480194092],
 ] as const;
 
+const LINEAR_TO_XYZ = [
+  [0.4123907992659595, 0.35758433938387796, 0.1804807884018343],
+  [0.21263900587151036, 0.7151686787677559, 0.07219231536073371],
+  [0.01933081871559185, 0.11919477979462599, 0.9505321522496606],
+] as const;
+
+const XYZ_TO_LINEAR_P3 = [
+  [2.493496911941425, -0.9313836179191239, -0.40271078445071684],
+  [-0.8294889695615747, 1.7626640603183463, 0.023624685841943577],
+  [0.03584583024378447, -0.07617238926804182, 0.9568845240076872],
+] as const;
+
 const LMS_TO_LINEAR = [
   [4.0767416360759583, -3.3077115392580629, 0.2309699031821044],
   [-1.2684379732850315, 2.6097573492876882, -0.3413193760026573],
@@ -35,6 +47,19 @@ export function toLinearSrgb(value: Oklch): [number, number, number] {
   ];
 }
 
+function apply(
+  matrix: readonly (readonly number[])[],
+  input: readonly number[],
+): [number, number, number] {
+  return matrix.map((row) =>
+    row.reduce((sum, weight, index) => sum + weight * input[index], 0),
+  ) as [number, number, number];
+}
+
+export function toLinearDisplayP3(value: Oklch): [number, number, number] {
+  return apply(XYZ_TO_LINEAR_P3, apply(LINEAR_TO_XYZ, toLinearSrgb(value)));
+}
+
 export function isInSrgbGamut(value: Oklch, tolerance = 0.0005): boolean {
   return toLinearSrgb(value).every((channel) => channel >= -tolerance && channel <= 1 + tolerance);
 }
@@ -45,14 +70,28 @@ function encode(channel: number): number {
   return 1.055 * clamped ** (1 / 2.4) - 0.055;
 }
 
-export function toSrgb(value: Oklch): Srgb {
-  const [r, g, b] = toLinearSrgb(value);
+function channels(linear: [number, number, number], alpha: number): Srgb {
+  const [r, g, b] = linear;
   return {
     r: Math.round(encode(r) * 255),
     g: Math.round(encode(g) * 255),
     b: Math.round(encode(b) * 255),
-    alpha: value.alpha ?? 1,
+    alpha,
   };
+}
+
+export function toSrgb(value: Oklch): Srgb {
+  return channels(toLinearSrgb(value), value.alpha ?? 1);
+}
+
+export function toDisplayP3(value: Oklch): Srgb {
+  return channels(toLinearDisplayP3(value), value.alpha ?? 1);
+}
+
+export function isInDisplayP3Gamut(value: Oklch, tolerance = 0.0005): boolean {
+  return toLinearDisplayP3(value).every(
+    (channel) => channel >= -tolerance && channel <= 1 + tolerance,
+  );
 }
 
 export function toHex(value: Oklch): string {

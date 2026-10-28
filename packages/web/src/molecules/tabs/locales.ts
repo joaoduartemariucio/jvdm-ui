@@ -1,3 +1,3 @@
-export const TABS = {
-  label: { "en-US": "Tabs", "pt-BR": "Abas" },
+export const locales = {
+  label: "Tabs",
 };

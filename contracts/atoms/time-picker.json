@@ -1,0 +1,53 @@
+{
+  "name": "TimePicker",
+  "contract": "time-picker",
+  "layer": "atoms",
+  "source": "atoms/time-picker/index.tsx",
+  "host": {
+    "element": "input",
+    "omits": [
+      "type",
+      "value",
+      "defaultValue",
+      "onChange"
+    ]
+  },
+  "props": [
+    {
+      "name": "value",
+      "optional": true,
+      "type": "string"
+    },
+    {
+      "name": "defaultValue",
+      "optional": true,
+      "type": "string",
+      "default": "",
+      "defaultKind": "literal"
+    },
+    {
+      "name": "onValueChange",
+      "optional": true,
+      "type": "(value: string) => void"
+    },
+    {
+      "name": "className",
+      "optional": true,
+      "type": "unknown",
+      "inherited": true,
+      "default": "",
+      "defaultKind": "literal"
+    }
+  ],
+  "locales": [
+    {
+      "key": "choose"
+    },
+    {
+      "key": "hours"
+    },
+    {
+      "key": "minutes"
+    }
+  ]
+}

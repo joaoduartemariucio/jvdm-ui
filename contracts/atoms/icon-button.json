@@ -1,0 +1,45 @@
+{
+  "name": "IconButton",
+  "contract": "icon-button",
+  "layer": "atoms",
+  "source": "atoms/icon-button/index.tsx",
+  "host": {
+    "element": "button",
+    "omits": [
+      "aria-label",
+      "size"
+    ]
+  },
+  "props": [
+    {
+      "name": "label",
+      "optional": false,
+      "type": "string"
+    },
+    {
+      "name": "variant",
+      "optional": true,
+      "type": "ButtonVariant",
+      "values": [
+        "danger",
+        "primary",
+        "secondary",
+        "ghost"
+      ],
+      "default": "ghost",
+      "defaultKind": "literal"
+    },
+    {
+      "name": "size",
+      "optional": true,
+      "type": "IconButtonSize",
+      "values": [
+        "icon",
+        "icon-sm"
+      ],
+      "default": "icon",
+      "defaultKind": "literal"
+    }
+  ],
+  "locales": []
+}

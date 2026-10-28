@@ -1,0 +1,57 @@
+{
+  "name": "ProgressBar",
+  "contract": "progress-bar",
+  "layer": "atoms",
+  "source": "atoms/progress-bar/index.tsx",
+  "props": [
+    {
+      "name": "value",
+      "optional": false,
+      "type": "number"
+    },
+    {
+      "name": "tone",
+      "optional": true,
+      "type": "ProgressTone",
+      "values": [
+        "accent",
+        "ok",
+        "warn",
+        "danger"
+      ],
+      "default": "accent",
+      "defaultKind": "literal"
+    },
+    {
+      "name": "size",
+      "optional": true,
+      "type": "keyof typeof HEIGHTS",
+      "values": [
+        "md",
+        "xs"
+      ],
+      "default": "md",
+      "defaultKind": "literal"
+    },
+    {
+      "name": "dim",
+      "optional": true,
+      "type": "boolean",
+      "default": "false",
+      "defaultKind": "literal"
+    },
+    {
+      "name": "label",
+      "optional": true,
+      "type": "string"
+    },
+    {
+      "name": "className",
+      "optional": true,
+      "type": "string",
+      "default": "",
+      "defaultKind": "literal"
+    }
+  ],
+  "locales": []
+}

@@ -1,0 +1,41 @@
+{
+  "name": "Button",
+  "contract": "button",
+  "layer": "atoms",
+  "source": "atoms/button/button/index.tsx",
+  "host": {
+    "element": "button",
+    "omits": []
+  },
+  "props": [
+    {
+      "name": "variant",
+      "optional": true,
+      "type": "ButtonVariant",
+      "values": [
+        "danger",
+        "primary",
+        "secondary",
+        "ghost"
+      ]
+    },
+    {
+      "name": "size",
+      "optional": true,
+      "type": "ButtonSize",
+      "values": [
+        "sm",
+        "md",
+        "lg",
+        "icon",
+        "icon-sm"
+      ]
+    },
+    {
+      "name": "className",
+      "optional": true,
+      "type": "string"
+    }
+  ],
+  "locales": []
+}

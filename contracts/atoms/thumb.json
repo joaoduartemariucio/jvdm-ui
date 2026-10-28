@@ -1,0 +1,32 @@
+{
+  "name": "Thumb",
+  "contract": "thumb",
+  "layer": "atoms",
+  "source": "atoms/thumb/index.tsx",
+  "props": [
+    {
+      "name": "src",
+      "optional": true,
+      "type": "string | null"
+    },
+    {
+      "name": "alt",
+      "optional": false,
+      "type": "string"
+    },
+    {
+      "name": "fallback",
+      "optional": true,
+      "type": "ReactNode",
+      "slot": true
+    },
+    {
+      "name": "className",
+      "optional": true,
+      "type": "string",
+      "default": "",
+      "defaultKind": "literal"
+    }
+  ],
+  "locales": []
+}

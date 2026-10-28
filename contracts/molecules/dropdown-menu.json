@@ -1,0 +1,39 @@
+{
+  "name": "DropdownMenu",
+  "contract": "dropdown-menu",
+  "layer": "molecules",
+  "source": "molecules/dropdown-menu/index.tsx",
+  "props": [
+    {
+      "name": "trigger",
+      "optional": false,
+      "type": "ReactNode",
+      "slot": true
+    },
+    {
+      "name": "children",
+      "optional": false,
+      "type": "ReactNode",
+      "slot": true
+    },
+    {
+      "name": "align",
+      "optional": true,
+      "type": "\"start\" | \"end\"",
+      "values": [
+        "start",
+        "end"
+      ],
+      "default": "start",
+      "defaultKind": "literal"
+    },
+    {
+      "name": "className",
+      "optional": true,
+      "type": "string",
+      "default": "",
+      "defaultKind": "literal"
+    }
+  ],
+  "locales": []
+}

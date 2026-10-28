@@ -1,0 +1,24 @@
+{
+  "name": "AreaChart",
+  "contract": "area-chart",
+  "layer": "organisms",
+  "source": "organisms/chart/area-chart/index.tsx",
+  "props": [
+    {
+      "name": "data",
+      "optional": false,
+      "type": "readonly AreaPoint[]"
+    },
+    {
+      "name": "top",
+      "optional": false,
+      "type": "number"
+    },
+    {
+      "name": "label",
+      "optional": false,
+      "type": "string"
+    }
+  ],
+  "locales": []
+}

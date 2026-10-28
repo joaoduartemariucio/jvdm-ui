@@ -1,0 +1,35 @@
+{
+  "name": "Card",
+  "contract": "card",
+  "layer": "atoms",
+  "source": "atoms/card/index.tsx",
+  "props": [
+    {
+      "name": "children",
+      "optional": false,
+      "type": "ReactNode",
+      "slot": true
+    },
+    {
+      "name": "padding",
+      "optional": true,
+      "type": "CardPadding",
+      "values": [
+        "sm",
+        "md",
+        "lg",
+        "none"
+      ],
+      "default": "md",
+      "defaultKind": "literal"
+    },
+    {
+      "name": "className",
+      "optional": true,
+      "type": "string",
+      "default": "",
+      "defaultKind": "literal"
+    }
+  ],
+  "locales": []
+}

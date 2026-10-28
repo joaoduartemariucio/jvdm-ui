@@ -1,0 +1,42 @@
+{
+  "name": "Tabs",
+  "contract": "tabs",
+  "layer": "molecules",
+  "source": "molecules/tabs/index.tsx",
+  "props": [
+    {
+      "name": "items",
+      "optional": false,
+      "type": "Tab[]"
+    },
+    {
+      "name": "value",
+      "optional": false,
+      "type": "string"
+    },
+    {
+      "name": "onValueChange",
+      "optional": false,
+      "type": "(value: string) => void"
+    },
+    {
+      "name": "label",
+      "optional": true,
+      "type": "string",
+      "default": "locales.label",
+      "defaultKind": "expression"
+    },
+    {
+      "name": "className",
+      "optional": true,
+      "type": "string",
+      "default": "",
+      "defaultKind": "literal"
+    }
+  ],
+  "locales": [
+    {
+      "key": "label"
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "name": "Link",
+  "contract": "link",
+  "layer": "atoms",
+  "source": "atoms/link/index.tsx",
+  "host": {
+    "element": "a",
+    "omits": []
+  },
+  "props": [
+    {
+      "name": "tone",
+      "optional": true,
+      "type": "LinkTone",
+      "values": [
+        "accent",
+        "muted",
+        "ink"
+      ],
+      "default": "accent",
+      "defaultKind": "literal"
+    },
+    {
+      "name": "className",
+      "optional": true,
+      "type": "unknown",
+      "inherited": true,
+      "default": "",
+      "defaultKind": "literal"
+    }
+  ],
+  "locales": []
+}

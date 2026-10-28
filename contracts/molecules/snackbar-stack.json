@@ -1,0 +1,30 @@
+{
+  "name": "SnackbarStack",
+  "contract": "snackbar-stack",
+  "layer": "molecules",
+  "source": "molecules/snackbar-stack/index.tsx",
+  "props": [
+    {
+      "name": "items",
+      "optional": false,
+      "type": "readonly Snackbar[]"
+    },
+    {
+      "name": "onDismiss",
+      "optional": true,
+      "type": "(id: string) => void"
+    },
+    {
+      "name": "className",
+      "optional": true,
+      "type": "string",
+      "default": "",
+      "defaultKind": "literal"
+    }
+  ],
+  "locales": [
+    {
+      "key": "dismiss"
+    }
+  ]
+}

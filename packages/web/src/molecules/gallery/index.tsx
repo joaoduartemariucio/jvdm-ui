@@ -3,15 +3,15 @@
 import { useState, type ReactNode } from "react";
 
 import { BackIcon, Thumb } from "../../atoms";
-import { GALLERY as T } from "./locales";
+import { locales } from "./locales";
 
 export function Gallery({
   photos,
   alt,
   fallback,
-  photoLabel = T.photoLabel,
-  previousLabel = T.previous,
-  nextLabel = T.next,
+  photoLabel = locales.photoLabel,
+  previousLabel = locales.previous,
+  nextLabel = locales.next,
   className = "",
 }: {
   photos: string[];

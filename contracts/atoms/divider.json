@@ -1,0 +1,29 @@
+{
+  "name": "Divider",
+  "contract": "divider",
+  "layer": "atoms",
+  "source": "atoms/divider/index.tsx",
+  "props": [
+    {
+      "name": "children",
+      "optional": true,
+      "type": "ReactNode",
+      "slot": true
+    },
+    {
+      "name": "vertical",
+      "optional": true,
+      "type": "boolean",
+      "default": "false",
+      "defaultKind": "literal"
+    },
+    {
+      "name": "className",
+      "optional": true,
+      "type": "string",
+      "default": "",
+      "defaultKind": "literal"
+    }
+  ],
+  "locales": []
+}

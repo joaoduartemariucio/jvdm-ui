@@ -1,0 +1,42 @@
+{
+  "name": "Drawer",
+  "contract": "drawer",
+  "layer": "molecules",
+  "source": "molecules/drawer/index.tsx",
+  "props": [
+    {
+      "name": "isOpen",
+      "optional": false,
+      "type": "boolean"
+    },
+    {
+      "name": "onClose",
+      "optional": false,
+      "type": "() => void"
+    },
+    {
+      "name": "title",
+      "optional": false,
+      "type": "ReactNode",
+      "slot": true
+    },
+    {
+      "name": "children",
+      "optional": false,
+      "type": "ReactNode",
+      "slot": true
+    },
+    {
+      "name": "closeLabel",
+      "optional": true,
+      "type": "string",
+      "default": "locales.close",
+      "defaultKind": "expression"
+    }
+  ],
+  "locales": [
+    {
+      "key": "close"
+    }
+  ]
+}

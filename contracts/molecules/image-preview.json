@@ -1,0 +1,32 @@
+{
+  "name": "ImagePreview",
+  "contract": "image-preview",
+  "layer": "molecules",
+  "source": "molecules/image-preview/index.tsx",
+  "props": [
+    {
+      "name": "src",
+      "optional": true,
+      "type": "string"
+    },
+    {
+      "name": "alt",
+      "optional": false,
+      "type": "string"
+    },
+    {
+      "name": "fallback",
+      "optional": true,
+      "type": "ReactNode",
+      "slot": true
+    },
+    {
+      "name": "className",
+      "optional": true,
+      "type": "string",
+      "default": "",
+      "defaultKind": "literal"
+    }
+  ],
+  "locales": []
+}

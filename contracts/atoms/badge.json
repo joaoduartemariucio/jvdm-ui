@@ -1,0 +1,37 @@
+{
+  "name": "Badge",
+  "contract": "badge",
+  "layer": "atoms",
+  "source": "atoms/badge/index.tsx",
+  "props": [
+    {
+      "name": "tone",
+      "optional": true,
+      "type": "BadgeTone",
+      "values": [
+        "neutral",
+        "accent",
+        "ok",
+        "warn",
+        "danger",
+        "info"
+      ],
+      "default": "neutral",
+      "defaultKind": "literal"
+    },
+    {
+      "name": "children",
+      "optional": false,
+      "type": "ReactNode",
+      "slot": true
+    },
+    {
+      "name": "className",
+      "optional": true,
+      "type": "string",
+      "default": "",
+      "defaultKind": "literal"
+    }
+  ],
+  "locales": []
+}

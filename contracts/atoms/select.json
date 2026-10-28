@@ -1,0 +1,34 @@
+{
+  "name": "Select",
+  "contract": "select",
+  "layer": "atoms",
+  "source": "atoms/input/select/index.tsx",
+  "host": {
+    "element": "select",
+    "omits": [
+      "size"
+    ]
+  },
+  "props": [
+    {
+      "name": "size",
+      "optional": true,
+      "type": "ControlSize",
+      "values": [
+        "sm",
+        "md"
+      ],
+      "default": "md",
+      "defaultKind": "literal"
+    },
+    {
+      "name": "className",
+      "optional": true,
+      "type": "unknown",
+      "inherited": true,
+      "default": "",
+      "defaultKind": "literal"
+    }
+  ],
+  "locales": []
+}

@@ -4,12 +4,12 @@ import { useState, type ComponentProps } from "react";
 import { EyeIcon, EyeOffIcon } from "../../icon";
 import type { ControlSize } from "../control";
 import { Input } from "../input";
-import { PASSWORD_INPUT as T } from "../locales";
+import { locales } from "../locales";
 
 export function PasswordInput({
   className = "",
-  showLabel = T.show,
-  hideLabel = T.hide,
+  showLabel = locales.show,
+  hideLabel = locales.hide,
   ...props
 }: {
   size?: ControlSize;

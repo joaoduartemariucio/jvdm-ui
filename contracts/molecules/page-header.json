@@ -1,0 +1,34 @@
+{
+  "name": "PageHeader",
+  "contract": "page-header",
+  "layer": "molecules",
+  "source": "molecules/page-header/index.tsx",
+  "props": [
+    {
+      "name": "title",
+      "optional": false,
+      "type": "ReactNode",
+      "slot": true
+    },
+    {
+      "name": "subtitle",
+      "optional": true,
+      "type": "ReactNode",
+      "slot": true
+    },
+    {
+      "name": "children",
+      "optional": true,
+      "type": "ReactNode",
+      "slot": true
+    },
+    {
+      "name": "className",
+      "optional": true,
+      "type": "string",
+      "default": "",
+      "defaultKind": "literal"
+    }
+  ],
+  "locales": []
+}

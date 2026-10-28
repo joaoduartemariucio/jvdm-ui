@@ -11,26 +11,29 @@ Code, documentation and default UI strings are in **English**. Keep it that way.
 `docs/adr/` is not history: it is the standing norm. Every rule below summarises a clause. When the
 two disagree, **the ADR wins**.
 
-| Where                                            | What it decides                                                        |
-| ------------------------------------------------ | ---------------------------------------------------------------------- |
-| [ADR 0001](docs/adr/0001-design-system.md) R1    | consumers compose, never redefine                                      |
-| ADR 0001 R2                                      | inventory before building                                              |
-| ADR 0001 R3                                      | what is missing is born here, in the right layer                       |
-| ADR 0001 R5                                      | the scales (type, weight, radius, spacing, depth, motion, icon, color) |
-| ADR 0001 R6                                      | rules do not loosen to close a task                                    |
-| ADR 0001 R7                                      | text a component says on its own                                       |
-| [ADR 0002](docs/adr/0002-code-conventions.md) C1 | one component per folder, in its `index.tsx`                           |
-| ADR 0002 C2                                      | import the folder, never the file inside it                            |
-| ADR 0002 C3                                      | no code comments, at all                                               |
-| [ADR 0003](docs/adr/0003-theming.md) T1          | one declaration per token, via `light-dark()`                          |
-| ADR 0003 T2                                      | the default preset carries no brand                                    |
-| ADR 0003 T3                                      | a theme is JSON, and it emits `@theme`                                 |
-| [ADR 0004](docs/adr/0004-releases.md) V1         | a merged pull request is the unit of release                           |
-| ADR 0004 V2                                      | the bump level is declared, then inferred, then assumed                |
-| [ADR 0007](docs/adr/0007-default-identity.md)    | identity lives in the non-color scales                                 |
-| [ADR 0008](docs/adr/0008-multiplatform.md)       | one repository, one package per platform                               |
-| [ADR 0009](docs/adr/0009-token-source.md) S1     | the default theme is data; CSS is generated from it                    |
-| ADR 0009 S2                                      | `tokens.css` is generated — edit `source.ts`, then `npm run tokens`    |
+| Where                                             | What it decides                                                        |
+| ------------------------------------------------- | ---------------------------------------------------------------------- |
+| [ADR 0001](docs/adr/0001-design-system.md) R1     | consumers compose, never redefine                                      |
+| ADR 0001 R2                                       | inventory before building                                              |
+| ADR 0001 R3                                       | what is missing is born here, in the right layer                       |
+| ADR 0001 R5                                       | the scales (type, weight, radius, spacing, depth, motion, icon, color) |
+| ADR 0001 R6                                       | rules do not loosen to close a task                                    |
+| ADR 0001 R7                                       | text a component says on its own                                       |
+| [ADR 0002](docs/adr/0002-code-conventions.md) C1  | one component per folder, in its `index.tsx`                           |
+| ADR 0002 C2                                       | import the folder, never the file inside it                            |
+| ADR 0002 C3                                       | no code comments, at all                                               |
+| [ADR 0003](docs/adr/0003-theming.md) T1           | one declaration per token, via `light-dark()`                          |
+| ADR 0003 T2                                       | the default preset carries no brand                                    |
+| ADR 0003 T3                                       | a theme is JSON, and it emits `@theme`                                 |
+| [ADR 0004](docs/adr/0004-releases.md) V1          | a merged pull request is the unit of release                           |
+| ADR 0004 V2                                       | the bump level is declared, then inferred, then assumed                |
+| [ADR 0007](docs/adr/0007-default-identity.md)     | identity lives in the non-color scales                                 |
+| [ADR 0008](docs/adr/0008-multiplatform.md)        | one repository, one package per platform                               |
+| [ADR 0009](docs/adr/0009-token-source.md) S1      | the default theme is data; CSS is generated from it                    |
+| ADR 0009 S2                                       | `tokens.css` is generated — edit `source.ts`, then `npm run tokens`    |
+| [ADR 0010](docs/adr/0010-platform-contract.md) P1 | the contract is extracted from the web source, never written           |
+| ADR 0010 P3                                       | every component is implemented or waived, per platform                 |
+| ADR 0010 P4                                       | a `locales.ts` exports one const named `locales`                       |
 
 Changing a rule means changing an ADR. Do not edit `eslint.config.mjs` to make a PR pass (R6).
 
@@ -63,8 +66,9 @@ packages/
     src/
       source.ts         the default theme as structured data: the one thing every platform reads
       color/            oklch -> oklab -> sRGB, pure arithmetic, no dependency
-      emit/             css.ts today; swift, kotlin, dart and rn next
-      cli.ts            writes packages/web/src/tokens/tokens.css
+      emit/             css, swift, kotlin, dart, rn — all over one resolved model
+      cli.ts            writes tokens.css and generated/<platform>/
+    generated/          the emitted token file per platform. Committed, byte-compared, unlinted
   web/                  the npm package `jvdm-ui` — React 19 + Tailwind v4
     src/
       tokens/           tokens.css (generated @theme) + runtime.css (static) + theme.ts (the switch)
@@ -77,7 +81,9 @@ packages/
     scripts/            build steps that run after tsup
     tests/              vitest + node --test, outside src/ and so outside the src lint
     tsup.config.ts      the two passes that keep the client boundary (ADR 0005)
-scripts/                release tooling shared by every package
+contracts/              one JSON per component, extracted from the web. The parity ledger
+scripts/                release tooling, the contract extractor and the parity checker
+  tests/                node --test over those scripts
 site/                   the docs site, deployed to Pages by .github/workflows/pages.yml
 tsconfig.base.json      the compiler options every package extends
 ```
@@ -102,6 +108,11 @@ Text the consumer decides arrives as a prop. Text a component says on its own go
 `locales.ts` **and** gets an optional prop defaulting to it — the package is public, and not every
 consumer speaks English. See `packages/web/src/atoms/theme-toggle/`, `.../atoms/input/` and `.../molecules/load-error/`.
 
+That file exports **one const named `locales`** ([ADR 0010, P4](docs/adr/0010-platform-contract.md)),
+and each value is a string or a function returning one — never a map keyed by locale tag. The
+`locales-export-name` lint rule fails CI on any other name. The keys land in that component's
+contract, so renaming one is an API change on four platforms.
+
 ## Tokens and theming
 
 **`packages/web/src/tokens/tokens.css` is generated. Do not edit it.** The default theme lives in
@@ -122,6 +133,20 @@ Add it to `COLOR_TOKENS` and to a color group in `source.ts`; a test fails if th
 `defineTheme` in `packages/web/src/theme/` is the **consumer-facing** emitter and takes CSS strings.
 It is deliberately not the one that feeds the other platforms, which need numbers
 ([ADR 0009, S6](docs/adr/0009-token-source.md) dates the unification).
+
+## Parity across platforms
+
+`contracts/` is generated from `packages/web/src` by `npm run contracts`
+([ADR 0010](docs/adr/0010-platform-contract.md)) — one JSON per component with its props, enum
+values, defaults, slots and locale keys. Do not edit those files; a test re-extracts and compares
+them byte for byte.
+
+`npm run parity` then requires every web contract to be **implemented or waived** on each platform.
+`contracts/waivers.json` is the ledger, and it only shrinks: adding a component means adding its
+waiver line to all four platforms, and porting one means deleting that line.
+
+Adding or renaming a prop, or changing a variant set, is therefore a change on five platforms. That
+is the cost the ledger makes visible instead of discovering it later.
 
 ## Releasing
 

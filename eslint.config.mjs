@@ -155,6 +155,28 @@ const local = {
         };
       },
     },
+    "locales-export-name": {
+      meta: { type: "problem", schema: [] },
+      create(context) {
+        if (!context.filename.endsWith("/locales.ts")) return {};
+
+        return {
+          ExportNamedDeclaration(node) {
+            const declared = node.declaration?.declarations ?? [];
+
+            for (const { id } of declared) {
+              if (id.type !== "Identifier" || id.name !== "locales") {
+                context.report({
+                  node: id,
+                  message:
+                    "A locales.ts exports one const named `locales`. A catalogue the platforms share cannot have a different name per folder. ADR 0010, P4.",
+                });
+              }
+            }
+          },
+        };
+      },
+    },
     "no-app-import": {
       meta: { type: "problem", schema: [] },
       create(context) {
@@ -176,7 +198,7 @@ const local = {
 };
 
 const eslintConfig = defineConfig([
-  globalIgnores(["**/dist/**", "coverage/**", "site-dist/**"]),
+  globalIgnores(["**/dist/**", "coverage/**", "site-dist/**", "packages/tokens/generated/**"]),
   {
     files: ["**/*.{ts,tsx}"],
     extends: [
@@ -258,6 +280,7 @@ const eslintConfig = defineConfig([
       "local/one-component-per-file": "error",
       "local/import-the-folder": "error",
       "local/no-app-import": "error",
+      "local/locales-export-name": "error",
     },
   },
 

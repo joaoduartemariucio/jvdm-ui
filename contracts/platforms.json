@@ -1,0 +1,9 @@
+{
+  "platforms": [
+    { "id": "web", "label": "React web", "package": "packages/web", "source": true },
+    { "id": "react-native", "label": "React Native", "package": "packages/react-native" },
+    { "id": "ios", "label": "iOS", "package": "packages/ios" },
+    { "id": "android", "label": "Android", "package": "packages/android" },
+    { "id": "flutter", "label": "Flutter", "package": "packages/flutter" }
+  ]
+}

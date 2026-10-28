@@ -1,0 +1,34 @@
+{
+  "name": "Input",
+  "contract": "input",
+  "layer": "atoms",
+  "source": "atoms/input/input/index.tsx",
+  "host": {
+    "element": "input",
+    "omits": [
+      "size"
+    ]
+  },
+  "props": [
+    {
+      "name": "size",
+      "optional": true,
+      "type": "ControlSize",
+      "values": [
+        "sm",
+        "md"
+      ],
+      "default": "md",
+      "defaultKind": "literal"
+    },
+    {
+      "name": "className",
+      "optional": true,
+      "type": "unknown",
+      "inherited": true,
+      "default": "",
+      "defaultKind": "literal"
+    }
+  ],
+  "locales": []
+}

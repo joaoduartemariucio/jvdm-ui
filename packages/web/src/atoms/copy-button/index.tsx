@@ -4,12 +4,12 @@ import { useEffect, useRef, useState } from "react";
 
 import { Button, type ButtonSize, type ButtonVariant } from "../button";
 import { CheckIcon, CopyIcon } from "../icon";
-import { COPY_BUTTON } from "./locales";
+import { locales } from "./locales";
 
 export function CopyButton({
   value,
-  label = COPY_BUTTON.copy,
-  copiedLabel = COPY_BUTTON.copied,
+  label = locales.copy,
+  copiedLabel = locales.copied,
   variant = "ghost",
   size = "sm",
   resetAfter = 1400,

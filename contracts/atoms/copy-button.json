@@ -1,0 +1,85 @@
+{
+  "name": "CopyButton",
+  "contract": "copy-button",
+  "layer": "atoms",
+  "source": "atoms/copy-button/index.tsx",
+  "props": [
+    {
+      "name": "value",
+      "optional": false,
+      "type": "string"
+    },
+    {
+      "name": "label",
+      "optional": true,
+      "type": "string",
+      "default": "locales.copy",
+      "defaultKind": "expression"
+    },
+    {
+      "name": "copiedLabel",
+      "optional": true,
+      "type": "string",
+      "default": "locales.copied",
+      "defaultKind": "expression"
+    },
+    {
+      "name": "variant",
+      "optional": true,
+      "type": "ButtonVariant",
+      "values": [
+        "danger",
+        "primary",
+        "secondary",
+        "ghost"
+      ],
+      "default": "ghost",
+      "defaultKind": "literal"
+    },
+    {
+      "name": "size",
+      "optional": true,
+      "type": "Extract<ButtonSize, \"sm\" | \"md\">",
+      "values": [
+        "sm",
+        "md"
+      ],
+      "default": "sm",
+      "defaultKind": "literal"
+    },
+    {
+      "name": "resetAfter",
+      "optional": true,
+      "type": "number",
+      "default": "1400",
+      "defaultKind": "literal"
+    },
+    {
+      "name": "onCopy",
+      "optional": true,
+      "type": "(value: string) => void"
+    },
+    {
+      "name": "disabled",
+      "optional": true,
+      "type": "boolean",
+      "default": "false",
+      "defaultKind": "literal"
+    },
+    {
+      "name": "className",
+      "optional": true,
+      "type": "string",
+      "default": "",
+      "defaultKind": "literal"
+    }
+  ],
+  "locales": [
+    {
+      "key": "copy"
+    },
+    {
+      "key": "copied"
+    }
+  ]
+}

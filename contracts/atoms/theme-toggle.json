@@ -1,0 +1,21 @@
+{
+  "name": "ThemeToggle",
+  "contract": "theme-toggle",
+  "layer": "atoms",
+  "source": "atoms/theme-toggle/index.tsx",
+  "props": [
+    {
+      "name": "label",
+      "optional": true,
+      "type": "(theme: Theme) => string",
+      "default": "locales.label",
+      "defaultKind": "expression"
+    }
+  ],
+  "locales": [
+    {
+      "key": "label",
+      "parameterised": true
+    }
+  ]
+}

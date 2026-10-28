@@ -1,0 +1,30 @@
+{
+  "name": "Combobox",
+  "contract": "combobox",
+  "layer": "atoms",
+  "source": "atoms/combobox/index.tsx",
+  "host": {
+    "element": "input",
+    "omits": []
+  },
+  "props": [
+    {
+      "name": "options",
+      "optional": false,
+      "type": "readonly ComboboxOption[]"
+    },
+    {
+      "name": "onValueChange",
+      "optional": true,
+      "type": "(value: string) => void"
+    },
+    {
+      "name": "className",
+      "optional": true,
+      "type": "string",
+      "default": "",
+      "defaultKind": "literal"
+    }
+  ],
+  "locales": []
+}

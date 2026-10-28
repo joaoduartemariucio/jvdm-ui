@@ -1,0 +1,58 @@
+{
+  "name": "Modal",
+  "contract": "modal",
+  "layer": "molecules",
+  "source": "molecules/modal/index.tsx",
+  "props": [
+    {
+      "name": "isOpen",
+      "optional": false,
+      "type": "boolean"
+    },
+    {
+      "name": "onClose",
+      "optional": false,
+      "type": "() => void"
+    },
+    {
+      "name": "title",
+      "optional": true,
+      "type": "ReactNode",
+      "slot": true
+    },
+    {
+      "name": "children",
+      "optional": false,
+      "type": "ReactNode",
+      "slot": true
+    },
+    {
+      "name": "size",
+      "optional": true,
+      "type": "keyof typeof SIZE_CLASSES",
+      "values": [
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "default": "md",
+      "defaultKind": "literal"
+    },
+    {
+      "name": "closeLabel",
+      "optional": true,
+      "type": "string",
+      "default": "locales.close",
+      "defaultKind": "expression"
+    }
+  ],
+  "locales": [
+    {
+      "key": "label"
+    },
+    {
+      "key": "close"
+    }
+  ]
+}

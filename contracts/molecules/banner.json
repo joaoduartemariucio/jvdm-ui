@@ -1,0 +1,46 @@
+{
+  "name": "Banner",
+  "contract": "banner",
+  "layer": "molecules",
+  "source": "molecules/banner/index.tsx",
+  "props": [
+    {
+      "name": "tone",
+      "optional": true,
+      "type": "BannerTone",
+      "values": [
+        "ok",
+        "warn",
+        "danger",
+        "info"
+      ],
+      "default": "info",
+      "defaultKind": "literal"
+    },
+    {
+      "name": "title",
+      "optional": false,
+      "type": "string"
+    },
+    {
+      "name": "children",
+      "optional": true,
+      "type": "ReactNode",
+      "slot": true
+    },
+    {
+      "name": "action",
+      "optional": true,
+      "type": "ReactNode",
+      "slot": true
+    },
+    {
+      "name": "className",
+      "optional": true,
+      "type": "string",
+      "default": "",
+      "defaultKind": "literal"
+    }
+  ],
+  "locales": []
+}

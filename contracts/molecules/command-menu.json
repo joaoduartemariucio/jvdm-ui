@@ -1,0 +1,40 @@
+{
+  "name": "CommandMenu",
+  "contract": "command-menu",
+  "layer": "molecules",
+  "source": "molecules/command-menu/index.tsx",
+  "props": [
+    {
+      "name": "items",
+      "optional": false,
+      "type": "readonly CommandItem[]"
+    },
+    {
+      "name": "onSelect",
+      "optional": true,
+      "type": "(item: CommandItem) => void"
+    },
+    {
+      "name": "label",
+      "optional": true,
+      "type": "string",
+      "default": "Search commands",
+      "defaultKind": "literal"
+    },
+    {
+      "name": "global",
+      "optional": true,
+      "type": "boolean",
+      "default": "false",
+      "defaultKind": "literal"
+    }
+  ],
+  "locales": [
+    {
+      "key": "empty"
+    },
+    {
+      "key": "open"
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "name": "CodeBlock",
+  "contract": "code-block",
+  "layer": "molecules",
+  "source": "molecules/code-block/index.tsx",
+  "props": [
+    {
+      "name": "code",
+      "optional": false,
+      "type": "string"
+    },
+    {
+      "name": "language",
+      "optional": true,
+      "type": "string",
+      "default": "text",
+      "defaultKind": "literal"
+    },
+    {
+      "name": "copyLabel",
+      "optional": true,
+      "type": "string"
+    },
+    {
+      "name": "copiedLabel",
+      "optional": true,
+      "type": "string"
+    },
+    {
+      "name": "className",
+      "optional": true,
+      "type": "string",
+      "default": "",
+      "defaultKind": "literal"
+    }
+  ],
+  "locales": []
+}

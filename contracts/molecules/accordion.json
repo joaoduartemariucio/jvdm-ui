@@ -1,0 +1,35 @@
+{
+  "name": "Accordion",
+  "contract": "accordion",
+  "layer": "molecules",
+  "source": "molecules/accordion/index.tsx",
+  "props": [
+    {
+      "name": "items",
+      "optional": false,
+      "type": "readonly AccordionItem[]"
+    },
+    {
+      "name": "exclusive",
+      "optional": true,
+      "type": "boolean",
+      "default": "false",
+      "defaultKind": "literal"
+    },
+    {
+      "name": "name",
+      "optional": true,
+      "type": "string",
+      "default": "accordion",
+      "defaultKind": "literal"
+    },
+    {
+      "name": "className",
+      "optional": true,
+      "type": "string",
+      "default": "",
+      "defaultKind": "literal"
+    }
+  ],
+  "locales": []
+}

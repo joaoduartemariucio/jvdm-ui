@@ -1,0 +1,21 @@
+{
+  "name": "Slider",
+  "contract": "slider",
+  "layer": "atoms",
+  "source": "atoms/slider/index.tsx",
+  "host": {
+    "element": "input",
+    "omits": []
+  },
+  "props": [
+    {
+      "name": "className",
+      "optional": true,
+      "type": "unknown",
+      "inherited": true,
+      "default": "",
+      "defaultKind": "literal"
+    }
+  ],
+  "locales": []
+}

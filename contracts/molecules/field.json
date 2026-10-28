@@ -1,0 +1,43 @@
+{
+  "name": "Field",
+  "contract": "field",
+  "layer": "molecules",
+  "source": "molecules/field/index.tsx",
+  "props": [
+    {
+      "name": "label",
+      "optional": false,
+      "type": "string"
+    },
+    {
+      "name": "htmlFor",
+      "optional": true,
+      "type": "string"
+    },
+    {
+      "name": "error",
+      "optional": true,
+      "type": "string"
+    },
+    {
+      "name": "action",
+      "optional": true,
+      "type": "ReactNode",
+      "slot": true
+    },
+    {
+      "name": "className",
+      "optional": true,
+      "type": "string",
+      "default": "",
+      "defaultKind": "literal"
+    },
+    {
+      "name": "children",
+      "optional": false,
+      "type": "ReactNode",
+      "slot": true
+    }
+  ],
+  "locales": []
+}

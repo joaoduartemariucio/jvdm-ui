@@ -3,9 +3,9 @@
 import { MoonIcon, SunIcon } from "../icon";
 import { IconButton } from "../icon-button";
 import { useTheme, type Theme } from "../../tokens";
-import { THEME_TOGGLE as T } from "./locales";
+import { locales } from "./locales";
 
-export function ThemeToggle({ label = T.label }: { label?: (theme: Theme) => string }) {
+export function ThemeToggle({ label = locales.label }: { label?: (theme: Theme) => string }) {
   const { theme, toggle } = useTheme();
   const text = label(theme);
 

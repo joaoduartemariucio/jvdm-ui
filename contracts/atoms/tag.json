@@ -1,0 +1,60 @@
+{
+  "name": "Tag",
+  "contract": "tag",
+  "layer": "atoms",
+  "source": "atoms/tag/index.tsx",
+  "props": [
+    {
+      "name": "tone",
+      "optional": true,
+      "type": "BadgeTone",
+      "values": [
+        "neutral",
+        "accent",
+        "ok",
+        "warn",
+        "danger",
+        "info"
+      ],
+      "default": "neutral",
+      "defaultKind": "literal"
+    },
+    {
+      "name": "children",
+      "optional": false,
+      "type": "ReactNode",
+      "slot": true
+    },
+    {
+      "name": "onRemove",
+      "optional": true,
+      "type": "() => void"
+    },
+    {
+      "name": "removeLabel",
+      "optional": true,
+      "type": "string",
+      "default": "locales.remove",
+      "defaultKind": "expression"
+    },
+    {
+      "name": "disabled",
+      "optional": true,
+      "type": "boolean",
+      "default": "false",
+      "defaultKind": "literal"
+    },
+    {
+      "name": "className",
+      "optional": true,
+      "type": "string",
+      "default": "",
+      "defaultKind": "literal"
+    }
+  ],
+  "locales": [
+    {
+      "key": "remove"
+    }
+  ]
+}

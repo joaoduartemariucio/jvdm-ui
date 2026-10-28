@@ -1,0 +1,39 @@
+{
+  "name": "PinInput",
+  "contract": "pin-input",
+  "layer": "atoms",
+  "source": "atoms/pin-input/index.tsx",
+  "props": [
+    {
+      "name": "length",
+      "optional": true,
+      "type": "number",
+      "default": "6",
+      "defaultKind": "literal"
+    },
+    {
+      "name": "value",
+      "optional": true,
+      "type": "string",
+      "default": "",
+      "defaultKind": "literal"
+    },
+    {
+      "name": "onValueChange",
+      "optional": true,
+      "type": "(value: string) => void"
+    },
+    {
+      "name": "className",
+      "optional": true,
+      "type": "string",
+      "default": "",
+      "defaultKind": "literal"
+    }
+  ],
+  "locales": [
+    {
+      "key": "digit"
+    }
+  ]
+}

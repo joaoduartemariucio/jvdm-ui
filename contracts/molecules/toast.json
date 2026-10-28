@@ -1,0 +1,56 @@
+{
+  "name": "Toast",
+  "contract": "toast",
+  "layer": "molecules",
+  "source": "molecules/toast/index.tsx",
+  "props": [
+    {
+      "name": "tone",
+      "optional": true,
+      "type": "ToastTone",
+      "values": [
+        "ok",
+        "warn",
+        "danger",
+        "info"
+      ],
+      "default": "info",
+      "defaultKind": "literal"
+    },
+    {
+      "name": "title",
+      "optional": false,
+      "type": "string"
+    },
+    {
+      "name": "children",
+      "optional": true,
+      "type": "ReactNode",
+      "slot": true
+    },
+    {
+      "name": "onDismiss",
+      "optional": true,
+      "type": "() => void"
+    },
+    {
+      "name": "dismissLabel",
+      "optional": true,
+      "type": "string",
+      "default": "locales.dismiss",
+      "defaultKind": "expression"
+    },
+    {
+      "name": "className",
+      "optional": true,
+      "type": "string",
+      "default": "",
+      "defaultKind": "literal"
+    }
+  ],
+  "locales": [
+    {
+      "key": "dismiss"
+    }
+  ]
+}

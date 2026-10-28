@@ -1,0 +1,8 @@
+{
+  "name": "MoreIcon",
+  "contract": "more-icon",
+  "layer": "atoms",
+  "source": "atoms/more-icon/index.tsx",
+  "props": [],
+  "locales": []
+}

@@ -1,0 +1,43 @@
+{
+  "name": "DateTimePicker",
+  "contract": "date-time-picker",
+  "layer": "atoms",
+  "source": "atoms/date-time-picker/index.tsx",
+  "props": [
+    {
+      "name": "date",
+      "optional": true,
+      "type": "string"
+    },
+    {
+      "name": "time",
+      "optional": true,
+      "type": "string"
+    },
+    {
+      "name": "onDateChange",
+      "optional": true,
+      "type": "(value: string) => void"
+    },
+    {
+      "name": "onTimeChange",
+      "optional": true,
+      "type": "(value: string) => void"
+    },
+    {
+      "name": "className",
+      "optional": true,
+      "type": "string",
+      "default": "",
+      "defaultKind": "literal"
+    }
+  ],
+  "locales": [
+    {
+      "key": "date"
+    },
+    {
+      "key": "time"
+    }
+  ]
+}

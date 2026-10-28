@@ -1,0 +1,46 @@
+{
+  "name": "Tooltip",
+  "contract": "tooltip",
+  "layer": "molecules",
+  "source": "molecules/tooltip/index.tsx",
+  "props": [
+    {
+      "name": "id",
+      "optional": false,
+      "type": "string"
+    },
+    {
+      "name": "content",
+      "optional": false,
+      "type": "ReactNode",
+      "slot": true
+    },
+    {
+      "name": "side",
+      "optional": true,
+      "type": "TooltipSide",
+      "values": [
+        "top",
+        "bottom",
+        "left",
+        "right"
+      ],
+      "default": "top",
+      "defaultKind": "literal"
+    },
+    {
+      "name": "children",
+      "optional": false,
+      "type": "ReactNode",
+      "slot": true
+    },
+    {
+      "name": "className",
+      "optional": true,
+      "type": "string",
+      "default": "",
+      "defaultKind": "literal"
+    }
+  ],
+  "locales": []
+}

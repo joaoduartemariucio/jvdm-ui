@@ -1,0 +1,21 @@
+{
+  "name": "CardTitle",
+  "contract": "card-title",
+  "layer": "molecules",
+  "source": "molecules/card-title/index.tsx",
+  "props": [
+    {
+      "name": "children",
+      "optional": false,
+      "type": "ReactNode",
+      "slot": true
+    },
+    {
+      "name": "hint",
+      "optional": true,
+      "type": "ReactNode",
+      "slot": true
+    }
+  ],
+  "locales": []
+}

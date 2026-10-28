@@ -2,13 +2,13 @@ import type { ReactNode } from "react";
 
 import { BADGE_TONES, type BadgeTone } from "../badge";
 import { CloseIcon } from "../icon";
-import { TAG } from "./locales";
+import { locales } from "./locales";
 
 export function Tag({
   tone = "neutral",
   children,
   onRemove,
-  removeLabel = TAG.remove,
+  removeLabel = locales.remove,
   disabled = false,
   className = "",
 }: {

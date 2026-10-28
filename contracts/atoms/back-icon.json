@@ -1,0 +1,26 @@
+{
+  "name": "BackIcon",
+  "contract": "back-icon",
+  "layer": "atoms",
+  "source": "atoms/icon/back-icon/index.tsx",
+  "props": [
+    {
+      "name": "size",
+      "optional": true,
+      "type": "IconSize",
+      "values": [
+        "sm",
+        "md",
+        "lg",
+        "xl",
+        "2xl"
+      ]
+    },
+    {
+      "name": "className",
+      "optional": true,
+      "type": "string"
+    }
+  ],
+  "locales": []
+}

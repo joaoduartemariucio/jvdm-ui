@@ -1,0 +1,57 @@
+{
+  "name": "ConfirmDialog",
+  "contract": "confirm-dialog",
+  "layer": "molecules",
+  "source": "molecules/confirm-dialog/index.tsx",
+  "props": [
+    {
+      "name": "open",
+      "optional": false,
+      "type": "boolean"
+    },
+    {
+      "name": "title",
+      "optional": false,
+      "type": "string"
+    },
+    {
+      "name": "description",
+      "optional": true,
+      "type": "string"
+    },
+    {
+      "name": "confirmLabel",
+      "optional": false,
+      "type": "string"
+    },
+    {
+      "name": "cancelLabel",
+      "optional": false,
+      "type": "string"
+    },
+    {
+      "name": "pending",
+      "optional": true,
+      "type": "boolean",
+      "default": "false",
+      "defaultKind": "literal"
+    },
+    {
+      "name": "children",
+      "optional": true,
+      "type": "ReactNode",
+      "slot": true
+    },
+    {
+      "name": "onConfirm",
+      "optional": false,
+      "type": "() => void"
+    },
+    {
+      "name": "onCancel",
+      "optional": false,
+      "type": "() => void"
+    }
+  ],
+  "locales": []
+}

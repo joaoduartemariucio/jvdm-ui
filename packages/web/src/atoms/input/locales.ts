@@ -1,4 +1,4 @@
-export const PASSWORD_INPUT = {
+export const locales = {
   show: "Show password",
   hide: "Hide password",
 };

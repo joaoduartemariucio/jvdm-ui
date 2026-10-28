@@ -1,0 +1,43 @@
+{
+  "name": "RangeDatePicker",
+  "contract": "range-date-picker",
+  "layer": "atoms",
+  "source": "atoms/range-date-picker/index.tsx",
+  "props": [
+    {
+      "name": "start",
+      "optional": true,
+      "type": "string"
+    },
+    {
+      "name": "end",
+      "optional": true,
+      "type": "string"
+    },
+    {
+      "name": "onStartChange",
+      "optional": true,
+      "type": "(value: string) => void"
+    },
+    {
+      "name": "onEndChange",
+      "optional": true,
+      "type": "(value: string) => void"
+    },
+    {
+      "name": "className",
+      "optional": true,
+      "type": "string",
+      "default": "",
+      "defaultKind": "literal"
+    }
+  ],
+  "locales": [
+    {
+      "key": "start"
+    },
+    {
+      "key": "end"
+    }
+  ]
+}

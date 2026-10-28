@@ -1,0 +1,28 @@
+{
+  "name": "NumberInput",
+  "contract": "number-input",
+  "layer": "atoms",
+  "source": "atoms/number-input/index.tsx",
+  "host": {
+    "element": "input",
+    "omits": []
+  },
+  "props": [
+    {
+      "name": "className",
+      "optional": true,
+      "type": "unknown",
+      "inherited": true,
+      "default": "",
+      "defaultKind": "literal"
+    }
+  ],
+  "locales": [
+    {
+      "key": "increase"
+    },
+    {
+      "key": "decrease"
+    }
+  ]
+}

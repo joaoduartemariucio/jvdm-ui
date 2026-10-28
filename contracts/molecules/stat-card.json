@@ -1,0 +1,46 @@
+{
+  "name": "StatCard",
+  "contract": "stat-card",
+  "layer": "molecules",
+  "source": "molecules/stat-card/index.tsx",
+  "props": [
+    {
+      "name": "label",
+      "optional": false,
+      "type": "string"
+    },
+    {
+      "name": "value",
+      "optional": false,
+      "type": "ReactNode",
+      "slot": true
+    },
+    {
+      "name": "hint",
+      "optional": true,
+      "type": "string"
+    },
+    {
+      "name": "color",
+      "optional": true,
+      "type": "string",
+      "default": "",
+      "defaultKind": "literal"
+    },
+    {
+      "name": "attention",
+      "optional": true,
+      "type": "boolean",
+      "default": "false",
+      "defaultKind": "literal"
+    },
+    {
+      "name": "className",
+      "optional": true,
+      "type": "string",
+      "default": "",
+      "defaultKind": "literal"
+    }
+  ],
+  "locales": []
+}

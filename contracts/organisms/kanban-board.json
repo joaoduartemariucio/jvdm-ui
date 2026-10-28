@@ -1,0 +1,21 @@
+{
+  "name": "KanbanBoard",
+  "contract": "kanban-board",
+  "layer": "organisms",
+  "source": "organisms/kanban-board/index.tsx",
+  "props": [
+    {
+      "name": "columns",
+      "optional": false,
+      "type": "readonly KanbanColumn[]"
+    },
+    {
+      "name": "className",
+      "optional": true,
+      "type": "string",
+      "default": "",
+      "defaultKind": "literal"
+    }
+  ],
+  "locales": []
+}

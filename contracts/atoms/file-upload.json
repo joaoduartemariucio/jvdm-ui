@@ -1,0 +1,45 @@
+{
+  "name": "FileUpload",
+  "contract": "file-upload",
+  "layer": "atoms",
+  "source": "atoms/file-upload/index.tsx",
+  "props": [
+    {
+      "name": "accept",
+      "optional": true,
+      "type": "string"
+    },
+    {
+      "name": "multiple",
+      "optional": true,
+      "type": "boolean",
+      "default": "false",
+      "defaultKind": "literal"
+    },
+    {
+      "name": "onFilesChange",
+      "optional": true,
+      "type": "(files: FileList | null) => void"
+    },
+    {
+      "name": "children",
+      "optional": true,
+      "type": "ReactNode",
+      "slot": true,
+      "default": "locales.choose",
+      "defaultKind": "expression"
+    },
+    {
+      "name": "className",
+      "optional": true,
+      "type": "string",
+      "default": "",
+      "defaultKind": "literal"
+    }
+  ],
+  "locales": [
+    {
+      "key": "choose"
+    }
+  ]
+}

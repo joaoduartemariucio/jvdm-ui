@@ -4,3 +4,5 @@ node_modules
 .claude
 .github/agents
 .github/skills
+packages/tokens/generated
+contracts

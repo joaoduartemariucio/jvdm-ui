@@ -1,0 +1,16 @@
+{
+  "name": "Skeleton",
+  "contract": "skeleton",
+  "layer": "atoms",
+  "source": "atoms/skeleton/index.tsx",
+  "props": [
+    {
+      "name": "className",
+      "optional": true,
+      "type": "string",
+      "default": "",
+      "defaultKind": "literal"
+    }
+  ],
+  "locales": []
+}

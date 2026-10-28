@@ -1,0 +1,25 @@
+{
+  "name": "TreeView",
+  "contract": "tree-view",
+  "layer": "molecules",
+  "source": "molecules/tree-view/index.tsx",
+  "props": [
+    {
+      "name": "nodes",
+      "optional": false,
+      "type": "readonly TreeNode[]"
+    },
+    {
+      "name": "className",
+      "optional": true,
+      "type": "string",
+      "default": "",
+      "defaultKind": "literal"
+    }
+  ],
+  "locales": [
+    {
+      "key": "label"
+    }
+  ]
+}

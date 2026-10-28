@@ -1,4 +1,4 @@
-export const COPY_BUTTON = {
+export const locales = {
   copy: "Copy",
   copied: "Copied",
 };

@@ -1,0 +1,22 @@
+{
+  "name": "FormAlert",
+  "contract": "form-alert",
+  "layer": "atoms",
+  "source": "atoms/form-alert/index.tsx",
+  "props": [
+    {
+      "name": "className",
+      "optional": true,
+      "type": "string",
+      "default": "",
+      "defaultKind": "literal"
+    },
+    {
+      "name": "children",
+      "optional": false,
+      "type": "ReactNode",
+      "slot": true
+    }
+  ],
+  "locales": []
+}

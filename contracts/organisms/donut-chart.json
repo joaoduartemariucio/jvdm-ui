@@ -1,0 +1,30 @@
+{
+  "name": "DonutChart",
+  "contract": "donut-chart",
+  "layer": "organisms",
+  "source": "organisms/chart/donut-chart/index.tsx",
+  "props": [
+    {
+      "name": "data",
+      "optional": false,
+      "type": "readonly DonutDatum[]"
+    },
+    {
+      "name": "total",
+      "optional": false,
+      "type": "number"
+    },
+    {
+      "name": "label",
+      "optional": false,
+      "type": "string"
+    },
+    {
+      "name": "children",
+      "optional": true,
+      "type": "ReactNode",
+      "slot": true
+    }
+  ],
+  "locales": []
+}

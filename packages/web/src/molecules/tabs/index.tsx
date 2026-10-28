@@ -1,5 +1,5 @@
 import type { KeyboardEvent, ReactNode } from "react";
-import { TABS as T } from "./locales";
+import { locales } from "./locales";
 
 export type Tab = {
   value: string;
@@ -12,7 +12,7 @@ export function Tabs({
   items,
   value,
   onValueChange,
-  label = T.label["en-US"],
+  label = locales.label,
   className = "",
 }: {
   items: Tab[];

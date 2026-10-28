@@ -1,0 +1,36 @@
+{
+  "name": "Svg",
+  "contract": "svg",
+  "layer": "atoms",
+  "source": "atoms/icon/svg/index.tsx",
+  "props": [
+    {
+      "name": "size",
+      "optional": true,
+      "type": "IconSize",
+      "values": [
+        "sm",
+        "md",
+        "lg",
+        "xl",
+        "2xl"
+      ],
+      "default": "md",
+      "defaultKind": "literal"
+    },
+    {
+      "name": "className",
+      "optional": true,
+      "type": "string",
+      "default": "",
+      "defaultKind": "literal"
+    },
+    {
+      "name": "children",
+      "optional": false,
+      "type": "ReactNode",
+      "slot": true
+    }
+  ],
+  "locales": []
+}

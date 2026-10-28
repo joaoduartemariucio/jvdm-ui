@@ -1,0 +1,32 @@
+{
+  "name": "Breadcrumb",
+  "contract": "breadcrumb",
+  "layer": "molecules",
+  "source": "molecules/breadcrumb/index.tsx",
+  "props": [
+    {
+      "name": "items",
+      "optional": false,
+      "type": "readonly Crumb[]"
+    },
+    {
+      "name": "label",
+      "optional": true,
+      "type": "string",
+      "default": "locales.label",
+      "defaultKind": "expression"
+    },
+    {
+      "name": "className",
+      "optional": true,
+      "type": "string",
+      "default": "",
+      "defaultKind": "literal"
+    }
+  ],
+  "locales": [
+    {
+      "key": "label"
+    }
+  ]
+}

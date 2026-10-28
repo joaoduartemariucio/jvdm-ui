@@ -1,0 +1,73 @@
+{
+  "name": "Pagination",
+  "contract": "pagination",
+  "layer": "molecules",
+  "source": "molecules/pagination/index.tsx",
+  "props": [
+    {
+      "name": "page",
+      "optional": false,
+      "type": "number"
+    },
+    {
+      "name": "pages",
+      "optional": false,
+      "type": "number"
+    },
+    {
+      "name": "onPageChange",
+      "optional": false,
+      "type": "(page: number) => void"
+    },
+    {
+      "name": "previousLabel",
+      "optional": true,
+      "type": "string",
+      "default": "locales.previous",
+      "defaultKind": "expression"
+    },
+    {
+      "name": "nextLabel",
+      "optional": true,
+      "type": "string",
+      "default": "locales.next",
+      "defaultKind": "expression"
+    },
+    {
+      "name": "pageLabel",
+      "optional": true,
+      "type": "(page: number) => string",
+      "default": "locales.page",
+      "defaultKind": "expression"
+    },
+    {
+      "name": "label",
+      "optional": true,
+      "type": "string",
+      "default": "locales.label",
+      "defaultKind": "expression"
+    },
+    {
+      "name": "className",
+      "optional": true,
+      "type": "string",
+      "default": "",
+      "defaultKind": "literal"
+    }
+  ],
+  "locales": [
+    {
+      "key": "label"
+    },
+    {
+      "key": "previous"
+    },
+    {
+      "key": "next"
+    },
+    {
+      "key": "page",
+      "parameterised": true
+    }
+  ]
+}

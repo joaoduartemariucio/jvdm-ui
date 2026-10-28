@@ -1,5 +1,29 @@
-export { formatOklch, isInSrgbGamut, toHex, toLinearSrgb, toSrgb, type Srgb } from "./color";
-export { emitCss, emitStylesheet } from "./emit";
+export {
+  formatOklch,
+  isInDisplayP3Gamut,
+  isInSrgbGamut,
+  toDisplayP3,
+  toHex,
+  toLinearDisplayP3,
+  toLinearSrgb,
+  toSrgb,
+  type Srgb,
+} from "./color";
+export {
+  constantName,
+  emitCss,
+  emitDart,
+  emitKotlin,
+  emitReactNative,
+  emitStylesheet,
+  emitSwift,
+  identifier,
+  resolve,
+  typeName,
+  type ResolvedColor,
+  type ResolvedPair,
+  type TokenModel,
+} from "./emit";
 export { num } from "./number";
 export { source } from "./source";
 export {
