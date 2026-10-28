@@ -89,6 +89,21 @@
       ]
     },
     {
+      "contract": "atoms/button",
+      "spelling": "JvdmButton",
+      "file": "lib/src/atoms/button/button.dart",
+      "props": [
+        {
+          "name": "variant",
+          "values": ["danger", "primary", "secondary", "ghost"]
+        },
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "icon", "icon-sm"]
+        }
+      ]
+    },
+    {
       "contract": "atoms/calendar-icon",
       "spelling": "JvdmCalendarIcon",
       "file": "lib/src/atoms/icon/calendar.dart",
@@ -134,6 +149,17 @@
         {
           "name": "size",
           "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/checkbox",
+      "spelling": "JvdmCheckbox",
+      "file": "lib/src/atoms/checkbox/checkbox.dart",
+      "props": [
+        {
+          "name": "label",
+          "slot": true
         }
       ]
     },
@@ -275,6 +301,35 @@
       ]
     },
     {
+      "contract": "atoms/icon-button",
+      "spelling": "JvdmIconButton",
+      "file": "lib/src/atoms/icon_button/icon_button.dart",
+      "props": [
+        {
+          "name": "label"
+        },
+        {
+          "name": "variant",
+          "values": ["danger", "primary", "secondary", "ghost"]
+        },
+        {
+          "name": "size",
+          "values": ["icon", "icon-sm"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/input",
+      "spelling": "JvdmInput",
+      "file": "lib/src/atoms/input/input.dart",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md"]
+        }
+      ]
+    },
+    {
       "contract": "atoms/instagram-icon",
       "spelling": "JvdmInstagramIcon",
       "file": "lib/src/atoms/icon/instagram.dart",
@@ -310,6 +365,17 @@
         {
           "name": "tone",
           "values": ["accent", "muted", "dim"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/link",
+      "spelling": "JvdmLink",
+      "file": "lib/src/atoms/link/link.dart",
+      "props": [
+        {
+          "name": "tone",
+          "values": ["accent", "muted", "ink"]
         }
       ]
     },
@@ -391,6 +457,17 @@
       ]
     },
     {
+      "contract": "atoms/radio",
+      "spelling": "JvdmRadio",
+      "file": "lib/src/atoms/radio/radio.dart",
+      "props": [
+        {
+          "name": "label",
+          "slot": true
+        }
+      ]
+    },
+    {
       "contract": "atoms/search-icon",
       "spelling": "JvdmSearchIcon",
       "file": "lib/src/atoms/icon/search.dart",
@@ -398,6 +475,17 @@
         {
           "name": "size",
           "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/select",
+      "spelling": "JvdmSelect",
+      "file": "lib/src/atoms/select/select.dart",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md"]
         }
       ]
     },
@@ -416,6 +504,12 @@
       "contract": "atoms/skeleton",
       "spelling": "JvdmSkeleton",
       "file": "lib/src/atoms/skeleton/skeleton.dart",
+      "props": []
+    },
+    {
+      "contract": "atoms/slider",
+      "spelling": "JvdmSlider",
+      "file": "lib/src/atoms/slider/slider.dart",
       "props": []
     },
     {
@@ -464,6 +558,37 @@
           "name": "children",
           "spelling": "trace",
           "slot": true
+        }
+      ]
+    },
+    {
+      "contract": "atoms/switch",
+      "spelling": "JvdmSwitch",
+      "file": "lib/src/atoms/switch/switch.dart",
+      "props": [
+        {
+          "name": "checked"
+        },
+        {
+          "name": "onCheckedChange"
+        },
+        {
+          "name": "label",
+          "slot": true
+        },
+        {
+          "name": "disabled"
+        }
+      ]
+    },
+    {
+      "contract": "atoms/textarea",
+      "spelling": "JvdmTextarea",
+      "file": "lib/src/atoms/textarea/textarea.dart",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md"]
         }
       ]
     },
