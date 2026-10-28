@@ -104,6 +104,36 @@ and pub.dev needs credentials and a signing story that are not set up, and a wor
 otherwise would fail on its first real run. `release.yml` keeps publishing the web package exactly
 as before.
 
+### D6 — Components land in waves, and the ledger is the roadmap
+
+Porting goes in dependency order — stateless atoms, then form atoms, then molecules, then organisms
+— and each wave is one change across four platforms at once, not four changes one platform at a
+time. A wave is done when `npm run parity` accepts it, which it only does when every platform
+declares the same prop names and the same variant sets.
+
+Wave one is `Skeleton`, `FormAlert`, `Kbd`, `Card`, `Divider`, `Label` and `Avatar`: seven
+components with no state and no locale strings, chosen because they exercise every part of the
+pipeline — a slot, an enum, a boolean, a derived string, a border, a monospace face and an infinite
+animation — without any of the focus and keyboard work the client modules will need.
+
+Two things the wave settled, both of which generalise:
+
+**Logic that must agree goes in a pure function, named the same on all four.** `Avatar` derives
+initials from a name, and "first and last, upper-cased, whitespace-collapsed" is a decision, not a
+rendering detail. It is `AvatarInitials.of`, `avatarInitials`, `initials` and `AvatarInitials.of` in
+the four languages, and the same five cases are asserted in all four test suites.
+
+**A platform's own tools will find real violations, and the fix belongs in the theme.** SwiftLint
+rejected `Kbd` for building a monospaced font outside the scale; the answer was `theme.mono(step,
+weight)`, not an exception. Dart's formatter and the `require_trailing_commas` lint disagreed, so the
+lint went: one tool owns formatting.
+
+The wave also showed `check-scales.mjs` to be too blunt in one place: it flagged every 1px border
+and rule as a raw dimension. [ADR 0001, R5](0001-design-system.md) says the opposite in its own
+words — "that is a border, not a gap" — so the rule now allows exactly 1, and only 1, where a border
+width or a hairline goes. Narrowing a check to what the ADR actually says is not loosening it (R6):
+the same change still rejects a 3px border and a 7px radius.
+
 ## Consequences
 
 - One component is ported on four platforms and the ledger reads 105 waivers instead of 106. The
