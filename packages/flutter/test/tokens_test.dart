@@ -74,7 +74,8 @@ void main() {
       }
     });
 
-    test('clears the key for system rather than storing a third value', () async {
+    test('clears the key for system rather than storing a third value',
+        () async {
       final _Memory storage = _Memory();
       final JvdmThemeStore store = JvdmThemeStore(storage);
       await store.write(JvdmThemeMode.dark);

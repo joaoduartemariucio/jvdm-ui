@@ -88,7 +88,8 @@ void main() {
 
     for (final (int index, DecoratedBox box) in boxes.indexed) {
       final BoxDecoration decoration = box.decoration as BoxDecoration;
-      expect(decoration.color, tokens.color(BadgeTone.values[index].background));
+      expect(
+          decoration.color, tokens.color(BadgeTone.values[index].background));
       expect(
         decoration.borderRadius,
         BorderRadius.circular(tokens.radius(JvdmRadiusStep.xs)),
@@ -100,31 +101,27 @@ void main() {
     WidgetTester tester,
   ) async {
     await tester.pumpWidget(_gallery(Brightness.light));
-    final BoxDecoration light =
-        tester
-                .widgetList<DecoratedBox>(
-                  find.descendant(
-                    of: find.byType(JvdmBadge),
-                    matching: find.byType(DecoratedBox),
-                  ),
-                )
-                .first
-                .decoration
-            as BoxDecoration;
+    final BoxDecoration light = tester
+        .widgetList<DecoratedBox>(
+          find.descendant(
+            of: find.byType(JvdmBadge),
+            matching: find.byType(DecoratedBox),
+          ),
+        )
+        .first
+        .decoration as BoxDecoration;
 
     await tester.pumpWidget(_gallery(Brightness.dark));
     await tester.pumpAndSettle();
-    final BoxDecoration dark =
-        tester
-                .widgetList<DecoratedBox>(
-                  find.descendant(
-                    of: find.byType(JvdmBadge),
-                    matching: find.byType(DecoratedBox),
-                  ),
-                )
-                .first
-                .decoration
-            as BoxDecoration;
+    final BoxDecoration dark = tester
+        .widgetList<DecoratedBox>(
+          find.descendant(
+            of: find.byType(JvdmBadge),
+            matching: find.byType(DecoratedBox),
+          ),
+        )
+        .first
+        .decoration as BoxDecoration;
 
     expect(light.color, isNot(equals(dark.color)));
   });

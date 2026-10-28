@@ -54,7 +54,8 @@ Widget _gallery() {
               children: <Widget>[
                 for (final JvdmIcon icon in allIcons)
                   IconTheme(
-                    data: IconThemeData(color: tokens.color(JvdmColorToken.ink)),
+                    data:
+                        IconThemeData(color: tokens.color(JvdmColorToken.ink)),
                     child: DefaultTextStyle(
                       style: TextStyle(color: tokens.color(JvdmColorToken.ink)),
                       child: icon,
@@ -90,8 +91,10 @@ void main() {
       final Rect bounds = icon.trace().getBounds();
       expect(bounds.left, greaterThanOrEqualTo(-0.5), reason: icon.name);
       expect(bounds.top, greaterThanOrEqualTo(-0.5), reason: icon.name);
-      expect(bounds.right, lessThanOrEqualTo(jvdmIconViewBox + 0.5), reason: icon.name);
-      expect(bounds.bottom, lessThanOrEqualTo(jvdmIconViewBox + 0.5), reason: icon.name);
+      expect(bounds.right, lessThanOrEqualTo(jvdmIconViewBox + 0.5),
+          reason: icon.name);
+      expect(bounds.bottom, lessThanOrEqualTo(jvdmIconViewBox + 0.5),
+          reason: icon.name);
     }
   });
 

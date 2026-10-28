@@ -13,6 +13,5 @@ linter:
     - always_specify_types
     - prefer_final_fields
     - prefer_const_declarations
-    - require_trailing_commas
     - sort_constructors_first
     - unnecessary_this

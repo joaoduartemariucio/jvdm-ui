@@ -23,6 +23,23 @@
       ]
     },
     {
+      "contract": "atoms/avatar",
+      "spelling": "JvdmAvatar",
+      "file": "lib/src/atoms/avatar/avatar.dart",
+      "props": [
+        {
+          "name": "name"
+        },
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg"]
+        },
+        {
+          "name": "label"
+        }
+      ]
+    },
+    {
       "contract": "atoms/back-icon",
       "spelling": "JvdmBackIcon",
       "file": "lib/src/atoms/icon/back.dart",
@@ -94,6 +111,22 @@
       ]
     },
     {
+      "contract": "atoms/card",
+      "spelling": "JvdmCard",
+      "file": "lib/src/atoms/card/card.dart",
+      "props": [
+        {
+          "name": "children",
+          "slot": true,
+          "spelling": "child"
+        },
+        {
+          "name": "padding",
+          "values": ["sm", "md", "lg", "none"]
+        }
+      ]
+    },
+    {
       "contract": "atoms/check-icon",
       "spelling": "JvdmCheckIcon",
       "file": "lib/src/atoms/icon/check.dart",
@@ -149,6 +182,21 @@
       ]
     },
     {
+      "contract": "atoms/divider",
+      "spelling": "JvdmDivider",
+      "file": "lib/src/atoms/divider/divider.dart",
+      "props": [
+        {
+          "name": "children",
+          "slot": true,
+          "spelling": "child"
+        },
+        {
+          "name": "vertical"
+        }
+      ]
+    },
+    {
       "contract": "atoms/eye-icon",
       "spelling": "JvdmEyeIcon",
       "file": "lib/src/atoms/icon/eye.dart",
@@ -193,6 +241,18 @@
       ]
     },
     {
+      "contract": "atoms/form-alert",
+      "spelling": "JvdmFormAlert",
+      "file": "lib/src/atoms/form_alert/form_alert.dart",
+      "props": [
+        {
+          "name": "children",
+          "slot": true,
+          "spelling": "child"
+        }
+      ]
+    },
+    {
       "contract": "atoms/funnel-icon",
       "spelling": "JvdmFunnelIcon",
       "file": "lib/src/atoms/icon/funnel.dart",
@@ -222,6 +282,34 @@
         {
           "name": "size",
           "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/kbd",
+      "spelling": "JvdmKbd",
+      "file": "lib/src/atoms/kbd/kbd.dart",
+      "props": [
+        {
+          "name": "children",
+          "slot": true,
+          "spelling": "child"
+        }
+      ]
+    },
+    {
+      "contract": "atoms/label",
+      "spelling": "JvdmLabel",
+      "file": "lib/src/atoms/label/label.dart",
+      "props": [
+        {
+          "name": "children",
+          "slot": true,
+          "spelling": "child"
+        },
+        {
+          "name": "tone",
+          "values": ["accent", "muted", "dim"]
         }
       ]
     },
@@ -323,6 +411,12 @@
           "values": ["sm", "md", "lg", "xl", "2xl"]
         }
       ]
+    },
+    {
+      "contract": "atoms/skeleton",
+      "spelling": "JvdmSkeleton",
+      "file": "lib/src/atoms/skeleton/skeleton.dart",
+      "props": []
     },
     {
       "contract": "atoms/staff-icon",

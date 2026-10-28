@@ -8,8 +8,7 @@ class JvdmTokens extends ThemeExtension<JvdmTokens> {
 
   factory JvdmTokens.of(BuildContext context) {
     final JvdmTokens? found = Theme.of(context).extension<JvdmTokens>();
-    return found ??
-        JvdmTokens(brightness: Theme.of(context).brightness);
+    return found ?? JvdmTokens(brightness: Theme.of(context).brightness);
   }
 
   final Brightness brightness;
@@ -56,8 +55,7 @@ class JvdmTokens extends ThemeExtension<JvdmTokens> {
       height: lineHeight(step),
       fontWeight: fontWeight(weight),
       color: color == null ? null : this.color(color),
-      letterSpacing:
-          tracking == null ? null : letterSpacing(tracking, step),
+      letterSpacing: tracking == null ? null : letterSpacing(tracking, step),
     );
   }
 

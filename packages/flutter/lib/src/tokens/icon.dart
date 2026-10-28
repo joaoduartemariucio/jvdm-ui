@@ -37,8 +37,7 @@ abstract class JvdmIcon extends StatelessWidget {
       painter: JvdmIconPainter(
         name: name,
         path: trace(),
-        color:
-            color ??
+        color: color ??
             DefaultTextStyle.of(context).style.color ??
             JvdmTokens.of(context).color(JvdmColorToken.ink),
       ),

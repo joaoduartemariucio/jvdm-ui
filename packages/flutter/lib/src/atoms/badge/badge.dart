@@ -18,7 +18,8 @@ enum BadgeTone {
 }
 
 class JvdmBadge extends StatelessWidget {
-  const JvdmBadge({required this.child, this.tone = BadgeTone.neutral, super.key});
+  const JvdmBadge(
+      {required this.child, this.tone = BadgeTone.neutral, super.key});
 
   final Widget child;
   final BadgeTone tone;
