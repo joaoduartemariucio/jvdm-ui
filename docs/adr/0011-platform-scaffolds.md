@@ -198,6 +198,22 @@ lint still has exactly one place where an animation may be built. The SwiftLint 
 the leading-dot form so it stops reading `theme.linear(…)` as a raw value, and it still rejects
 `.easeInOut` and `.spring`.
 
+Wave five is selection and disclosure: `Accordion`, `Tabs`, `Segmented`, `Pagination` and `Thumb`.
+It brought the first string that **takes an argument** — `Pagination`'s `page` is
+`(page) => "Page ${page}"`, not a constant — so parity now compares not just the locale keys but
+whether each one is parameterised. A port could otherwise degrade `page` to a fixed "Page" and lose
+the number with nothing to catch it; the test fixture proves it fails.
+
+The parameterised string crosses as the idiom each language already has: a `@Sendable (Int) ->
+String` constant in Swift, a `(Int) -> String` property in Kotlin, a static method in Dart, and a
+function in the object on React Native. All four default the parameter to it, and all four are
+tested with the same three cases.
+
+One thing to watch when porting to SwiftUI: naming a static after a `View` modifier silently
+resolves to the modifier. `Thumb.aspectRatio` compiled, and compared the unapplied method reference
+rather than the number; it is `Thumb.ratio` now. The compiler will not warn about this, and the test
+is what found it.
+
 ## Consequences
 
 - One component is ported on four platforms and the ledger reads 105 waivers instead of 106. The

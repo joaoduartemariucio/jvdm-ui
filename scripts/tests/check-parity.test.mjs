@@ -191,3 +191,47 @@ test("matching locale keys pass", () => {
   });
   assert.equal(run(root).status, 0);
 });
+
+test("a platform that drops a string's parameter fails", () => {
+  const root = fixture({
+    "contracts/atoms/badge.json": {
+      ...BADGE,
+      locales: [{ key: "page", parameterised: true }],
+    },
+    "packages/ios/contract.json": {
+      implements: [
+        {
+          contract: "atoms/badge",
+          file: "Sources/Badge.swift",
+          props: [{ name: "tone", values: ["neutral", "danger"] }, { name: "children" }],
+          locales: ["page"],
+        },
+      ],
+    },
+    "packages/ios/Sources/Badge.swift": "struct Badge {}\n",
+  });
+  const result = run(root);
+  assert.equal(result.status, 1);
+  assert.match(result.stderr, /says \[page\] on its own, the web contract says \[page\(…\)\]/);
+});
+
+test("a platform that keeps the parameter passes", () => {
+  const root = fixture({
+    "contracts/atoms/badge.json": {
+      ...BADGE,
+      locales: [{ key: "page", parameterised: true }],
+    },
+    "packages/ios/contract.json": {
+      implements: [
+        {
+          contract: "atoms/badge",
+          file: "Sources/Badge.swift",
+          props: [{ name: "tone", values: ["neutral", "danger"] }, { name: "children" }],
+          locales: [{ key: "page", parameterised: true }],
+        },
+      ],
+    },
+    "packages/ios/Sources/Badge.swift": "struct Badge {}\n",
+  });
+  assert.equal(run(root).status, 0);
+});

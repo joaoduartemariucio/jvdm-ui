@@ -7,6 +7,9 @@ const root = process.argv.includes("--root")
 
 const read = (path) => JSON.parse(readFileSync(join(root, path), "utf8"));
 
+const localeKey = (entry) =>
+  typeof entry === "string" ? entry : `${entry.key}${entry.parameterised ? "(…)" : ""}`;
+
 const { platforms } = read("contracts/platforms.json");
 const { components } = read("contracts/index.json");
 
@@ -18,7 +21,7 @@ const web = new Map(
       {
         name: contract.name,
         props: contract.props.filter((prop) => !prop.inherited && !prop.affordance),
-        locales: contract.locales.map((entry) => entry.key),
+        locales: contract.locales.map(localeKey),
       },
     ];
   }),
@@ -78,7 +81,7 @@ for (const platform of platforms) {
       );
     }
 
-    const strings = [...(entry.locales ?? [])].sort();
+    const strings = [...(entry.locales ?? [])].map(localeKey).sort();
     const expectedStrings = [...contract.locales].sort();
 
     if (strings.join("|") !== expectedStrings.join("|")) {

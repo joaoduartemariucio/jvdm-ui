@@ -504,6 +504,31 @@
       ]
     },
     {
+      "contract": "atoms/segmented",
+      "spelling": "Segmented",
+      "file": "Sources/JvdmUI/Atoms/Segmented/Segmented.swift",
+      "props": [
+        {
+          "name": "name"
+        },
+        {
+          "name": "options"
+        },
+        {
+          "name": "value"
+        },
+        {
+          "name": "defaultValue"
+        },
+        {
+          "name": "onValueChange"
+        },
+        {
+          "name": "label"
+        }
+      ]
+    },
+    {
       "contract": "atoms/select",
       "spelling": "Select",
       "file": "Sources/JvdmUI/Atoms/Select/Select.swift",
@@ -658,6 +683,23 @@
       ]
     },
     {
+      "contract": "atoms/thumb",
+      "spelling": "Thumb",
+      "file": "Sources/JvdmUI/Atoms/Thumb/Thumb.swift",
+      "props": [
+        {
+          "name": "src"
+        },
+        {
+          "name": "alt"
+        },
+        {
+          "name": "fallback",
+          "slot": true
+        }
+      ]
+    },
+    {
       "contract": "atoms/trash-icon",
       "spelling": "TrashIcon",
       "file": "Sources/JvdmUI/Atoms/Icon/TrashIcon.swift",
@@ -676,6 +718,22 @@
         {
           "name": "size",
           "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "molecules/accordion",
+      "spelling": "Accordion",
+      "file": "Sources/JvdmUI/Molecules/Accordion/Accordion.swift",
+      "props": [
+        {
+          "name": "items"
+        },
+        {
+          "name": "exclusive"
+        },
+        {
+          "name": "name"
         }
       ]
     },
@@ -848,6 +906,43 @@
       ]
     },
     {
+      "contract": "molecules/pagination",
+      "spelling": "Pagination",
+      "file": "Sources/JvdmUI/Molecules/Pagination/Pagination.swift",
+      "props": [
+        {
+          "name": "page"
+        },
+        {
+          "name": "pages"
+        },
+        {
+          "name": "onPageChange"
+        },
+        {
+          "name": "previousLabel"
+        },
+        {
+          "name": "nextLabel"
+        },
+        {
+          "name": "pageLabel"
+        },
+        {
+          "name": "label"
+        }
+      ],
+      "locales": [
+        "label",
+        "previous",
+        "next",
+        {
+          "key": "page",
+          "parameterised": true
+        }
+      ]
+    },
+    {
       "contract": "molecules/stat-card",
       "spelling": "StatCard",
       "file": "Sources/JvdmUI/Molecules/StatCard/StatCard.swift",
@@ -882,6 +977,26 @@
           "name": "current"
         }
       ]
+    },
+    {
+      "contract": "molecules/tabs",
+      "spelling": "Tabs",
+      "file": "Sources/JvdmUI/Molecules/Tabs/Tabs.swift",
+      "props": [
+        {
+          "name": "items"
+        },
+        {
+          "name": "value"
+        },
+        {
+          "name": "onValueChange"
+        },
+        {
+          "name": "label"
+        }
+      ],
+      "locales": ["label"]
     }
   ]
 }

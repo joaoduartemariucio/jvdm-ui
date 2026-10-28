@@ -1,4 +1,5 @@
 export * from "./banner";
+export * from "./accordion";
 export { Breadcrumb, type Crumb } from "./breadcrumb";
 export { Callout } from "./callout";
 export { CardTitle } from "./card-title";
@@ -7,5 +8,7 @@ export { Field } from "./field";
 export { LoadError } from "./load-error";
 export * from "./metric-card";
 export { PageHeader } from "./page-header";
+export * from "./pagination";
 export * from "./stat-card";
 export * from "./stepper";
+export { Tabs, type Tab } from "./tabs";

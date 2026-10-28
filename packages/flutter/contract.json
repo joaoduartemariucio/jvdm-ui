@@ -503,6 +503,31 @@
       ]
     },
     {
+      "contract": "atoms/segmented",
+      "spelling": "JvdmSegmented",
+      "file": "lib/src/atoms/segmented/segmented.dart",
+      "props": [
+        {
+          "name": "name"
+        },
+        {
+          "name": "options"
+        },
+        {
+          "name": "value"
+        },
+        {
+          "name": "defaultValue"
+        },
+        {
+          "name": "onValueChange"
+        },
+        {
+          "name": "label"
+        }
+      ]
+    },
+    {
       "contract": "atoms/select",
       "spelling": "JvdmSelect",
       "file": "lib/src/atoms/select/select.dart",
@@ -657,6 +682,23 @@
       ]
     },
     {
+      "contract": "atoms/thumb",
+      "spelling": "JvdmThumb",
+      "file": "lib/src/atoms/thumb/thumb.dart",
+      "props": [
+        {
+          "name": "src"
+        },
+        {
+          "name": "alt"
+        },
+        {
+          "name": "fallback",
+          "slot": true
+        }
+      ]
+    },
+    {
       "contract": "atoms/trash-icon",
       "spelling": "JvdmTrashIcon",
       "file": "lib/src/atoms/icon/trash.dart",
@@ -675,6 +717,22 @@
         {
           "name": "size",
           "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "molecules/accordion",
+      "spelling": "JvdmAccordion",
+      "file": "lib/src/molecules/accordion/accordion.dart",
+      "props": [
+        {
+          "name": "items"
+        },
+        {
+          "name": "exclusive"
+        },
+        {
+          "name": "name"
         }
       ]
     },
@@ -847,6 +905,43 @@
       ]
     },
     {
+      "contract": "molecules/pagination",
+      "spelling": "JvdmPagination",
+      "file": "lib/src/molecules/pagination/pagination.dart",
+      "props": [
+        {
+          "name": "page"
+        },
+        {
+          "name": "pages"
+        },
+        {
+          "name": "onPageChange"
+        },
+        {
+          "name": "previousLabel"
+        },
+        {
+          "name": "nextLabel"
+        },
+        {
+          "name": "pageLabel"
+        },
+        {
+          "name": "label"
+        }
+      ],
+      "locales": [
+        "label",
+        "previous",
+        "next",
+        {
+          "key": "page",
+          "parameterised": true
+        }
+      ]
+    },
+    {
       "contract": "molecules/stat-card",
       "spelling": "JvdmStatCard",
       "file": "lib/src/molecules/stat_card/stat_card.dart",
@@ -881,6 +976,26 @@
           "name": "current"
         }
       ]
+    },
+    {
+      "contract": "molecules/tabs",
+      "spelling": "JvdmTabs",
+      "file": "lib/src/molecules/tabs/tabs.dart",
+      "props": [
+        {
+          "name": "items"
+        },
+        {
+          "name": "value"
+        },
+        {
+          "name": "onValueChange"
+        },
+        {
+          "name": "label"
+        }
+      ],
+      "locales": ["label"]
     }
   ]
 }
