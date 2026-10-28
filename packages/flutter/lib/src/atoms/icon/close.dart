@@ -2,8 +2,8 @@ import 'package:flutter/widgets.dart';
 
 import '../../tokens/icon.dart';
 
-class JvdmCloseIcon extends JvdmIconData {
-  const JvdmCloseIcon();
+class JvdmCloseIcon extends JvdmIcon {
+  const JvdmCloseIcon({super.size, super.color, super.key});
 
   @override
   String get name => 'close';

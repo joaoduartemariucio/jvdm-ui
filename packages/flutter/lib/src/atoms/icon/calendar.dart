@@ -2,8 +2,8 @@ import 'package:flutter/widgets.dart';
 
 import '../../tokens/icon.dart';
 
-class JvdmCalendarIcon extends JvdmIconData {
-  const JvdmCalendarIcon();
+class JvdmCalendarIcon extends JvdmIcon {
+  const JvdmCalendarIcon({super.size, super.color, super.key});
 
   @override
   String get name => 'calendar';

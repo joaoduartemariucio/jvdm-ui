@@ -2,8 +2,8 @@ import 'package:flutter/widgets.dart';
 
 import '../../tokens/icon.dart';
 
-class JvdmFunnelIcon extends JvdmIconData {
-  const JvdmFunnelIcon();
+class JvdmFunnelIcon extends JvdmIcon {
+  const JvdmFunnelIcon({super.size, super.color, super.key});
 
   @override
   String get name => 'funnel';

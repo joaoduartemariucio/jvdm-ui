@@ -2,8 +2,8 @@ import 'package:flutter/widgets.dart';
 
 import '../../tokens/icon.dart';
 
-class JvdmMailIcon extends JvdmIconData {
-  const JvdmMailIcon();
+class JvdmMailIcon extends JvdmIcon {
+  const JvdmMailIcon({super.size, super.color, super.key});
 
   @override
   String get name => 'mail';

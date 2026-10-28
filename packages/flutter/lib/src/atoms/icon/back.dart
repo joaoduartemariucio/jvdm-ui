@@ -2,8 +2,8 @@ import 'package:flutter/widgets.dart';
 
 import '../../tokens/icon.dart';
 
-class JvdmBackIcon extends JvdmIconData {
-  const JvdmBackIcon();
+class JvdmBackIcon extends JvdmIcon {
+  const JvdmBackIcon({super.size, super.color, super.key});
 
   @override
   String get name => 'back';

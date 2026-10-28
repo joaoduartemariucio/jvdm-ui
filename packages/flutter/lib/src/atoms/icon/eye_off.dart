@@ -2,8 +2,8 @@ import 'package:flutter/widgets.dart';
 
 import '../../tokens/icon.dart';
 
-class JvdmEyeOffIcon extends JvdmIconData {
-  const JvdmEyeOffIcon();
+class JvdmEyeOffIcon extends JvdmIcon {
+  const JvdmEyeOffIcon({super.size, super.color, super.key});
 
   @override
   String get name => 'eye-off';

@@ -2,8 +2,8 @@ import 'package:flutter/widgets.dart';
 
 import '../../tokens/icon.dart';
 
-class JvdmInstagramIcon extends JvdmIconData {
-  const JvdmInstagramIcon();
+class JvdmInstagramIcon extends JvdmIcon {
+  const JvdmInstagramIcon({super.size, super.color, super.key});
 
   @override
   String get name => 'instagram';

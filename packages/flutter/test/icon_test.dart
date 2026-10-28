@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:jvdm_ui/jvdm_ui.dart';
 
-const List<JvdmIconData> allIcons = <JvdmIconData>[
+const List<JvdmIcon> allIcons = <JvdmIcon>[
   JvdmAccessIcon(),
   JvdmAlertIcon(),
   JvdmBackIcon(),
@@ -52,12 +52,8 @@ Widget _gallery() {
               spacing: tokens.spacing(4),
               runSpacing: tokens.spacing(4),
               children: <Widget>[
-                for (final JvdmIconData icon in allIcons)
-                  JvdmIcon(
-                    icon,
-                    size: JvdmIconSize.xxl,
-                    color: tokens.color(JvdmColorToken.ink),
-                  ),
+                for (final JvdmIcon icon in allIcons)
+                  icon,
               ],
             ),
           ),
@@ -74,7 +70,7 @@ void main() {
     expect(allIcons.length, 33);
 
     final Set<String> names = <String>{};
-    for (final JvdmIconData icon in allIcons) {
+    for (final JvdmIcon icon in allIcons) {
       expect(names.add(icon.name), isTrue, reason: 'duplicate ${icon.name}');
       final Path path = icon.trace();
       expect(path.computeMetrics().isNotEmpty, isTrue, reason: icon.name);
@@ -84,7 +80,7 @@ void main() {
   testWidgets('every icon draws inside the viewBox', (
     WidgetTester tester,
   ) async {
-    for (final JvdmIconData icon in allIcons) {
+    for (final JvdmIcon icon in allIcons) {
       final Rect bounds = icon.trace().getBounds();
       expect(bounds.left, greaterThanOrEqualTo(-0.5), reason: icon.name);
       expect(bounds.top, greaterThanOrEqualTo(-0.5), reason: icon.name);

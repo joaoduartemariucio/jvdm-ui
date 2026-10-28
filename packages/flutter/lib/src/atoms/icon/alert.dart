@@ -2,8 +2,8 @@ import 'package:flutter/widgets.dart';
 
 import '../../tokens/icon.dart';
 
-class JvdmAlertIcon extends JvdmIconData {
-  const JvdmAlertIcon();
+class JvdmAlertIcon extends JvdmIcon {
+  const JvdmAlertIcon({super.size, super.color, super.key});
 
   @override
   String get name => 'alert';

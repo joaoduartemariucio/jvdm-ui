@@ -2,8 +2,8 @@ import 'package:flutter/widgets.dart';
 
 import '../../tokens/icon.dart';
 
-class JvdmStudentsIcon extends JvdmIconData {
-  const JvdmStudentsIcon();
+class JvdmStudentsIcon extends JvdmIcon {
+  const JvdmStudentsIcon({super.size, super.color, super.key});
 
   @override
   String get name => 'students';

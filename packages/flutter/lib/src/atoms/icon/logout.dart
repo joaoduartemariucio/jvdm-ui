@@ -2,8 +2,8 @@ import 'package:flutter/widgets.dart';
 
 import '../../tokens/icon.dart';
 
-class JvdmLogoutIcon extends JvdmIconData {
-  const JvdmLogoutIcon();
+class JvdmLogoutIcon extends JvdmIcon {
+  const JvdmLogoutIcon({super.size, super.color, super.key});
 
   @override
   String get name => 'logout';

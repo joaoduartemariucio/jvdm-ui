@@ -2,8 +2,8 @@ import 'package:flutter/widgets.dart';
 
 import '../../tokens/icon.dart';
 
-class JvdmPencilIcon extends JvdmIconData {
-  const JvdmPencilIcon();
+class JvdmPencilIcon extends JvdmIcon {
+  const JvdmPencilIcon({super.size, super.color, super.key});
 
   @override
   String get name => 'pencil';

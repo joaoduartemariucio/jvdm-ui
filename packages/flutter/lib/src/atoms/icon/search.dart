@@ -2,8 +2,8 @@ import 'package:flutter/widgets.dart';
 
 import '../../tokens/icon.dart';
 
-class JvdmSearchIcon extends JvdmIconData {
-  const JvdmSearchIcon();
+class JvdmSearchIcon extends JvdmIcon {
+  const JvdmSearchIcon({super.size, super.color, super.key});
 
   @override
   String get name => 'search';

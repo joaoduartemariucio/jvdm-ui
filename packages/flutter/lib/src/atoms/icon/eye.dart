@@ -2,8 +2,8 @@ import 'package:flutter/widgets.dart';
 
 import '../../tokens/icon.dart';
 
-class JvdmEyeIcon extends JvdmIconData {
-  const JvdmEyeIcon();
+class JvdmEyeIcon extends JvdmIcon {
+  const JvdmEyeIcon({super.size, super.color, super.key});
 
   @override
   String get name => 'eye';

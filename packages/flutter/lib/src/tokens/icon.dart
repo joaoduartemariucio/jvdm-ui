@@ -17,18 +17,41 @@ const double jvdmIconViewBox = 24.0;
 
 const double jvdmIconStrokeWidth = 1.6;
 
-abstract class JvdmIconData {
-  const JvdmIconData();
+abstract class JvdmIcon extends StatelessWidget {
+  const JvdmIcon({this.size = JvdmIconSize.md, this.color, super.key});
+
+  final JvdmIconSize size;
+  final Color? color;
 
   String get name;
 
   Path trace();
+
+  @override
+  Widget build(BuildContext context) {
+    return CustomPaint(
+      size: Size.square(size.points),
+      painter: JvdmIconPainter(
+        name: name,
+        path: trace(),
+        color:
+            color ??
+            DefaultTextStyle.of(context).style.color ??
+            const Color(0xFF000000),
+      ),
+    );
+  }
 }
 
 class JvdmIconPainter extends CustomPainter {
-  const JvdmIconPainter({required this.icon, required this.color});
+  const JvdmIconPainter({
+    required this.name,
+    required this.path,
+    required this.color,
+  });
 
-  final JvdmIconData icon;
+  final String name;
+  final Path path;
   final Color color;
 
   @override
@@ -45,30 +68,11 @@ class JvdmIconPainter extends CustomPainter {
 
     canvas.save();
     canvas.scale(scale);
-    canvas.drawPath(icon.trace(), paint);
+    canvas.drawPath(path, paint);
     canvas.restore();
   }
 
   @override
   bool shouldRepaint(JvdmIconPainter oldDelegate) =>
-      oldDelegate.icon.name != icon.name || oldDelegate.color != color;
-}
-
-class JvdmIcon extends StatelessWidget {
-  const JvdmIcon(this.icon, {this.size = JvdmIconSize.md, this.color, super.key});
-
-  final JvdmIconData icon;
-  final JvdmIconSize size;
-  final Color? color;
-
-  @override
-  Widget build(BuildContext context) {
-    return CustomPaint(
-      size: Size.square(size.points),
-      painter: JvdmIconPainter(
-        icon: icon,
-        color: color ?? DefaultTextStyle.of(context).style.color ?? const Color(0xFF000000),
-      ),
-    );
-  }
+      oldDelegate.name != name || oldDelegate.color != color;
 }

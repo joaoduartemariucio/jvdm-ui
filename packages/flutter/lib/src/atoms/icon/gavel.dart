@@ -2,8 +2,8 @@ import 'package:flutter/widgets.dart';
 
 import '../../tokens/icon.dart';
 
-class JvdmGavelIcon extends JvdmIconData {
-  const JvdmGavelIcon();
+class JvdmGavelIcon extends JvdmIcon {
+  const JvdmGavelIcon({super.size, super.color, super.key});
 
   @override
   String get name => 'gavel';

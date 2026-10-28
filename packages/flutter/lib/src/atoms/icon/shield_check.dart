@@ -2,8 +2,8 @@ import 'package:flutter/widgets.dart';
 
 import '../../tokens/icon.dart';
 
-class JvdmShieldCheckIcon extends JvdmIconData {
-  const JvdmShieldCheckIcon();
+class JvdmShieldCheckIcon extends JvdmIcon {
+  const JvdmShieldCheckIcon({super.size, super.color, super.key});
 
   @override
   String get name => 'shield-check';

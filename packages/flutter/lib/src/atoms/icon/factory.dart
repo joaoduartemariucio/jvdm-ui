@@ -2,8 +2,8 @@ import 'package:flutter/widgets.dart';
 
 import '../../tokens/icon.dart';
 
-class JvdmFactoryIcon extends JvdmIconData {
-  const JvdmFactoryIcon();
+class JvdmFactoryIcon extends JvdmIcon {
+  const JvdmFactoryIcon({super.size, super.color, super.key});
 
   @override
   String get name => 'factory';

@@ -2,8 +2,8 @@ import 'package:flutter/widgets.dart';
 
 import '../../tokens/icon.dart';
 
-class JvdmPhoneIcon extends JvdmIconData {
-  const JvdmPhoneIcon();
+class JvdmPhoneIcon extends JvdmIcon {
+  const JvdmPhoneIcon({super.size, super.color, super.key});
 
   @override
   String get name => 'phone';

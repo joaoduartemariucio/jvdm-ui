@@ -2,8 +2,8 @@ import 'package:flutter/widgets.dart';
 
 import '../../tokens/icon.dart';
 
-class JvdmSunIcon extends JvdmIconData {
-  const JvdmSunIcon();
+class JvdmSunIcon extends JvdmIcon {
+  const JvdmSunIcon({super.size, super.color, super.key});
 
   @override
   String get name => 'sun';

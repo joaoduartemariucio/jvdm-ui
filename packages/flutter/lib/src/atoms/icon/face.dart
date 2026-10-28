@@ -2,8 +2,8 @@ import 'package:flutter/widgets.dart';
 
 import '../../tokens/icon.dart';
 
-class JvdmFaceIcon extends JvdmIconData {
-  const JvdmFaceIcon();
+class JvdmFaceIcon extends JvdmIcon {
+  const JvdmFaceIcon({super.size, super.color, super.key});
 
   @override
   String get name => 'face';

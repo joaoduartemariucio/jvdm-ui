@@ -2,8 +2,8 @@ import 'package:flutter/widgets.dart';
 
 import '../../tokens/icon.dart';
 
-class JvdmAccessIcon extends JvdmIconData {
-  const JvdmAccessIcon();
+class JvdmAccessIcon extends JvdmIcon {
+  const JvdmAccessIcon({super.size, super.color, super.key});
 
   @override
   String get name => 'access';

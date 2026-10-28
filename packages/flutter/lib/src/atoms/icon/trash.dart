@@ -2,8 +2,8 @@ import 'package:flutter/widgets.dart';
 
 import '../../tokens/icon.dart';
 
-class JvdmTrashIcon extends JvdmIconData {
-  const JvdmTrashIcon();
+class JvdmTrashIcon extends JvdmIcon {
+  const JvdmTrashIcon({super.size, super.color, super.key});
 
   @override
   String get name => 'trash';

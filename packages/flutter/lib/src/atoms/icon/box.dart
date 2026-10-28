@@ -2,8 +2,8 @@ import 'package:flutter/widgets.dart';
 
 import '../../tokens/icon.dart';
 
-class JvdmBoxIcon extends JvdmIconData {
-  const JvdmBoxIcon();
+class JvdmBoxIcon extends JvdmIcon {
+  const JvdmBoxIcon({super.size, super.color, super.key});
 
   @override
   String get name => 'box';

@@ -2,8 +2,8 @@ import 'package:flutter/widgets.dart';
 
 import '../../tokens/icon.dart';
 
-class JvdmBuildingIcon extends JvdmIconData {
-  const JvdmBuildingIcon();
+class JvdmBuildingIcon extends JvdmIcon {
+  const JvdmBuildingIcon({super.size, super.color, super.key});
 
   @override
   String get name => 'building';

@@ -2,8 +2,8 @@ import 'package:flutter/widgets.dart';
 
 import '../../tokens/icon.dart';
 
-class JvdmCopyIcon extends JvdmIconData {
-  const JvdmCopyIcon();
+class JvdmCopyIcon extends JvdmIcon {
+  const JvdmCopyIcon({super.size, super.color, super.key});
 
   @override
   String get name => 'copy';

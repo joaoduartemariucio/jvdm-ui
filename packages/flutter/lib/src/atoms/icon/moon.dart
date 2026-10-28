@@ -2,8 +2,8 @@ import 'package:flutter/widgets.dart';
 
 import '../../tokens/icon.dart';
 
-class JvdmMoonIcon extends JvdmIconData {
-  const JvdmMoonIcon();
+class JvdmMoonIcon extends JvdmIcon {
+  const JvdmMoonIcon({super.size, super.color, super.key});
 
   @override
   String get name => 'moon';

@@ -2,8 +2,8 @@ import 'package:flutter/widgets.dart';
 
 import '../../tokens/icon.dart';
 
-class JvdmWhatsappIcon extends JvdmIconData {
-  const JvdmWhatsappIcon();
+class JvdmWhatsappIcon extends JvdmIcon {
+  const JvdmWhatsappIcon({super.size, super.color, super.key});
 
   @override
   String get name => 'whatsapp';

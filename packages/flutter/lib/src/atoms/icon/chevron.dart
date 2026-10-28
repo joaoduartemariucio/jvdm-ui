@@ -2,8 +2,8 @@ import 'package:flutter/widgets.dart';
 
 import '../../tokens/icon.dart';
 
-class JvdmChevronIcon extends JvdmIconData {
-  const JvdmChevronIcon();
+class JvdmChevronIcon extends JvdmIcon {
+  const JvdmChevronIcon({super.size, super.color, super.key});
 
   @override
   String get name => 'chevron';
