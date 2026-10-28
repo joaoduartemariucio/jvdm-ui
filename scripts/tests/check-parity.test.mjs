@@ -144,3 +144,50 @@ test("a fully implemented platform passes", () => {
   );
   assert.equal(run(root).status, 0);
 });
+
+test("a platform missing a string the component says on its own fails", () => {
+  const root = fixture({
+    "contracts/atoms/badge.json": { ...BADGE, locales: [{ key: "remove" }] },
+    ...implemented([{ name: "tone", values: ["neutral", "danger"] }, { name: "children" }]),
+  });
+  const result = run(root);
+  assert.equal(result.status, 1);
+  assert.match(result.stderr, /says \[\] on its own, the web contract says \[remove\]/);
+});
+
+test("a platform inventing a string of its own fails", () => {
+  const root = fixture({
+    "packages/ios/contract.json": {
+      implements: [
+        {
+          contract: "atoms/badge",
+          file: "Sources/Badge.swift",
+          props: [{ name: "tone", values: ["neutral", "danger"] }, { name: "children" }],
+          locales: ["shout"],
+        },
+      ],
+    },
+    "packages/ios/Sources/Badge.swift": "struct Badge {}\n",
+  });
+  const result = run(root);
+  assert.equal(result.status, 1);
+  assert.match(result.stderr, /says \[shout\] on its own, the web contract says \[\]/);
+});
+
+test("matching locale keys pass", () => {
+  const root = fixture({
+    "contracts/atoms/badge.json": { ...BADGE, locales: [{ key: "remove" }] },
+    "packages/ios/contract.json": {
+      implements: [
+        {
+          contract: "atoms/badge",
+          file: "Sources/Badge.swift",
+          props: [{ name: "tone", values: ["neutral", "danger"] }, { name: "children" }],
+          locales: ["remove"],
+        },
+      ],
+    },
+    "packages/ios/Sources/Badge.swift": "struct Badge {}\n",
+  });
+  assert.equal(run(root).status, 0);
+});

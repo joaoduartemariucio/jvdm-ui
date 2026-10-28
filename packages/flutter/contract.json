@@ -457,6 +457,30 @@
       ]
     },
     {
+      "contract": "atoms/progress-bar",
+      "spelling": "JvdmProgressBar",
+      "file": "lib/src/atoms/progress_bar/progress_bar.dart",
+      "props": [
+        {
+          "name": "value"
+        },
+        {
+          "name": "tone",
+          "values": ["accent", "ok", "warn", "danger"]
+        },
+        {
+          "name": "size",
+          "values": ["md", "xs"]
+        },
+        {
+          "name": "dim"
+        },
+        {
+          "name": "label"
+        }
+      ]
+    },
+    {
       "contract": "atoms/radio",
       "spelling": "JvdmRadio",
       "file": "lib/src/atoms/radio/radio.dart",
@@ -511,6 +535,21 @@
       "spelling": "JvdmSlider",
       "file": "lib/src/atoms/slider/slider.dart",
       "props": []
+    },
+    {
+      "contract": "atoms/spinner",
+      "spelling": "JvdmSpinner",
+      "file": "lib/src/atoms/spinner/spinner.dart",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        },
+        {
+          "name": "label"
+        }
+      ],
+      "locales": ["label"]
     },
     {
       "contract": "atoms/staff-icon",
@@ -582,6 +621,31 @@
       ]
     },
     {
+      "contract": "atoms/tag",
+      "spelling": "JvdmTag",
+      "file": "lib/src/atoms/tag/tag.dart",
+      "props": [
+        {
+          "name": "tone",
+          "values": ["neutral", "accent", "ok", "warn", "danger", "info"]
+        },
+        {
+          "name": "children",
+          "slot": true
+        },
+        {
+          "name": "onRemove"
+        },
+        {
+          "name": "removeLabel"
+        },
+        {
+          "name": "disabled"
+        }
+      ],
+      "locales": ["remove"]
+    },
+    {
       "contract": "atoms/textarea",
       "spelling": "JvdmTextarea",
       "file": "lib/src/atoms/textarea/textarea.dart",
@@ -611,6 +675,210 @@
         {
           "name": "size",
           "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "molecules/banner",
+      "spelling": "JvdmBanner",
+      "file": "lib/src/molecules/banner/banner.dart",
+      "props": [
+        {
+          "name": "tone",
+          "values": ["ok", "warn", "danger", "info"]
+        },
+        {
+          "name": "title"
+        },
+        {
+          "name": "children",
+          "slot": true
+        },
+        {
+          "name": "action",
+          "slot": true
+        }
+      ]
+    },
+    {
+      "contract": "molecules/breadcrumb",
+      "spelling": "JvdmBreadcrumb",
+      "file": "lib/src/molecules/breadcrumb/breadcrumb.dart",
+      "props": [
+        {
+          "name": "items"
+        },
+        {
+          "name": "label"
+        }
+      ],
+      "locales": ["label"]
+    },
+    {
+      "contract": "molecules/callout",
+      "spelling": "JvdmCallout",
+      "file": "lib/src/molecules/callout/callout.dart",
+      "props": [
+        {
+          "name": "tone",
+          "values": ["ok", "warn", "danger", "info"]
+        },
+        {
+          "name": "title"
+        },
+        {
+          "name": "children",
+          "slot": true
+        }
+      ]
+    },
+    {
+      "contract": "molecules/card-title",
+      "spelling": "JvdmCardTitle",
+      "file": "lib/src/molecules/card_title/card_title.dart",
+      "props": [
+        {
+          "name": "children",
+          "slot": true
+        },
+        {
+          "name": "hint",
+          "slot": true
+        }
+      ]
+    },
+    {
+      "contract": "molecules/empty",
+      "spelling": "JvdmEmpty",
+      "file": "lib/src/molecules/empty/empty.dart",
+      "props": [
+        {
+          "name": "title"
+        },
+        {
+          "name": "description",
+          "slot": true
+        }
+      ]
+    },
+    {
+      "contract": "molecules/field",
+      "spelling": "JvdmField",
+      "file": "lib/src/molecules/field/field.dart",
+      "props": [
+        {
+          "name": "label"
+        },
+        {
+          "name": "error"
+        },
+        {
+          "name": "action",
+          "slot": true
+        },
+        {
+          "name": "children",
+          "slot": true
+        }
+      ]
+    },
+    {
+      "contract": "molecules/load-error",
+      "spelling": "JvdmLoadError",
+      "file": "lib/src/molecules/load_error/load_error.dart",
+      "props": [
+        {
+          "name": "message"
+        },
+        {
+          "name": "onRetry"
+        },
+        {
+          "name": "retryLabel"
+        }
+      ],
+      "locales": ["retry"]
+    },
+    {
+      "contract": "molecules/metric-card",
+      "spelling": "JvdmMetricCard",
+      "file": "lib/src/molecules/metric_card/metric_card.dart",
+      "props": [
+        {
+          "name": "label"
+        },
+        {
+          "name": "value",
+          "slot": true
+        },
+        {
+          "name": "change"
+        },
+        {
+          "name": "trend",
+          "values": ["neutral", "up", "down"]
+        },
+        {
+          "name": "hint"
+        },
+        {
+          "name": "children",
+          "slot": true
+        }
+      ]
+    },
+    {
+      "contract": "molecules/page-header",
+      "spelling": "JvdmPageHeader",
+      "file": "lib/src/molecules/page_header/page_header.dart",
+      "props": [
+        {
+          "name": "title",
+          "slot": true
+        },
+        {
+          "name": "subtitle",
+          "slot": true
+        },
+        {
+          "name": "children",
+          "slot": true
+        }
+      ]
+    },
+    {
+      "contract": "molecules/stat-card",
+      "spelling": "JvdmStatCard",
+      "file": "lib/src/molecules/stat_card/stat_card.dart",
+      "props": [
+        {
+          "name": "label"
+        },
+        {
+          "name": "value",
+          "slot": true
+        },
+        {
+          "name": "hint"
+        },
+        {
+          "name": "color"
+        },
+        {
+          "name": "attention"
+        }
+      ]
+    },
+    {
+      "contract": "molecules/stepper",
+      "spelling": "JvdmStepper",
+      "file": "lib/src/molecules/stepper/stepper.dart",
+      "props": [
+        {
+          "name": "steps"
+        },
+        {
+          "name": "current"
         }
       ]
     }

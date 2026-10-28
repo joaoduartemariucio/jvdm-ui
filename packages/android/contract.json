@@ -457,6 +457,30 @@
       ]
     },
     {
+      "contract": "atoms/progress-bar",
+      "spelling": "JvdmProgressBar",
+      "file": "src/main/kotlin/com/jvdm/ui/atoms/progressbar/ProgressBar.kt",
+      "props": [
+        {
+          "name": "value"
+        },
+        {
+          "name": "tone",
+          "values": ["accent", "ok", "warn", "danger"]
+        },
+        {
+          "name": "size",
+          "values": ["md", "xs"]
+        },
+        {
+          "name": "dim"
+        },
+        {
+          "name": "label"
+        }
+      ]
+    },
+    {
       "contract": "atoms/radio",
       "spelling": "JvdmRadio",
       "file": "src/main/kotlin/com/jvdm/ui/atoms/radio/Radio.kt",
@@ -511,6 +535,21 @@
       "spelling": "JvdmSlider",
       "file": "src/main/kotlin/com/jvdm/ui/atoms/slider/Slider.kt",
       "props": []
+    },
+    {
+      "contract": "atoms/spinner",
+      "spelling": "JvdmSpinner",
+      "file": "src/main/kotlin/com/jvdm/ui/atoms/spinner/Spinner.kt",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        },
+        {
+          "name": "label"
+        }
+      ],
+      "locales": ["label"]
     },
     {
       "contract": "atoms/staff-icon",
@@ -582,6 +621,31 @@
       ]
     },
     {
+      "contract": "atoms/tag",
+      "spelling": "JvdmTag",
+      "file": "src/main/kotlin/com/jvdm/ui/atoms/tag/Tag.kt",
+      "props": [
+        {
+          "name": "tone",
+          "values": ["neutral", "accent", "ok", "warn", "danger", "info"]
+        },
+        {
+          "name": "children",
+          "slot": true
+        },
+        {
+          "name": "onRemove"
+        },
+        {
+          "name": "removeLabel"
+        },
+        {
+          "name": "disabled"
+        }
+      ],
+      "locales": ["remove"]
+    },
+    {
       "contract": "atoms/textarea",
       "spelling": "JvdmTextarea",
       "file": "src/main/kotlin/com/jvdm/ui/atoms/textarea/Textarea.kt",
@@ -611,6 +675,210 @@
         {
           "name": "size",
           "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "molecules/banner",
+      "spelling": "JvdmBanner",
+      "file": "src/main/kotlin/com/jvdm/ui/molecules/banner/Banner.kt",
+      "props": [
+        {
+          "name": "tone",
+          "values": ["ok", "warn", "danger", "info"]
+        },
+        {
+          "name": "title"
+        },
+        {
+          "name": "children",
+          "slot": true
+        },
+        {
+          "name": "action",
+          "slot": true
+        }
+      ]
+    },
+    {
+      "contract": "molecules/breadcrumb",
+      "spelling": "JvdmBreadcrumb",
+      "file": "src/main/kotlin/com/jvdm/ui/molecules/breadcrumb/Breadcrumb.kt",
+      "props": [
+        {
+          "name": "items"
+        },
+        {
+          "name": "label"
+        }
+      ],
+      "locales": ["label"]
+    },
+    {
+      "contract": "molecules/callout",
+      "spelling": "JvdmCallout",
+      "file": "src/main/kotlin/com/jvdm/ui/molecules/callout/Callout.kt",
+      "props": [
+        {
+          "name": "tone",
+          "values": ["ok", "warn", "danger", "info"]
+        },
+        {
+          "name": "title"
+        },
+        {
+          "name": "children",
+          "slot": true
+        }
+      ]
+    },
+    {
+      "contract": "molecules/card-title",
+      "spelling": "JvdmCardTitle",
+      "file": "src/main/kotlin/com/jvdm/ui/molecules/cardtitle/CardTitle.kt",
+      "props": [
+        {
+          "name": "children",
+          "slot": true
+        },
+        {
+          "name": "hint",
+          "slot": true
+        }
+      ]
+    },
+    {
+      "contract": "molecules/empty",
+      "spelling": "JvdmEmpty",
+      "file": "src/main/kotlin/com/jvdm/ui/molecules/empty/Empty.kt",
+      "props": [
+        {
+          "name": "title"
+        },
+        {
+          "name": "description",
+          "slot": true
+        }
+      ]
+    },
+    {
+      "contract": "molecules/field",
+      "spelling": "JvdmField",
+      "file": "src/main/kotlin/com/jvdm/ui/molecules/field/Field.kt",
+      "props": [
+        {
+          "name": "label"
+        },
+        {
+          "name": "error"
+        },
+        {
+          "name": "action",
+          "slot": true
+        },
+        {
+          "name": "children",
+          "slot": true
+        }
+      ]
+    },
+    {
+      "contract": "molecules/load-error",
+      "spelling": "JvdmLoadError",
+      "file": "src/main/kotlin/com/jvdm/ui/molecules/loaderror/LoadError.kt",
+      "props": [
+        {
+          "name": "message"
+        },
+        {
+          "name": "onRetry"
+        },
+        {
+          "name": "retryLabel"
+        }
+      ],
+      "locales": ["retry"]
+    },
+    {
+      "contract": "molecules/metric-card",
+      "spelling": "JvdmMetricCard",
+      "file": "src/main/kotlin/com/jvdm/ui/molecules/metriccard/MetricCard.kt",
+      "props": [
+        {
+          "name": "label"
+        },
+        {
+          "name": "value",
+          "slot": true
+        },
+        {
+          "name": "change"
+        },
+        {
+          "name": "trend",
+          "values": ["neutral", "up", "down"]
+        },
+        {
+          "name": "hint"
+        },
+        {
+          "name": "children",
+          "slot": true
+        }
+      ]
+    },
+    {
+      "contract": "molecules/page-header",
+      "spelling": "JvdmPageHeader",
+      "file": "src/main/kotlin/com/jvdm/ui/molecules/pageheader/PageHeader.kt",
+      "props": [
+        {
+          "name": "title",
+          "slot": true
+        },
+        {
+          "name": "subtitle",
+          "slot": true
+        },
+        {
+          "name": "children",
+          "slot": true
+        }
+      ]
+    },
+    {
+      "contract": "molecules/stat-card",
+      "spelling": "JvdmStatCard",
+      "file": "src/main/kotlin/com/jvdm/ui/molecules/statcard/StatCard.kt",
+      "props": [
+        {
+          "name": "label"
+        },
+        {
+          "name": "value",
+          "slot": true
+        },
+        {
+          "name": "hint"
+        },
+        {
+          "name": "color"
+        },
+        {
+          "name": "attention"
+        }
+      ]
+    },
+    {
+      "contract": "molecules/stepper",
+      "spelling": "JvdmStepper",
+      "file": "src/main/kotlin/com/jvdm/ui/molecules/stepper/Stepper.kt",
+      "props": [
+        {
+          "name": "steps"
+        },
+        {
+          "name": "current"
         }
       ]
     }

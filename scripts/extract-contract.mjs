@@ -150,7 +150,7 @@ function collect(typeNode, members, hosts, seen) {
   }
 }
 
-const AFFORDANCES = { className: "styling" };
+const AFFORDANCES = { className: "styling", htmlFor: "labelling" };
 
 function propsOf(node) {
   const parameter = node.parameters[0];

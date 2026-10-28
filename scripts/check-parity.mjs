@@ -18,6 +18,7 @@ const web = new Map(
       {
         name: contract.name,
         props: contract.props.filter((prop) => !prop.inherited && !prop.affordance),
+        locales: contract.locales.map((entry) => entry.key),
       },
     ];
   }),
@@ -74,6 +75,15 @@ for (const platform of platforms) {
     for (const name of actual.filter((prop) => !expected.includes(prop))) {
       failures.push(
         `${platform.id}: ${id} adds prop \`${name}\`, which the web contract does not have`,
+      );
+    }
+
+    const strings = [...(entry.locales ?? [])].sort();
+    const expectedStrings = [...contract.locales].sort();
+
+    if (strings.join("|") !== expectedStrings.join("|")) {
+      failures.push(
+        `${platform.id}: ${id} says [${strings.join(", ")}] on its own, the web contract says [${expectedStrings.join(", ")}]`,
       );
     }
 

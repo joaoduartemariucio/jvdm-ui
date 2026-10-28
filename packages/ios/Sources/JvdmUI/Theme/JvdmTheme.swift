@@ -69,6 +69,10 @@ public struct JvdmTheme: Sendable, Equatable {
         JvdmTokens.duration[step] ?? 0
     }
 
+    public func linear(_ seconds: TimeInterval) -> Animation {
+        .linear(duration: seconds)
+    }
+
     public func ease(_ step: JvdmEaseStep) -> Animation {
         guard let bezier = JvdmTokens.ease[step] else { return .linear }
         return .timingCurve(bezier.x1, bezier.y1, bezier.x2, bezier.y2, duration: duration(.base))

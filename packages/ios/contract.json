@@ -458,6 +458,30 @@
       ]
     },
     {
+      "contract": "atoms/progress-bar",
+      "spelling": "ProgressBar",
+      "file": "Sources/JvdmUI/Atoms/ProgressBar/ProgressBar.swift",
+      "props": [
+        {
+          "name": "value"
+        },
+        {
+          "name": "tone",
+          "values": ["accent", "ok", "warn", "danger"]
+        },
+        {
+          "name": "size",
+          "values": ["md", "xs"]
+        },
+        {
+          "name": "dim"
+        },
+        {
+          "name": "label"
+        }
+      ]
+    },
+    {
       "contract": "atoms/radio",
       "spelling": "Radio",
       "file": "Sources/JvdmUI/Atoms/Radio/Radio.swift",
@@ -512,6 +536,21 @@
       "spelling": "JvdmSlider",
       "file": "Sources/JvdmUI/Atoms/Slider/Slider.swift",
       "props": []
+    },
+    {
+      "contract": "atoms/spinner",
+      "spelling": "Spinner",
+      "file": "Sources/JvdmUI/Atoms/Spinner/Spinner.swift",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        },
+        {
+          "name": "label"
+        }
+      ],
+      "locales": ["label"]
     },
     {
       "contract": "atoms/staff-icon",
@@ -583,6 +622,31 @@
       ]
     },
     {
+      "contract": "atoms/tag",
+      "spelling": "Tag",
+      "file": "Sources/JvdmUI/Atoms/Tag/Tag.swift",
+      "props": [
+        {
+          "name": "tone",
+          "values": ["neutral", "accent", "ok", "warn", "danger", "info"]
+        },
+        {
+          "name": "children",
+          "slot": true
+        },
+        {
+          "name": "onRemove"
+        },
+        {
+          "name": "removeLabel"
+        },
+        {
+          "name": "disabled"
+        }
+      ],
+      "locales": ["remove"]
+    },
+    {
       "contract": "atoms/textarea",
       "spelling": "Textarea",
       "file": "Sources/JvdmUI/Atoms/Textarea/Textarea.swift",
@@ -612,6 +676,210 @@
         {
           "name": "size",
           "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "molecules/banner",
+      "spelling": "Banner",
+      "file": "Sources/JvdmUI/Molecules/Banner/Banner.swift",
+      "props": [
+        {
+          "name": "tone",
+          "values": ["ok", "warn", "danger", "info"]
+        },
+        {
+          "name": "title"
+        },
+        {
+          "name": "children",
+          "slot": true
+        },
+        {
+          "name": "action",
+          "slot": true
+        }
+      ]
+    },
+    {
+      "contract": "molecules/breadcrumb",
+      "spelling": "Breadcrumb",
+      "file": "Sources/JvdmUI/Molecules/Breadcrumb/Breadcrumb.swift",
+      "props": [
+        {
+          "name": "items"
+        },
+        {
+          "name": "label"
+        }
+      ],
+      "locales": ["label"]
+    },
+    {
+      "contract": "molecules/callout",
+      "spelling": "Callout",
+      "file": "Sources/JvdmUI/Molecules/Callout/Callout.swift",
+      "props": [
+        {
+          "name": "tone",
+          "values": ["ok", "warn", "danger", "info"]
+        },
+        {
+          "name": "title"
+        },
+        {
+          "name": "children",
+          "slot": true
+        }
+      ]
+    },
+    {
+      "contract": "molecules/card-title",
+      "spelling": "CardTitle",
+      "file": "Sources/JvdmUI/Molecules/CardTitle/CardTitle.swift",
+      "props": [
+        {
+          "name": "children",
+          "slot": true
+        },
+        {
+          "name": "hint",
+          "slot": true
+        }
+      ]
+    },
+    {
+      "contract": "molecules/empty",
+      "spelling": "Empty",
+      "file": "Sources/JvdmUI/Molecules/Empty/Empty.swift",
+      "props": [
+        {
+          "name": "title"
+        },
+        {
+          "name": "description",
+          "slot": true
+        }
+      ]
+    },
+    {
+      "contract": "molecules/field",
+      "spelling": "Field",
+      "file": "Sources/JvdmUI/Molecules/Field/Field.swift",
+      "props": [
+        {
+          "name": "label"
+        },
+        {
+          "name": "error"
+        },
+        {
+          "name": "action",
+          "slot": true
+        },
+        {
+          "name": "children",
+          "slot": true
+        }
+      ]
+    },
+    {
+      "contract": "molecules/load-error",
+      "spelling": "LoadError",
+      "file": "Sources/JvdmUI/Molecules/LoadError/LoadError.swift",
+      "props": [
+        {
+          "name": "message"
+        },
+        {
+          "name": "onRetry"
+        },
+        {
+          "name": "retryLabel"
+        }
+      ],
+      "locales": ["retry"]
+    },
+    {
+      "contract": "molecules/metric-card",
+      "spelling": "MetricCard",
+      "file": "Sources/JvdmUI/Molecules/MetricCard/MetricCard.swift",
+      "props": [
+        {
+          "name": "label"
+        },
+        {
+          "name": "value",
+          "slot": true
+        },
+        {
+          "name": "change"
+        },
+        {
+          "name": "trend",
+          "values": ["neutral", "up", "down"]
+        },
+        {
+          "name": "hint"
+        },
+        {
+          "name": "children",
+          "slot": true
+        }
+      ]
+    },
+    {
+      "contract": "molecules/page-header",
+      "spelling": "PageHeader",
+      "file": "Sources/JvdmUI/Molecules/PageHeader/PageHeader.swift",
+      "props": [
+        {
+          "name": "title",
+          "slot": true
+        },
+        {
+          "name": "subtitle",
+          "slot": true
+        },
+        {
+          "name": "children",
+          "slot": true
+        }
+      ]
+    },
+    {
+      "contract": "molecules/stat-card",
+      "spelling": "StatCard",
+      "file": "Sources/JvdmUI/Molecules/StatCard/StatCard.swift",
+      "props": [
+        {
+          "name": "label"
+        },
+        {
+          "name": "value",
+          "slot": true
+        },
+        {
+          "name": "hint"
+        },
+        {
+          "name": "color"
+        },
+        {
+          "name": "attention"
+        }
+      ]
+    },
+    {
+      "contract": "molecules/stepper",
+      "spelling": "JvdmStepper",
+      "file": "Sources/JvdmUI/Molecules/Stepper/Stepper.swift",
+      "props": [
+        {
+          "name": "steps"
+        },
+        {
+          "name": "current"
         }
       ]
     }

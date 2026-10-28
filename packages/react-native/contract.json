@@ -457,6 +457,30 @@
       ]
     },
     {
+      "contract": "atoms/progress-bar",
+      "spelling": "ProgressBar",
+      "file": "src/atoms/progress-bar/index.tsx",
+      "props": [
+        {
+          "name": "value"
+        },
+        {
+          "name": "tone",
+          "values": ["accent", "ok", "warn", "danger"]
+        },
+        {
+          "name": "size",
+          "values": ["md", "xs"]
+        },
+        {
+          "name": "dim"
+        },
+        {
+          "name": "label"
+        }
+      ]
+    },
+    {
       "contract": "atoms/radio",
       "spelling": "Radio",
       "file": "src/atoms/radio/index.tsx",
@@ -511,6 +535,21 @@
       "spelling": "Slider",
       "file": "src/atoms/slider/index.tsx",
       "props": []
+    },
+    {
+      "contract": "atoms/spinner",
+      "spelling": "Spinner",
+      "file": "src/atoms/spinner/index.tsx",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        },
+        {
+          "name": "label"
+        }
+      ],
+      "locales": ["label"]
     },
     {
       "contract": "atoms/staff-icon",
@@ -582,6 +621,31 @@
       ]
     },
     {
+      "contract": "atoms/tag",
+      "spelling": "Tag",
+      "file": "src/atoms/tag/index.tsx",
+      "props": [
+        {
+          "name": "tone",
+          "values": ["neutral", "accent", "ok", "warn", "danger", "info"]
+        },
+        {
+          "name": "children",
+          "slot": true
+        },
+        {
+          "name": "onRemove"
+        },
+        {
+          "name": "removeLabel"
+        },
+        {
+          "name": "disabled"
+        }
+      ],
+      "locales": ["remove"]
+    },
+    {
       "contract": "atoms/textarea",
       "spelling": "Textarea",
       "file": "src/atoms/textarea/index.tsx",
@@ -611,6 +675,210 @@
         {
           "name": "size",
           "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "molecules/banner",
+      "spelling": "Banner",
+      "file": "src/molecules/banner/index.tsx",
+      "props": [
+        {
+          "name": "tone",
+          "values": ["ok", "warn", "danger", "info"]
+        },
+        {
+          "name": "title"
+        },
+        {
+          "name": "children",
+          "slot": true
+        },
+        {
+          "name": "action",
+          "slot": true
+        }
+      ]
+    },
+    {
+      "contract": "molecules/breadcrumb",
+      "spelling": "Breadcrumb",
+      "file": "src/molecules/breadcrumb/index.tsx",
+      "props": [
+        {
+          "name": "items"
+        },
+        {
+          "name": "label"
+        }
+      ],
+      "locales": ["label"]
+    },
+    {
+      "contract": "molecules/callout",
+      "spelling": "Callout",
+      "file": "src/molecules/callout/index.tsx",
+      "props": [
+        {
+          "name": "tone",
+          "values": ["ok", "warn", "danger", "info"]
+        },
+        {
+          "name": "title"
+        },
+        {
+          "name": "children",
+          "slot": true
+        }
+      ]
+    },
+    {
+      "contract": "molecules/card-title",
+      "spelling": "CardTitle",
+      "file": "src/molecules/card-title/index.tsx",
+      "props": [
+        {
+          "name": "children",
+          "slot": true
+        },
+        {
+          "name": "hint",
+          "slot": true
+        }
+      ]
+    },
+    {
+      "contract": "molecules/empty",
+      "spelling": "Empty",
+      "file": "src/molecules/empty/index.tsx",
+      "props": [
+        {
+          "name": "title"
+        },
+        {
+          "name": "description",
+          "slot": true
+        }
+      ]
+    },
+    {
+      "contract": "molecules/field",
+      "spelling": "Field",
+      "file": "src/molecules/field/index.tsx",
+      "props": [
+        {
+          "name": "label"
+        },
+        {
+          "name": "error"
+        },
+        {
+          "name": "action",
+          "slot": true
+        },
+        {
+          "name": "children",
+          "slot": true
+        }
+      ]
+    },
+    {
+      "contract": "molecules/load-error",
+      "spelling": "LoadError",
+      "file": "src/molecules/load-error/index.tsx",
+      "props": [
+        {
+          "name": "message"
+        },
+        {
+          "name": "onRetry"
+        },
+        {
+          "name": "retryLabel"
+        }
+      ],
+      "locales": ["retry"]
+    },
+    {
+      "contract": "molecules/metric-card",
+      "spelling": "MetricCard",
+      "file": "src/molecules/metric-card/index.tsx",
+      "props": [
+        {
+          "name": "label"
+        },
+        {
+          "name": "value",
+          "slot": true
+        },
+        {
+          "name": "change"
+        },
+        {
+          "name": "trend",
+          "values": ["neutral", "up", "down"]
+        },
+        {
+          "name": "hint"
+        },
+        {
+          "name": "children",
+          "slot": true
+        }
+      ]
+    },
+    {
+      "contract": "molecules/page-header",
+      "spelling": "PageHeader",
+      "file": "src/molecules/page-header/index.tsx",
+      "props": [
+        {
+          "name": "title",
+          "slot": true
+        },
+        {
+          "name": "subtitle",
+          "slot": true
+        },
+        {
+          "name": "children",
+          "slot": true
+        }
+      ]
+    },
+    {
+      "contract": "molecules/stat-card",
+      "spelling": "StatCard",
+      "file": "src/molecules/stat-card/index.tsx",
+      "props": [
+        {
+          "name": "label"
+        },
+        {
+          "name": "value",
+          "slot": true
+        },
+        {
+          "name": "hint"
+        },
+        {
+          "name": "color"
+        },
+        {
+          "name": "attention"
+        }
+      ]
+    },
+    {
+      "contract": "molecules/stepper",
+      "spelling": "Stepper",
+      "file": "src/molecules/stepper/index.tsx",
+      "props": [
+        {
+          "name": "steps"
+        },
+        {
+          "name": "current"
         }
       ]
     }

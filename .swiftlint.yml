@@ -38,7 +38,7 @@ custom_rules:
 
   raw_motion:
     name: "Raw motion"
-    regex: '\.(easeIn|easeOut|easeInOut|linear|spring|bouncy|smooth|snappy)\b|duration:\s*-?[0-9]'
+    regex: '(?<![A-Za-z0-9_)])\.(easeIn|easeOut|easeInOut|linear|spring|bouncy|smooth|snappy)\b|duration:\s*-?[0-9]'
     message: "Motion outside the scale. Use theme.ease(step). ADR 0001, R5."
     severity: error
     excluded: ".*/Theme/JvdmTheme\\.swift"

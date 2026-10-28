@@ -4,6 +4,8 @@ import { Text, View, type StyleProp, type ViewStyle } from "react-native";
 import { useJvdmTokens } from "../../tokens";
 import { badgeStyle, type BadgeTone } from "./badge-style";
 
+export { BADGE_TONES, badgeStyle, type BadgeTone } from "./badge-style";
+
 export function Badge({
   tone = "neutral",
   children,

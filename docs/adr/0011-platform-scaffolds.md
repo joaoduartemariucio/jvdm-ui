@@ -154,6 +154,50 @@ because a `Container` with an `alignment` and no size expands to fill. Every pro
 the picture did not. The button now sizes to its content, and the golden is the only reason that was
 found.
 
+Wave three is the presentational molecules: `Banner`, `Callout`, `CardTitle`, `Empty`, `Field`,
+`PageHeader`, `StatCard` and `Stepper`. It added one clause to the affordance rule and confirmed one
+shape:
+
+**`htmlFor` is a web affordance, like `className`.** It is the HTML `for` attribute by name, and a
+native port has no id to point a label at — it has an accessibility container. The extractor marks
+it, parity skips it, and each platform links label to control its own way. Any further affordance is
+added to that one table in `extract-contract.mjs`, never argued per component
+([ADR 0010, P2](0010-platform-contract.md)).
+
+**A prop whose web type is a class string becomes a token on the ports.** `StatCard` takes
+`color?: string` on the web, carrying a utility class; the four ports take a `JvdmColorToken`. The
+name is compared, the type is not, and that is the slack [ADR 0010, P3](0010-platform-contract.md)
+left on purpose. Where the shared decision is logic rather than style — `StatCard` picking a text
+step from the value's length, `Stepper` reading done/current/todo from an index — it is a pure
+function with the same cases asserted on all four.
+
+### D7 — R7 crosses, and parity checks the keys
+
+Wave four is the first set whose components **say something on their own**: `Spinner`, `Tag`,
+`ProgressBar`, `Breadcrumb`, `LoadError` and `MetricCard`. [ADR 0001, R7](0001-design-system.md)
+gives the web its shape — the default string lives in the folder's `locales.ts` and the component
+takes an optional prop defaulting to it — and the ports keep it exactly: a `SpinnerLocales` beside
+the component, and a parameter that defaults to it.
+
+`check-parity.mjs` now compares **locale keys** as well as props. The web contract already carried
+them ([ADR 0010, P1](0010-platform-contract.md)); nothing read them until there was a port to check.
+A platform that forgets a string, or invents one of its own, now fails the same way a missing prop
+does.
+
+Two things fell out of doing it:
+
+**Locales stay internal on every platform, because they do on the web.** React Native's barrel broke
+the moment two components both exported `locales` — which is the web's answer too: no layer barrel
+re-exports them. The default reaches a consumer through the prop, never through an exported object.
+
+**A continuous loop is not a transition.** The motion scale runs `instant` to `slow` (420ms) and
+describes transitions; a spinner's rotation period is 1s, and Tailwind's `animate-spin` is outside
+the token set on the web for the same reason. The period is a named constant on the component, like
+the switch's track width, and the construction stays in the theme — `theme.linear(_:)` — so the R5
+lint still has exactly one place where an animation may be built. The SwiftLint rule was narrowed to
+the leading-dot form so it stops reading `theme.linear(…)` as a raw value, and it still rejects
+`.easeInOut` and `.spring`.
+
 ## Consequences
 
 - One component is ported on four platforms and the ledger reads 105 waivers instead of 106. The

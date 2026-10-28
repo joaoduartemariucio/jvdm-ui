@@ -12,7 +12,8 @@
     {
       "name": "htmlFor",
       "optional": true,
-      "type": "string"
+      "type": "string",
+      "affordance": "labelling"
     },
     {
       "name": "error",
