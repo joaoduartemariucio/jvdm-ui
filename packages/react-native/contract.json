@@ -89,6 +89,21 @@
       ]
     },
     {
+      "contract": "atoms/button",
+      "spelling": "Button",
+      "file": "src/atoms/button/index.tsx",
+      "props": [
+        {
+          "name": "variant",
+          "values": ["danger", "primary", "secondary", "ghost"]
+        },
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "icon", "icon-sm"]
+        }
+      ]
+    },
+    {
       "contract": "atoms/calendar-icon",
       "spelling": "CalendarIcon",
       "file": "src/atoms/icon/calendar-icon/index.tsx",
@@ -134,6 +149,17 @@
         {
           "name": "size",
           "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/checkbox",
+      "spelling": "Checkbox",
+      "file": "src/atoms/checkbox/index.tsx",
+      "props": [
+        {
+          "name": "label",
+          "slot": true
         }
       ]
     },
@@ -275,6 +301,35 @@
       ]
     },
     {
+      "contract": "atoms/icon-button",
+      "spelling": "IconButton",
+      "file": "src/atoms/icon-button/index.tsx",
+      "props": [
+        {
+          "name": "label"
+        },
+        {
+          "name": "variant",
+          "values": ["danger", "primary", "secondary", "ghost"]
+        },
+        {
+          "name": "size",
+          "values": ["icon", "icon-sm"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/input",
+      "spelling": "Input",
+      "file": "src/atoms/input/index.tsx",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md"]
+        }
+      ]
+    },
+    {
       "contract": "atoms/instagram-icon",
       "spelling": "InstagramIcon",
       "file": "src/atoms/icon/instagram-icon/index.tsx",
@@ -310,6 +365,17 @@
         {
           "name": "tone",
           "values": ["accent", "muted", "dim"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/link",
+      "spelling": "Link",
+      "file": "src/atoms/link/index.tsx",
+      "props": [
+        {
+          "name": "tone",
+          "values": ["accent", "muted", "ink"]
         }
       ]
     },
@@ -391,6 +457,17 @@
       ]
     },
     {
+      "contract": "atoms/radio",
+      "spelling": "Radio",
+      "file": "src/atoms/radio/index.tsx",
+      "props": [
+        {
+          "name": "label",
+          "slot": true
+        }
+      ]
+    },
+    {
       "contract": "atoms/search-icon",
       "spelling": "SearchIcon",
       "file": "src/atoms/icon/search-icon/index.tsx",
@@ -398,6 +475,17 @@
         {
           "name": "size",
           "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/select",
+      "spelling": "Select",
+      "file": "src/atoms/select/index.tsx",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md"]
         }
       ]
     },
@@ -416,6 +504,12 @@
       "contract": "atoms/skeleton",
       "spelling": "Skeleton",
       "file": "src/atoms/skeleton/index.tsx",
+      "props": []
+    },
+    {
+      "contract": "atoms/slider",
+      "spelling": "Slider",
+      "file": "src/atoms/slider/index.tsx",
       "props": []
     },
     {
@@ -464,6 +558,37 @@
           "name": "children",
           "spelling": "children",
           "slot": true
+        }
+      ]
+    },
+    {
+      "contract": "atoms/switch",
+      "spelling": "Switch",
+      "file": "src/atoms/switch/index.tsx",
+      "props": [
+        {
+          "name": "checked"
+        },
+        {
+          "name": "onCheckedChange"
+        },
+        {
+          "name": "label",
+          "slot": true
+        },
+        {
+          "name": "disabled"
+        }
+      ]
+    },
+    {
+      "contract": "atoms/textarea",
+      "spelling": "Textarea",
+      "file": "src/atoms/textarea/index.tsx",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md"]
         }
       ]
     },
