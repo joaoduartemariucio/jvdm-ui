@@ -49,6 +49,7 @@ ktlint {
     version.set("1.5.0")
     filter {
         exclude { it.file.path.contains("tokens/Tokens.kt") }
+        exclude { it.file.name.endsWith("Icon.kt") && it.file.name != "JvdmIcon.kt" }
     }
 }
 

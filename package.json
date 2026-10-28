@@ -51,6 +51,7 @@
     "react": "^19.3.1",
     "react-dom": "^19.3.1",
     "react-native": "^0.84.1",
+    "react-native-svg": "^15.16.0",
     "react-test-renderer": "^19.3.1",
     "tailwindcss": "^4.3.3",
     "tsup": "^9.0.0",

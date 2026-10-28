@@ -4,7 +4,7 @@
   "private": true,
   "description": "Neutral token source for jvdm-ui, and the emitters that turn it into each platform's format.",
   "license": "MIT",
-  "author": "João Vitor Duarte Mariucio",
+  "author": "Jo\u00e3o Vitor Duarte Mariucio",
   "type": "module",
   "exports": {
     ".": {
@@ -13,7 +13,7 @@
     }
   },
   "scripts": {
-    "build": "rm -rf dist && tsup",
+    "build": "rm -rf dist && tsup && mkdir -p dist/svg && cp src/icons/svg/*.svg dist/svg/",
     "dev": "tsup --watch",
     "emit": "npm run build && node dist/cli.js",
     "typecheck": "tsc --noEmit",

@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "jvdm-ui for React Native: the same tokens and the same component contract, in StyleSheet.",
   "license": "MIT",
-  "author": "João Vitor Duarte Mariucio",
+  "author": "Jo\u00e3o Vitor Duarte Mariucio",
   "type": "module",
   "main": "./src/index.ts",
   "react-native": "./src/index.ts",
@@ -14,7 +14,8 @@
   "exports": {
     ".": "./src/index.ts",
     "./tokens": "./src/tokens/index.ts",
-    "./atoms": "./src/atoms/index.ts"
+    "./atoms": "./src/atoms/index.ts",
+    "./icon": "./src/atoms/icon/index.ts"
   },
   "scripts": {
     "typecheck": "tsc --noEmit",
@@ -22,7 +23,8 @@
   },
   "peerDependencies": {
     "react": ">=19.0.0",
-    "react-native": ">=0.78.0"
+    "react-native": ">=0.78.0",
+    "react-native-svg": ">=15.0.0"
   },
   "keywords": [
     "design-system",

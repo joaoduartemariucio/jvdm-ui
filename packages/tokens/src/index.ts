@@ -12,11 +12,20 @@ export {
 export {
   constantName,
   emitCss,
+  dartFileName,
   emitDart,
+  emitDartBarrel,
+  emitDartIcon,
   emitKotlin,
+  emitKotlinIcon,
   emitReactNative,
+  emitReactNativeBarrel,
+  emitReactNativeIcon,
   emitStylesheet,
   emitSwift,
+  emitSwiftIcon,
+  emitWebBarrel,
+  emitWebIcon,
   identifier,
   resolve,
   typeName,
@@ -24,6 +33,18 @@ export {
   type ResolvedPair,
   type TokenModel,
 } from "./emit";
+export {
+  parseIcon,
+  parsePath,
+  readIcons,
+  shapeData,
+  shapeSegments,
+  tokenize,
+  type Icon,
+  type IconShape,
+  type Point,
+  type Segment,
+} from "./icons";
 export { num } from "./number";
 export { source } from "./source";
 export {

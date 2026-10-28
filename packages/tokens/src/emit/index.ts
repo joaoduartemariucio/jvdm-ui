@@ -5,3 +5,14 @@ export { emitReactNative } from "./rn";
 export { emitSwift } from "./swift";
 export { resolve, type ResolvedColor, type ResolvedPair, type TokenModel } from "./model";
 export { constantName, identifier, typeName } from "./name";
+export {
+  dartFileName,
+  emitDartBarrel,
+  emitDartIcon,
+  emitKotlinIcon,
+  emitReactNativeBarrel,
+  emitReactNativeIcon,
+  emitSwiftIcon,
+  emitWebBarrel,
+  emitWebIcon,
+} from "./icons";
