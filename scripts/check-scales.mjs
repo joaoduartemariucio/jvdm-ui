@@ -45,8 +45,15 @@ const RULES = [
   {
     id: "raw-dimension",
     pattern:
-      /\b(?!1\.dp\b)\d+(\.\d+)?\.(dp|sp)\b|(fontSize|letterSpacing|lineHeight|borderRadius|elevation)\s*[:=]\s*-?\d|borderWidth\s*[:=]\s*(?!1\b)-?\d|EdgeInsets\.(all|only)\(\s*-?\d|(horizontal|vertical|top|bottom|left|right|start|end)\s*:\s*-?\d|BorderRadius\.circular\(\s*-?\d/,
+      /\b(?!1\.dp\b)\d+(\.\d+)?\.(dp|sp)\b|(fontSize|letterSpacing|lineHeight|borderRadius|elevation)\s*[:=]\s*-?\d|borderWidth\s*[:=]\s*(?!1\b)-?\d|BorderRadius\.circular\(\s*-?\d/,
     message: "Dimension outside the scale. Use the spacing, radius or text scale. ADR 0001, R5.",
+  },
+  {
+    id: "raw-inset",
+    languages: ["dart", "kotlin", "swift"],
+    pattern:
+      /EdgeInsets\.(all|only|symmetric|fromLTRB)\(\s*-?\d|(horizontal|vertical|top|bottom|left|right|start|end)\s*[:=]\s*(?!1\.dp\b)-?\d/,
+    message: "Inset outside the scale. Use the spacing scale. ADR 0001, R5.",
   },
   {
     id: "raw-motion",
@@ -89,6 +96,7 @@ for (const folder of ROOTS) {
     const lines = readFileSync(file, "utf8").split("\n");
     lines.forEach((line, index) => {
       for (const rule of RULES) {
+        if (rule.languages && !rule.languages.includes(LANGUAGES[extname(file)])) continue;
         if (rule.skip?.test(line)) continue;
         if (!rule.pattern.test(line)) continue;
         failures.push(`${name}:${index + 1}  ${rule.message} (${rule.id})`);

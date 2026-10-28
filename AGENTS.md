@@ -168,9 +168,10 @@ by hand, and a test compares every one byte for byte.
 ## Porting a component
 
 Porting goes in waves, in dependency order, one wave across all four platforms at once
-([ADR 0011, D6](docs/adr/0011-platform-scaffolds.md)). 42 of 106 are done: `Badge`, the 33 icons and
-the wave-one atoms (`Skeleton`, `FormAlert`, `Kbd`, `Card`, `Divider`, `Label`, `Avatar`). Use them
-as the shape for the next one:
+([ADR 0011, D6](docs/adr/0011-platform-scaffolds.md)). 52 of 106 are done: `Badge`, the 33 icons, the
+wave-one atoms (`Skeleton`, `FormAlert`, `Kbd`, `Card`, `Divider`, `Label`, `Avatar`) and the
+wave-two interactive atoms (`Button`, `IconButton`, `Link`, `Input`, `Textarea`, `Select`,
+`Checkbox`, `Radio`, `Switch`, `Slider`). Use them as the shape for the next one:
 
 1. Read its `contracts/<layer>/<name>.json`. The props there, minus the affordances, are what the
    port must offer.
