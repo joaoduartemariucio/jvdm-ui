@@ -4,7 +4,7 @@
 - **Date:** 2026-10-27
 - **Scope:** the repository layout, the workspace root, and what each package owns. The layers
   inside the React package are [ADR 0001](0001-design-system.md). How the tokens themselves become
-  five artefacts is a separate decision, still to be written.
+  five artefacts is [ADR 0009](0009-token-source.md).
 
 ## Context
 

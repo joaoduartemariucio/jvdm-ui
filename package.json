@@ -10,11 +10,12 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "npm run build -w jvdm-ui",
+    "build": "npm run build -w @jvdm-ui/tokens && npm run build -w jvdm-ui",
     "dev": "npm run dev -w jvdm-ui",
     "typecheck": "tsc --noEmit",
-    "test": "npm run test -w jvdm-ui",
-    "test:coverage": "npm run test:coverage -w jvdm-ui",
+    "test": "npm run test -w @jvdm-ui/tokens && npm run test -w jvdm-ui",
+    "test:coverage": "npm run test -w @jvdm-ui/tokens && npm run test:coverage -w jvdm-ui",
+    "tokens": "npm run emit -w @jvdm-ui/tokens",
     "lint": "eslint",
     "lint:fix": "eslint --fix",
     "format": "prettier --write .",

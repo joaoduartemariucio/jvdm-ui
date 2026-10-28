@@ -8,6 +8,8 @@ import tseslint from "typescript-eslint";
 
 const WEB = "packages/web/src";
 
+const PACKAGE_SOURCE = "packages/*/src/**/*.{ts,tsx}";
+
 const to = (type) => ({ to: { element: { type } } });
 
 const SPACING = "(gap|gap-x|gap-y|p|px|py|pt|pb|pl|pr|m|mx|my|mt|mb|ml|mr|space-x|space-y)";
@@ -249,13 +251,35 @@ const eslintConfig = defineConfig([
   },
 
   {
-    files: [`${WEB}/**/*.{ts,tsx}`],
+    files: [PACKAGE_SOURCE],
     plugins: { local },
     rules: {
       "local/no-comments": "error",
       "local/one-component-per-file": "error",
       "local/import-the-folder": "error",
       "local/no-app-import": "error",
+    },
+  },
+
+  {
+    files: ["packages/tokens/**/*.ts"],
+    rules: {
+      "no-restricted-imports": [
+        "error",
+        {
+          patterns: [
+            {
+              group: ["react", "react-dom", "react/*", "react-dom/*"],
+              message: "The token source is build-time data. It knows no renderer. ADR 0009.",
+            },
+            {
+              group: ["jvdm-ui", "jvdm-ui/*", "@jvdm-ui/*", "../../*"],
+              message:
+                "The token source is upstream of every platform and imports none of them. ADR 0008, M1.",
+            },
+          ],
+        },
+      ],
     },
   },
 

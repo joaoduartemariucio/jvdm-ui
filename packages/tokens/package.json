@@ -1,0 +1,27 @@
+{
+  "name": "@jvdm-ui/tokens",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Neutral token source for jvdm-ui, and the emitters that turn it into each platform's format.",
+  "license": "MIT",
+  "author": "João Vitor Duarte Mariucio",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "rm -rf dist && tsup",
+    "dev": "tsup --watch",
+    "emit": "npm run build && node dist/cli.js",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joaoduartemariucio/jvdm-ui.git",
+    "directory": "packages/tokens"
+  }
+}

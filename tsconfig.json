@@ -1,4 +1,10 @@
 {
   "extends": "./tsconfig.base.json",
-  "include": ["packages/web/src", "packages/web/tsup.config.ts"]
+  "include": [
+    "packages/web/src",
+    "packages/web/tsup.config.ts",
+    "packages/tokens/src",
+    "packages/tokens/tests",
+    "packages/tokens/tsup.config.ts"
+  ]
 }

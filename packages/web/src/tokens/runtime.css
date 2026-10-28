@@ -1,0 +1,42 @@
+:root {
+  color-scheme: dark;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color-scheme: light;
+  }
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+@keyframes attention {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 transparent;
+  }
+  50% {
+    box-shadow: 0 0 0 4px var(--attention-ring, var(--color-danger-soft));
+  }
+}
+
+.attention {
+  animation: attention 2.4s var(--ease-in-out) infinite;
+}
+
+.attention-warn {
+  --attention-ring: var(--color-warn-soft);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .attention {
+    animation: none;
+    box-shadow: 0 0 0 2px var(--attention-ring, var(--color-danger-soft));
+  }
+}

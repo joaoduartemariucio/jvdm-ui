@@ -29,6 +29,8 @@ two disagree, **the ADR wins**.
 | ADR 0004 V2                                      | the bump level is declared, then inferred, then assumed                |
 | [ADR 0007](docs/adr/0007-default-identity.md)    | identity lives in the non-color scales                                 |
 | [ADR 0008](docs/adr/0008-multiplatform.md)       | one repository, one package per platform                               |
+| [ADR 0009](docs/adr/0009-token-source.md) S1     | the default theme is data; CSS is generated from it                    |
+| ADR 0009 S2                                      | `tokens.css` is generated — edit `source.ts`, then `npm run tokens`    |
 
 Changing a rule means changing an ADR. Do not edit `eslint.config.mjs` to make a PR pass (R6).
 
@@ -37,16 +39,18 @@ Changing a rule means changing an ADR. Do not edit `eslint.config.mjs` to make a
 
 ## Commands
 
-| Command                           | What it does                          |
-| --------------------------------- | ------------------------------------- |
-| `npm run dev`                     | `tsup` in watch mode                  |
-| `npm run build`                   | `dist/`, preset CSS, and `tokens.css` |
-| `npm run typecheck`               | types only                            |
-| `npm run lint` / `lint:fix`       | ESLint                                |
-| `npm run format` / `format:check` | Prettier                              |
-| `npm run site:dev`                | the docs site at localhost:5173       |
-| `npm run site:build`              | the docs site into `site-dist/`       |
-| `npm run typecheck:site`          | types for the docs site               |
+| Command                           | What it does                             |
+| --------------------------------- | ---------------------------------------- |
+| `npm run dev`                     | `tsup` in watch mode                     |
+| `npm run build`                   | `dist/`, preset CSS, and `tokens.css`    |
+| `npm run tokens`                  | regenerates `tokens.css` from the source |
+| `npm run test`                    | both packages' suites                    |
+| `npm run typecheck`               | types only                               |
+| `npm run lint` / `lint:fix`       | ESLint                                   |
+| `npm run format` / `format:check` | Prettier                                 |
+| `npm run site:dev`                | the docs site at localhost:5173          |
+| `npm run site:build`              | the docs site into `site-dist/`          |
+| `npm run typecheck:site`          | types for the docs site                  |
 
 ## Structure
 
@@ -55,9 +59,15 @@ This is a workspace root, and every platform is a package of its own
 
 ```
 packages/
+  tokens/               @jvdm-ui/tokens — the neutral token source and its emitters. Node, zero React
+    src/
+      source.ts         the default theme as structured data: the one thing every platform reads
+      color/            oklch -> oklab -> sRGB, pure arithmetic, no dependency
+      emit/             css.ts today; swift, kotlin, dart and rn next
+      cli.ts            writes packages/web/src/tokens/tokens.css
   web/                  the npm package `jvdm-ui` — React 19 + Tailwind v4
     src/
-      tokens/           tokens.css (@theme, color-scheme) + theme.ts (the data-theme switch)
+      tokens/           tokens.css (generated @theme) + runtime.css (static) + theme.ts (the switch)
       theme/            defineTheme, the theme types, and presets/. Build-time, zero React
       atoms/            indivisible element
       molecules/        a few atoms as one unit
@@ -94,13 +104,24 @@ consumer speaks English. See `packages/web/src/atoms/theme-toggle/`, `.../atoms/
 
 ## Tokens and theming
 
-`packages/web/src/tokens/tokens.css` is the schema. Each color is declared **once**, as
-`light-dark(<light>, <dark>)`; mode switching lives in `color-scheme` alone. Never re-declare a
-token in a `[data-theme]` block — that is exactly the specificity bug
-[ADR 0003](docs/adr/0003-theming.md) removed, and it silently breaks every consumer override in
-light mode.
+**`packages/web/src/tokens/tokens.css` is generated. Do not edit it.** The default theme lives in
+`packages/tokens/src/source.ts` as structured data — oklch triples, px numbers, bezier tuples —
+and `npm run tokens` writes the stylesheet from it ([ADR 0009](docs/adr/0009-token-source.md)). A
+test regenerates the file and compares it byte for byte, so a hand edit fails CI. The behavioural
+half of the stylesheet (`color-scheme`, `[data-theme]`, `@keyframes attention`) is hand-written in
+`runtime.css` and appended verbatim.
+
+That file is the schema. Each color is declared **once**, as `light-dark(<light>, <dark>)`; mode
+switching lives in `color-scheme` alone. Never re-declare a token in a `[data-theme]` block — that
+is exactly the specificity bug [ADR 0003](docs/adr/0003-theming.md) removed, and it silently breaks
+every consumer override in light mode.
 
 Adding a semantic token changes the public contract: it needs a minor version and a README entry.
+Add it to `COLOR_TOKENS` and to a color group in `source.ts`; a test fails if the two disagree.
+
+`defineTheme` in `packages/web/src/theme/` is the **consumer-facing** emitter and takes CSS strings.
+It is deliberately not the one that feeds the other platforms, which need numbers
+([ADR 0009, S6](docs/adr/0009-token-source.md) dates the unification).
 
 ## Releasing
 
@@ -123,7 +144,7 @@ Adding a semantic token is a `minor`, never a `patch`: it changes the public con
 ## Before calling a task done
 
 ```bash
-npm run typecheck && npm run lint && npm run format:check && npm run build
+npm run typecheck && npm run lint && npm run format:check && npm run test && npm run build
 ```
 
 If you touch `eslint.config.mjs`, verify it by injecting the forbidden import and confirming the
