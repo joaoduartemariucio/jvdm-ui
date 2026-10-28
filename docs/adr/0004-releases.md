@@ -1,6 +1,6 @@
 # ADR 0004 — Releases
 
-- **Status:** accepted
+- **Status:** accepted (extended 2026-10-28 by [ADR 0011, D5](0011-platform-scaffolds.md), which gives every platform its own tag)
 - **Date:** 2026-08-27
 - **Scope:** `.github/workflows/pr.yml`, `.github/workflows/release.yml`,
   `.github/workflows/dependabot.yml`, `scripts/next-version.mjs`.

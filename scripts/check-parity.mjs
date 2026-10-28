@@ -17,7 +17,7 @@ const web = new Map(
       `${entry.layer}/${entry.contract}`,
       {
         name: contract.name,
-        props: contract.props.filter((prop) => !prop.inherited),
+        props: contract.props.filter((prop) => !prop.inherited && !prop.affordance),
       },
     ];
   }),

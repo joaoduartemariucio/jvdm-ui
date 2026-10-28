@@ -1,0 +1,21 @@
+{
+  "version": "0.1.0",
+  "implements": [
+    {
+      "contract": "atoms/badge",
+      "spelling": "Badge",
+      "file": "Sources/JvdmUI/Atoms/Badge/Badge.swift",
+      "props": [
+        {
+          "name": "tone",
+          "values": ["neutral", "accent", "ok", "warn", "danger", "info"]
+        },
+        {
+          "name": "children",
+          "spelling": "content",
+          "slot": true
+        }
+      ]
+    }
+  ]
+}

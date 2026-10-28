@@ -1,0 +1,99 @@
+name: Release platforms
+
+on:
+  pull_request:
+    types: [closed]
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      pr:
+        description: Number of the merged pull request to release
+        required: true
+        type: number
+
+permissions:
+  contents: write
+  pull-requests: read
+
+jobs:
+  plan:
+    if: github.event_name == 'workflow_dispatch' || github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    outputs:
+      labels: ${{ steps.pr.outputs.labels }}
+      title: ${{ steps.pr.outputs.title }}
+      platforms: ${{ steps.reach.outputs.platforms }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+
+      - id: pr
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR: ${{ github.event.pull_request.number || inputs.pr }}
+        run: |
+          gh pr view "$PR" --repo "$GITHUB_REPOSITORY" --json number,title,labels,files > pr.json
+          {
+            echo "labels=$(jq -c .labels pr.json)"
+            echo "files=$(jq -c '[.files[].path]' pr.json)"
+            echo "title<<EOF_TITLE"
+            jq -r .title pr.json
+            echo "EOF_TITLE"
+          } >> "$GITHUB_OUTPUT"
+
+      - id: reach
+        env:
+          PR_LABELS: ${{ steps.pr.outputs.labels }}
+          PR_FILES: ${{ steps.pr.outputs.files }}
+        run: node scripts/release-reach.mjs >> "$GITHUB_OUTPUT"
+
+  release:
+    needs: plan
+    if: needs.plan.outputs.platforms != '[]'
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        platform: ${{ fromJSON(needs.plan.outputs.platforms) }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+
+      - id: version
+        env:
+          PR_LABELS: ${{ needs.plan.outputs.labels }}
+          PR_TITLE: ${{ needs.plan.outputs.title }}
+        run: node scripts/next-version.mjs --platform "${{ matrix.platform }}" >> "$GITHUB_OUTPUT"
+
+      - name: Report what merging would publish
+        env:
+          PLATFORM: ${{ matrix.platform }}
+          TAG: ${{ steps.version.outputs.tag }}
+          LEVEL: ${{ steps.version.outputs.level }}
+          CURRENT: ${{ steps.version.outputs.current }}
+        run: |
+          echo "\`$PLATFORM\`: $CURRENT -> \`$TAG\` (a \`$LEVEL\` bump)." >> "$GITHUB_STEP_SUMMARY"
+          if git rev-parse --quiet --verify "refs/tags/$TAG" > /dev/null; then
+            echo "::error::Tag $TAG already exists."
+            exit 1
+          fi
+
+      - name: Dry run
+        env:
+          PLATFORM: ${{ matrix.platform }}
+          TAG: ${{ steps.version.outputs.tag }}
+        run: |
+          echo "jvdm-ui: $PLATFORM would be tagged $TAG."
+          echo "jvdm-ui: publishing is not wired yet — see ADR 0011, D3."

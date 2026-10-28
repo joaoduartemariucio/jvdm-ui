@@ -1,0 +1,44 @@
+included:
+  - packages/ios/Sources
+  - packages/ios/Tests
+
+excluded:
+  - packages/ios/Sources/JvdmUI/Generated
+
+only_rules:
+  - custom_rules
+
+custom_rules:
+  no_comments:
+    name: "Code comment"
+    regex: '(^|[^:"])(//|/\*)'
+    message: "The reason for a decision lives in an ADR, not in a line that drifts from the code beneath it. ADR 0002, C3."
+    severity: error
+
+  raw_color:
+    name: "Raw color"
+    regex: '(Color\(\s*(red|white|hue|\.sRGB)|#colorLiteral|UIColor\(|NSColor\(|Color\.(red|blue|green|gray|orange|yellow|pink|purple))'
+    message: "Raw color. Reach for a semantic token through JvdmTheme. ADR 0001, R5."
+    severity: error
+    excluded: ".*/Theme/JvdmTheme\\.swift"
+
+  raw_dimension:
+    name: "Raw dimension"
+    regex: '\.(padding|cornerRadius|kerning|tracking|lineSpacing)\(\s*-?[0-9]|(spacing|cornerRadius):\s*-?[0-9]'
+    message: "Dimension outside the scale. Use theme.spacing, theme.radius or theme.size. ADR 0001, R5."
+    severity: error
+    excluded: ".*/Theme/JvdmTheme\\.swift"
+
+  raw_font:
+    name: "Raw font"
+    regex: '\.system\(size:|\.font\(\.(body|caption|title|headline|subheadline|footnote|largeTitle)\b|fontWeight\('
+    message: "Typography outside the scale. Use theme.font(step, weight). ADR 0001, R5."
+    severity: error
+    excluded: ".*/Theme/JvdmTheme\\.swift"
+
+  raw_motion:
+    name: "Raw motion"
+    regex: '\.(easeIn|easeOut|easeInOut|linear|spring|bouncy|smooth|snappy)\b|duration:\s*-?[0-9]'
+    message: "Motion outside the scale. Use theme.ease(step). ADR 0001, R5."
+    severity: error
+    excluded: ".*/Theme/JvdmTheme\\.swift"

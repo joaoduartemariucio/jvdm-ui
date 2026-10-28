@@ -8,6 +8,8 @@ import tseslint from "typescript-eslint";
 
 const WEB = "packages/web/src";
 
+const LAYERED = ["packages/web/src", "packages/react-native/src"];
+
 const PACKAGE_SOURCE = "packages/*/src/**/*.{ts,tsx}";
 
 const to = (type) => ({ to: { element: { type } } });
@@ -198,7 +200,12 @@ const local = {
 };
 
 const eslintConfig = defineConfig([
-  globalIgnores(["**/dist/**", "coverage/**", "site-dist/**", "packages/tokens/generated/**"]),
+  globalIgnores([
+    "**/dist/**",
+    "coverage/**",
+    "site-dist/**",
+    "packages/react-native/src/tokens/tokens.ts",
+  ]),
   {
     files: ["**/*.{ts,tsx}"],
     extends: [
@@ -222,18 +229,18 @@ const eslintConfig = defineConfig([
       ],
     },
   },
-  {
-    files: [`${WEB}/**/*.{ts,tsx}`],
+  ...LAYERED.map((root) => ({
+    files: [`${root}/**/*.{ts,tsx}`],
     plugins: { boundaries },
     settings: {
-      "boundaries/include": [`${WEB}/**/*.{ts,tsx}`],
+      "boundaries/include": [`${root}/**/*.{ts,tsx}`],
       "boundaries/elements": [
-        { type: "theme", pattern: `${WEB}/theme/**`, partialMatch: false },
-        { type: "tokens", pattern: `${WEB}/tokens/**`, partialMatch: false },
-        { type: "atoms", pattern: `${WEB}/atoms/**`, partialMatch: false },
-        { type: "molecules", pattern: `${WEB}/molecules/**`, partialMatch: false },
-        { type: "organisms", pattern: `${WEB}/organisms/**`, partialMatch: false },
-        { type: "package-index", pattern: WEB, partialMatch: false },
+        { type: "theme", pattern: `${root}/theme/**`, partialMatch: false },
+        { type: "tokens", pattern: `${root}/tokens/**`, partialMatch: false },
+        { type: "atoms", pattern: `${root}/atoms/**`, partialMatch: false },
+        { type: "molecules", pattern: `${root}/molecules/**`, partialMatch: false },
+        { type: "organisms", pattern: `${root}/organisms/**`, partialMatch: false },
+        { type: "package-index", pattern: root, partialMatch: false },
       ],
       "import/resolver": { typescript: { alwaysTryTypes: true } },
     },
@@ -263,10 +270,10 @@ const eslintConfig = defineConfig([
         },
       ],
     },
-  },
+  })),
 
   {
-    files: [`${WEB}/**/*.tsx`],
+    files: ["packages/*/src/**/*.tsx"],
     rules: {
       "no-restricted-syntax": ["error", ...designSystemRules, ...textRules],
     },

@@ -1,0 +1,36 @@
+name: CI platforms
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  ios:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - run: swift build
+      - run: swift test
+
+      - name: Install SwiftLint
+        run: brew install swiftlint
+
+      - run: swiftlint lint --strict
+
+  flutter:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: packages/flutter
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+
+      - run: flutter pub get
+      - run: flutter analyze
+      - run: flutter test

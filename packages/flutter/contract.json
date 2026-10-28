@@ -1,0 +1,20 @@
+{
+  "implements": [
+    {
+      "contract": "atoms/badge",
+      "spelling": "JvdmBadge",
+      "file": "lib/src/atoms/badge/badge.dart",
+      "props": [
+        {
+          "name": "tone",
+          "values": ["neutral", "accent", "ok", "warn", "danger", "info"]
+        },
+        {
+          "name": "children",
+          "spelling": "child",
+          "slot": true
+        }
+      ]
+    }
+  ]
+}

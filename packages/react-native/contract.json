@@ -1,0 +1,20 @@
+{
+  "implements": [
+    {
+      "contract": "atoms/badge",
+      "spelling": "Badge",
+      "file": "src/atoms/badge/index.tsx",
+      "props": [
+        {
+          "name": "tone",
+          "values": ["neutral", "accent", "ok", "warn", "danger", "info"]
+        },
+        {
+          "name": "children",
+          "spelling": "children",
+          "slot": true
+        }
+      ]
+    }
+  ]
+}

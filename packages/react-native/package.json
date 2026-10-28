@@ -1,0 +1,42 @@
+{
+  "name": "@jvdm-ui/react-native",
+  "version": "0.1.0",
+  "description": "jvdm-ui for React Native: the same tokens and the same component contract, in StyleSheet.",
+  "license": "MIT",
+  "author": "João Vitor Duarte Mariucio",
+  "type": "module",
+  "main": "./src/index.ts",
+  "react-native": "./src/index.ts",
+  "types": "./src/index.ts",
+  "files": [
+    "src"
+  ],
+  "exports": {
+    ".": "./src/index.ts",
+    "./tokens": "./src/tokens/index.ts",
+    "./atoms": "./src/atoms/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "peerDependencies": {
+    "react": ">=19.0.0",
+    "react-native": ">=0.78.0"
+  },
+  "keywords": [
+    "design-system",
+    "react-native",
+    "design-tokens",
+    "oklch"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joaoduartemariucio/jvdm-ui.git",
+    "directory": "packages/react-native"
+  },
+  "homepage": "https://joaoduartemariucio.github.io/jvdm-ui",
+  "bugs": {
+    "url": "https://github.com/joaoduartemariucio/jvdm-ui/issues"
+  }
+}

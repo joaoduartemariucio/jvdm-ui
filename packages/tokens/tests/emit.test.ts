@@ -4,13 +4,13 @@ import { describe, expect, it } from "vitest";
 
 import { COLOR_TOKENS, emitDart, emitKotlin, emitReactNative, emitSwift, source } from "../src";
 
-const GENERATED = new URL("../generated/", import.meta.url);
+const PACKAGES = new URL("../../", import.meta.url);
 
 const CASES: [string, string][] = [
-  ["ios/JvdmTokens.swift", emitSwift(source)],
-  ["android/Tokens.kt", emitKotlin(source)],
-  ["flutter/tokens.dart", emitDart(source)],
-  ["react-native/tokens.ts", emitReactNative(source)],
+  ["ios/Sources/JvdmUI/Generated/JvdmTokens.swift", emitSwift(source)],
+  ["android/src/main/kotlin/com/jvdm/ui/tokens/Tokens.kt", emitKotlin(source)],
+  ["flutter/lib/src/tokens/tokens.dart", emitDart(source)],
+  ["react-native/src/tokens/tokens.ts", emitReactNative(source)],
 ];
 
 const quoted = (emitted: string, name: string) =>
@@ -18,13 +18,13 @@ const quoted = (emitted: string, name: string) =>
 
 describe("the platform emitters", () => {
   for (const [path, emitted] of CASES) {
-    it(`matches the committed generated/${path}`, () => {
-      expect(emitted).toBe(readFileSync(new URL(path, GENERATED), "utf8"));
+    it(`matches the committed packages/${path}`, () => {
+      expect(emitted).toBe(readFileSync(new URL(path, PACKAGES), "utf8"));
     });
   }
 
   for (const [path, emitted] of CASES) {
-    it(`carries every contract name into generated/${path}`, () => {
+    it(`carries every contract name into packages/${path}`, () => {
       const missing = [
         ...COLOR_TOKENS,
         "2xs",

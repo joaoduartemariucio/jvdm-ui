@@ -1,0 +1,20 @@
+{
+  "implements": [
+    {
+      "contract": "atoms/badge",
+      "spelling": "JvdmBadge",
+      "file": "src/main/kotlin/com/jvdm/ui/atoms/badge/Badge.kt",
+      "props": [
+        {
+          "name": "tone",
+          "values": ["neutral", "accent", "ok", "warn", "danger", "info"]
+        },
+        {
+          "name": "children",
+          "spelling": "content",
+          "slot": true
+        }
+      ]
+    }
+  ]
+}

@@ -11,29 +11,32 @@ Code, documentation and default UI strings are in **English**. Keep it that way.
 `docs/adr/` is not history: it is the standing norm. Every rule below summarises a clause. When the
 two disagree, **the ADR wins**.
 
-| Where                                             | What it decides                                                        |
-| ------------------------------------------------- | ---------------------------------------------------------------------- |
-| [ADR 0001](docs/adr/0001-design-system.md) R1     | consumers compose, never redefine                                      |
-| ADR 0001 R2                                       | inventory before building                                              |
-| ADR 0001 R3                                       | what is missing is born here, in the right layer                       |
-| ADR 0001 R5                                       | the scales (type, weight, radius, spacing, depth, motion, icon, color) |
-| ADR 0001 R6                                       | rules do not loosen to close a task                                    |
-| ADR 0001 R7                                       | text a component says on its own                                       |
-| [ADR 0002](docs/adr/0002-code-conventions.md) C1  | one component per folder, in its `index.tsx`                           |
-| ADR 0002 C2                                       | import the folder, never the file inside it                            |
-| ADR 0002 C3                                       | no code comments, at all                                               |
-| [ADR 0003](docs/adr/0003-theming.md) T1           | one declaration per token, via `light-dark()`                          |
-| ADR 0003 T2                                       | the default preset carries no brand                                    |
-| ADR 0003 T3                                       | a theme is JSON, and it emits `@theme`                                 |
-| [ADR 0004](docs/adr/0004-releases.md) V1          | a merged pull request is the unit of release                           |
-| ADR 0004 V2                                       | the bump level is declared, then inferred, then assumed                |
-| [ADR 0007](docs/adr/0007-default-identity.md)     | identity lives in the non-color scales                                 |
-| [ADR 0008](docs/adr/0008-multiplatform.md)        | one repository, one package per platform                               |
-| [ADR 0009](docs/adr/0009-token-source.md) S1      | the default theme is data; CSS is generated from it                    |
-| ADR 0009 S2                                       | `tokens.css` is generated — edit `source.ts`, then `npm run tokens`    |
-| [ADR 0010](docs/adr/0010-platform-contract.md) P1 | the contract is extracted from the web source, never written           |
-| ADR 0010 P3                                       | every component is implemented or waived, per platform                 |
-| ADR 0010 P4                                       | a `locales.ts` exports one const named `locales`                       |
+| Where                                              | What it decides                                                        |
+| -------------------------------------------------- | ---------------------------------------------------------------------- |
+| [ADR 0001](docs/adr/0001-design-system.md) R1      | consumers compose, never redefine                                      |
+| ADR 0001 R2                                        | inventory before building                                              |
+| ADR 0001 R3                                        | what is missing is born here, in the right layer                       |
+| ADR 0001 R5                                        | the scales (type, weight, radius, spacing, depth, motion, icon, color) |
+| ADR 0001 R6                                        | rules do not loosen to close a task                                    |
+| ADR 0001 R7                                        | text a component says on its own                                       |
+| [ADR 0002](docs/adr/0002-code-conventions.md) C1   | one component per folder, in its `index.tsx`                           |
+| ADR 0002 C2                                        | import the folder, never the file inside it                            |
+| ADR 0002 C3                                        | no code comments, at all                                               |
+| [ADR 0003](docs/adr/0003-theming.md) T1            | one declaration per token, via `light-dark()`                          |
+| ADR 0003 T2                                        | the default preset carries no brand                                    |
+| ADR 0003 T3                                        | a theme is JSON, and it emits `@theme`                                 |
+| [ADR 0004](docs/adr/0004-releases.md) V1           | a merged pull request is the unit of release                           |
+| ADR 0004 V2                                        | the bump level is declared, then inferred, then assumed                |
+| [ADR 0007](docs/adr/0007-default-identity.md)      | identity lives in the non-color scales                                 |
+| [ADR 0008](docs/adr/0008-multiplatform.md)         | one repository, one package per platform                               |
+| [ADR 0009](docs/adr/0009-token-source.md) S1       | the default theme is data; CSS is generated from it                    |
+| ADR 0009 S2                                        | `tokens.css` is generated — edit `source.ts`, then `npm run tokens`    |
+| [ADR 0010](docs/adr/0010-platform-contract.md) P1  | the contract is extracted from the web source, never written           |
+| ADR 0010 P3                                        | every component is implemented or waived, per platform                 |
+| ADR 0010 P4                                        | a `locales.ts` exports one const named `locales`                       |
+| [ADR 0011](docs/adr/0011-platform-scaffolds.md) D2 | the theme mode is three states stored as two values                    |
+| ADR 0011 D3                                        | a port prefixes a component only when the framework owns the name      |
+| ADR 0011 D5                                        | each platform releases on its own tag                                  |
 
 Changing a rule means changing an ADR. Do not edit `eslint.config.mjs` to make a PR pass (R6).
 
@@ -69,6 +72,10 @@ packages/
       emit/             css, swift, kotlin, dart, rn — all over one resolved model
       cli.ts            writes tokens.css and generated/<platform>/
     generated/          the emitted token file per platform. Committed, byte-compared, unlinted
+  react-native/         @jvdm-ui/react-native — StyleSheet over the generated tokens, no NativeWind
+  ios/                  JvdmUI (SwiftPM). Its manifest is Package.swift, at the repository root
+  android/              com.jvdm:jvdm-ui — Compose, Gradle, ktlint
+  flutter/              jvdm_ui — ThemeExtension, goldens in test/goldens/
   web/                  the npm package `jvdm-ui` — React 19 + Tailwind v4
     src/
       tokens/           tokens.css (generated @theme) + runtime.css (static) + theme.ts (the switch)
@@ -81,6 +88,7 @@ packages/
     scripts/            build steps that run after tsup
     tests/              vitest + node --test, outside src/ and so outside the src lint
     tsup.config.ts      the two passes that keep the client boundary (ADR 0005)
+Package.swift           at the root because SwiftPM allows it nowhere else (ADR 0008, M5)
 contracts/              one JSON per component, extracted from the web. The parity ledger
 scripts/                release tooling, the contract extractor and the parity checker
   tests/                node --test over those scripts
@@ -148,6 +156,23 @@ waiver line to all four platforms, and porting one means deleting that line.
 Adding or renaming a prop, or changing a variant set, is therefore a change on five platforms. That
 is the cost the ledger makes visible instead of discovering it later.
 
+## Porting a component
+
+One component is ported so far — `Badge` ([ADR 0011](docs/adr/0011-platform-scaffolds.md)). Use it
+as the shape for the next one:
+
+1. Read its `contracts/<layer>/<name>.json`. The props there, minus the affordances, are what the
+   port must offer.
+2. Put the tone/variant table and the style resolution in a **pure** function or enum — no view
+   code. That is what the tests and `check-scales` reach.
+3. Prefix the type only if the platform's framework already owns the name (D3), and record the
+   `spelling` in `packages/<platform>/contract.json`.
+4. Delete its line from `contracts/waivers.json`. `npm run parity` fails until the declaration and
+   the web contract agree on prop names and variant sets.
+
+Never write a raw color, dimension or duration in a native source: `npm run scales` fails on it, in
+all four languages at once.
+
 ## Releasing
 
 A **merged pull request** is the unit of release ([ADR 0004](docs/adr/0004-releases.md)). A direct
@@ -166,11 +191,23 @@ a matching tag and a GitHub release.
 
 Adding a semantic token is a `minor`, never a `patch`: it changes the public contract.
 
+Every platform releases on its own tag ([ADR 0011, D5](docs/adr/0011-platform-scaffolds.md)):
+`v1.2.20` for web, `rn-v0.1.0`, `ios-0.1.0`, `android-0.1.0`, `flutter-0.1.0`.
+`scripts/next-version.mjs --platform <id>` reads that platform's own manifest, and
+`scripts/release-reach.mjs` decides which platforms a pull request reaches — a change under
+`packages/tokens/`, `contracts/` or `scripts/` reaches all five. Only the web package actually
+publishes today; the others report what they would tag.
+
 ## Before calling a task done
 
 ```bash
 npm run typecheck && npm run lint && npm run format:check && npm run test && npm run build
 ```
+
+`npm run test` covers the JavaScript packages, the scripts, the parity gate and the scale gate. The
+native suites are separate and need their toolchains: `npm run test:ios`, `npm run test:flutter`,
+`swiftlint lint --strict`, and `flutter analyze` from `packages/flutter`. Android's Compose layer
+has no runner yet — see [ADR 0011](docs/adr/0011-platform-scaffolds.md).
 
 If you touch `eslint.config.mjs`, verify it by injecting the forbidden import and confirming the
 lint breaks: a descriptor that matches nothing becomes silence, not an error, and the rule dies

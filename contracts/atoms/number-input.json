@@ -13,6 +13,7 @@
       "optional": true,
       "type": "unknown",
       "inherited": true,
+      "affordance": "styling",
       "default": "",
       "defaultKind": "literal"
     }

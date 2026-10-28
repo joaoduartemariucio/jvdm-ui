@@ -150,6 +150,8 @@ function collect(typeNode, members, hosts, seen) {
   }
 }
 
+const AFFORDANCES = { className: "styling" };
+
 function propsOf(node) {
   const parameter = node.parameters[0];
   if (!parameter) return { props: [], host: null };
@@ -171,6 +173,7 @@ function propsOf(node) {
       type: printed,
       ...(values ? { values } : {}),
       ...(/\bReactNode\b/.test(printed) ? { slot: true } : {}),
+      ...(AFFORDANCES[name] ? { affordance: AFFORDANCES[name] } : {}),
       ...(fallback ?? {}),
     };
   });
@@ -179,7 +182,14 @@ function propsOf(node) {
 
   for (const [name, fallback] of defaults) {
     if (declared.has(name)) continue;
-    props.push({ name, optional: true, type: "unknown", inherited: true, ...fallback });
+    props.push({
+      name,
+      optional: true,
+      type: "unknown",
+      inherited: true,
+      ...(AFFORDANCES[name] ? { affordance: AFFORDANCES[name] } : {}),
+      ...fallback,
+    });
   }
 
   return { props, host: hosts[0] ?? null };

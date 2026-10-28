@@ -26,6 +26,7 @@
       "name": "className",
       "optional": true,
       "type": "string",
+      "affordance": "styling",
       "default": "",
       "defaultKind": "literal"
     }

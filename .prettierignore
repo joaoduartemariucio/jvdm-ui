@@ -4,5 +4,8 @@ node_modules
 .claude
 .github/agents
 .github/skills
-packages/tokens/generated
 contracts
+.build
+packages/react-native/src/tokens/tokens.ts
+packages/flutter/.dart_tool
+packages/flutter/test/goldens

@@ -1,24 +1,26 @@
-import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { dirname } from "node:path";
 
 import { emitDart, emitKotlin, emitReactNative, emitStylesheet, emitSwift } from "./emit";
 import { source } from "./source";
 
-const WEB_TOKENS = new URL("../../web/src/tokens/", import.meta.url);
-const GENERATED = new URL("../generated/", import.meta.url);
+const PACKAGES = new URL("../../", import.meta.url);
 
-const runtime = readFileSync(new URL("runtime.css", WEB_TOKENS), "utf8");
+const runtime = readFileSync(new URL("web/src/tokens/runtime.css", PACKAGES), "utf8");
 
-const TARGETS: [URL, string][] = [
-  [new URL("tokens.css", WEB_TOKENS), emitStylesheet(source, runtime)],
-  [new URL("ios/JvdmTokens.swift", GENERATED), emitSwift(source)],
-  [new URL("android/Tokens.kt", GENERATED), emitKotlin(source)],
-  [new URL("flutter/tokens.dart", GENERATED), emitDart(source)],
-  [new URL("react-native/tokens.ts", GENERATED), emitReactNative(source)],
+const TARGETS: [string, string][] = [
+  ["web/src/tokens/tokens.css", emitStylesheet(source, runtime)],
+  ["ios/Sources/JvdmUI/Generated/JvdmTokens.swift", emitSwift(source)],
+  ["android/src/main/kotlin/com/jvdm/ui/tokens/Tokens.kt", emitKotlin(source)],
+  ["flutter/lib/src/tokens/tokens.dart", emitDart(source)],
+  ["react-native/src/tokens/tokens.ts", emitReactNative(source)],
 ];
 
-for (const [target, contents] of TARGETS) {
+rmSync(new URL("tokens/generated/", PACKAGES), { recursive: true, force: true });
+
+for (const [path, contents] of TARGETS) {
+  const target = new URL(path, PACKAGES);
   mkdirSync(dirname(target.pathname), { recursive: true });
   writeFileSync(target, contents);
-  process.stdout.write(`tokens: ${target.pathname.split("/jvdm-ui/")[1]}\n`);
+  process.stdout.write(`tokens: packages/${path}\n`);
 }

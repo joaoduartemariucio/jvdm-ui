@@ -34,7 +34,8 @@
     {
       "name": "className",
       "optional": true,
-      "type": "string"
+      "type": "string",
+      "affordance": "styling"
     }
   ],
   "locales": []

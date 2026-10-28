@@ -4,3 +4,8 @@ dist
 *.tsbuildinfo
 site-dist
 coverage
+.build
+.dart_tool
+build
+.gradle
+packages/flutter/pubspec.lock

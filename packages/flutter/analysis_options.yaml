@@ -1,0 +1,18 @@
+include: package:flutter_lints/flutter.yaml
+
+analyzer:
+  exclude:
+    - lib/src/tokens/tokens.dart
+    - build/**
+  errors:
+    avoid_print: error
+    prefer_const_constructors: error
+
+linter:
+  rules:
+    - always_specify_types
+    - prefer_final_fields
+    - prefer_const_declarations
+    - require_trailing_commas
+    - sort_constructors_first
+    - unnecessary_this
