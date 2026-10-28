@@ -89,6 +89,21 @@
       ]
     },
     {
+      "contract": "atoms/button",
+      "spelling": "JvdmButton",
+      "file": "src/main/kotlin/com/jvdm/ui/atoms/button/Button.kt",
+      "props": [
+        {
+          "name": "variant",
+          "values": ["danger", "primary", "secondary", "ghost"]
+        },
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "icon", "icon-sm"]
+        }
+      ]
+    },
+    {
       "contract": "atoms/calendar-icon",
       "spelling": "JvdmCalendarIcon",
       "file": "src/main/kotlin/com/jvdm/ui/atoms/icon/CalendarIcon.kt",
@@ -134,6 +149,17 @@
         {
           "name": "size",
           "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/checkbox",
+      "spelling": "JvdmCheckbox",
+      "file": "src/main/kotlin/com/jvdm/ui/atoms/checkbox/Checkbox.kt",
+      "props": [
+        {
+          "name": "label",
+          "slot": true
         }
       ]
     },
@@ -275,6 +301,35 @@
       ]
     },
     {
+      "contract": "atoms/icon-button",
+      "spelling": "JvdmIconButton",
+      "file": "src/main/kotlin/com/jvdm/ui/atoms/iconbutton/IconButton.kt",
+      "props": [
+        {
+          "name": "label"
+        },
+        {
+          "name": "variant",
+          "values": ["danger", "primary", "secondary", "ghost"]
+        },
+        {
+          "name": "size",
+          "values": ["icon", "icon-sm"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/input",
+      "spelling": "JvdmInput",
+      "file": "src/main/kotlin/com/jvdm/ui/atoms/input/Input.kt",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md"]
+        }
+      ]
+    },
+    {
       "contract": "atoms/instagram-icon",
       "spelling": "JvdmInstagramIcon",
       "file": "src/main/kotlin/com/jvdm/ui/atoms/icon/InstagramIcon.kt",
@@ -310,6 +365,17 @@
         {
           "name": "tone",
           "values": ["accent", "muted", "dim"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/link",
+      "spelling": "JvdmLink",
+      "file": "src/main/kotlin/com/jvdm/ui/atoms/link/Link.kt",
+      "props": [
+        {
+          "name": "tone",
+          "values": ["accent", "muted", "ink"]
         }
       ]
     },
@@ -391,6 +457,17 @@
       ]
     },
     {
+      "contract": "atoms/radio",
+      "spelling": "JvdmRadio",
+      "file": "src/main/kotlin/com/jvdm/ui/atoms/radio/Radio.kt",
+      "props": [
+        {
+          "name": "label",
+          "slot": true
+        }
+      ]
+    },
+    {
       "contract": "atoms/search-icon",
       "spelling": "JvdmSearchIcon",
       "file": "src/main/kotlin/com/jvdm/ui/atoms/icon/SearchIcon.kt",
@@ -398,6 +475,17 @@
         {
           "name": "size",
           "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/select",
+      "spelling": "JvdmSelect",
+      "file": "src/main/kotlin/com/jvdm/ui/atoms/select/Select.kt",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md"]
         }
       ]
     },
@@ -416,6 +504,12 @@
       "contract": "atoms/skeleton",
       "spelling": "JvdmSkeleton",
       "file": "src/main/kotlin/com/jvdm/ui/atoms/skeleton/Skeleton.kt",
+      "props": []
+    },
+    {
+      "contract": "atoms/slider",
+      "spelling": "JvdmSlider",
+      "file": "src/main/kotlin/com/jvdm/ui/atoms/slider/Slider.kt",
       "props": []
     },
     {
@@ -464,6 +558,37 @@
           "name": "children",
           "spelling": "image",
           "slot": true
+        }
+      ]
+    },
+    {
+      "contract": "atoms/switch",
+      "spelling": "JvdmSwitch",
+      "file": "src/main/kotlin/com/jvdm/ui/atoms/switch/Switch.kt",
+      "props": [
+        {
+          "name": "checked"
+        },
+        {
+          "name": "onCheckedChange"
+        },
+        {
+          "name": "label",
+          "slot": true
+        },
+        {
+          "name": "disabled"
+        }
+      ]
+    },
+    {
+      "contract": "atoms/textarea",
+      "spelling": "JvdmTextarea",
+      "file": "src/main/kotlin/com/jvdm/ui/atoms/textarea/Textarea.kt",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md"]
         }
       ]
     },

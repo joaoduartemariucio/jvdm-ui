@@ -134,6 +134,26 @@ words — "that is a border, not a gap" — so the rule now allows exactly 1, an
 width or a hairline goes. Narrowing a check to what the ADR actually says is not loosening it (R6):
 the same change still rejects a 3px border and a 7px radius.
 
+Wave two is the interactive atoms: `Button`, `IconButton`, `Link`, `Input`, `Textarea`, `Select`,
+`Checkbox`, `Radio`, `Switch` and `Slider`. Three more things it settled:
+
+**A host element becomes the platform's own control, and only the component's own props are
+compared.** `Input` on the web is `{ size } & Omit<ComponentProps<"input">, "size">`; on the four
+ports it is a `TextField`, a `BasicTextField`, a `TextField` and a `TextInput`, each with its own
+value binding and keyboard handling. Parity checks `size`, which is the part the design system
+actually decides ([ADR 0010, P2](0010-platform-contract.md)).
+
+**A sibling imports the folder, not the file, on every platform.** React Native's `IconButton`
+reached into `../button/button-style` and the lint stopped it, exactly as C2 would stop it on the
+web — so the style is re-exported from the component's own index and the sibling imports
+`../button`. ktlint enforces the same idea in Kotlin from the other end: a file holding one class
+must be named after it, which is how `ControlStyle.kt` became `ControlSize.kt`.
+
+**A golden catches what a unit test cannot see.** Flutter's `JvdmButton` stretched to the full width
+because a `Container` with an `alignment` and no size expands to fill. Every prop assertion passed;
+the picture did not. The button now sizes to its content, and the golden is the only reason that was
+found.
+
 ## Consequences
 
 - One component is ported on four platforms and the ledger reads 105 waivers instead of 106. The
