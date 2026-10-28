@@ -21,6 +21,7 @@
     "scales": "node scripts/check-scales.mjs",
     "test:ios": "swift test",
     "test:flutter": "cd packages/flutter && flutter test",
+    "test:android": "cd packages/android && ./gradlew test ktlintCheck assembleRelease",
     "test:scripts": "node --test \"scripts/tests/*.test.mjs\"",
     "lint": "eslint",
     "lint:fix": "eslint --fix",

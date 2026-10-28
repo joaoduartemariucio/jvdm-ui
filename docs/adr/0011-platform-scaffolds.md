@@ -66,13 +66,18 @@ comment, a raw color, a raw dimension or a raw duration. It is one rule table ov
 Dart and TypeScript, it runs in `npm run test`, and it was verified by injecting each kind of
 violation.
 
-The platform linters sit on top where they can run today: `.swiftlint.yml` carries the same five
-rules as `custom_rules` and was verified the same way; `analysis_options.yaml` runs `flutter
-analyze` clean with `always_specify_types` and `require_trailing_commas`. Android ships a ktlint
-configuration and **no custom rules**, because ktlint has no `no-comments` rule and a configuration
-naming a rule that does not exist is silence, not enforcement — the failure
-[`AGENTS.md`](../../AGENTS.md) warns about. Until a ktlint ruleset exists, `check-scales.mjs` is what
-holds Kotlin to R5 and C3.
+The platform linters sit on top, each doing what it is actually good at. `.swiftlint.yml` carries
+the same five rules as `custom_rules`, verified the same way. `analysis_options.yaml` runs `flutter
+analyze` clean with `always_specify_types` and `require_trailing_commas`. Android runs `ktlintCheck`
+with **no custom rules**: ktlint has no `no-comments` rule, and a configuration naming a rule that
+does not exist is silence rather than enforcement — the failure [`AGENTS.md`](../../AGENTS.md) warns
+about. What ktlint does enforce there is Kotlin style and, usefully, that a file is named after the
+class it holds, which is [ADR 0002, C1](0002-code-conventions.md) arriving for free. R5 and C3 in
+Kotlin stay with `check-scales.mjs`.
+
+Android also runs Kotlin's **explicit API mode**, so a public declaration without a stated visibility
+fails the build. That is the closest thing Kotlin has to a statement that the package's surface is
+deliberate, and it was verified by removing one `public`.
 
 ### D5 — Each platform releases on its own tag, and the reach is inferred from the diff
 

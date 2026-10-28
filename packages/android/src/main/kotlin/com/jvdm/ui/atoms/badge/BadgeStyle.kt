@@ -30,7 +30,10 @@ public data class BadgeStyle(
     public val weight: Int,
 ) {
     public companion object {
-        public fun resolve(scales: JvdmScales, tone: BadgeTone): BadgeStyle =
+        public fun resolve(
+            scales: JvdmScales,
+            tone: BadgeTone,
+        ): BadgeStyle =
             BadgeStyle(
                 background = scales.argb(tone.background),
                 foreground = scales.argb(tone.foreground),

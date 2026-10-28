@@ -12,10 +12,10 @@ import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.TextUnit
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.jvdm.ui.tokens.JvdmColorToken
 import com.jvdm.ui.tokens.JvdmRadiusStep
 import com.jvdm.ui.tokens.JvdmTextStep
@@ -27,7 +27,8 @@ public val LocalJvdmScales: androidx.compose.runtime.ProvidableCompositionLocal<
 
 public object JvdmTokensAccess {
     public val scales: JvdmScales
-        @Composable @ReadOnlyComposable get() = LocalJvdmScales.current
+        @Composable @ReadOnlyComposable
+        get() = LocalJvdmScales.current
 
     @Composable
     @ReadOnlyComposable
@@ -64,8 +65,10 @@ public object JvdmTokensAccess {
         )
 }
 
-private fun argbColor(scales: JvdmScales, token: JvdmColorToken): Color =
-    Color(scales.argb(token))
+private fun argbColor(
+    scales: JvdmScales,
+    token: JvdmColorToken,
+): Color = Color(scales.argb(token))
 
 @Composable
 public fun JvdmTheme(

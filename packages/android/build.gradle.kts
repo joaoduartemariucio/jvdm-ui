@@ -1,8 +1,7 @@
 plugins {
-    id("com.android.library") version "8.14.0"
-    kotlin("android") version "2.3.10"
-    id("org.jetbrains.kotlin.plugin.compose") version "2.3.10"
-    id("org.jlleitschuh.gradle.ktlint") version "13.1.0"
+    id("com.android.library") version "9.3.3"
+    id("org.jetbrains.kotlin.plugin.compose") version "2.4.21"
+    id("org.jlleitschuh.gradle.ktlint") version "14.2.0"
     id("maven-publish")
 }
 
@@ -11,7 +10,7 @@ version = "0.1.0"
 
 android {
     namespace = "com.jvdm.ui"
-    compileSdk = 36
+    compileSdk = 37
 
     defaultConfig {
         minSdk = 24
@@ -26,15 +25,6 @@ android {
         compose = true
     }
 
-    sourceSets {
-        getByName("main") {
-            kotlin.srcDirs("src/main/kotlin")
-        }
-        getByName("test") {
-            kotlin.srcDirs("src/test/kotlin")
-        }
-    }
-
     publishing {
         singleVariant("release") {
             withSourcesJar()
@@ -44,7 +34,6 @@ android {
 
 kotlin {
     explicitApi()
-    jvmToolchain(17)
 }
 
 dependencies {
@@ -52,7 +41,8 @@ dependencies {
     implementation("androidx.compose.foundation:foundation")
     implementation("androidx.compose.material3:material3")
     implementation("androidx.compose.ui:ui")
-    testImplementation(kotlin("test"))
+    testImplementation("org.jetbrains.kotlin:kotlin-test-junit:2.4.21")
+    testImplementation("junit:junit:4.13.2")
 }
 
 ktlint {

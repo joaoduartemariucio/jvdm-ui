@@ -11,7 +11,9 @@ import com.jvdm.ui.tokens.JvdmTokens
 import com.jvdm.ui.tokens.JvdmTrackingStep
 import com.jvdm.ui.tokens.JvdmWeightStep
 
-public class JvdmScales(public val dark: Boolean) {
+public class JvdmScales(
+    public val dark: Boolean,
+) {
     public fun value(token: JvdmColorToken): JvdmColorValue {
         val pair: JvdmColorPair = requireNotNull(JvdmTokens.colors[token]) { token.token }
         return if (dark) pair.dark else pair.light
@@ -28,13 +30,14 @@ public class JvdmScales(public val dark: Boolean) {
     public fun lineHeight(step: JvdmTextStep): Float =
         requireNotNull(JvdmTokens.text[step]).let { it.size * it.lineHeight }
 
-    public fun letterSpacing(step: JvdmTrackingStep, textStep: JvdmTextStep): Float =
-        requireNotNull(JvdmTokens.tracking[step]) * fontSize(textStep)
+    public fun letterSpacing(
+        step: JvdmTrackingStep,
+        textStep: JvdmTextStep,
+    ): Float = requireNotNull(JvdmTokens.tracking[step]) * fontSize(textStep)
 
     public fun weight(step: JvdmWeightStep): Int = requireNotNull(JvdmTokens.weight[step])
 
-    public fun durationMillis(step: JvdmDurationStep): Int =
-        requireNotNull(JvdmTokens.duration[step])
+    public fun durationMillis(step: JvdmDurationStep): Int = requireNotNull(JvdmTokens.duration[step])
 
     public fun bezier(step: JvdmEaseStep): List<Float> =
         requireNotNull(JvdmTokens.ease[step]).let { listOf(it.x1, it.y1, it.x2, it.y2) }

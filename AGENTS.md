@@ -74,7 +74,7 @@ packages/
     generated/          the emitted token file per platform. Committed, byte-compared, unlinted
   react-native/         @jvdm-ui/react-native — StyleSheet over the generated tokens, no NativeWind
   ios/                  JvdmUI (SwiftPM). Its manifest is Package.swift, at the repository root
-  android/              com.jvdm:jvdm-ui — Compose, Gradle, ktlint
+  android/              com.jvdm:jvdm-ui — Compose, Gradle wrapper, ktlint, explicit API mode
   flutter/              jvdm_ui — ThemeExtension, goldens in test/goldens/
   web/                  the npm package `jvdm-ui` — React 19 + Tailwind v4
     src/
@@ -206,8 +206,8 @@ npm run typecheck && npm run lint && npm run format:check && npm run test && npm
 
 `npm run test` covers the JavaScript packages, the scripts, the parity gate and the scale gate. The
 native suites are separate and need their toolchains: `npm run test:ios`, `npm run test:flutter`,
-`swiftlint lint --strict`, and `flutter analyze` from `packages/flutter`. Android's Compose layer
-has no runner yet — see [ADR 0011](docs/adr/0011-platform-scaffolds.md).
+`npm run test:android`, plus `swiftlint lint --strict` and `flutter analyze` from
+`packages/flutter`. All four build and test for real; CI runs them in `ci-platforms.yml`.
 
 If you touch `eslint.config.mjs`, verify it by injecting the forbidden import and confirming the
 lint breaks: a descriptor that matches nothing becomes silence, not an error, and the rule dies

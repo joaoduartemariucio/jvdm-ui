@@ -131,7 +131,10 @@ public class JvdmThemeStoreTest {
 
         override fun read(key: String): String? = entries[key]
 
-        override fun write(key: String, value: String) {
+        override fun write(
+            key: String,
+            value: String,
+        ) {
             entries[key] = value
         }
 

@@ -1,6 +1,8 @@
 package com.jvdm.ui.theme
 
-public enum class JvdmThemeMode(public val value: String) {
+public enum class JvdmThemeMode(
+    public val value: String,
+) {
     LIGHT("light"),
     DARK("dark"),
     SYSTEM("system"),
@@ -9,12 +11,17 @@ public enum class JvdmThemeMode(public val value: String) {
 public interface JvdmThemeStorage {
     public fun read(key: String): String?
 
-    public fun write(key: String, value: String)
+    public fun write(
+        key: String,
+        value: String,
+    )
 
     public fun remove(key: String)
 }
 
-public class JvdmThemeStore(private val storage: JvdmThemeStorage) {
+public class JvdmThemeStore(
+    private val storage: JvdmThemeStorage,
+) {
     public fun read(): JvdmThemeMode =
         when (storage.read(STORAGE_KEY)) {
             JvdmThemeMode.LIGHT.value -> JvdmThemeMode.LIGHT
