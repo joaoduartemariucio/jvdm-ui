@@ -1,4 +1,15 @@
-import { colors, duration, ease, radius, spacing, text, tracking, weight } from "./tokens";
+import {
+  colors,
+  duration,
+  ease,
+  fontMono,
+  fontSans,
+  radius,
+  spacing,
+  text,
+  tracking,
+  weight,
+} from "./tokens";
 import type {
   ColorToken,
   DurationStep,
@@ -15,6 +26,8 @@ export type FontWeight = "400" | "500" | "700";
 
 export type JvdmTokens = {
   scheme: Scheme;
+  sansFamily: string;
+  monoFamily: string;
   color: (token: ColorToken) => string;
   radius: (step: RadiusStep) => number;
   spacing: (steps: number) => number;
@@ -29,6 +42,8 @@ export type JvdmTokens = {
 export function resolveTokens(scheme: Scheme): JvdmTokens {
   return {
     scheme,
+    sansFamily: fontSans[0],
+    monoFamily: fontMono[0],
     color: (token) => colors[token][scheme].hex,
     radius: (step) => radius[step],
     spacing: (steps) => spacing * steps,

@@ -23,6 +23,23 @@
       ]
     },
     {
+      "contract": "atoms/avatar",
+      "spelling": "Avatar",
+      "file": "src/atoms/avatar/index.tsx",
+      "props": [
+        {
+          "name": "name"
+        },
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg"]
+        },
+        {
+          "name": "label"
+        }
+      ]
+    },
+    {
       "contract": "atoms/back-icon",
       "spelling": "BackIcon",
       "file": "src/atoms/icon/back-icon/index.tsx",
@@ -94,6 +111,22 @@
       ]
     },
     {
+      "contract": "atoms/card",
+      "spelling": "Card",
+      "file": "src/atoms/card/index.tsx",
+      "props": [
+        {
+          "name": "children",
+          "slot": true,
+          "spelling": "children"
+        },
+        {
+          "name": "padding",
+          "values": ["sm", "md", "lg", "none"]
+        }
+      ]
+    },
+    {
       "contract": "atoms/check-icon",
       "spelling": "CheckIcon",
       "file": "src/atoms/icon/check-icon/index.tsx",
@@ -149,6 +182,21 @@
       ]
     },
     {
+      "contract": "atoms/divider",
+      "spelling": "Divider",
+      "file": "src/atoms/divider/index.tsx",
+      "props": [
+        {
+          "name": "children",
+          "slot": true,
+          "spelling": "children"
+        },
+        {
+          "name": "vertical"
+        }
+      ]
+    },
+    {
       "contract": "atoms/eye-icon",
       "spelling": "EyeIcon",
       "file": "src/atoms/icon/eye-icon/index.tsx",
@@ -193,6 +241,18 @@
       ]
     },
     {
+      "contract": "atoms/form-alert",
+      "spelling": "FormAlert",
+      "file": "src/atoms/form-alert/index.tsx",
+      "props": [
+        {
+          "name": "children",
+          "slot": true,
+          "spelling": "children"
+        }
+      ]
+    },
+    {
       "contract": "atoms/funnel-icon",
       "spelling": "FunnelIcon",
       "file": "src/atoms/icon/funnel-icon/index.tsx",
@@ -222,6 +282,34 @@
         {
           "name": "size",
           "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/kbd",
+      "spelling": "Kbd",
+      "file": "src/atoms/kbd/index.tsx",
+      "props": [
+        {
+          "name": "children",
+          "slot": true,
+          "spelling": "children"
+        }
+      ]
+    },
+    {
+      "contract": "atoms/label",
+      "spelling": "Label",
+      "file": "src/atoms/label/index.tsx",
+      "props": [
+        {
+          "name": "children",
+          "slot": true,
+          "spelling": "children"
+        },
+        {
+          "name": "tone",
+          "values": ["accent", "muted", "dim"]
         }
       ]
     },
@@ -323,6 +411,12 @@
           "values": ["sm", "md", "lg", "xl", "2xl"]
         }
       ]
+    },
+    {
+      "contract": "atoms/skeleton",
+      "spelling": "Skeleton",
+      "file": "src/atoms/skeleton/index.tsx",
+      "props": []
     },
     {
       "contract": "atoms/staff-icon",
