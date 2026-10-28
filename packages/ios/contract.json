@@ -90,6 +90,21 @@
       ]
     },
     {
+      "contract": "atoms/button",
+      "spelling": "JvdmButton",
+      "file": "Sources/JvdmUI/Atoms/Button/Button.swift",
+      "props": [
+        {
+          "name": "variant",
+          "values": ["danger", "primary", "secondary", "ghost"]
+        },
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "icon", "icon-sm"]
+        }
+      ]
+    },
+    {
       "contract": "atoms/calendar-icon",
       "spelling": "CalendarIcon",
       "file": "Sources/JvdmUI/Atoms/Icon/CalendarIcon.swift",
@@ -135,6 +150,17 @@
         {
           "name": "size",
           "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/checkbox",
+      "spelling": "Checkbox",
+      "file": "Sources/JvdmUI/Atoms/Checkbox/Checkbox.swift",
+      "props": [
+        {
+          "name": "label",
+          "slot": true
         }
       ]
     },
@@ -276,6 +302,35 @@
       ]
     },
     {
+      "contract": "atoms/icon-button",
+      "spelling": "IconButton",
+      "file": "Sources/JvdmUI/Atoms/IconButton/IconButton.swift",
+      "props": [
+        {
+          "name": "label"
+        },
+        {
+          "name": "variant",
+          "values": ["danger", "primary", "secondary", "ghost"]
+        },
+        {
+          "name": "size",
+          "values": ["icon", "icon-sm"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/input",
+      "spelling": "Input",
+      "file": "Sources/JvdmUI/Atoms/Input/Input.swift",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md"]
+        }
+      ]
+    },
+    {
       "contract": "atoms/instagram-icon",
       "spelling": "InstagramIcon",
       "file": "Sources/JvdmUI/Atoms/Icon/InstagramIcon.swift",
@@ -311,6 +366,17 @@
         {
           "name": "tone",
           "values": ["accent", "muted", "dim"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/link",
+      "spelling": "JvdmLink",
+      "file": "Sources/JvdmUI/Atoms/Link/Link.swift",
+      "props": [
+        {
+          "name": "tone",
+          "values": ["accent", "muted", "ink"]
         }
       ]
     },
@@ -392,6 +458,17 @@
       ]
     },
     {
+      "contract": "atoms/radio",
+      "spelling": "Radio",
+      "file": "Sources/JvdmUI/Atoms/Radio/Radio.swift",
+      "props": [
+        {
+          "name": "label",
+          "slot": true
+        }
+      ]
+    },
+    {
       "contract": "atoms/search-icon",
       "spelling": "SearchIcon",
       "file": "Sources/JvdmUI/Atoms/Icon/SearchIcon.swift",
@@ -399,6 +476,17 @@
         {
           "name": "size",
           "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/select",
+      "spelling": "Select",
+      "file": "Sources/JvdmUI/Atoms/Select/Select.swift",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md"]
         }
       ]
     },
@@ -417,6 +505,12 @@
       "contract": "atoms/skeleton",
       "spelling": "Skeleton",
       "file": "Sources/JvdmUI/Atoms/Skeleton/Skeleton.swift",
+      "props": []
+    },
+    {
+      "contract": "atoms/slider",
+      "spelling": "JvdmSlider",
+      "file": "Sources/JvdmUI/Atoms/Slider/Slider.swift",
       "props": []
     },
     {
@@ -465,6 +559,37 @@
           "name": "children",
           "spelling": "icon",
           "slot": true
+        }
+      ]
+    },
+    {
+      "contract": "atoms/switch",
+      "spelling": "Switch",
+      "file": "Sources/JvdmUI/Atoms/Switch/Switch.swift",
+      "props": [
+        {
+          "name": "checked"
+        },
+        {
+          "name": "onCheckedChange"
+        },
+        {
+          "name": "label",
+          "slot": true
+        },
+        {
+          "name": "disabled"
+        }
+      ]
+    },
+    {
+      "contract": "atoms/textarea",
+      "spelling": "Textarea",
+      "file": "Sources/JvdmUI/Atoms/Textarea/Textarea.swift",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md"]
         }
       ]
     },
