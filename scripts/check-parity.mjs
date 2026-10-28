@@ -20,7 +20,10 @@ const web = new Map(
       `${entry.layer}/${entry.contract}`,
       {
         name: contract.name,
-        props: contract.props.filter((prop) => !prop.inherited && !prop.affordance),
+        presents: Boolean(contract.presents),
+        props: contract.props.filter(
+          (prop) => !prop.inherited && !prop.affordance && !prop.presentation,
+        ),
         locales: contract.locales.map(localeKey),
       },
     ];
@@ -78,6 +81,18 @@ for (const platform of platforms) {
     for (const name of actual.filter((prop) => !expected.includes(prop))) {
       failures.push(
         `${platform.id}: ${id} adds prop \`${name}\`, which the web contract does not have`,
+      );
+    }
+
+    if (contract.presents && !entry.presentation) {
+      failures.push(
+        `${platform.id}: ${id} puts something over the page and names no way to present it`,
+      );
+    }
+
+    if (!contract.presents && entry.presentation) {
+      failures.push(
+        `${platform.id}: ${id} names a presentation, but the web contract presents nothing`,
       );
     }
 

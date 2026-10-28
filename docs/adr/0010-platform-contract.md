@@ -1,7 +1,7 @@
 # ADR 0010 — The platform contract
 
 - **Status:** accepted
-- **Date:** 2026-10-28
+- **Date:** 2026-10-28 (P7 added the same day, when the first overlay was ported)
 - **Scope:** `packages/tokens/src/emit/`, `packages/tokens/generated/`, `contracts/`,
   `scripts/extract-contract.mjs`, `scripts/check-parity.mjs`, and every `locales.ts`. Why the
   repository holds one package per platform is [ADR 0008](0008-multiplatform.md); where the token
@@ -66,6 +66,34 @@ Prop **names and variant sets** are compared; prop **types** are not. `ReactNode
 `@Composable () -> Unit` and `Widget` are the same idea in four spellings, and a checker that
 insisted they match would be enforcing React, not parity. What the checker enforces is that the four
 platforms offer the same knobs with the same values.
+
+### P7 — A contract may say that part of it is a presentation
+
+`Modal` on the web is `isOpen` and `onClose` plus a panel. The panel is portable; `isOpen` is not.
+SwiftUI presents with `.sheet`, a modifier on the **presenting** view; Flutter presents with
+`showModalBottomSheet`, an **imperative call** that returns a future; Compose and React Native both
+have a composable or a component that takes the flag. Forcing one of those four shapes onto the
+others would be enforcing React, which [P3](#p3--parity-is-a-ledger-that-only-shrinks) already
+refuses to do for prop types.
+
+So a contract may mark props as **presentation** — the ones that answer _is it on screen_ and _it
+just left_ — and the contract itself as `presents: true`. The extractor carries a table of them, the
+way it carries the affordances, so the judgement is made once per component and not argued per
+platform:
+
+```
+molecules/modal           isOpen, onClose
+molecules/drawer          isOpen, onClose
+molecules/confirm-dialog  open, onCancel
+```
+
+Parity then checks the **surface** — title, body, size, labels, the strings it says on its own — and
+requires each platform to name its entry point in `presentation`. A port that forgets to say how the
+thing reaches the screen fails; so does a port that names a presentation for a component that
+presents nothing.
+
+What the ledger records is therefore: _these four platforms put the same panel on screen, each the
+way its framework does it._ That is the honest claim. Claiming they share `isOpen` would not be.
 
 ### P4 — A `locales.ts` exports one const named `locales`
 

@@ -807,6 +807,56 @@
       ]
     },
     {
+      "contract": "molecules/confirm-dialog",
+      "spelling": "ConfirmDialogContent",
+      "file": "Sources/JvdmUI/Molecules/ConfirmDialog/ConfirmDialog.swift",
+      "presentation": "View.jvdmConfirmDialog(isPresented:)",
+      "props": [
+        {
+          "name": "title"
+        },
+        {
+          "name": "description"
+        },
+        {
+          "name": "confirmLabel"
+        },
+        {
+          "name": "cancelLabel"
+        },
+        {
+          "name": "pending"
+        },
+        {
+          "name": "children",
+          "slot": true
+        },
+        {
+          "name": "onConfirm"
+        }
+      ]
+    },
+    {
+      "contract": "molecules/drawer",
+      "spelling": "DialogSurface",
+      "file": "Sources/JvdmUI/Molecules/Drawer/Drawer.swift",
+      "presentation": "View.jvdmDrawer(isPresented:)",
+      "props": [
+        {
+          "name": "title",
+          "slot": true
+        },
+        {
+          "name": "children",
+          "slot": true
+        },
+        {
+          "name": "closeLabel"
+        }
+      ],
+      "locales": ["close"]
+    },
+    {
       "contract": "molecules/empty",
       "spelling": "Empty",
       "file": "Sources/JvdmUI/Molecules/Empty/Empty.swift",
@@ -885,6 +935,30 @@
           "slot": true
         }
       ]
+    },
+    {
+      "contract": "molecules/modal",
+      "spelling": "DialogSurface",
+      "file": "Sources/JvdmUI/Molecules/Modal/Modal.swift",
+      "presentation": "View.jvdmModal(isPresented:)",
+      "props": [
+        {
+          "name": "title",
+          "slot": true
+        },
+        {
+          "name": "children",
+          "slot": true
+        },
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl"]
+        },
+        {
+          "name": "closeLabel"
+        }
+      ],
+      "locales": ["label", "close"]
     },
     {
       "contract": "molecules/page-header",

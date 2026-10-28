@@ -152,7 +152,13 @@ function collect(typeNode, members, hosts, seen) {
 
 const AFFORDANCES = { className: "styling", htmlFor: "labelling" };
 
-function propsOf(node) {
+const PRESENTATION = {
+  "molecules/modal": ["isOpen", "onClose"],
+  "molecules/drawer": ["isOpen", "onClose"],
+  "molecules/confirm-dialog": ["open", "onCancel"],
+};
+
+function propsOf(node, presentation) {
   const parameter = node.parameters[0];
   if (!parameter) return { props: [], host: null };
 
@@ -174,6 +180,7 @@ function propsOf(node) {
       ...(values ? { values } : {}),
       ...(/\bReactNode\b/.test(printed) ? { slot: true } : {}),
       ...(AFFORDANCES[name] ? { affordance: AFFORDANCES[name] } : {}),
+      ...(presentation.includes(name) ? { presentation: true } : {}),
       ...(fallback ?? {}),
     };
   });
@@ -258,7 +265,9 @@ for (const layer of LAYERS) {
     const file = declaration.getSourceFile().fileName;
     const folder = dirname(file);
 
-    const { props, host } = propsOf(node);
+    const id = `${layer}/${basename(folder)}`;
+    const presentation = PRESENTATION[id] ?? [];
+    const { props, host } = propsOf(node, presentation);
 
     contracts.push({
       name,
@@ -266,6 +275,7 @@ for (const layer of LAYERS) {
       layer,
       source: relative(WEB, file),
       ...(host ? { host } : {}),
+      ...(presentation.length > 0 ? { presents: true } : {}),
       props,
       locales: localesImportedBy(file),
     });

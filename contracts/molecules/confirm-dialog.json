@@ -3,11 +3,13 @@
   "contract": "confirm-dialog",
   "layer": "molecules",
   "source": "molecules/confirm-dialog/index.tsx",
+  "presents": true,
   "props": [
     {
       "name": "open",
       "optional": false,
-      "type": "boolean"
+      "type": "boolean",
+      "presentation": true
     },
     {
       "name": "title",
@@ -50,7 +52,8 @@
     {
       "name": "onCancel",
       "optional": false,
-      "type": "() => void"
+      "type": "() => void",
+      "presentation": true
     }
   ],
   "locales": []

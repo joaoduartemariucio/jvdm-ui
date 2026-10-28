@@ -806,6 +806,56 @@
       ]
     },
     {
+      "contract": "molecules/confirm-dialog",
+      "spelling": "ConfirmDialog",
+      "file": "src/molecules/confirm-dialog/index.tsx",
+      "presentation": "Modal(visible:)",
+      "props": [
+        {
+          "name": "title"
+        },
+        {
+          "name": "description"
+        },
+        {
+          "name": "confirmLabel"
+        },
+        {
+          "name": "cancelLabel"
+        },
+        {
+          "name": "pending"
+        },
+        {
+          "name": "children",
+          "slot": true
+        },
+        {
+          "name": "onConfirm"
+        }
+      ]
+    },
+    {
+      "contract": "molecules/drawer",
+      "spelling": "Drawer",
+      "file": "src/molecules/drawer/index.tsx",
+      "presentation": "Modal(visible:)",
+      "props": [
+        {
+          "name": "title",
+          "slot": true
+        },
+        {
+          "name": "children",
+          "slot": true
+        },
+        {
+          "name": "closeLabel"
+        }
+      ],
+      "locales": ["close"]
+    },
+    {
       "contract": "molecules/empty",
       "spelling": "Empty",
       "file": "src/molecules/empty/index.tsx",
@@ -884,6 +934,30 @@
           "slot": true
         }
       ]
+    },
+    {
+      "contract": "molecules/modal",
+      "spelling": "Modal",
+      "file": "src/molecules/modal/index.tsx",
+      "presentation": "Modal(visible:)",
+      "props": [
+        {
+          "name": "title",
+          "slot": true
+        },
+        {
+          "name": "children",
+          "slot": true
+        },
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl"]
+        },
+        {
+          "name": "closeLabel"
+        }
+      ],
+      "locales": ["label", "close"]
     },
     {
       "contract": "molecules/page-header",

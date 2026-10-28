@@ -235,3 +235,57 @@ test("a platform that keeps the parameter passes", () => {
   });
   assert.equal(run(root).status, 0);
 });
+
+test("a platform that names no way to present an overlay fails", () => {
+  const root = fixture({
+    "contracts/atoms/badge.json": { ...BADGE, presents: true },
+    ...implemented([{ name: "tone", values: ["neutral", "danger"] }, { name: "children" }]),
+  });
+  const result = run(root);
+  assert.equal(result.status, 1);
+  assert.match(result.stderr, /puts something over the page and names no way to present it/);
+});
+
+test("a platform that names a presentation for a component that presents nothing fails", () => {
+  const root = fixture({
+    "packages/ios/contract.json": {
+      implements: [
+        {
+          contract: "atoms/badge",
+          file: "Sources/Badge.swift",
+          presentation: "View.badge(isPresented:)",
+          props: [{ name: "tone", values: ["neutral", "danger"] }, { name: "children" }],
+        },
+      ],
+    },
+    "packages/ios/Sources/Badge.swift": "struct Badge {}\n",
+  });
+  const result = run(root);
+  assert.equal(result.status, 1);
+  assert.match(result.stderr, /names a presentation, but the web contract presents nothing/);
+});
+
+test("an overlay with a named presentation passes, and its presentation props are not compared", () => {
+  const root = fixture({
+    "contracts/atoms/badge.json": {
+      ...BADGE,
+      presents: true,
+      props: [
+        ...BADGE.props,
+        { name: "isOpen", optional: false, type: "boolean", presentation: true },
+      ],
+    },
+    "packages/ios/contract.json": {
+      implements: [
+        {
+          contract: "atoms/badge",
+          file: "Sources/Badge.swift",
+          presentation: "View.badge(isPresented:)",
+          props: [{ name: "tone", values: ["neutral", "danger"] }, { name: "children" }],
+        },
+      ],
+    },
+    "packages/ios/Sources/Badge.swift": "struct Badge {}\n",
+  });
+  assert.equal(run(root).status, 0);
+});

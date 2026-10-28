@@ -3,16 +3,19 @@
   "contract": "drawer",
   "layer": "molecules",
   "source": "molecules/drawer/index.tsx",
+  "presents": true,
   "props": [
     {
       "name": "isOpen",
       "optional": false,
-      "type": "boolean"
+      "type": "boolean",
+      "presentation": true
     },
     {
       "name": "onClose",
       "optional": false,
-      "type": "() => void"
+      "type": "() => void",
+      "presentation": true
     },
     {
       "name": "title",

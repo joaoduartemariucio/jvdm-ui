@@ -214,6 +214,22 @@ resolves to the modifier. `Thumb.aspectRatio` compiled, and compared the unappli
 rather than the number; it is `Thumb.ratio` now. The compiler will not warn about this, and the test
 is what found it.
 
+Wave six is the dialog family — `Modal`, `Drawer` and `ConfirmDialog` — and it is the first wave
+where the API had to cede, exactly as the plan said it would. The cession has a rule now
+([ADR 0010, P7](0010-platform-contract.md)) and the four entry points are:
+
+| platform     | presentation                   |
+| ------------ | ------------------------------ |
+| iOS          | `View.jvdmModal(isPresented:)` |
+| Android      | `JvdmModal(isOpen:onClose:)`   |
+| Flutter      | `showJvdmModal(context:)`      |
+| React Native | `Modal(visible:)`              |
+
+What stayed shared is the **surface**: one `DialogSurface` per platform with the title row, the
+close button, the rule under it and the padded body, built from the same tokens and checked on the
+same props. `Drawer` reuses that surface and only changes how it arrives; `ConfirmDialog` has its
+own content with the two buttons, confirm in `danger`.
+
 ## Consequences
 
 - One component is ported on four platforms and the ledger reads 105 waivers instead of 106. The

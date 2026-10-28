@@ -806,6 +806,56 @@
       ]
     },
     {
+      "contract": "molecules/confirm-dialog",
+      "spelling": "JvdmConfirmDialogContent",
+      "file": "src/main/kotlin/com/jvdm/ui/molecules/confirmdialog/ConfirmDialog.kt",
+      "presentation": "JvdmConfirmDialog(open:onCancel:)",
+      "props": [
+        {
+          "name": "title"
+        },
+        {
+          "name": "description"
+        },
+        {
+          "name": "confirmLabel"
+        },
+        {
+          "name": "cancelLabel"
+        },
+        {
+          "name": "pending"
+        },
+        {
+          "name": "children",
+          "slot": true
+        },
+        {
+          "name": "onConfirm"
+        }
+      ]
+    },
+    {
+      "contract": "molecules/drawer",
+      "spelling": "JvdmDrawer",
+      "file": "src/main/kotlin/com/jvdm/ui/molecules/drawer/Drawer.kt",
+      "presentation": "JvdmDrawer(isOpen:onClose:)",
+      "props": [
+        {
+          "name": "title",
+          "slot": true
+        },
+        {
+          "name": "children",
+          "slot": true
+        },
+        {
+          "name": "closeLabel"
+        }
+      ],
+      "locales": ["close"]
+    },
+    {
       "contract": "molecules/empty",
       "spelling": "JvdmEmpty",
       "file": "src/main/kotlin/com/jvdm/ui/molecules/empty/Empty.kt",
@@ -884,6 +934,30 @@
           "slot": true
         }
       ]
+    },
+    {
+      "contract": "molecules/modal",
+      "spelling": "JvdmModal",
+      "file": "src/main/kotlin/com/jvdm/ui/molecules/modal/Modal.kt",
+      "presentation": "JvdmModal(isOpen:onClose:)",
+      "props": [
+        {
+          "name": "title",
+          "slot": true
+        },
+        {
+          "name": "children",
+          "slot": true
+        },
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl"]
+        },
+        {
+          "name": "closeLabel"
+        }
+      ],
+      "locales": ["label", "close"]
     },
     {
       "contract": "molecules/page-header",

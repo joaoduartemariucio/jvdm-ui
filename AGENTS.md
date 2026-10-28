@@ -168,14 +168,14 @@ by hand, and a test compares every one byte for byte.
 ## Porting a component
 
 Porting goes in waves, in dependency order, one wave across all four platforms at once
-([ADR 0011, D6](docs/adr/0011-platform-scaffolds.md)). 71 of 106 are done: `Badge`, the 33 icons, the
+([ADR 0011, D6](docs/adr/0011-platform-scaffolds.md)). 74 of 106 are done: `Badge`, the 33 icons, the
 wave-one atoms (`Skeleton`, `FormAlert`, `Kbd`, `Card`, `Divider`, `Label`, `Avatar`), the wave-two
 interactive atoms (`Button`, `IconButton`, `Link`, `Input`, `Textarea`, `Select`, `Checkbox`,
 `Radio`, `Switch`, `Slider`) the wave-three molecules (`Banner`, `Callout`, `CardTitle`,
 `Empty`, `Field`, `PageHeader`, `StatCard`, `Stepper`) the wave-four set that speaks for itself
-(`Spinner`, `Tag`, `ProgressBar`, `Breadcrumb`, `LoadError`, `MetricCard`) and the wave-five
-selection set (`Accordion`, `Tabs`, `Segmented`, `Pagination`, `Thumb`). Use them as the shape for
-the next one:
+(`Spinner`, `Tag`, `ProgressBar`, `Breadcrumb`, `LoadError`, `MetricCard`) the wave-five
+selection set (`Accordion`, `Tabs`, `Segmented`, `Pagination`, `Thumb`) and the wave-six dialog
+family (`Modal`, `Drawer`, `ConfirmDialog`). Use them as the shape for the next one:
 
 1. Read its `contracts/<layer>/<name>.json`. The props there, minus the affordances, are what the
    port must offer.
@@ -189,7 +189,11 @@ the next one:
    `JvdmTagLocales`, `locales` — and default the parameter to it. Keep it out of the barrel, as the
    web does. Declare the keys in `contract.json`: `npm run parity` compares them, and a string that
    takes an argument must stay parameterised on every platform.
-5. Delete its line from `contracts/waivers.json`. `npm run parity` fails until the declaration and
+5. If it puts something over the page, the contract says `presents: true` and its `isOpen`/`onClose`
+   are presentation props. Do not force a flag onto a platform that presents another way — build the
+   **surface** as a shared component and name the platform's entry point in `presentation`
+   ([ADR 0010, P7](docs/adr/0010-platform-contract.md)).
+6. Delete its line from `contracts/waivers.json`. `npm run parity` fails until the declaration and
    the web contract agree on prop names, variant sets and locale keys.
 
 Never write a raw color, dimension or duration in a native source: `npm run scales` fails on it, in
