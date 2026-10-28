@@ -61,6 +61,10 @@ public struct JvdmTheme: Sendable, Equatable {
         .system(size: size(step), weight: self.weight(weight))
     }
 
+    public func mono(_ step: JvdmTextStep, _ weight: JvdmWeightStep = .normal) -> Font {
+        .system(size: size(step), weight: self.weight(weight), design: .monospaced)
+    }
+
     public func duration(_ step: JvdmDurationStep) -> TimeInterval {
         JvdmTokens.duration[step] ?? 0
     }
