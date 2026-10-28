@@ -23,6 +23,23 @@
       ]
     },
     {
+      "contract": "atoms/avatar",
+      "spelling": "JvdmAvatar",
+      "file": "src/main/kotlin/com/jvdm/ui/atoms/avatar/Avatar.kt",
+      "props": [
+        {
+          "name": "name"
+        },
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg"]
+        },
+        {
+          "name": "label"
+        }
+      ]
+    },
+    {
       "contract": "atoms/back-icon",
       "spelling": "JvdmBackIcon",
       "file": "src/main/kotlin/com/jvdm/ui/atoms/icon/BackIcon.kt",
@@ -94,6 +111,22 @@
       ]
     },
     {
+      "contract": "atoms/card",
+      "spelling": "JvdmCard",
+      "file": "src/main/kotlin/com/jvdm/ui/atoms/card/Card.kt",
+      "props": [
+        {
+          "name": "children",
+          "slot": true,
+          "spelling": "content"
+        },
+        {
+          "name": "padding",
+          "values": ["sm", "md", "lg", "none"]
+        }
+      ]
+    },
+    {
       "contract": "atoms/check-icon",
       "spelling": "JvdmCheckIcon",
       "file": "src/main/kotlin/com/jvdm/ui/atoms/icon/CheckIcon.kt",
@@ -149,6 +182,21 @@
       ]
     },
     {
+      "contract": "atoms/divider",
+      "spelling": "JvdmDivider",
+      "file": "src/main/kotlin/com/jvdm/ui/atoms/divider/Divider.kt",
+      "props": [
+        {
+          "name": "children",
+          "slot": true,
+          "spelling": "label"
+        },
+        {
+          "name": "vertical"
+        }
+      ]
+    },
+    {
       "contract": "atoms/eye-icon",
       "spelling": "JvdmEyeIcon",
       "file": "src/main/kotlin/com/jvdm/ui/atoms/icon/EyeIcon.kt",
@@ -193,6 +241,18 @@
       ]
     },
     {
+      "contract": "atoms/form-alert",
+      "spelling": "JvdmFormAlert",
+      "file": "src/main/kotlin/com/jvdm/ui/atoms/formalert/FormAlert.kt",
+      "props": [
+        {
+          "name": "children",
+          "slot": true,
+          "spelling": "message"
+        }
+      ]
+    },
+    {
       "contract": "atoms/funnel-icon",
       "spelling": "JvdmFunnelIcon",
       "file": "src/main/kotlin/com/jvdm/ui/atoms/icon/FunnelIcon.kt",
@@ -222,6 +282,34 @@
         {
           "name": "size",
           "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/kbd",
+      "spelling": "JvdmKbd",
+      "file": "src/main/kotlin/com/jvdm/ui/atoms/kbd/Kbd.kt",
+      "props": [
+        {
+          "name": "children",
+          "slot": true,
+          "spelling": "key"
+        }
+      ]
+    },
+    {
+      "contract": "atoms/label",
+      "spelling": "JvdmLabel",
+      "file": "src/main/kotlin/com/jvdm/ui/atoms/label/Label.kt",
+      "props": [
+        {
+          "name": "children",
+          "slot": true,
+          "spelling": "text"
+        },
+        {
+          "name": "tone",
+          "values": ["accent", "muted", "dim"]
         }
       ]
     },
@@ -323,6 +411,12 @@
           "values": ["sm", "md", "lg", "xl", "2xl"]
         }
       ]
+    },
+    {
+      "contract": "atoms/skeleton",
+      "spelling": "JvdmSkeleton",
+      "file": "src/main/kotlin/com/jvdm/ui/atoms/skeleton/Skeleton.kt",
+      "props": []
     },
     {
       "contract": "atoms/staff-icon",
