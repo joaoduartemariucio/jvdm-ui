@@ -1,5 +1,8 @@
 import 'package:flutter/widgets.dart';
 
+import 'theme.dart';
+import 'tokens.dart';
+
 enum JvdmIconSize {
   sm('sm', 12.0),
   md('md', 16.0),
@@ -37,7 +40,7 @@ abstract class JvdmIcon extends StatelessWidget {
         color:
             color ??
             DefaultTextStyle.of(context).style.color ??
-            const Color(0xFF000000),
+            JvdmTokens.of(context).color(JvdmColorToken.ink),
       ),
     );
   }

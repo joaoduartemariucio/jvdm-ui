@@ -68,6 +68,7 @@ packages/
   tokens/               @jvdm-ui/tokens — the neutral token source and its emitters. Node, zero React
     src/
       source.ts         the default theme as structured data: the one thing every platform reads
+      icons/            svg/*.svg (the 33 icons) + the path parser that normalises them
       color/            oklch -> oklab -> sRGB, pure arithmetic, no dependency
       emit/             css, swift, kotlin, dart, rn — all over one resolved model
       cli.ts            writes tokens.css and generated/<platform>/
@@ -155,6 +156,14 @@ waiver line to all four platforms, and porting one means deleting that line.
 
 Adding or renaming a prop, or changing a variant set, is therefore a change on five platforms. That
 is the cost the ledger makes visible instead of discovering it later.
+
+## Adding an icon
+
+Drop the `.svg` into `packages/tokens/src/icons/svg/`, with viewBox `0 0 24 24` and only `path`,
+`rect` or `circle` — the parser refuses anything else, on purpose
+([ADR 0012](docs/adr/0012-generated-icons.md)). Then `npm run tokens`, and delete that icon's four
+lines from `contracts/waivers.json`. All five platforms are written for you; none of them is edited
+by hand, and a test compares every one byte for byte.
 
 ## Porting a component
 

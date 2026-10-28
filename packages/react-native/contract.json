@@ -1,6 +1,39 @@
 {
   "implements": [
     {
+      "contract": "atoms/access-icon",
+      "spelling": "AccessIcon",
+      "file": "src/atoms/icon/access-icon/index.tsx",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/alert-icon",
+      "spelling": "AlertIcon",
+      "file": "src/atoms/icon/alert-icon/index.tsx",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/back-icon",
+      "spelling": "BackIcon",
+      "file": "src/atoms/icon/back-icon/index.tsx",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
       "contract": "atoms/badge",
       "spelling": "Badge",
       "file": "src/atoms/badge/index.tsx",
@@ -13,6 +46,352 @@
           "name": "children",
           "spelling": "children",
           "slot": true
+        }
+      ]
+    },
+    {
+      "contract": "atoms/box-icon",
+      "spelling": "BoxIcon",
+      "file": "src/atoms/icon/box-icon/index.tsx",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/building-icon",
+      "spelling": "BuildingIcon",
+      "file": "src/atoms/icon/building-icon/index.tsx",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/calendar-icon",
+      "spelling": "CalendarIcon",
+      "file": "src/atoms/icon/calendar-icon/index.tsx",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/car-icon",
+      "spelling": "CarIcon",
+      "file": "src/atoms/icon/car-icon/index.tsx",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/check-icon",
+      "spelling": "CheckIcon",
+      "file": "src/atoms/icon/check-icon/index.tsx",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/chevron-icon",
+      "spelling": "ChevronIcon",
+      "file": "src/atoms/icon/chevron-icon/index.tsx",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/close-icon",
+      "spelling": "CloseIcon",
+      "file": "src/atoms/icon/close-icon/index.tsx",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/copy-icon",
+      "spelling": "CopyIcon",
+      "file": "src/atoms/icon/copy-icon/index.tsx",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/dashboard-icon",
+      "spelling": "DashboardIcon",
+      "file": "src/atoms/icon/dashboard-icon/index.tsx",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/eye-icon",
+      "spelling": "EyeIcon",
+      "file": "src/atoms/icon/eye-icon/index.tsx",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/eye-off-icon",
+      "spelling": "EyeOffIcon",
+      "file": "src/atoms/icon/eye-off-icon/index.tsx",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/face-icon",
+      "spelling": "FaceIcon",
+      "file": "src/atoms/icon/face-icon/index.tsx",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/factory-icon",
+      "spelling": "FactoryIcon",
+      "file": "src/atoms/icon/factory-icon/index.tsx",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/funnel-icon",
+      "spelling": "FunnelIcon",
+      "file": "src/atoms/icon/funnel-icon/index.tsx",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/gavel-icon",
+      "spelling": "GavelIcon",
+      "file": "src/atoms/icon/gavel-icon/index.tsx",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/instagram-icon",
+      "spelling": "InstagramIcon",
+      "file": "src/atoms/icon/instagram-icon/index.tsx",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/logout-icon",
+      "spelling": "LogoutIcon",
+      "file": "src/atoms/icon/logout-icon/index.tsx",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/mail-icon",
+      "spelling": "MailIcon",
+      "file": "src/atoms/icon/mail-icon/index.tsx",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/moon-icon",
+      "spelling": "MoonIcon",
+      "file": "src/atoms/icon/moon-icon/index.tsx",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/pencil-icon",
+      "spelling": "PencilIcon",
+      "file": "src/atoms/icon/pencil-icon/index.tsx",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/phone-icon",
+      "spelling": "PhoneIcon",
+      "file": "src/atoms/icon/phone-icon/index.tsx",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/plans-icon",
+      "spelling": "PlansIcon",
+      "file": "src/atoms/icon/plans-icon/index.tsx",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/plus-icon",
+      "spelling": "PlusIcon",
+      "file": "src/atoms/icon/plus-icon/index.tsx",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/search-icon",
+      "spelling": "SearchIcon",
+      "file": "src/atoms/icon/search-icon/index.tsx",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/shield-check-icon",
+      "spelling": "ShieldCheckIcon",
+      "file": "src/atoms/icon/shield-check-icon/index.tsx",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/staff-icon",
+      "spelling": "StaffIcon",
+      "file": "src/atoms/icon/staff-icon/index.tsx",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/students-icon",
+      "spelling": "StudentsIcon",
+      "file": "src/atoms/icon/students-icon/index.tsx",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/sun-icon",
+      "spelling": "SunIcon",
+      "file": "src/atoms/icon/sun-icon/index.tsx",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/svg",
+      "spelling": "JvdmIcon",
+      "file": "src/atoms/icon/svg.tsx",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        },
+        {
+          "name": "children",
+          "spelling": "children",
+          "slot": true
+        }
+      ]
+    },
+    {
+      "contract": "atoms/trash-icon",
+      "spelling": "TrashIcon",
+      "file": "src/atoms/icon/trash-icon/index.tsx",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/whatsapp-icon",
+      "spelling": "WhatsappIcon",
+      "file": "src/atoms/icon/whatsapp-icon/index.tsx",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
         }
       ]
     }

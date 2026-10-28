@@ -2,6 +2,39 @@
   "version": "0.1.0",
   "implements": [
     {
+      "contract": "atoms/access-icon",
+      "spelling": "AccessIcon",
+      "file": "Sources/JvdmUI/Atoms/Icon/AccessIcon.swift",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/alert-icon",
+      "spelling": "AlertIcon",
+      "file": "Sources/JvdmUI/Atoms/Icon/AlertIcon.swift",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/back-icon",
+      "spelling": "BackIcon",
+      "file": "Sources/JvdmUI/Atoms/Icon/BackIcon.swift",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
       "contract": "atoms/badge",
       "spelling": "Badge",
       "file": "Sources/JvdmUI/Atoms/Badge/Badge.swift",
@@ -14,6 +47,352 @@
           "name": "children",
           "spelling": "content",
           "slot": true
+        }
+      ]
+    },
+    {
+      "contract": "atoms/box-icon",
+      "spelling": "BoxIcon",
+      "file": "Sources/JvdmUI/Atoms/Icon/BoxIcon.swift",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/building-icon",
+      "spelling": "BuildingIcon",
+      "file": "Sources/JvdmUI/Atoms/Icon/BuildingIcon.swift",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/calendar-icon",
+      "spelling": "CalendarIcon",
+      "file": "Sources/JvdmUI/Atoms/Icon/CalendarIcon.swift",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/car-icon",
+      "spelling": "CarIcon",
+      "file": "Sources/JvdmUI/Atoms/Icon/CarIcon.swift",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/check-icon",
+      "spelling": "CheckIcon",
+      "file": "Sources/JvdmUI/Atoms/Icon/CheckIcon.swift",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/chevron-icon",
+      "spelling": "ChevronIcon",
+      "file": "Sources/JvdmUI/Atoms/Icon/ChevronIcon.swift",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/close-icon",
+      "spelling": "CloseIcon",
+      "file": "Sources/JvdmUI/Atoms/Icon/CloseIcon.swift",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/copy-icon",
+      "spelling": "CopyIcon",
+      "file": "Sources/JvdmUI/Atoms/Icon/CopyIcon.swift",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/dashboard-icon",
+      "spelling": "DashboardIcon",
+      "file": "Sources/JvdmUI/Atoms/Icon/DashboardIcon.swift",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/eye-icon",
+      "spelling": "EyeIcon",
+      "file": "Sources/JvdmUI/Atoms/Icon/EyeIcon.swift",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/eye-off-icon",
+      "spelling": "EyeOffIcon",
+      "file": "Sources/JvdmUI/Atoms/Icon/EyeOffIcon.swift",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/face-icon",
+      "spelling": "FaceIcon",
+      "file": "Sources/JvdmUI/Atoms/Icon/FaceIcon.swift",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/factory-icon",
+      "spelling": "FactoryIcon",
+      "file": "Sources/JvdmUI/Atoms/Icon/FactoryIcon.swift",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/funnel-icon",
+      "spelling": "FunnelIcon",
+      "file": "Sources/JvdmUI/Atoms/Icon/FunnelIcon.swift",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/gavel-icon",
+      "spelling": "GavelIcon",
+      "file": "Sources/JvdmUI/Atoms/Icon/GavelIcon.swift",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/instagram-icon",
+      "spelling": "InstagramIcon",
+      "file": "Sources/JvdmUI/Atoms/Icon/InstagramIcon.swift",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/logout-icon",
+      "spelling": "LogoutIcon",
+      "file": "Sources/JvdmUI/Atoms/Icon/LogoutIcon.swift",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/mail-icon",
+      "spelling": "MailIcon",
+      "file": "Sources/JvdmUI/Atoms/Icon/MailIcon.swift",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/moon-icon",
+      "spelling": "MoonIcon",
+      "file": "Sources/JvdmUI/Atoms/Icon/MoonIcon.swift",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/pencil-icon",
+      "spelling": "PencilIcon",
+      "file": "Sources/JvdmUI/Atoms/Icon/PencilIcon.swift",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/phone-icon",
+      "spelling": "PhoneIcon",
+      "file": "Sources/JvdmUI/Atoms/Icon/PhoneIcon.swift",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/plans-icon",
+      "spelling": "PlansIcon",
+      "file": "Sources/JvdmUI/Atoms/Icon/PlansIcon.swift",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/plus-icon",
+      "spelling": "PlusIcon",
+      "file": "Sources/JvdmUI/Atoms/Icon/PlusIcon.swift",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/search-icon",
+      "spelling": "SearchIcon",
+      "file": "Sources/JvdmUI/Atoms/Icon/SearchIcon.swift",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/shield-check-icon",
+      "spelling": "ShieldCheckIcon",
+      "file": "Sources/JvdmUI/Atoms/Icon/ShieldCheckIcon.swift",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/staff-icon",
+      "spelling": "StaffIcon",
+      "file": "Sources/JvdmUI/Atoms/Icon/StaffIcon.swift",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/students-icon",
+      "spelling": "StudentsIcon",
+      "file": "Sources/JvdmUI/Atoms/Icon/StudentsIcon.swift",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/sun-icon",
+      "spelling": "SunIcon",
+      "file": "Sources/JvdmUI/Atoms/Icon/SunIcon.swift",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/svg",
+      "spelling": "JvdmIcon",
+      "file": "Sources/JvdmUI/Atoms/Icon/JvdmIcon.swift",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        },
+        {
+          "name": "children",
+          "spelling": "icon",
+          "slot": true
+        }
+      ]
+    },
+    {
+      "contract": "atoms/trash-icon",
+      "spelling": "TrashIcon",
+      "file": "Sources/JvdmUI/Atoms/Icon/TrashIcon.swift",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/whatsapp-icon",
+      "spelling": "WhatsappIcon",
+      "file": "Sources/JvdmUI/Atoms/Icon/WhatsappIcon.swift",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
         }
       ]
     }

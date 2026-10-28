@@ -16,14 +16,14 @@
 This repository is the whole design system. Each platform is a package in `packages/`, released on
 its own tag, built from the same token source and held to the same component contract.
 
-| Package                                            | Platform              | Status             |
-| -------------------------------------------------- | --------------------- | ------------------ |
-| [`packages/tokens`](./packages/tokens)             | the token source      | internal           |
-| [`packages/web`](./packages/web)                   | React 19 + Tailwind 4 | published to npm   |
-| [`packages/react-native`](./packages/react-native) | React Native          | scaffold, 1 of 106 |
-| [`packages/ios`](./packages/ios)                   | SwiftUI (SwiftPM)     | scaffold, 1 of 106 |
-| [`packages/android`](./packages/android)           | Jetpack Compose       | scaffold, 1 of 106 |
-| [`packages/flutter`](./packages/flutter)           | Flutter               | scaffold, 1 of 106 |
+| Package                                            | Platform              | Status           |
+| -------------------------------------------------- | --------------------- | ---------------- |
+| [`packages/tokens`](./packages/tokens)             | the token source      | internal         |
+| [`packages/web`](./packages/web)                   | React 19 + Tailwind 4 | published to npm |
+| [`packages/react-native`](./packages/react-native) | React Native          | 35 of 106        |
+| [`packages/ios`](./packages/ios)                   | SwiftUI (SwiftPM)     | 35 of 106        |
+| [`packages/android`](./packages/android)           | Jetpack Compose       | 35 of 106        |
+| [`packages/flutter`](./packages/flutter)           | Flutter               | 35 of 106        |
 
 Why one repository and not five: a design system stops being a system the moment its platforms can
 drift without anything noticing. Tokens are generated from a single source, every component declares

@@ -1,6 +1,39 @@
 {
   "implements": [
     {
+      "contract": "atoms/access-icon",
+      "spelling": "JvdmAccessIcon",
+      "file": "lib/src/atoms/icon/access.dart",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/alert-icon",
+      "spelling": "JvdmAlertIcon",
+      "file": "lib/src/atoms/icon/alert.dart",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/back-icon",
+      "spelling": "JvdmBackIcon",
+      "file": "lib/src/atoms/icon/back.dart",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
       "contract": "atoms/badge",
       "spelling": "JvdmBadge",
       "file": "lib/src/atoms/badge/badge.dart",
@@ -13,6 +46,352 @@
           "name": "children",
           "spelling": "child",
           "slot": true
+        }
+      ]
+    },
+    {
+      "contract": "atoms/box-icon",
+      "spelling": "JvdmBoxIcon",
+      "file": "lib/src/atoms/icon/box.dart",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/building-icon",
+      "spelling": "JvdmBuildingIcon",
+      "file": "lib/src/atoms/icon/building.dart",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/calendar-icon",
+      "spelling": "JvdmCalendarIcon",
+      "file": "lib/src/atoms/icon/calendar.dart",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/car-icon",
+      "spelling": "JvdmCarIcon",
+      "file": "lib/src/atoms/icon/car.dart",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/check-icon",
+      "spelling": "JvdmCheckIcon",
+      "file": "lib/src/atoms/icon/check.dart",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/chevron-icon",
+      "spelling": "JvdmChevronIcon",
+      "file": "lib/src/atoms/icon/chevron.dart",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/close-icon",
+      "spelling": "JvdmCloseIcon",
+      "file": "lib/src/atoms/icon/close.dart",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/copy-icon",
+      "spelling": "JvdmCopyIcon",
+      "file": "lib/src/atoms/icon/copy.dart",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/dashboard-icon",
+      "spelling": "JvdmDashboardIcon",
+      "file": "lib/src/atoms/icon/dashboard.dart",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/eye-icon",
+      "spelling": "JvdmEyeIcon",
+      "file": "lib/src/atoms/icon/eye.dart",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/eye-off-icon",
+      "spelling": "JvdmEyeOffIcon",
+      "file": "lib/src/atoms/icon/eye_off.dart",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/face-icon",
+      "spelling": "JvdmFaceIcon",
+      "file": "lib/src/atoms/icon/face.dart",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/factory-icon",
+      "spelling": "JvdmFactoryIcon",
+      "file": "lib/src/atoms/icon/factory.dart",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/funnel-icon",
+      "spelling": "JvdmFunnelIcon",
+      "file": "lib/src/atoms/icon/funnel.dart",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/gavel-icon",
+      "spelling": "JvdmGavelIcon",
+      "file": "lib/src/atoms/icon/gavel.dart",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/instagram-icon",
+      "spelling": "JvdmInstagramIcon",
+      "file": "lib/src/atoms/icon/instagram.dart",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/logout-icon",
+      "spelling": "JvdmLogoutIcon",
+      "file": "lib/src/atoms/icon/logout.dart",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/mail-icon",
+      "spelling": "JvdmMailIcon",
+      "file": "lib/src/atoms/icon/mail.dart",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/moon-icon",
+      "spelling": "JvdmMoonIcon",
+      "file": "lib/src/atoms/icon/moon.dart",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/pencil-icon",
+      "spelling": "JvdmPencilIcon",
+      "file": "lib/src/atoms/icon/pencil.dart",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/phone-icon",
+      "spelling": "JvdmPhoneIcon",
+      "file": "lib/src/atoms/icon/phone.dart",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/plans-icon",
+      "spelling": "JvdmPlansIcon",
+      "file": "lib/src/atoms/icon/plans.dart",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/plus-icon",
+      "spelling": "JvdmPlusIcon",
+      "file": "lib/src/atoms/icon/plus.dart",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/search-icon",
+      "spelling": "JvdmSearchIcon",
+      "file": "lib/src/atoms/icon/search.dart",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/shield-check-icon",
+      "spelling": "JvdmShieldCheckIcon",
+      "file": "lib/src/atoms/icon/shield_check.dart",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/staff-icon",
+      "spelling": "JvdmStaffIcon",
+      "file": "lib/src/atoms/icon/staff.dart",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/students-icon",
+      "spelling": "JvdmStudentsIcon",
+      "file": "lib/src/atoms/icon/students.dart",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/sun-icon",
+      "spelling": "JvdmSunIcon",
+      "file": "lib/src/atoms/icon/sun.dart",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/svg",
+      "spelling": "JvdmIcon",
+      "file": "lib/src/tokens/icon.dart",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        },
+        {
+          "name": "children",
+          "spelling": "trace",
+          "slot": true
+        }
+      ]
+    },
+    {
+      "contract": "atoms/trash-icon",
+      "spelling": "JvdmTrashIcon",
+      "file": "lib/src/atoms/icon/trash.dart",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/whatsapp-icon",
+      "spelling": "JvdmWhatsappIcon",
+      "file": "lib/src/atoms/icon/whatsapp.dart",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
         }
       ]
     }

@@ -303,7 +303,17 @@ const eslintConfig = defineConfig([
               message: "The token source is build-time data. It knows no renderer. ADR 0009.",
             },
             {
-              group: ["jvdm-ui", "jvdm-ui/*", "@jvdm-ui/*", "../../*"],
+              group: [
+                "jvdm-ui",
+                "jvdm-ui/*",
+                "@jvdm-ui/*",
+                "../../web/*",
+                "../../react-native/*",
+                "../../ios/*",
+                "../../android/*",
+                "../../flutter/*",
+                "../../../*",
+              ],
               message:
                 "The token source is upstream of every platform and imports none of them. ADR 0008, M1.",
             },

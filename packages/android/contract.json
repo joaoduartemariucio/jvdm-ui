@@ -1,6 +1,39 @@
 {
   "implements": [
     {
+      "contract": "atoms/access-icon",
+      "spelling": "JvdmAccessIcon",
+      "file": "src/main/kotlin/com/jvdm/ui/atoms/icon/AccessIcon.kt",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/alert-icon",
+      "spelling": "JvdmAlertIcon",
+      "file": "src/main/kotlin/com/jvdm/ui/atoms/icon/AlertIcon.kt",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/back-icon",
+      "spelling": "JvdmBackIcon",
+      "file": "src/main/kotlin/com/jvdm/ui/atoms/icon/BackIcon.kt",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
       "contract": "atoms/badge",
       "spelling": "JvdmBadge",
       "file": "src/main/kotlin/com/jvdm/ui/atoms/badge/Badge.kt",
@@ -13,6 +46,352 @@
           "name": "children",
           "spelling": "content",
           "slot": true
+        }
+      ]
+    },
+    {
+      "contract": "atoms/box-icon",
+      "spelling": "JvdmBoxIcon",
+      "file": "src/main/kotlin/com/jvdm/ui/atoms/icon/BoxIcon.kt",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/building-icon",
+      "spelling": "JvdmBuildingIcon",
+      "file": "src/main/kotlin/com/jvdm/ui/atoms/icon/BuildingIcon.kt",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/calendar-icon",
+      "spelling": "JvdmCalendarIcon",
+      "file": "src/main/kotlin/com/jvdm/ui/atoms/icon/CalendarIcon.kt",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/car-icon",
+      "spelling": "JvdmCarIcon",
+      "file": "src/main/kotlin/com/jvdm/ui/atoms/icon/CarIcon.kt",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/check-icon",
+      "spelling": "JvdmCheckIcon",
+      "file": "src/main/kotlin/com/jvdm/ui/atoms/icon/CheckIcon.kt",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/chevron-icon",
+      "spelling": "JvdmChevronIcon",
+      "file": "src/main/kotlin/com/jvdm/ui/atoms/icon/ChevronIcon.kt",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/close-icon",
+      "spelling": "JvdmCloseIcon",
+      "file": "src/main/kotlin/com/jvdm/ui/atoms/icon/CloseIcon.kt",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/copy-icon",
+      "spelling": "JvdmCopyIcon",
+      "file": "src/main/kotlin/com/jvdm/ui/atoms/icon/CopyIcon.kt",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/dashboard-icon",
+      "spelling": "JvdmDashboardIcon",
+      "file": "src/main/kotlin/com/jvdm/ui/atoms/icon/DashboardIcon.kt",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/eye-icon",
+      "spelling": "JvdmEyeIcon",
+      "file": "src/main/kotlin/com/jvdm/ui/atoms/icon/EyeIcon.kt",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/eye-off-icon",
+      "spelling": "JvdmEyeOffIcon",
+      "file": "src/main/kotlin/com/jvdm/ui/atoms/icon/EyeOffIcon.kt",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/face-icon",
+      "spelling": "JvdmFaceIcon",
+      "file": "src/main/kotlin/com/jvdm/ui/atoms/icon/FaceIcon.kt",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/factory-icon",
+      "spelling": "JvdmFactoryIcon",
+      "file": "src/main/kotlin/com/jvdm/ui/atoms/icon/FactoryIcon.kt",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/funnel-icon",
+      "spelling": "JvdmFunnelIcon",
+      "file": "src/main/kotlin/com/jvdm/ui/atoms/icon/FunnelIcon.kt",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/gavel-icon",
+      "spelling": "JvdmGavelIcon",
+      "file": "src/main/kotlin/com/jvdm/ui/atoms/icon/GavelIcon.kt",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/instagram-icon",
+      "spelling": "JvdmInstagramIcon",
+      "file": "src/main/kotlin/com/jvdm/ui/atoms/icon/InstagramIcon.kt",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/logout-icon",
+      "spelling": "JvdmLogoutIcon",
+      "file": "src/main/kotlin/com/jvdm/ui/atoms/icon/LogoutIcon.kt",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/mail-icon",
+      "spelling": "JvdmMailIcon",
+      "file": "src/main/kotlin/com/jvdm/ui/atoms/icon/MailIcon.kt",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/moon-icon",
+      "spelling": "JvdmMoonIcon",
+      "file": "src/main/kotlin/com/jvdm/ui/atoms/icon/MoonIcon.kt",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/pencil-icon",
+      "spelling": "JvdmPencilIcon",
+      "file": "src/main/kotlin/com/jvdm/ui/atoms/icon/PencilIcon.kt",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/phone-icon",
+      "spelling": "JvdmPhoneIcon",
+      "file": "src/main/kotlin/com/jvdm/ui/atoms/icon/PhoneIcon.kt",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/plans-icon",
+      "spelling": "JvdmPlansIcon",
+      "file": "src/main/kotlin/com/jvdm/ui/atoms/icon/PlansIcon.kt",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/plus-icon",
+      "spelling": "JvdmPlusIcon",
+      "file": "src/main/kotlin/com/jvdm/ui/atoms/icon/PlusIcon.kt",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/search-icon",
+      "spelling": "JvdmSearchIcon",
+      "file": "src/main/kotlin/com/jvdm/ui/atoms/icon/SearchIcon.kt",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/shield-check-icon",
+      "spelling": "JvdmShieldCheckIcon",
+      "file": "src/main/kotlin/com/jvdm/ui/atoms/icon/ShieldCheckIcon.kt",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/staff-icon",
+      "spelling": "JvdmStaffIcon",
+      "file": "src/main/kotlin/com/jvdm/ui/atoms/icon/StaffIcon.kt",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/students-icon",
+      "spelling": "JvdmStudentsIcon",
+      "file": "src/main/kotlin/com/jvdm/ui/atoms/icon/StudentsIcon.kt",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/sun-icon",
+      "spelling": "JvdmSunIcon",
+      "file": "src/main/kotlin/com/jvdm/ui/atoms/icon/SunIcon.kt",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/svg",
+      "spelling": "JvdmIcon",
+      "file": "src/main/kotlin/com/jvdm/ui/atoms/icon/JvdmIcon.kt",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        },
+        {
+          "name": "children",
+          "spelling": "image",
+          "slot": true
+        }
+      ]
+    },
+    {
+      "contract": "atoms/trash-icon",
+      "spelling": "JvdmTrashIcon",
+      "file": "src/main/kotlin/com/jvdm/ui/atoms/icon/TrashIcon.kt",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
+        }
+      ]
+    },
+    {
+      "contract": "atoms/whatsapp-icon",
+      "spelling": "JvdmWhatsappIcon",
+      "file": "src/main/kotlin/com/jvdm/ui/atoms/icon/WhatsappIcon.kt",
+      "props": [
+        {
+          "name": "size",
+          "values": ["sm", "md", "lg", "xl", "2xl"]
         }
       ]
     }

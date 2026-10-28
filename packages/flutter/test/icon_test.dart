@@ -107,7 +107,7 @@ void main() {
   });
 
   testWidgets('matches the icon golden', (WidgetTester tester) async {
-    await tester.binding.setSurfaceSize(const Size(480, 240));
+    await tester.binding.setSurfaceSize(const Size(480, 128));
     await tester.pumpWidget(_gallery());
     await tester.pumpAndSettle();
     await expectLater(
