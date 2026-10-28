@@ -53,7 +53,13 @@ Widget _gallery() {
               runSpacing: tokens.spacing(4),
               children: <Widget>[
                 for (final JvdmIcon icon in allIcons)
-                  icon,
+                  IconTheme(
+                    data: IconThemeData(color: tokens.color(JvdmColorToken.ink)),
+                    child: DefaultTextStyle(
+                      style: TextStyle(color: tokens.color(JvdmColorToken.ink)),
+                      child: icon,
+                    ),
+                  ),
               ],
             ),
           ),
