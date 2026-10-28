@@ -35,7 +35,7 @@ const names = labelNames(process.env.PR_LABELS);
 
 if (names.some((name) => name === "no-release" || name === "skip-release")) {
   const held = JSON.parse(
-    readFileSync(new URL("../package.json", import.meta.url), "utf8"),
+    readFileSync(new URL("../packages/web/package.json", import.meta.url), "utf8"),
   ).version;
   process.stdout.write(`current=${held}\nlevel=none\nsource=label\nnext=${held}\n`);
   process.exit(0);
@@ -55,7 +55,7 @@ const source =
 const level = labelled[0] ?? fromTitle(process.env.PR_TITLE) ?? "patch";
 
 const current = JSON.parse(
-  readFileSync(new URL("../package.json", import.meta.url), "utf8"),
+  readFileSync(new URL("../packages/web/package.json", import.meta.url), "utf8"),
 ).version;
 const next = bumpVersion(current, level);
 

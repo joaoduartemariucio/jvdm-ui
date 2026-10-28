@@ -28,6 +28,7 @@ two disagree, **the ADR wins**.
 | [ADR 0004](docs/adr/0004-releases.md) V1         | a merged pull request is the unit of release                           |
 | ADR 0004 V2                                      | the bump level is declared, then inferred, then assumed                |
 | [ADR 0007](docs/adr/0007-default-identity.md)    | identity lives in the non-color scales                                 |
+| [ADR 0008](docs/adr/0008-multiplatform.md)       | one repository, one package per platform                               |
 
 Changing a rule means changing an ADR. Do not edit `eslint.config.mjs` to make a PR pass (R6).
 
@@ -43,30 +44,42 @@ Changing a rule means changing an ADR. Do not edit `eslint.config.mjs` to make a
 | `npm run typecheck`               | types only                            |
 | `npm run lint` / `lint:fix`       | ESLint                                |
 | `npm run format` / `format:check` | Prettier                              |
-| `npm run site:dev`                | the docs site at localhost:4321       |
+| `npm run site:dev`                | the docs site at localhost:5173       |
 | `npm run site:build`              | the docs site into `site-dist/`       |
 | `npm run typecheck:site`          | types for the docs site               |
 
 ## Structure
 
+This is a workspace root, and every platform is a package of its own
+([ADR 0008](docs/adr/0008-multiplatform.md)). Nothing is published from the root.
+
 ```
-src/
-  tokens/     tokens.css (@theme, color-scheme) + theme.ts (the data-theme switch)
-  theme/      defineTheme, the theme types, and presets/. Build-time, zero React
-  atoms/      indivisible element
-  molecules/  a few atoms as one unit
-  organisms/  a complete section
-  index.ts    root barrel
-bin/          the jvdm-ui CLI
-scripts/      build steps that run after tsup
-site/         the docs site, deployed to Pages by .github/workflows/pages.yml
+packages/
+  web/                  the npm package `jvdm-ui` — React 19 + Tailwind v4
+    src/
+      tokens/           tokens.css (@theme, color-scheme) + theme.ts (the data-theme switch)
+      theme/            defineTheme, the theme types, and presets/. Build-time, zero React
+      atoms/            indivisible element
+      molecules/        a few atoms as one unit
+      organisms/        a complete section
+      index.ts          root barrel
+    bin/                the jvdm-ui CLI
+    scripts/            build steps that run after tsup
+    tests/              vitest + node --test, outside src/ and so outside the src lint
+    tsup.config.ts      the two passes that keep the client boundary (ADR 0005)
+scripts/                release tooling shared by every package
+site/                   the docs site, deployed to Pages by .github/workflows/pages.yml
+tsconfig.base.json      the compiler options every package extends
 ```
 
-The site imports `jvdm-ui/*` through Vite aliases pointing at `src/`, not `dist/`, so it has real
-HMR and needs no build ordering. It is a consumer like any other: if a component cannot be shown
+A command scoped to one package takes the workspace flag: `npm run build -w jvdm-ui`. The root
+`build`, `test` and `dev` already delegate there.
+
+The site imports `jvdm-ui/*` through Vite aliases pointing at `packages/web/src/`, not `dist/`, so
+it has real HMR and needs no build ordering. It is a consumer like any other: if a component cannot be shown
 there without reaching past the public API, that is a finding about the API.
 
-Dependency only flows down: `tokens <- atoms <- molecules <- organisms`. `theme/` stands apart and
+Inside `packages/web/src`, dependency only flows down: `tokens <- atoms <- molecules <- organisms`. `theme/` stands apart and
 imports nothing but itself. `eslint-plugin-boundaries` fails the build on any crossing.
 
 **This package knows no app.** No `@shared/`, `@features/`, `@app/` or router in here — the local
@@ -77,11 +90,11 @@ here ([ADR 0001, R3](docs/adr/0001-design-system.md)).
 
 Text the consumer decides arrives as a prop. Text a component says on its own goes to that folder's
 `locales.ts` **and** gets an optional prop defaulting to it — the package is public, and not every
-consumer speaks English. See `atoms/theme-toggle/`, `atoms/input/` and `molecules/load-error/`.
+consumer speaks English. See `packages/web/src/atoms/theme-toggle/`, `.../atoms/input/` and `.../molecules/load-error/`.
 
 ## Tokens and theming
 
-`src/tokens/tokens.css` is the schema. Each color is declared **once**, as
+`packages/web/src/tokens/tokens.css` is the schema. Each color is declared **once**, as
 `light-dark(<light>, <dark>)`; mode switching lives in `color-scheme` alone. Never re-declare a
 token in a `[data-theme]` block — that is exactly the specificity bug
 [ADR 0003](docs/adr/0003-theming.md) removed, and it silently breaks every consumer override in

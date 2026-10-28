@@ -10,11 +10,11 @@ export default defineConfig({
   plugins: [react(), tailwindcss()],
   resolve: {
     alias: {
-      "jvdm-ui/atoms": fileURLToPath(new URL("../src/atoms", import.meta.url)),
-      "jvdm-ui/molecules": fileURLToPath(new URL("../src/molecules", import.meta.url)),
-      "jvdm-ui/organisms": fileURLToPath(new URL("../src/organisms", import.meta.url)),
-      "jvdm-ui/tokens": fileURLToPath(new URL("../src/tokens", import.meta.url)),
-      "jvdm-ui/theme": fileURLToPath(new URL("../src/theme", import.meta.url)),
+      "jvdm-ui/atoms": fileURLToPath(new URL("../packages/web/src/atoms", import.meta.url)),
+      "jvdm-ui/molecules": fileURLToPath(new URL("../packages/web/src/molecules", import.meta.url)),
+      "jvdm-ui/organisms": fileURLToPath(new URL("../packages/web/src/organisms", import.meta.url)),
+      "jvdm-ui/tokens": fileURLToPath(new URL("../packages/web/src/tokens", import.meta.url)),
+      "jvdm-ui/theme": fileURLToPath(new URL("../packages/web/src/theme", import.meta.url)),
     },
   },
   build: {

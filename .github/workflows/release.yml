@@ -106,11 +106,11 @@ jobs:
             git reset --quiet --hard origin/main
             NEXT=$(node scripts/next-version.mjs | sed -n 's/^next=//p')
             if git rev-parse --quiet --verify "refs/tags/v$NEXT" > /dev/null; then
-              echo "::error::Tag v$NEXT already exists but main is still at $(node -p 'require("./package.json").version'). Delete the orphan tag or bump package.json on main."
+              echo "::error::Tag v$NEXT already exists but main is still at $(node -p 'require("./packages/web/package.json").version'). Delete the orphan tag or bump packages/web/package.json on main."
               exit 1
             fi
-            npm version "$NEXT" --no-git-tag-version > /dev/null
-            git add package.json package-lock.json
+            npm version "$NEXT" --no-git-tag-version --workspace jvdm-ui > /dev/null
+            git add packages/web/package.json package-lock.json
             git commit --quiet -m "chore: release v$NEXT [skip ci]"
             git tag -a "v$NEXT" -m "v$NEXT"
             if git push --atomic origin main "v$NEXT"; then
@@ -185,4 +185,4 @@ jobs:
 
       - name: Publish latest package
         if: vars.NPM_PUBLISH == 'true'
-        run: npm publish --access public --tag latest
+        run: npm publish --access public --tag latest --workspace jvdm-ui

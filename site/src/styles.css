@@ -1,6 +1,6 @@
 @import "tailwindcss";
-@import "../../src/tokens/tokens.css";
-@source "../../src";
+@import "../../packages/web/src/tokens/tokens.css";
+@source "../../packages/web/src";
 @source "../src";
 
 body {

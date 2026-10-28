@@ -1,67 +1,27 @@
 {
-  "name": "jvdm-ui",
-  "version": "1.2.0",
-  "description": "Design system em React 19 + Tailwind v4: tokens em oklch, tema claro/escuro e componentes em quatro camadas.",
+  "name": "jvdm-ui-monorepo",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Monorepo do jvdm-ui: um design system, uma fonte de tokens, uma implementação por plataforma.",
   "license": "MIT",
   "author": "João Vitor Duarte Mariucio",
   "type": "module",
-  "sideEffects": [
-    "*.css"
+  "workspaces": [
+    "packages/*"
   ],
-  "files": [
-    "dist",
-    "bin"
-  ],
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js"
-    },
-    "./client/*": {
-      "types": "./dist/client/*.d.ts",
-      "import": "./dist/client/*.js"
-    },
-    "./tokens": {
-      "types": "./dist/tokens/index.d.ts",
-      "import": "./dist/tokens/index.js"
-    },
-    "./atoms": {
-      "types": "./dist/atoms/index.d.ts",
-      "import": "./dist/atoms/index.js"
-    },
-    "./molecules": {
-      "types": "./dist/molecules/index.d.ts",
-      "import": "./dist/molecules/index.js"
-    },
-    "./organisms": {
-      "types": "./dist/organisms/index.d.ts",
-      "import": "./dist/organisms/index.js"
-    },
-    "./tokens.css": "./dist/tokens.css",
-    "./theme": {
-      "types": "./dist/theme/index.d.ts",
-      "import": "./dist/theme/index.js"
-    },
-    "./presets/gavel.css": "./dist/presets/gavel.css"
-  },
   "scripts": {
-    "build": "rm -rf dist && tsup && node scripts/build-presets.mjs && cp src/tokens/tokens.css dist/tokens.css",
-    "dev": "tsup --watch",
+    "build": "npm run build -w jvdm-ui",
+    "dev": "npm run dev -w jvdm-ui",
     "typecheck": "tsc --noEmit",
-    "test": "npm run build && vitest run && node --test tests/theme.test.mjs",
-    "test:coverage": "npm run build && vitest run --coverage && node --test tests/theme.test.mjs",
+    "test": "npm run test -w jvdm-ui",
+    "test:coverage": "npm run test:coverage -w jvdm-ui",
     "lint": "eslint",
     "lint:fix": "eslint --fix",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "prepare": "npm run build",
-    "prepublishOnly": "npm run typecheck && npm run lint && npm run format:check && npm run build",
     "site:dev": "vite --config site/vite.config.ts",
     "site:build": "vite build --config site/vite.config.ts",
     "typecheck:site": "tsc --noEmit -p site/tsconfig.json"
-  },
-  "peerDependencies": {
-    "react": "^19.0.0"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
@@ -90,19 +50,6 @@
     "vite": "^8.3.1",
     "vitest": "^5.0.1"
   },
-  "bin": {
-    "jvdm-ui": "./bin/jvdm-ui.mjs"
-  },
-  "keywords": [
-    "design-system",
-    "react",
-    "tailwindcss",
-    "ui",
-    "components",
-    "theming",
-    "design-tokens",
-    "oklch"
-  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/joaoduartemariucio/jvdm-ui.git"

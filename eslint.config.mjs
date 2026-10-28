@@ -6,6 +6,8 @@ import reactHooks from "eslint-plugin-react-hooks";
 import globals from "globals";
 import tseslint from "typescript-eslint";
 
+const WEB = "packages/web/src";
+
 const to = (type) => ({ to: { element: { type } } });
 
 const SPACING = "(gap|gap-x|gap-y|p|px|py|pt|pb|pl|pr|m|mx|my|mt|mb|ml|mr|space-x|space-y)";
@@ -172,7 +174,7 @@ const local = {
 };
 
 const eslintConfig = defineConfig([
-  globalIgnores(["dist/**", "coverage/**"]),
+  globalIgnores(["**/dist/**", "coverage/**", "site-dist/**"]),
   {
     files: ["**/*.{ts,tsx}"],
     extends: [
@@ -197,17 +199,17 @@ const eslintConfig = defineConfig([
     },
   },
   {
-    files: ["src/**/*.{ts,tsx}"],
+    files: [`${WEB}/**/*.{ts,tsx}`],
     plugins: { boundaries },
     settings: {
-      "boundaries/include": ["src/**/*.{ts,tsx}"],
+      "boundaries/include": [`${WEB}/**/*.{ts,tsx}`],
       "boundaries/elements": [
-        { type: "theme", pattern: "src/theme/**", partialMatch: false },
-        { type: "tokens", pattern: "src/tokens/**", partialMatch: false },
-        { type: "atoms", pattern: "src/atoms/**", partialMatch: false },
-        { type: "molecules", pattern: "src/molecules/**", partialMatch: false },
-        { type: "organisms", pattern: "src/organisms/**", partialMatch: false },
-        { type: "package-index", pattern: "src", partialMatch: false },
+        { type: "theme", pattern: `${WEB}/theme/**`, partialMatch: false },
+        { type: "tokens", pattern: `${WEB}/tokens/**`, partialMatch: false },
+        { type: "atoms", pattern: `${WEB}/atoms/**`, partialMatch: false },
+        { type: "molecules", pattern: `${WEB}/molecules/**`, partialMatch: false },
+        { type: "organisms", pattern: `${WEB}/organisms/**`, partialMatch: false },
+        { type: "package-index", pattern: WEB, partialMatch: false },
       ],
       "import/resolver": { typescript: { alwaysTryTypes: true } },
     },
@@ -240,14 +242,14 @@ const eslintConfig = defineConfig([
   },
 
   {
-    files: ["src/**/*.tsx"],
+    files: [`${WEB}/**/*.tsx`],
     rules: {
       "no-restricted-syntax": ["error", ...designSystemRules, ...textRules],
     },
   },
 
   {
-    files: ["src/**/*.{ts,tsx}"],
+    files: [`${WEB}/**/*.{ts,tsx}`],
     plugins: { local },
     rules: {
       "local/no-comments": "error",

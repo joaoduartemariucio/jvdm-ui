@@ -1,13 +1,13 @@
 {
-  "extends": "../tsconfig.json",
+  "extends": "../tsconfig.base.json",
   "compilerOptions": {
     "types": ["vite/client", "node"],
     "paths": {
-      "jvdm-ui/atoms": ["../src/atoms"],
-      "jvdm-ui/molecules": ["../src/molecules"],
-      "jvdm-ui/organisms": ["../src/organisms"],
-      "jvdm-ui/tokens": ["../src/tokens"],
-      "jvdm-ui/theme": ["../src/theme"]
+      "jvdm-ui/atoms": ["../packages/web/src/atoms"],
+      "jvdm-ui/molecules": ["../packages/web/src/molecules"],
+      "jvdm-ui/organisms": ["../packages/web/src/organisms"],
+      "jvdm-ui/tokens": ["../packages/web/src/tokens"],
+      "jvdm-ui/theme": ["../packages/web/src/theme"]
     },
     "baseUrl": "."
   },
