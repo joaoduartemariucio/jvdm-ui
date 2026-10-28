@@ -2,10 +2,10 @@
   "version": "0.0.1",
   "configurations": [
     {
-      "name": "jvdm-ui-site",
+      "name": "site",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "site:dev", "--", "--port", "4321", "--strictPort"],
-      "port": 4321
+      "runtimeArgs": ["run", "site:dev"],
+      "port": 5173
     }
   ]
 }
